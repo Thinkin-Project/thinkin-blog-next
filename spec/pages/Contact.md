@@ -1,9 +1,3 @@
-# ✅ **English Prompt for UI/Code Generation — “Contact Page”**
-
-You are an expert UI generator.
-Recreate the following **Contact Page** exactly as shown, including layout, spacing, typography, and visual hierarchy.
-Use a modern, minimal, dark editorial design consistent with the reference.
-
 ## **🎨 Page Style Requirements**
 
 - Very dark background (#0F0F0F–#121212)

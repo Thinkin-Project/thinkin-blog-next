@@ -1,9 +1,3 @@
-# ✅ **English Prompt for UI/Code Generation — “Category / Topic Listing Page”**
-
-You are an expert UI generator.
-Recreate the following category listing page **exactly**, matching layout, spacing, typography scale, and visual hierarchy.
-Follow the minimalist, modern, dark-theme editorial style consistent with the reference.
-
 ## **🎨 Page Style Requirements**
 
 - Dark background (#0F0F0F–#121212)

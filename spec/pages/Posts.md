@@ -1,10 +1,3 @@
-# ✅ **English Prompt for UI/Code Generation — “All Posts Page”**
-
-You are an expert UI generator.
-Recreate this page **exactly** as described below.
-Do **not** alter layout, spacing, typography hierarchy, or colors.
-Follow a clean, modern, dark-theme aesthetic consistent with the reference.
-
 ## **🎨 Page Style Requirements**
 
 - Dark background (#0F0F0F–#121212 range)

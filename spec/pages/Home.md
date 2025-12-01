@@ -1,10 +1,3 @@
-# ✅ **English Prompt for UI/Code Generation — “Home Page”**
-
-You are an expert front-end/UI generator.
-Recreate the following webpage exactly as described.
-**Do not change layout, spacing, colors, or visual hierarchy.**
-Follow a clean, modern, dark-theme aesthetic.
-
 ## **🎨 Page Style Requirements**
 
 - Dark theme with subtle grey contrasts

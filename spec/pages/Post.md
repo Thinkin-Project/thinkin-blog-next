@@ -1,10 +1,3 @@
-# ✅ **English Prompt for UI/Code Generation — “Single Blog Post Page”**
-
-You are an expert UI generator.
-Recreate the following blog post page **exactly** as described.
-Do **not** change layout, spacing, typography, or colors.
-Match the clean, minimalist, dark editorial aesthetic precisely.
-
 ## **🎨 Page Style Requirements**
 
 - Dark background (#0F0F0F–#121212 range)
