@@ -6,9 +6,9 @@ Trigger: When the user invokes this workflow. Instructions:
 
 Analyze all TypeScript/JavaScript files in the current active context.
 
-For every file (e.g., utils.ts or Button.tsx), create a corresponding test file (e.g., utils.test.ts or Button.test.tsx).
+For every file (e.g., `utils.ts` or `Button.svelte`), create a corresponding test file (e.g., `utils.test.ts` or `Button.test.ts`).
 
-Use the Jest framework together with React Testing Library (for React components).
+Use the **Vitest** framework together with **Svelte Testing Library** (for Svelte components).
 
 Ensure every function or component has at least:
 

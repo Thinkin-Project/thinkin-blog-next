@@ -7,6 +7,6 @@ trigger: always_on
 - Use **pnpm** for package management.
 - Use **Vite** for build tool.
 - Use **ESLint** for code quality.
-- Follow **Next.js App Router** conventions.
-- Correctly determine when to use **server** vs **client** components.
+- Follow **SvelteKit** conventions.
+- Correctly determine when to use **server-side load functions** vs **client-side** logic.
 - Keep logic modular; avoid large components.

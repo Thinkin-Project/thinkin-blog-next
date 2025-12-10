@@ -5,19 +5,19 @@ trigger: always_on
 # Styling & UI
 
 - Use **Tailwind CSS** for styling.
-- Use **Shadcn UI** for React/Next.js components.
+- Use **Shadcn Svelte** for components.
 - Keep UI simple, clean, responsive.
 - Microcopy must be written in **Traditional Chinese**.
 
 # Data Fetching & Forms
 
-- Use **TanStack Query (react-query)** for frontend data fetching.
-- Use **React Hook Form** for form handling.
+- Use **SvelteKit load functions** for server-side data fetching.
+- Use **Superforms** for form handling.
 - Use **Zod** for validation and schema safety.
 
 # State Management & Logic
 
-- Use **React Context** (lightweight) or custom hooks for shared state.
+- Use **Svelte Stores** or **Runes** for shared state.
 - Avoid unnecessary global stores.
 
 # Tailwind Rules
