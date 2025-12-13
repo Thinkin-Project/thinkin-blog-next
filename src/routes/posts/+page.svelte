@@ -5,40 +5,30 @@
 	import * as Avatar from "$lib/components/ui/avatar";
 	import { 
 		ArrowRight, 
-		ArrowUpRight,
 		Menu,
 		X
 	} from "lucide-svelte";
 
-	// Placeholder data based on spec
-	const featuredPosts = [
-		{
-			title: "Why Walking Clears the Mind",
-			subtitle: "The science behind movement and creativity",
-			date: "2/3/24",
-			link: "#"
-		},
-		{
-			title: "Why Nostalgia Shapes Modern Trends",
-			subtitle: "Looking back to move forward",
-			date: "11/20/24",
-			link: "#"
-		},
-		{
-			title: "The Philosophy of AI Ethics",
-			subtitle: "Navigating the moral landscape of the future",
-			date: "1/23/25",
-			link: "#"
-		}
+	const topics = [
+		"Artificial Intelligence",
+		"Design",
+		"Engineering",
+		"Thoughts"
 	];
 
-	const newPosts = [
-		{ title: 'Why Walking Clears the Mind', subtitle: 'Movement & Creativity', date: '2/3/24' },
-		{ title: 'Why Nostalgia Shapes Modern Trends', subtitle: 'Cultural Cycles', date: '11/20/24' },
-		{ title: 'The Philosophy of AI Ethics', subtitle: 'Machine Morality', date: '1/23/25' },
-		{ title: 'Demystifying Continuous Integration', subtitle: 'DevOps Basics', date: '1/6/25' },
-		{ title: 'Why Code Reviews Are Essential', subtitle: 'Team Quality', date: '7/1/24' },
-		{ title: 'How AI Is Changing the Way We Work', subtitle: 'Future of Work', date: '1/16/25' }
+	const allPosts = [
+		{ title: 'Why Walking Clears the Mind', subtitle: 'The surprising benefits of a simple stroll', date: '2/3/24' },
+		{ title: 'Why Nostalgia Shapes Modern Trends', subtitle: 'The pull of the past in a digital world', date: '11/20/24' },
+		{ title: 'The Philosophy of AI Ethics', subtitle: 'Can machines make moral decisions?', date: '1/23/25' },
+		{ title: 'Demystifying Continuous Integration', subtitle: 'How CI improves development workflows', date: '1/6/25' },
+		{ title: 'Why Code Reviews Are Essential', subtitle: 'The power of collaboration in coding', date: '7/1/24' },
+		{ title: 'How AI Is Changing the Way We Work', subtitle: 'AI tools & their impact on productivity.', date: '1/16/25' },
+		{ title: 'The Ethics of Artificial Intelligence', subtitle: 'Balancing innovation with responsibility.', date: '1/9/25' },
+		{ title: 'AI in Everyday Life', subtitle: 'AI is seamlessly woven into our daily routines.', date: '12/12/24' },
+		{ title: 'The Role of Empathy in Design', subtitle: 'Why empathy is the key to great design.', date: '12/2/24' },
+		{ title: 'Why Microinteractions Matter in UX', subtitle: 'Small details, big impact on user experience.', date: '11/20/24' },
+		{ title: 'The Importance of Iteration in Design', subtitle: 'Iteration leads to better design outcomes.', date: '3/24/24' },
+		{ title: 'The Rise of Edge Computing', subtitle: 'Why edge computing is the future of tech', date: '8/22/24' }
 	];
 
 	const links = [
@@ -83,8 +73,8 @@
 			
 			<nav class="flex flex-col text-lg">
 				<div class="flex flex-col gap-4">
-					<a href="/" class="font-medium text-foreground hover:text-primary transition-colors" onclick={toggleMenu}>Home</a>
-					<a href="/posts" class="font-medium text-muted-foreground hover:text-primary transition-colors" onclick={toggleMenu}>All posts</a>
+					<a href="/" class="font-medium text-muted-foreground hover:text-primary transition-colors" onclick={toggleMenu}>Home</a>
+					<a href="/posts" class="font-medium text-foreground hover:text-primary transition-colors" onclick={toggleMenu}>All posts</a>
 					<a href="/contact" class="font-medium text-muted-foreground hover:text-primary transition-colors" onclick={toggleMenu}>Contact</a>
 				</div>
 				
@@ -130,8 +120,8 @@
 
 			<!-- Navigation Links -->
 			<div class="flex flex-col gap-3 pt-2">
-				<a href="/" class="text-sm font-medium text-foreground hover:text-primary transition-colors">Home</a>
-				<a href="/posts" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">All posts</a>
+				<a href="/" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Home</a>
+				<a href="/posts" class="text-sm font-medium text-foreground hover:text-primary transition-colors">All posts</a>
 				<a href="/contact" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Contact</a>
 			</div>
 		</div>
@@ -145,65 +135,26 @@
 
 	<!-- Main Content -->
 	<main class="flex-1">
-		<div class="container max-w-4xl mx-auto px-6 py-8 md:py-12 space-y-12">
+		<div class="container max-w-4xl mx-auto px-6 py-8 md:py-12 space-y-16">
 			
-			<!-- Hero Section -->
-			<section class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-				<h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-white">Welcome <span class="animate-waving-hand inline-block origin-bottom-right">👋</span></h1>
-				<div class="max-w-2xl space-y-6">
-					<p class="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light">
-						I explore the delicate balance between <span class="text-foreground font-medium">form</span> and <span class="text-foreground font-medium">function</span>. 
-						My work lives where <span class="text-orange-400">design</span> meets <span class="text-blue-400">engineering</span> and <span class="text-purple-400">AI</span>.
-					</p>
-				</div>
-			</section>
-
-			<!-- Links Section -->
-			<section>
-				<ul class="space-y-4">
-					<h2 class="text-2xl font-bold tracking-tight">Links</h2>
-					{#each links as link}
-						<li class="group">
-							<a href={link.url} class="flex items-center gap-2 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">
-								{link.name}
-								<ArrowRight class="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45" />
-							</a>
+			<!-- Topics Section -->
+			<section class="space-y-6">
+				<h2 class="text-3xl font-bold tracking-tight">Topics</h2>
+				<ul class="flex flex-wrap gap-x-8 gap-y-3">
+					{#each topics as topic}
+						<li class="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 cursor-pointer group">
+							<span class="text-zinc-500 group-hover:text-foreground transition-colors">↳</span>
+							<span class="text-sm font-medium tracking-wide">{topic}</span>
 						</li>
 					{/each}
 				</ul>
 			</section>
 
-			<hr />
-
-			<section class="space-y-8">
-				<h2 class="text-2xl font-bold tracking-tight">Featured posts</h2>
-				<div class="flex flex-col gap-px bg-zinc-800 rounded-3xl overflow-hidden border border-zinc-800">
-					{#each featuredPosts as post}
-						<a href={post.link} class="block group relative bg-zinc-900 hover:bg-zinc-800 transition-colors duration-300 p-4">
-							<div class="flex items-center justify-between z-10 relative">
-								<div class="space-y-1">
-									<h3 class="text-xl font-medium text-zinc-100 group-hover:text-white transition-colors">{post.title}</h3>
-									<p class="text-zinc-500 text-base">{post.subtitle}</p>
-								</div>
-								<ArrowRight class="h-5 w-5 text-zinc-600 group-hover:text-white transition-transform duration-300 group-hover:translate-x-1" />
-							</div>
-						</a>
-					{/each}
-				</div>
-			</section>
-
-			<hr />
-
-			<!-- New Posts Section -->
-			<section class="space-y-8">
-				<div class="flex items-center justify-between">
-					<h2 class="text-2xl font-bold tracking-tight">New posts</h2>
-					<a href="/posts" class="text-sm font-medium text-muted-foreground hover:text-foreground flex items-center gap-1 group">
-						All posts <ArrowRight class="h-4 w-4 transition-transform group-hover:-rotate-45" />
-					</a>
-				</div>
+			<!-- All Posts Section -->
+			<section class="space-y-10">
+				<h2 class="text-4xl font-bold tracking-tight text-white mb-8">All posts</h2>
 				<ul class="space-y-2">
-					{#each newPosts as post}
+					{#each allPosts as post}
 						<li class="group">
 							<a href="#" class="flex flex-col md:flex-row md:items-center justify-between py-3 group-hover:bg-zinc-900/50 rounded-lg px-3 transition-colors -mx-3">
 								<div class="flex items-center gap-3 relative">
@@ -239,20 +190,6 @@
 							“Love design, tech, and random thoughts? Subscribe to my newsletter — it’s like a good chat, in your inbox!”
 						</p>
 					</div>
-				</div>
-			</section>
-
-			<!-- Beyond the Blog Section -->
-			<section class="space-y-8">
-				<div class="flex items-center justify-between">
-					<h2 class="text-2xl font-bold tracking-tight">Beyond the Blog</h2>
-				</div>
-				<div class="space-y-4">
-					<p class="text-lg font-medium leading-relaxed text-muted-foreground">
-						Exploring the edges of digital creativity through <a href="#" class="text-white hover:text-zinc-400 transition-all duration-300 underline decoration-white hover:decoration-zinc-400 underline-offset-4">portfolio</a> work,
-						<a href="#" class="text-white hover:text-zinc-400 transition-all duration-300 underline decoration-white hover:decoration-zinc-400 underline-offset-4">past collaborations</a>, and experimental
-						<a href="#" class="text-white hover:text-zinc-400 transition-all duration-300 underline decoration-white hover:decoration-zinc-400 underline-offset-4">side projects</a>.
-					</p>
 				</div>
 			</section>
 
