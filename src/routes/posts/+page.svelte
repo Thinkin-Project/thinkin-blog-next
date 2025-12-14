@@ -142,10 +142,10 @@
 				<h2 class="text-3xl font-bold tracking-tight">Topics</h2>
 				<ul class="flex flex-wrap gap-x-8 gap-y-3">
 					{#each topics as topic}
-						<li class="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 cursor-pointer group">
+						<a href="/topics/{topic.toLowerCase().replace(' ', '-')}" class="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 cursor-pointer">
 							<span class="text-zinc-500 group-hover:text-foreground transition-colors">↳</span>
 							<span class="text-sm font-medium tracking-wide">{topic}</span>
-						</li>
+						</a>
 					{/each}
 				</ul>
 			</section>
