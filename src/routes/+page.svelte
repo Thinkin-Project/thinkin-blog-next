@@ -16,29 +16,29 @@
 			title: "Why Walking Clears the Mind",
 			subtitle: "The science behind movement and creativity",
 			date: "2/3/24",
-			link: "#"
+			link: "/posts/why-walking-clears-the-mind"
 		},
 		{
 			title: "Why Nostalgia Shapes Modern Trends",
 			subtitle: "Looking back to move forward",
 			date: "11/20/24",
-			link: "#"
+			link: "/posts/why-nostalgia-shapes-modern-trends"
 		},
 		{
 			title: "The Philosophy of AI Ethics",
 			subtitle: "Navigating the moral landscape of the future",
 			date: "1/23/25",
-			link: "#"
+			link: "/posts/the-philosophy-of-ai-ethics"
 		}
 	];
 
 	const newPosts = [
-		{ title: 'Why Walking Clears the Mind', subtitle: 'Movement & Creativity', date: '2/3/24' },
-		{ title: 'Why Nostalgia Shapes Modern Trends', subtitle: 'Cultural Cycles', date: '11/20/24' },
-		{ title: 'The Philosophy of AI Ethics', subtitle: 'Machine Morality', date: '1/23/25' },
-		{ title: 'Demystifying Continuous Integration', subtitle: 'DevOps Basics', date: '1/6/25' },
-		{ title: 'Why Code Reviews Are Essential', subtitle: 'Team Quality', date: '7/1/24' },
-		{ title: 'How AI Is Changing the Way We Work', subtitle: 'Future of Work', date: '1/16/25' }
+		{ title: 'Why Walking Clears the Mind', subtitle: 'Movement & Creativity', date: '2/3/24', link: '/posts/why-walking-clears-the-mind' },
+		{ title: 'Why Nostalgia Shapes Modern Trends', subtitle: 'Cultural Cycles', date: '11/20/24', link: '/posts/why-nostalgia-shapes-modern-trends' },
+		{ title: 'The Philosophy of AI Ethics', subtitle: 'Machine Morality', date: '1/23/25', link: '/posts/the-philosophy-of-ai-ethics' },
+		{ title: 'Demystifying Continuous Integration', subtitle: 'DevOps Basics', date: '1/6/25', link: '/posts/demystifying-continuous-integration' },
+		{ title: 'Why Code Reviews Are Essential', subtitle: 'Team Quality', date: '7/1/24', link: '/posts/why-code-reviews-are-essential' },
+		{ title: 'How AI Is Changing the Way We Work', subtitle: 'Future of Work', date: '1/16/25', link: '/posts/how-ai-is-changing-the-way-we-work' }
 	];
 
 	const links = [
@@ -205,7 +205,7 @@
 				<ul class="space-y-2">
 					{#each newPosts as post}
 						<li class="group">
-							<a href="#" class="flex flex-col md:flex-row md:items-center justify-between py-3 group-hover:bg-zinc-900/50 rounded-lg px-3 transition-colors -mx-3">
+							<a href={post.link} class="flex flex-col md:flex-row md:items-center justify-between py-3 group-hover:bg-zinc-900/50 rounded-lg px-3 transition-colors -mx-3">
 								<div class="flex items-center gap-3 relative">
 									<ArrowRight class="h-5 w-5 text-primary opacity-0 -translate-x-4 absolute left-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out" />
 									<div class="space-y-1 transition-transform duration-300 ease-out group-hover:translate-x-8">

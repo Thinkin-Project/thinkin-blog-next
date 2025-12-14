@@ -17,18 +17,18 @@
 	];
 
 	const allPosts = [
-		{ title: 'Why Walking Clears the Mind', subtitle: 'The surprising benefits of a simple stroll', date: '2/3/24' },
-		{ title: 'Why Nostalgia Shapes Modern Trends', subtitle: 'The pull of the past in a digital world', date: '11/20/24' },
-		{ title: 'The Philosophy of AI Ethics', subtitle: 'Can machines make moral decisions?', date: '1/23/25' },
-		{ title: 'Demystifying Continuous Integration', subtitle: 'How CI improves development workflows', date: '1/6/25' },
-		{ title: 'Why Code Reviews Are Essential', subtitle: 'The power of collaboration in coding', date: '7/1/24' },
-		{ title: 'How AI Is Changing the Way We Work', subtitle: 'AI tools & their impact on productivity.', date: '1/16/25' },
-		{ title: 'The Ethics of Artificial Intelligence', subtitle: 'Balancing innovation with responsibility.', date: '1/9/25' },
-		{ title: 'AI in Everyday Life', subtitle: 'AI is seamlessly woven into our daily routines.', date: '12/12/24' },
-		{ title: 'The Role of Empathy in Design', subtitle: 'Why empathy is the key to great design.', date: '12/2/24' },
-		{ title: 'Why Microinteractions Matter in UX', subtitle: 'Small details, big impact on user experience.', date: '11/20/24' },
-		{ title: 'The Importance of Iteration in Design', subtitle: 'Iteration leads to better design outcomes.', date: '3/24/24' },
-		{ title: 'The Rise of Edge Computing', subtitle: 'Why edge computing is the future of tech', date: '8/22/24' }
+		{ title: 'Why Walking Clears the Mind', subtitle: 'The surprising benefits of a simple stroll', date: '2/3/24', link: '/posts/why-walking-clears-the-mind' },
+		{ title: 'Why Nostalgia Shapes Modern Trends', subtitle: 'The pull of the past in a digital world', date: '11/20/24', link: '/posts/why-nostalgia-shapes-modern-trends' },
+		{ title: 'The Philosophy of AI Ethics', subtitle: 'Can machines make moral decisions?', date: '1/23/25', link: '/posts/the-philosophy-of-ai-ethics' },
+		{ title: 'Demystifying Continuous Integration', subtitle: 'How CI improves development workflows', date: '1/6/25', link: '/posts/demystifying-continuous-integration' },
+		{ title: 'Why Code Reviews Are Essential', subtitle: 'The power of collaboration in coding', date: '7/1/24', link: '/posts/why-code-reviews-are-essential' },
+		{ title: 'How AI Is Changing the Way We Work', subtitle: 'AI tools & their impact on productivity.', date: '1/16/25', link: '/posts/how-ai-is-changing-the-way-we-work' },
+		{ title: 'The Ethics of Artificial Intelligence', subtitle: 'Balancing innovation with responsibility.', date: '1/9/25', link: '/posts/the-ethics-of-artificial-intelligence' },
+		{ title: 'AI in Everyday Life', subtitle: 'AI is seamlessly woven into our daily routines.', date: '12/12/24', link: '/posts/ai-in-everyday-life' },
+		{ title: 'The Role of Empathy in Design', subtitle: 'Why empathy is the key to great design.', date: '12/2/24', link: '/posts/the-role-of-empathy-in-design' },
+		{ title: 'Why Microinteractions Matter in UX', subtitle: 'Small details, big impact on user experience.', date: '11/20/24', link: '/posts/why-microinteractions-matter-in-ux' },
+		{ title: 'The Importance of Iteration in Design', subtitle: 'Iteration leads to better design outcomes.', date: '3/24/24', link: '/posts/the-importance-of-iteration-in-design' },
+		{ title: 'The Rise of Edge Computing', subtitle: 'Why edge computing is the future of tech', date: '8/22/24', link: '/posts/the-rise-of-edge-computing' }
 	];
 
 	const links = [
@@ -156,7 +156,7 @@
 				<ul class="space-y-2">
 					{#each allPosts as post}
 						<li class="group">
-							<a href="#" class="flex flex-col md:flex-row md:items-center justify-between py-3 group-hover:bg-zinc-900/50 rounded-lg px-3 transition-colors -mx-3">
+							<a href={post.link} class="flex flex-col md:flex-row md:items-center justify-between py-3 group-hover:bg-zinc-900/50 rounded-lg px-3 transition-colors -mx-3">
 								<div class="flex items-center gap-3 relative">
 									<ArrowRight class="h-5 w-5 text-primary opacity-0 -translate-x-4 absolute left-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out" />
 									<div class="space-y-1 transition-transform duration-300 ease-out group-hover:translate-x-8">

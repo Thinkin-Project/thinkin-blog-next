@@ -12,25 +12,25 @@
 			title: 'The Philosophy of AI Ethics',
 			subtitle: 'Can machines make moral decisions?',
 			date: '1/12/25',
-			link: '#'
+			link: '/posts/the-philosophy-of-ai-ethics'
 		},
 		{
 			title: 'How AI is Changing the Way We Work',
 			subtitle: 'AI tools & their impact on productivity.',
 			date: '1/16/25',
-			link: '#'
+			link: '/posts/how-ai-is-changing-the-way-we-work'
 		},
 		{
 			title: 'The Ethics of Artificial Intelligence',
 			subtitle: 'Balancing innovation with responsibility.',
 			date: '1/9/25',
-			link: '#'
+			link: '/posts/the-ethics-of-artificial-intelligence'
 		},
 		{
 			title: 'AI in Everyday Life',
 			subtitle: 'AI is seamlessly woven into our daily routines.',
 			date: '12/12/24',
-			link: '#'
+			link: '/posts/ai-in-everyday-life'
 		}
 	];
 
