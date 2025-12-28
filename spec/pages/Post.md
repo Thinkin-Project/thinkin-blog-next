@@ -93,9 +93,8 @@ A normal-sized paragraph introducing the theme.
 - Section heading (medium-sized, bright text)
 - Short paragraph
 - Bullet list with:
-
-  - **Physical Benefits**
-  - **Mental Benefits**
+    - **Physical Benefits**
+    - **Mental Benefits**
 
 - Bullet style: simple dots, clean indentation
 
@@ -104,11 +103,10 @@ A normal-sized paragraph introducing the theme.
 - Section heading
 - Paragraph explaining the concept
 - A **Tip box**, styled exactly like the reference:
-
-  - Slight left border or subtle box
-  - Small italic or muted styling
-  - Content:
-    _Tip: Leave your phone behind and let your thoughts wander._
+    - Slight left border or subtle box
+    - Small italic or muted styling
+    - Content:
+      _Tip: Leave your phone behind and let your thoughts wander._
 
 Then a blockquote:
 

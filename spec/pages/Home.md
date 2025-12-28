@@ -19,10 +19,9 @@
 ### **2. Left Sidebar**
 
 - Small profile block showing:
-
-  - Avatar
-  - Name (e.g., Frank Price)
-  - Timestamp (small and grey)
+    - Avatar
+    - Name (e.g., Frank Price)
+    - Timestamp (small and grey)
 
 Sticky to the left column.
 
@@ -30,10 +29,9 @@ Sticky to the left column.
 
 - Title: “Welcome 👋” (large, bright text)
 - Paragraph introducing the author:
-
-  - Designer by day, writer by night
-  - Mentions intuitive user experiences
-  - Mentions design, engineering, AI
+    - Designer by day, writer by night
+    - Mentions intuitive user experiences
+    - Mentions design, engineering, AI
 
 - Signature image under the text (use placeholder if needed)
 

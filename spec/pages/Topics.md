@@ -100,9 +100,8 @@ Render exactly these posts in order:
 
 4. **AI in Everyday Life**
    _AI is seamlessly woven into our daily routines._ — **12/12/24**
-
-   - This one contains a **“Read now”** badge aligned to the right of the title.
-   - The icon arrow on the left (→) should match the reference.
+    - This one contains a **“Read now”** badge aligned to the right of the title.
+    - The icon arrow on the left (→) should match the reference.
 
 Spacing must be **exactly** like the screenshot:
 clean, airy, minimal.
