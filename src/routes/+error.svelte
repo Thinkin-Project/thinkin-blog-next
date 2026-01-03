@@ -1,7 +1,7 @@
 <script lang="ts">
     import { ArrowRight } from 'lucide-svelte';
     import { Separator } from '$lib/components/ui/separator';
-    import FeaturedPostCard from '$lib/components/FeaturedPostCard.svelte';
+    import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';
     import Footer from '$lib/components/Footer.svelte';
 
     const featuredPosts = [
@@ -50,7 +50,7 @@
             class="flex flex-col gap-px bg-zinc-800 rounded-3xl overflow-hidden border border-zinc-800"
         >
             {#each featuredPosts as post}
-                <FeaturedPostCard {...post} />
+                <FeaturedPostListItem {...post} />
             {/each}
         </div>
     </section>

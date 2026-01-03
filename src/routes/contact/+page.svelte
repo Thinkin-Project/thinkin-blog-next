@@ -2,7 +2,7 @@
     import { Button } from '$lib/components/ui/button';
     import { Input } from '$lib/components/ui/input';
     import Footer from '$lib/components/Footer.svelte';
-    import LinksSection from '$lib/components/LinksSection.svelte';
+    import SocialLinks from '$lib/components/SocialLinks.svelte';
 
     const links = [
         { name: 'Medium', url: '/' },
@@ -77,7 +77,7 @@
     </section>
 
     <!-- Links Section -->
-    <LinksSection {links} />
+    <SocialLinks {links} />
 
     <!-- Footer Section -->
     <Footer />

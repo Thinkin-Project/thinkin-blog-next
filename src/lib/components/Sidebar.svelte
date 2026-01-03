@@ -4,7 +4,7 @@
     import { Separator } from '$lib/components/ui/separator';
     import * as Avatar from '$lib/components/ui/avatar';
     import { Menu, X } from 'lucide-svelte';
-    import LinksSection from '$lib/components/LinksSection.svelte';
+    import SocialLinks from '$lib/components/SocialLinks.svelte';
 
     const links = [
         { name: 'Medium', url: '/' },
@@ -77,7 +77,7 @@
 
             <Separator class="bg-zinc-800 my-8" />
 
-            <LinksSection {links} title="Socials" onclick={closeMenu} />
+            <SocialLinks {links} title="Socials" onclick={closeMenu} />
 
             <div class="mt-8">
                 <Button

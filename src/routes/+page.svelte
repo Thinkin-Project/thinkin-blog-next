@@ -1,11 +1,11 @@
 <script lang="ts">
     import { ArrowRight } from 'lucide-svelte';
-    import FeaturedPostCard from '$lib/components/FeaturedPostCard.svelte';
+    import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';
     import PostListItem from '$lib/components/PostListItem.svelte';
     import Newsletter from '$lib/components/Newsletter.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import Hero from '$lib/components/Hero.svelte';
-    import LinksSection from '$lib/components/LinksSection.svelte';
+    import SocialLinks from '$lib/components/SocialLinks.svelte';
     import BeyondTheBlog from '$lib/components/BeyondTheBlog.svelte';
 
     // Placeholder data based on spec
@@ -81,7 +81,7 @@
     <Hero />
 
     <!-- Links Section -->
-    <LinksSection {links} />
+    <SocialLinks {links} />
 
     <hr />
 
@@ -92,7 +92,7 @@
             class="flex flex-col gap-px bg-zinc-800 rounded-3xl overflow-hidden border border-zinc-800"
         >
             {#each featuredPosts as post}
-                <FeaturedPostCard {...post} />
+                <FeaturedPostListItem {...post} />
             {/each}
         </div>
     </section>
@@ -118,9 +118,7 @@
     </section>
 
     <!-- Newsletter Section -->
-    <section>
-        <Newsletter />
-    </section>
+    <Newsletter />
 
     <!-- Beyond the Blog Section -->
     <BeyondTheBlog />

@@ -111,9 +111,7 @@
     </section>
 
     <!-- Newsletter Section -->
-    <section>
-        <Newsletter />
-    </section>
+    <Newsletter />
 
     <!-- Footer Section -->
     <Footer />
