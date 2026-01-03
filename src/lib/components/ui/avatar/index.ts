@@ -1,6 +1,6 @@
-import Root from './avatar.svelte';
-import Image from './avatar-image.svelte';
-import Fallback from './avatar-fallback.svelte';
+import Root from './Avatar.svelte';
+import Image from './AvatarImage.svelte';
+import Fallback from './AvatarFallback.svelte';
 
 export {
     Root,
