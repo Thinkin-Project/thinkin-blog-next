@@ -1,13 +1,13 @@
 <script lang="ts">
-    import { ArrowRight } from 'lucide-svelte';
     import { Button } from '$lib/components/ui/button';
     import { Input } from '$lib/components/ui/input';
     import Footer from '$lib/components/Footer.svelte';
+    import LinksSection from '$lib/components/LinksSection.svelte';
 
     const links = [
-        { name: 'Medium', url: '#' },
-        { name: 'Substack', url: '#' },
-        { name: 'Twitter', url: '#' }
+        { name: 'Medium', url: '/' },
+        { name: 'Substack', url: '/' },
+        { name: 'Twitter', url: '/' }
     ];
 </script>
 
@@ -77,24 +77,7 @@
     </section>
 
     <!-- Links Section -->
-    <section>
-        <ul class="space-y-4">
-            <h2 class="text-2xl font-bold tracking-tight">Links</h2>
-            {#each links as link}
-                <li class="group">
-                    <a
-                        href={link.url}
-                        class="flex items-center gap-2 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                        {link.name}
-                        <ArrowRight
-                            class="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45"
-                        />
-                    </a>
-                </li>
-            {/each}
-        </ul>
-    </section>
+    <LinksSection {links} />
 
     <!-- Footer Section -->
     <Footer />

@@ -4,6 +4,9 @@
     import PostListItem from '$lib/components/PostListItem.svelte';
     import Newsletter from '$lib/components/Newsletter.svelte';
     import Footer from '$lib/components/Footer.svelte';
+    import Hero from '$lib/components/Hero.svelte';
+    import LinksSection from '$lib/components/LinksSection.svelte';
+    import BeyondTheBlog from '$lib/components/BeyondTheBlog.svelte';
 
     // Placeholder data based on spec
     const featuredPosts = [
@@ -67,50 +70,18 @@
     ];
 
     const links = [
-        { name: 'Medium', url: '#' },
-        { name: 'Substack', url: '#' },
-        { name: 'Twitter', url: '#' }
+        { name: 'Medium', url: '/' },
+        { name: 'Substack', url: '/' },
+        { name: 'Twitter', url: '/' }
     ];
 </script>
 
 <div class="container max-w-4xl mx-auto px-6 py-8 md:py-12 space-y-12">
     <!-- Hero Section -->
-    <section class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-white">
-            Welcome <span class="animate-waving-hand inline-block origin-bottom-right">👋</span>
-        </h1>
-        <div class="max-w-2xl space-y-6">
-            <p class="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light">
-                I explore the delicate balance between <span class="text-foreground font-medium"
-                    >form</span
-                >
-                and <span class="text-foreground font-medium">function</span>. My work lives where
-                <span class="text-orange-400">design</span> meets
-                <span class="text-blue-400">engineering</span>
-                and <span class="text-purple-400">AI</span>.
-            </p>
-        </div>
-    </section>
+    <Hero />
 
     <!-- Links Section -->
-    <section>
-        <ul class="space-y-4">
-            <h2 class="text-2xl font-bold tracking-tight">Links</h2>
-            {#each links as link}
-                <li class="group">
-                    <a
-                        href={link.url}
-                        class="flex items-center gap-2 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                        {link.name}
-                        <ArrowRight
-                            class="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45"
-                        />
-                    </a>
-                </li>
-            {/each}
-        </ul>
-    </section>
+    <LinksSection {links} />
 
     <hr />
 
@@ -152,31 +123,7 @@
     </section>
 
     <!-- Beyond the Blog Section -->
-    <section class="space-y-8">
-        <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-bold tracking-tight">Beyond the Blog</h2>
-        </div>
-        <div class="space-y-4">
-            <p class="text-lg font-medium leading-relaxed text-muted-foreground">
-                Exploring the edges of digital creativity through <a
-                    href="#"
-                    class="text-white hover:text-zinc-400 transition-all duration-300 underline decoration-white hover:decoration-zinc-400 underline-offset-4"
-                    >portfolio</a
-                >
-                work,
-                <a
-                    href="#"
-                    class="text-white hover:text-zinc-400 transition-all duration-300 underline decoration-white hover:decoration-zinc-400 underline-offset-4"
-                    >past collaborations</a
-                >, and experimental
-                <a
-                    href="#"
-                    class="text-white hover:text-zinc-400 transition-all duration-300 underline decoration-white hover:decoration-zinc-400 underline-offset-4"
-                    >side projects</a
-                >.
-            </p>
-        </div>
-    </section>
+    <BeyondTheBlog />
 
     <!-- Footer Section -->
     <Footer />

@@ -3,12 +3,13 @@
     import { Button } from '$lib/components/ui/button';
     import { Separator } from '$lib/components/ui/separator';
     import * as Avatar from '$lib/components/ui/avatar';
-    import { ArrowRight, Menu, X } from 'lucide-svelte';
+    import { Menu, X } from 'lucide-svelte';
+    import LinksSection from '$lib/components/LinksSection.svelte';
 
     const links = [
-        { name: 'Medium', url: '#' },
-        { name: 'Substack', url: '#' },
-        { name: 'Twitter', url: '#' }
+        { name: 'Medium', url: '/' },
+        { name: 'Substack', url: '/' },
+        { name: 'Twitter', url: '/' }
     ];
 
     const navItems = [
@@ -76,21 +77,7 @@
 
             <Separator class="bg-zinc-800 my-8" />
 
-            <div class="space-y-4">
-                <p class="font-bold text-lg">Socials</p>
-                {#each links as link}
-                    <a
-                        href={link.url}
-                        class="flex items-center gap-2 font-medium text-muted-foreground hover:text-foreground transition-colors group"
-                        onclick={closeMenu}
-                    >
-                        {link.name}
-                        <ArrowRight
-                            class="h-4 w-4 transition-transform duration-300 group-hover:-rotate-45"
-                        />
-                    </a>
-                {/each}
-            </div>
+            <LinksSection {links} title="Socials" onclick={closeMenu} />
 
             <div class="mt-8">
                 <Button
