@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Sidebar from '$lib/components/Sidebar.svelte';
     import './layout.css';
     import favicon from '$lib/assets/favicon.svg';
 
@@ -9,4 +10,9 @@
     <link rel="icon" href={favicon} />
 </svelte:head>
 
-{@render children()}
+<div class="flex min-h-screen w-full flex-col md:flex-row bg-background text-foreground">
+    <Sidebar />
+    <main class="flex-1">
+        {@render children()}
+    </main>
+</div>
