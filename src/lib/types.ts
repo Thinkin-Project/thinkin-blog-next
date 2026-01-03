@@ -9,7 +9,7 @@ export interface ArticleMeta {
     date: string; // 發佈日期 (YYYY-MM-DD)
     updated?: string; // 最後更新日期
     isDraft: boolean; // 是否為草稿
-    category: string; // 主要分類
+    topic: string; // 主要分類
     tags: string[]; // 標籤陣列
     description: string; // 文章摘要
     ogImage?: string; // 社群分享圖

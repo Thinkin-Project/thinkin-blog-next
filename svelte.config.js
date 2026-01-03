@@ -1,10 +1,13 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { mdsvex } from 'mdsvex';
+import { mdsvex, escapeSvelte } from 'mdsvex';
 import rehypeSlug from 'rehype-slug';
 import remarkToc from 'remark-toc';
 
 import { createHighlighter } from 'shiki';
+
+// 快取 highlighter 實例
+let highlighter;
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
@@ -13,21 +16,23 @@ const mdsvexOptions = {
     remarkPlugins: [remarkToc],
     highlight: {
         highlighter: async (code, lang = 'text') => {
-            const highlighter = await createHighlighter({
-                themes: ['github-dark'],
-                langs: [
-                    'javascript',
-                    'typescript',
-                    'svelte',
-                    'css',
-                    'html',
-                    'json',
-                    'bash',
-                    'markdown'
-                ]
-            });
+            if (!highlighter) {
+                highlighter = await createHighlighter({
+                    themes: ['github-dark'],
+                    langs: [
+                        'javascript',
+                        'typescript',
+                        'svelte',
+                        'css',
+                        'html',
+                        'json',
+                        'bash',
+                        'markdown'
+                    ]
+                });
+            }
             const html = highlighter.codeToHtml(code, { lang, theme: 'github-dark' });
-            return `{@html \`${html}\` }`;
+            return `{@html \`${escapeSvelte(html)}\`}`;
         }
     }
 };

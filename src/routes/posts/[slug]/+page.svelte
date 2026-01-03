@@ -51,7 +51,7 @@
                     <span class="text-zinc-500 flex items-center gap-2">
                         <Tag class="w-3.5 h-3.5" /> Topic
                     </span>
-                    <span class="text-white font-medium block">{data.meta.category}</span>
+                    <span class="text-white font-medium block">{data.meta.topic}</span>
                 </div>
             </div>
         </header>
@@ -74,13 +74,7 @@
         {/if}
 
         <!-- Body Content -->
-        <div
-            class="prose prose-invert prose-zinc max-w-none text-lg leading-relaxed text-zinc-400
-                   prose-headings:text-white prose-headings:tracking-tight
-                   prose-a:text-pink-500 hover:prose-a:text-pink-400
-                   prose-strong:text-zinc-200
-                   prose-code:text-pink-300 prose-code:bg-zinc-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none"
-        >
+        <div class="prose prose-invert prose-zinc max-w-none text-lg leading-relaxed text-zinc-400">
             <data.content />
         </div>
     </article>

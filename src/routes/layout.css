@@ -120,4 +120,47 @@
     body {
         @apply bg-background text-foreground;
     }
+
+    /* 優化文章 Markdown 內的圖片樣式 */
+    .prose img {
+        @apply mx-auto rounded-2xl border border-white/5 shadow-xl;
+    }
+
+    /* 確保圖片下方間距正常 */
+    .prose figure {
+        @apply my-8;
+    }
+
+    /* 優化程式碼區塊 (Shiki) */
+    .prose pre {
+        @apply my-8 flex flex-col overflow-hidden rounded-2xl border border-white/5 bg-zinc-950/50 p-0! shadow-2xl;
+    }
+
+    /* 內文中的行內程式碼 */
+    .prose :not(pre) > code {
+        @apply rounded-md bg-zinc-900 px-1.5 py-0.5 font-medium text-pink-300 before:content-none after:content-none;
+    }
+
+    .prose pre code {
+        @apply block overflow-x-auto bg-transparent px-6! py-4! font-mono text-sm leading-relaxed;
+    }
+
+    /* 模擬視窗按鈕效果 (選配) */
+    .prose pre::before {
+        content: '';
+        @apply block h-8 w-full shrink-0 border-b border-white/5 bg-zinc-900/50;
+        background-image:
+            radial-gradient(circle, #ff5f56 6px, transparent 6px),
+            radial-gradient(circle, #ffbd2e 6px, transparent 6px),
+            radial-gradient(circle, #27c93f 6px, transparent 6px);
+        background-size:
+            24px 24px,
+            24px 24px,
+            24px 24px;
+        background-position:
+            12px center,
+            32px center,
+            52px center;
+        background-repeat: no-repeat;
+    }
 }
