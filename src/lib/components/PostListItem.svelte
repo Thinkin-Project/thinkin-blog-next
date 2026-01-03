@@ -1,9 +1,10 @@
 <script lang="ts">
     import { ArrowRight } from 'lucide-svelte';
 
-    let { title, subtitle, date, link } = $props<{
+    let { title, subtitle, description, date, link } = $props<{
         title: string;
-        subtitle: string;
+        subtitle?: string;
+        description?: string;
         date: string;
         link: string;
     }>();
@@ -24,7 +25,7 @@
                 <p class="text-lg font-medium group-hover:text-primary transition-colors">
                     {title}
                 </p>
-                <p class="text-sm text-muted-foreground">{subtitle}</p>
+                <p class="text-sm text-muted-foreground">{description || subtitle}</p>
             </div>
         </div>
         <span class="text-sm text-muted-foreground mt-2 md:mt-0 font-mono">{date}</span>

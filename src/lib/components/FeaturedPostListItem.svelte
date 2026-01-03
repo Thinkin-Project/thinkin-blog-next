@@ -1,9 +1,10 @@
 <script lang="ts">
     import { ArrowRight } from 'lucide-svelte';
 
-    let { title, subtitle, link } = $props<{
+    let { title, subtitle, description, link } = $props<{
         title: string;
-        subtitle: string;
+        subtitle?: string;
+        description?: string;
         link: string;
     }>();
 </script>
@@ -17,7 +18,7 @@
             <h3 class="text-xl font-medium text-zinc-100 group-hover:text-white transition-colors">
                 {title}
             </h3>
-            <p class="text-zinc-500 text-base">{subtitle}</p>
+            <p class="text-zinc-500 text-base">{description || subtitle}</p>
         </div>
         <ArrowRight
             class="h-5 w-5 text-zinc-600 group-hover:text-white transition-transform duration-300 group-hover:translate-x-1"
