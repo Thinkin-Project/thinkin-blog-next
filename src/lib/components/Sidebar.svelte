@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import { page } from '$app/state';
     import { Button } from '$lib/components/ui/button';
     import { Separator } from '$lib/components/ui/separator';
@@ -28,6 +29,23 @@
     function closeMenu() {
         isMenuOpen = false;
     }
+
+    let currentTime = $state('--:--:-- --');
+
+    onMount(() => {
+        const updateTime = () => {
+            const now = new Date();
+            currentTime = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+        };
+        updateTime();
+        const interval = setInterval(updateTime, 1000);
+        return () => clearInterval(interval);
+    });
 </script>
 
 <!-- Mobile Header (Visible only on mobile) -->
@@ -108,7 +126,7 @@
             </Avatar.Root>
             <div>
                 <h2 class="text-xl font-bold tracking-tight">Frank Price</h2>
-                <p class="text-sm text-muted-foreground">Updated Now</p>
+                <p class="text-sm text-muted-foreground">{currentTime}</p>
             </div>
         </div>
 
