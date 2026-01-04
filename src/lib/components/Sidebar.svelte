@@ -54,14 +54,10 @@
 >
     <div class="flex items-center gap-3">
         <Avatar.Root class="h-10 w-10 cursor-pointer hover:opacity-80 transition-opacity">
-            <Avatar.Image
-                src="https://github.com/shadcn.png"
-                alt="Frank Price"
-                class="object-cover"
-            />
-            <Avatar.Fallback>FP</Avatar.Fallback>
+            <Avatar.Image src="/assets/avatars/neil.jpg" alt="Neil Tsai" class="object-cover" />
+            <Avatar.Fallback>NT</Avatar.Fallback>
         </Avatar.Root>
-        <span class="font-bold text-lg">Frank Price</span>
+        <span class="font-bold text-lg">Neil Tsai</span>
     </div>
     <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
         <Menu class="h-6 w-6" />
@@ -96,16 +92,6 @@
             <Separator class="bg-zinc-800 my-8" />
 
             <SocialLinks {links} title="Socials" onclick={closeMenu} />
-
-            <div class="mt-8">
-                <Button
-                    variant="default"
-                    size="lg"
-                    class="w-full rounded-full bg-[#ec4899] hover:bg-[#db2777] text-white font-semibold shadow-sm cursor-pointer"
-                >
-                    Subscribe
-                </Button>
-            </div>
         </nav>
     </div>
 {/if}
@@ -117,15 +103,11 @@
     <div class="space-y-6">
         <div class="flex items-center gap-4">
             <Avatar.Root class="h-12 w-12 cursor-pointer hover:opacity-80 transition-opacity">
-                <Avatar.Image
-                    src="https://github.com/shadcn.png"
-                    alt="Frank Price"
-                    class="object-cover"
-                />
-                <Avatar.Fallback>FP</Avatar.Fallback>
+                <Avatar.Image src="/assets/avatars/neil.jpg" alt="Neil Tsai" class="object-cover" />
+                <Avatar.Fallback>NT</Avatar.Fallback>
             </Avatar.Root>
             <div>
-                <h2 class="text-xl font-bold tracking-tight">Frank Price</h2>
+                <h2 class="text-xl font-bold tracking-tight">Neil Tsai</h2>
                 <p class="text-sm text-muted-foreground">{currentTime}</p>
             </div>
         </div>
@@ -148,15 +130,5 @@
                 >
             {/each}
         </div>
-    </div>
-
-    <div class="mt-8 md:mt-auto pt-6 space-y-4">
-        <Button
-            variant="default"
-            size="sm"
-            class="w-full rounded-full bg-[#ec4899] hover:bg-[#db2777] text-white font-semibold shadow-sm cursor-pointer"
-        >
-            Subscribe
-        </Button>
     </div>
 </nav>
