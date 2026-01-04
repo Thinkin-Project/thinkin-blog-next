@@ -1,6 +1,19 @@
 import type { Component } from 'svelte';
 
 /**
+ * 作者資訊結構
+ */
+export interface Author {
+    id: string; // 唯一識別碼
+    name: string; // 作者名稱
+    avatar: string; // 頭像 URL
+    bio: string; // 作者簡介
+    website?: string; // 個人網站
+    twitter?: string; // Twitter 連結
+    github?: string; // GitHub 連結
+}
+
+/**
  * 文章的 Frontmatter/Metadata 結構
  */
 export interface ArticleMeta {
@@ -14,6 +27,7 @@ export interface ArticleMeta {
     description: string; // 文章摘要
     ogImage?: string; // 社群分享圖
     featured: boolean; // 是否為推薦文章
+    authors?: string[]; // 作者 ID 陣列
 }
 
 /**

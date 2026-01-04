@@ -1,6 +1,7 @@
 <script lang="ts">
     import { ArrowRight, Calendar, Tag } from 'lucide-svelte';
     import Footer from '$lib/components/Footer.svelte';
+    import AuthorBlock from '$lib/components/AuthorBlock.svelte';
 
     let { data } = $props();
 
@@ -77,6 +78,9 @@
         <div class="prose prose-invert prose-zinc max-w-none text-lg leading-relaxed text-zinc-400">
             <data.content />
         </div>
+
+        <!-- Author Block -->
+        <AuthorBlock authorIds={data.meta.authors} />
     </article>
 
     <!-- Bottom Navigation -->
