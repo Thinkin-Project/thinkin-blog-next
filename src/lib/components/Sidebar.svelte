@@ -54,10 +54,14 @@
 >
     <div class="flex items-center gap-3">
         <Avatar.Root class="h-10 w-10 cursor-pointer hover:opacity-80 transition-opacity">
-            <Avatar.Image src="/assets/avatars/neil.jpg" alt="Neil Tsai" class="object-cover" />
-            <Avatar.Fallback>NT</Avatar.Fallback>
+            <Avatar.Image
+                src="/assets/avatars/site.png"
+                alt="Thinkin Markdown"
+                class="object-cover"
+            />
+            <Avatar.Fallback>TM</Avatar.Fallback>
         </Avatar.Root>
-        <span class="font-bold text-lg">Neil Tsai</span>
+        <span class="font-bold text-lg">Thinkin Markdown</span>
     </div>
     <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
         <Menu class="h-6 w-6" />
@@ -103,11 +107,15 @@
     <div class="space-y-6">
         <div class="flex items-center gap-4">
             <Avatar.Root class="h-12 w-12 cursor-pointer hover:opacity-80 transition-opacity">
-                <Avatar.Image src="/assets/avatars/neil.jpg" alt="Neil Tsai" class="object-cover" />
-                <Avatar.Fallback>NT</Avatar.Fallback>
+                <Avatar.Image
+                    src="/assets/avatars/site.png"
+                    alt="Thinkin Markdown"
+                    class="object-cover"
+                />
+                <Avatar.Fallback>TM</Avatar.Fallback>
             </Avatar.Root>
             <div>
-                <h2 class="text-xl font-bold tracking-tight">Neil Tsai</h2>
+                <h2 class="text-xl font-bold tracking-tight">Thinkin Markdown</h2>
                 <p class="text-sm text-muted-foreground">{currentTime}</p>
             </div>
         </div>

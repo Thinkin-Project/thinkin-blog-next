@@ -8,7 +8,7 @@ tags: ['Health', 'Mindfulness']
 description: 'The surprising benefits of a simple stroll and how it resets your mental state.'
 ogImage: '/assets/posts/why-walking-clears-the-mind/hero.png'
 featured: true
-authors: ['admin', 'ame']
+authors: ['neil']
 ---
 
 A normal-sized paragraph introducing the theme. Walking isn't just a physical activity; it's a mental reset button that has been used by thinkers throughout history.

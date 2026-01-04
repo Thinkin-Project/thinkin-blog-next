@@ -16,7 +16,7 @@
     </div>
     <div class="flex flex-row justify-between gap-8">
         <div class="flex flex-col justify-end text-sm text-muted-foreground text-right">
-            <p>CopyRight © {currentYear} Neil Tsai</p>
+            <p>CopyRight © {currentYear} Thinkin Markdown</p>
         </div>
     </div>
 </footer>
