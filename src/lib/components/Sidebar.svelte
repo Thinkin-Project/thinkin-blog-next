@@ -53,14 +53,6 @@
     class="md:hidden flex items-center justify-between p-6 border-b bg-background sticky top-0 z-50"
 >
     <div class="flex items-center gap-3">
-        <Avatar.Root class="h-10 w-10 cursor-pointer hover:opacity-80 transition-opacity">
-            <Avatar.Image
-                src="/assets/avatars/site.png"
-                alt="Thinkin Markdown"
-                class="object-cover"
-            />
-            <Avatar.Fallback>TM</Avatar.Fallback>
-        </Avatar.Root>
         <span class="font-bold text-lg">Thinkin Markdown</span>
     </div>
     <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
@@ -106,14 +98,6 @@
 >
     <div class="space-y-6">
         <div class="flex items-center gap-4">
-            <Avatar.Root class="h-12 w-12 cursor-pointer hover:opacity-80 transition-opacity">
-                <Avatar.Image
-                    src="/assets/avatars/site.png"
-                    alt="Thinkin Markdown"
-                    class="object-cover"
-                />
-                <Avatar.Fallback>TM</Avatar.Fallback>
-            </Avatar.Root>
             <div>
                 <h2 class="text-xl font-bold tracking-tight">Thinkin Markdown</h2>
                 <p class="text-sm text-muted-foreground">{currentTime}</p>
