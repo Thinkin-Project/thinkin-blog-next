@@ -12,7 +12,7 @@ export async function getPosts() {
         if (file && typeof file === 'object' && 'metadata' in file && slug) {
             const metadata = file.metadata as Omit<ArticleMeta, 'slug'>;
             const post = { ...metadata, slug } as ArticleMeta;
-            if (!post.isDraft) {
+            if (!post.drafted) {
                 posts.push(post);
             }
         }
@@ -23,4 +23,14 @@ export async function getPosts() {
     );
 
     return posts;
+}
+
+export async function getAdjacentPosts(currentSlug: string) {
+    const posts = await getPosts();
+    const index = posts.findIndex((p) => p.slug === currentSlug);
+
+    return {
+        next: index > 0 ? posts[index - 1] : null, // Newer post
+        prev: index < posts.length - 1 ? posts[index + 1] : null // Older post
+    };
 }

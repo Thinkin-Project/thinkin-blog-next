@@ -1,18 +1,9 @@
 <script lang="ts">
-    import { ArrowRight, Calendar, Tag } from 'lucide-svelte';
+    import { ArrowRight, Calendar, Crosshair, Tag } from 'lucide-svelte';
     import Footer from '$lib/components/Footer.svelte';
     import AuthorBlock from '$lib/components/AuthorBlock.svelte';
 
     let { data } = $props();
-
-    // 格式化日期
-    const formattedDate = $derived(
-        new Date(data.meta.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        })
-    );
 </script>
 
 <div class="container max-w-3xl mx-auto px-6 py-8 md:py-12 space-y-16">
@@ -25,7 +16,7 @@
             <ArrowRight
                 class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
             />
-            All posts
+            所有文章
         </a>
     </div>
 
@@ -41,19 +32,35 @@
                 </p>
             </div>
 
-            <div class="flex items-center gap-16 text-sm">
+            <div class="flex flex-wrap items-center gap-x-16 gap-y-6 text-sm">
                 <div class="space-y-1">
                     <span class="text-zinc-500 flex items-center gap-2">
-                        <Calendar class="w-3.5 h-3.5" /> Published
+                        <Calendar class="w-3.5 h-3.5" /> 發佈時間
                     </span>
-                    <span class="text-white font-medium block">{formattedDate}</span>
+                    <span class="text-white font-medium block">{data.meta.date}</span>
                 </div>
                 <div class="space-y-1">
                     <span class="text-zinc-500 flex items-center gap-2">
-                        <Tag class="w-3.5 h-3.5" /> Topic
+                        <Crosshair class="w-3.5 h-3.5" /> 主題
                     </span>
                     <span class="text-white font-medium block">{data.meta.topic}</span>
                 </div>
+                {#if data.meta.tags && data.meta.tags.length > 0}
+                    <div class="space-y-1">
+                        <span class="text-zinc-500 flex items-center gap-2">
+                            <Tag class="w-3.5 h-3.5" /> 標籤
+                        </span>
+                        <div class="flex flex-wrap gap-2">
+                            {#each data.meta.tags as tag}
+                                <span
+                                    class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-xs font-medium border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-zinc-400"
+                                >
+                                    #{tag}
+                                </span>
+                            {/each}
+                        </div>
+                    </div>
+                {/if}
             </div>
         </header>
 
@@ -84,17 +91,37 @@
     </article>
 
     <!-- Bottom Navigation -->
-    <div class="flex items-center justify-between pt-8 border-zinc-900">
-        <a
-            href="/posts"
-            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-zinc-900 hover:bg-zinc-800 hover:text-accent-foreground px-2 py-1 text-zinc-400 group"
-        >
-            <ArrowRight
-                class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
-            />
-            Back to posts
-        </a>
-    </div>
+    {#if data.prev || data.next}
+        <div class="flex items-center justify-between border-zinc-900">
+            <div>
+                {#if data.prev}
+                    <a
+                        href="/posts/{data.prev.slug}"
+                        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-zinc-900 hover:bg-zinc-800 hover:text-accent-foreground px-2 py-1 text-zinc-400 group"
+                    >
+                        <ArrowRight
+                            class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
+                        />
+                        上一篇
+                    </a>
+                {/if}
+            </div>
+
+            <div>
+                {#if data.next}
+                    <a
+                        href="/posts/{data.next.slug}"
+                        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-zinc-900 hover:bg-zinc-800 hover:text-accent-foreground px-2 py-1 text-zinc-400 group"
+                    >
+                        下一篇
+                        <ArrowRight
+                            class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                        />
+                    </a>
+                {/if}
+            </div>
+        </div>
+    {/if}
 
     <!-- Footer Section -->
     <Footer />

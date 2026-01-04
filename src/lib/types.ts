@@ -1,4 +1,5 @@
 import type { Component } from 'svelte';
+import type { Icon } from 'lucide-svelte';
 
 /**
  * 作者資訊結構
@@ -9,7 +10,6 @@ export interface Author {
     avatar: string; // 頭像 URL
     bio: string; // 作者簡介
     website?: string; // 個人網站
-    twitter?: string; // Twitter 連結
     github?: string; // GitHub 連結
 }
 
@@ -18,15 +18,15 @@ export interface Author {
  */
 export interface ArticleMeta {
     title: string; // 文章標題
+    description: string; // 文章摘要
+    ogImage?: string; // 社群分享圖
     slug: string; // 文章的 URL 唯一識別碼
     date: string; // 發佈日期 (YYYY-MM-DD)
     updated?: string; // 最後更新日期
-    isDraft: boolean; // 是否為草稿
-    topic: string; // 主要分類
-    tags: string[]; // 標籤陣列
-    description: string; // 文章摘要
-    ogImage?: string; // 社群分享圖
+    drafted: boolean; // 是否為草稿
     featured: boolean; // 是否為推薦文章
+    topic: string; // 主題
+    tags: string[]; // 標籤陣列
     authors?: string[]; // 作者 ID 陣列
 }
 
@@ -35,4 +35,21 @@ export interface ArticleMeta {
  */
 export interface Article extends ArticleMeta {
     content: Component; // mdsvex 編譯後的組件
+}
+
+/**
+ * 導覽列項目
+ */
+export interface NavItem {
+    name: string;
+    href: string;
+    icon: typeof Icon;
+}
+
+/**
+ * 社群連結項目
+ */
+export interface SocialLink {
+    name: string;
+    url: string;
 }

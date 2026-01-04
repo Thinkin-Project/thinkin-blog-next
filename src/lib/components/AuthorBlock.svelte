@@ -2,7 +2,7 @@
     import * as Avatar from '$lib/components/ui/avatar';
     import { authors } from '$lib/constants/authors';
     import type { Author } from '$lib/types';
-    import { Github, Globe, Twitter } from 'lucide-svelte';
+    import { Github, Globe } from 'lucide-svelte';
 
     let { authorIds = [] }: { authorIds?: string[] } = $props();
 
@@ -19,7 +19,7 @@
         class="mt-16 pt-8 border-t border-zinc-900 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300"
     >
         <h3 class="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-6">
-            {postAuthors.length > 1 ? 'Authors' : 'Author'}
+            {postAuthors.length > 1 ? '作者群' : '作者'}
         </h3>
 
         <div class="grid gap-8">
@@ -42,16 +42,6 @@
                                         class="text-zinc-500 hover:text-white transition-colors"
                                     >
                                         <Globe class="w-4 h-4" />
-                                    </a>
-                                {/if}
-                                {#if author.twitter}
-                                    <a
-                                        href={author.twitter}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-zinc-500 hover:text-white transition-colors"
-                                    >
-                                        <Twitter class="w-4 h-4" />
                                     </a>
                                 {/if}
                                 {#if author.github}

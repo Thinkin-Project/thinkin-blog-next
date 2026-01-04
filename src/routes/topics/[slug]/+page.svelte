@@ -1,11 +1,15 @@
 <script lang="ts">
-    import { ArrowRight } from 'lucide-svelte';
+    import { ArrowRight, CornerDownRight } from 'lucide-svelte';
     import { Separator } from '$lib/components/ui/separator';
     import PostListItem from '$lib/components/PostListItem.svelte';
-    import Newsletter from '$lib/components/Newsletter.svelte';
     import Footer from '$lib/components/Footer.svelte';
 
+    import { page } from '$app/state';
+
     const topics = ['Artificial Intelligence', 'Design', 'Engineering', 'Thoughts'];
+    const currentTopic = $derived(
+        topics.find((t) => t.toLowerCase().replace(' ', '-') === page.params.slug) || 'Topic'
+    );
 
     const posts = [
         {
@@ -47,19 +51,19 @@
                 <ArrowRight
                     class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
                 />
-                All writing
+                所有文章
             </a>
-            <h1 class="text-3xl font-bold tracking-tight text-white">Artificial Intelligence</h1>
+            <h1 class="text-3xl font-bold tracking-tight text-white">{currentTopic}</h1>
         </div>
 
         <!-- Sub-nav Categories -->
-        <div class="flex flex-wrap gap-6 pt-2">
+        <div class="flex flex-wrap gap-4 pt-2">
             {#each topics as topic}
                 <a
                     href="/topics/{topic.toLowerCase().replace(' ', '-')}"
                     class="group flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
                 >
-                    <span class="text-zinc-700 group-hover:text-zinc-400 transition-colors">↳</span>
+                    <CornerDownRight class="h-4 w-4" />
                     {topic}
                 </a>
             {/each}
@@ -77,9 +81,6 @@
             {/each}
         </ul>
     </section>
-
-    <!-- Newsletter Section -->
-    <Newsletter />
 
     <!-- Footer Section -->
     <Footer />

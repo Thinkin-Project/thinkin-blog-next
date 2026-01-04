@@ -2,11 +2,9 @@
     import { ArrowRight } from 'lucide-svelte';
     import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';
     import PostListItem from '$lib/components/PostListItem.svelte';
-    import Newsletter from '$lib/components/Newsletter.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import Hero from '$lib/components/Hero.svelte';
     import SocialLinks from '$lib/components/SocialLinks.svelte';
-    import BeyondTheBlog from '$lib/components/BeyondTheBlog.svelte';
 
     // Placeholder data based on spec
     const featuredPosts = [
@@ -69,11 +67,7 @@
         }
     ];
 
-    const links = [
-        { name: 'Medium', url: '/' },
-        { name: 'Substack', url: '/' },
-        { name: 'Twitter', url: '/' }
-    ];
+    import { SOCIAL_LINKS } from '$lib/constants/navigation';
 </script>
 
 <div class="container max-w-4xl mx-auto px-6 py-8 md:py-12 space-y-12">
@@ -81,13 +75,13 @@
     <Hero />
 
     <!-- Links Section -->
-    <SocialLinks {links} />
+    <SocialLinks links={SOCIAL_LINKS} />
 
     <hr />
 
     <!-- Featured Posts Section -->
     <section class="space-y-8">
-        <h2 class="text-2xl font-bold tracking-tight">Featured posts</h2>
+        <h2 class="text-2xl font-bold tracking-tight">置頂文章</h2>
         <div
             class="flex flex-col gap-px bg-zinc-800 rounded-3xl overflow-hidden border border-zinc-800"
         >
@@ -102,12 +96,12 @@
     <!-- New Posts Section -->
     <section class="space-y-8">
         <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-bold tracking-tight">New posts</h2>
+            <h2 class="text-2xl font-bold tracking-tight">最新文章</h2>
             <a
                 href="/posts"
                 class="text-sm font-medium text-muted-foreground hover:text-foreground flex items-center gap-1 group"
             >
-                All posts <ArrowRight class="h-4 w-4 transition-transform group-hover:-rotate-45" />
+                所有文章 <ArrowRight class="h-4 w-4 transition-transform group-hover:-rotate-45" />
             </a>
         </div>
         <ul class="space-y-2">
@@ -116,12 +110,6 @@
             {/each}
         </ul>
     </section>
-
-    <!-- Newsletter Section -->
-    <Newsletter />
-
-    <!-- Beyond the Blog Section -->
-    <BeyondTheBlog />
 
     <!-- Footer Section -->
     <Footer />

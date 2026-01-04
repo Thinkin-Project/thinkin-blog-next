@@ -3,21 +3,9 @@
     import { page } from '$app/state';
     import { Button } from '$lib/components/ui/button';
     import { Separator } from '$lib/components/ui/separator';
-    import * as Avatar from '$lib/components/ui/avatar';
     import { Menu, X } from 'lucide-svelte';
+    import { NAV_ITEMS, SOCIAL_LINKS } from '$lib/constants/navigation';
     import SocialLinks from '$lib/components/SocialLinks.svelte';
-
-    const links = [
-        { name: 'Medium', url: '/' },
-        { name: 'Substack', url: '/' },
-        { name: 'Twitter', url: '/' }
-    ];
-
-    const navItems = [
-        { name: 'Home', href: '/' },
-        { name: 'All posts', href: '/posts' },
-        { name: 'Contact', href: '/contact' }
-    ];
 
     // Svelte 5 State
     let isMenuOpen = $state(false);
@@ -66,28 +54,32 @@
         class="fixed inset-0 z-50 bg-background flex flex-col p-6 md:hidden animate-in slide-in-from-left duration-300"
     >
         <div class="flex items-center justify-between mb-8">
-            <span class="font-bold text-lg">Menu</span>
+            <span class="font-bold text-lg">選單</span>
             <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
                 <X class="h-6 w-6" />
             </Button>
         </div>
 
         <nav class="flex flex-col text-lg">
-            <div class="flex flex-col gap-4">
-                {#each navItems as item}
+            <div class="flex flex-col gap-6">
+                {#each NAV_ITEMS as item}
                     <a
                         href={item.href}
-                        class="font-medium transition-colors {page.url.pathname === item.href
+                        class="flex items-center gap-3 font-medium transition-colors {page.url
+                            .pathname === item.href
                             ? 'text-foreground'
                             : 'text-muted-foreground hover:text-primary'}"
-                        onclick={closeMenu}>{item.name}</a
+                        onclick={closeMenu}
                     >
+                        <item.icon class="h-5 w-5" />
+                        {item.name}
+                    </a>
                 {/each}
             </div>
 
             <Separator class="bg-zinc-800 my-8" />
 
-            <SocialLinks {links} title="Socials" onclick={closeMenu} />
+            <SocialLinks links={SOCIAL_LINKS} onclick={closeMenu} />
         </nav>
     </div>
 {/if}
@@ -104,22 +96,25 @@
             </div>
         </div>
 
-        <div class="space-y-2 pt-6">
+        <div>
             <p class="text-sm text-muted-foreground leading-relaxed">
-                Designer by day, writer by night. Crafting intuitive user experiences at the
-                intersection of design, engineering, and AI.
+                一個專注於記錄軟體開發經驗與知識，強調實用收穫與開放分享的部落格。
             </p>
         </div>
 
         <!-- Navigation Links -->
-        <div class="flex flex-col gap-3 pt-2">
-            {#each navItems as item}
+        <div class="flex flex-col gap-6 pt-2">
+            {#each NAV_ITEMS as item}
                 <a
                     href={item.href}
-                    class="text-sm font-medium transition-colors {page.url.pathname === item.href
+                    class="flex items-center gap-3 font-medium transition-colors {page.url
+                        .pathname === item.href
                         ? 'text-foreground'
-                        : 'text-muted-foreground hover:text-primary'}">{item.name}</a
+                        : 'text-muted-foreground hover:text-primary'}"
                 >
+                    <item.icon class="h-4 w-4" />
+                    {item.name}
+                </a>
             {/each}
         </div>
     </div>

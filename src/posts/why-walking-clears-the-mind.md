@@ -1,13 +1,13 @@
 ---
 title: 'Why Walking Clears the Mind'
-slug: 'why-walking-clears-the-mind'
-date: '2024-02-03'
-isDraft: false
-topic: 'Thoughts'
-tags: ['Health', 'Mindfulness']
 description: 'The surprising benefits of a simple stroll and how it resets your mental state.'
 ogImage: '/assets/posts/why-walking-clears-the-mind/hero.png'
+slug: 'why-walking-clears-the-mind'
+date: '2025-02-03'
+drafted: false
 featured: true
+topic: 'Thoughts'
+tags: ['Health', 'Mindfulness']
 authors: ['neil']
 ---
 
