@@ -123,7 +123,7 @@
 
     /* 優化文章 Markdown 內的圖片樣式 */
     .prose img {
-        @apply mx-auto rounded-2xl border border-white/5 shadow-xl;
+        @apply mx-auto my-4! rounded-2xl border border-white/5 shadow-xl;
     }
 
     /* 確保圖片下方間距正常 */

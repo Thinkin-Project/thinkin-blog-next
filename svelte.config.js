@@ -26,7 +26,8 @@ const mdsvexOptions = {
                         'html',
                         'json',
                         'bash',
-                        'markdown'
+                        'markdown',
+                        'csharp'
                     ]
                 });
             }

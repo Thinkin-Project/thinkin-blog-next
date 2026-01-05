@@ -1,7 +1,8 @@
 import type { Topic } from '$lib/types';
 
 export const TOPICS: Topic[] = [
-    { name: '設計模式', slug: 'design-pattern' }
+    { name: '設計模式', slug: 'design-pattern' },
+    { name: '物件導向設計原則', slug: 'object-oriented-design-principles' }
 ];
 
 /**
