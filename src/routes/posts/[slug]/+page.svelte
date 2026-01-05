@@ -3,9 +3,14 @@
 
     import AuthorBlock from '$lib/components/AuthorBlock.svelte';
     import Footer from '$lib/components/Footer.svelte';
+    import { BLOG_CONFIG } from '$lib/constants/blog';
 
     let { data } = $props();
 </script>
+
+<svelte:head>
+    <title>{data.meta.title} | {BLOG_CONFIG.name}</title>
+</svelte:head>
 
 <div class="container mx-auto max-w-3xl space-y-16 px-6 py-8 md:py-12">
     <!-- Breadcrumb -->

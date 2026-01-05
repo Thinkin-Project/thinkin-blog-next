@@ -3,8 +3,13 @@
     import SocialLinks from '$lib/components/SocialLinks.svelte';
     import { Button } from '$lib/components/ui/button';
     import { Input } from '$lib/components/ui/input';
+    import { BLOG_CONFIG } from '$lib/constants/blog';
     import { SOCIAL_LINKS } from '$lib/constants/navigation';
 </script>
+
+<svelte:head>
+    <title>聯絡我們 | {BLOG_CONFIG.name}</title>
+</svelte:head>
 
 <div class="container mx-auto max-w-4xl space-y-16 px-6 py-8 md:py-12">
     <!-- Header Section -->

@@ -5,6 +5,7 @@
 
     import Footer from '$lib/components/Footer.svelte';
     import PostListItem from '$lib/components/PostListItem.svelte';
+    import { BLOG_CONFIG } from '$lib/constants/blog';
     import { Separator } from '$lib/components/ui/separator';
     import { TOPICS } from '$lib/constants/topics';
 
@@ -16,6 +17,10 @@
 
     const posts = $derived(data.posts || []);
 </script>
+
+<svelte:head>
+    <title>{currentTopic} | {BLOG_CONFIG.name}</title>
+</svelte:head>
 
 <div class="container mx-auto max-w-4xl space-y-16 px-6 py-8 md:py-12">
     <!-- Topic Header -->

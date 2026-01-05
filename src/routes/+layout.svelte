@@ -1,6 +1,7 @@
 <script lang="ts">
     import favicon from '$lib/assets/favicon.ico';
     import Sidebar from '$lib/components/Sidebar.svelte';
+    import { BLOG_CONFIG } from '$lib/constants/blog';
 
     import './layout.css';
 
@@ -8,6 +9,7 @@
 </script>
 
 <svelte:head>
+    <title>{BLOG_CONFIG.name}</title>
     <link rel="icon" href={favicon} />
 </svelte:head>
 

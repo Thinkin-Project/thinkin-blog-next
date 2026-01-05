@@ -4,11 +4,16 @@
     import Footer from '$lib/components/Footer.svelte';
     import PostListItem from '$lib/components/PostListItem.svelte';
     import Separator from '$lib/components/ui/separator/Separator.svelte';
+    import { BLOG_CONFIG } from '$lib/constants/blog';
     import { TOPICS } from '$lib/constants/topics';
 
     let { data } = $props();
     const topics = TOPICS;
 </script>
+
+<svelte:head>
+    <title>所有文章 | {BLOG_CONFIG.name}</title>
+</svelte:head>
 
 <div class="container mx-auto max-w-4xl space-y-16 px-6 py-8 md:py-12">
     <!-- Topics Section -->
