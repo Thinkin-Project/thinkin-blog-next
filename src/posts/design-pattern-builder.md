@@ -5,8 +5,8 @@ slug: 'design-pattern-builder'
 date: '2020-12-14'
 drafted: false
 featured: false
-topic: '軟體設計原則'
-tags: ['創建型模式']
+topic: 'design-pattern'
+tags: ['creational-pattern']
 authors: ['neil']
 ---
 

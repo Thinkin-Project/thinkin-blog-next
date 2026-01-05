@@ -4,6 +4,8 @@
     import AuthorBlock from '$lib/components/AuthorBlock.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import { BLOG_CONFIG } from '$lib/constants/blog';
+    import { getTopicName } from '$lib/constants/topics';
+    import { getTagName } from '$lib/constants/tags';
 
     let { data } = $props();
 </script>
@@ -49,7 +51,8 @@
                     <span class="flex items-center gap-2 text-zinc-500">
                         <Crosshair class="h-3.5 w-3.5" /> 主題
                     </span>
-                    <span class="block font-medium text-white">{data.meta.topic}</span>
+                    <span class="block font-medium text-white">{getTopicName(data.meta.topic)}</span
+                    >
                 </div>
                 {#if data.meta.tags && data.meta.tags.length > 0}
                     <div class="space-y-1">
@@ -61,7 +64,7 @@
                                 <span
                                     class="inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-zinc-400"
                                 >
-                                    #{tag}
+                                    #{getTagName(tag)}
                                 </span>
                             {/each}
                         </div>

@@ -11,9 +11,7 @@
 
     let { data } = $props();
     const topics = TOPICS;
-    const currentTopic = $derived(
-        topics.find((t) => t.toLowerCase().replace(/\s+/g, '-') === page.params.slug) || 'Topic'
-    );
+    const currentTopic = $derived(topics.find((t) => t.slug === page.params.slug)?.name || 'Topic');
 
     const posts = $derived(data.posts || []);
 </script>
@@ -43,11 +41,11 @@
         <div class="flex flex-wrap gap-4 pt-2">
             {#each topics as topic}
                 <a
-                    href="/topics/{topic.toLowerCase().replace(' ', '-')}"
+                    href="/topics/{topic.slug}"
                     class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-white"
                 >
                     <CornerDownRight class="h-4 w-4" />
-                    {topic}
+                    {topic.name}
                 </a>
             {/each}
         </div>

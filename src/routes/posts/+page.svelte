@@ -22,11 +22,11 @@
         <ul class="flex flex-wrap gap-4">
             {#each topics as topic}
                 <a
-                    href="/topics/{topic.toLowerCase().replace(' ', '-')}"
+                    href="/topics/{topic.slug}"
                     class="group flex cursor-pointer items-center gap-2 text-muted-foreground transition-colors duration-300 hover:text-foreground"
                 >
                     <CornerDownRight class="h-4 w-4" />
-                    <span class="text-sm font-medium tracking-wide">{topic}</span>
+                    <span class="text-sm font-medium tracking-wide">{topic.name}</span>
                 </a>
             {/each}
         </ul>

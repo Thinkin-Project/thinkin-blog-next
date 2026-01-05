@@ -54,3 +54,18 @@ export interface SocialLink {
     name: string;
     url: string;
 }
+/**
+ * 主題結構
+ */
+export interface Topic {
+    name: string;
+    slug: string;
+}
+
+/**
+ * 標籤結構
+ */
+export interface Tag {
+    name: string;
+    slug: string;
+}
