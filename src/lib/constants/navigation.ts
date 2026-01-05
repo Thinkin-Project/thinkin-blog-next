@@ -1,4 +1,5 @@
-import { House, Newspaper, Mail } from 'lucide-svelte';
+import { House, Mail, Newspaper } from 'lucide-svelte';
+
 import type { NavItem, SocialLink } from '$lib/types';
 
 export const NAV_ITEMS: NavItem[] = [

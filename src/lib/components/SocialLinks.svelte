@@ -1,6 +1,7 @@
 <script lang="ts">
-    import type { SocialLink } from '$lib/types';
     import { ArrowRight } from 'lucide-svelte';
+
+    import type { SocialLink } from '$lib/types';
 
     let {
         links = [],
@@ -21,7 +22,7 @@
                 <li class="group">
                     <a
                         href={link.url}
-                        class="flex items-center gap-2 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+                        class="flex items-center gap-2 text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
                         {onclick}
                     >
                         {link.name}

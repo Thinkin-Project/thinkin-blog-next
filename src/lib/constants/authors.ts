@@ -1,6 +1,6 @@
 import type { Author } from '../types';
 
-export const authors: Record<string, Author> = {
+export const AUTHORS: Record<string, Author> = {
     neil: {
         id: 'neil',
         name: 'Neil Tsai',

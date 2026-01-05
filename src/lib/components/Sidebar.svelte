@@ -1,11 +1,14 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+
     import { page } from '$app/state';
+
+    import { Menu, X } from 'lucide-svelte';
+
+    import SocialLinks from '$lib/components/SocialLinks.svelte';
     import { Button } from '$lib/components/ui/button';
     import { Separator } from '$lib/components/ui/separator';
-    import { Menu, X } from 'lucide-svelte';
     import { NAV_ITEMS, SOCIAL_LINKS } from '$lib/constants/navigation';
-    import SocialLinks from '$lib/components/SocialLinks.svelte';
 
     // Svelte 5 State
     let isMenuOpen = $state(false);
@@ -38,10 +41,10 @@
 
 <!-- Mobile Header (Visible only on mobile) -->
 <header
-    class="md:hidden flex items-center justify-between p-6 border-b bg-background sticky top-0 z-50"
+    class="sticky top-0 z-50 flex items-center justify-between border-b bg-background p-6 md:hidden"
 >
     <div class="flex items-center gap-3">
-        <span class="font-bold text-lg">Thinkin Markdown</span>
+        <span class="text-lg font-bold">Thinkin Markdown</span>
     </div>
     <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
         <Menu class="h-6 w-6" />
@@ -51,10 +54,10 @@
 <!-- Mobile Menu Overlay -->
 {#if isMenuOpen}
     <div
-        class="fixed inset-0 z-50 bg-background flex flex-col p-6 md:hidden animate-in slide-in-from-left duration-300"
+        class="fixed inset-0 z-50 flex animate-in flex-col bg-background p-6 duration-300 slide-in-from-left md:hidden"
     >
-        <div class="flex items-center justify-between mb-8">
-            <span class="font-bold text-lg">選單</span>
+        <div class="mb-8 flex items-center justify-between">
+            <span class="text-lg font-bold">選單</span>
             <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
                 <X class="h-6 w-6" />
             </Button>
@@ -77,7 +80,7 @@
                 {/each}
             </div>
 
-            <Separator class="bg-zinc-800 my-8" />
+            <Separator class="my-8 bg-zinc-800" />
 
             <SocialLinks links={SOCIAL_LINKS} onclick={closeMenu} />
         </nav>
@@ -86,7 +89,7 @@
 
 <!-- Left Sidebar (Desktop Profile) -->
 <nav
-    class="hidden md:flex w-full md:w-80 md:sticky md:top-0 md:h-screen z-40 border-b md:border-b-0 md:border-r bg-background/95 backdrop-blur p-8 flex-col justify-between"
+    class="z-40 hidden w-full flex-col justify-between border-b bg-background/95 p-8 backdrop-blur md:sticky md:top-0 md:flex md:h-screen md:w-80 md:border-r md:border-b-0"
 >
     <div class="space-y-6">
         <div class="flex items-center gap-4">
@@ -97,7 +100,7 @@
         </div>
 
         <div>
-            <p class="text-sm text-muted-foreground leading-relaxed">
+            <p class="text-sm leading-relaxed text-muted-foreground">
                 一個專注於記錄軟體開發經驗與知識，強調實用收穫與開放分享的部落格。
             </p>
         </div>

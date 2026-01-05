@@ -1,10 +1,10 @@
 import Root from './Card.svelte';
+import Action from './CardAction.svelte';
 import Content from './CardContent.svelte';
 import Description from './CardDescription.svelte';
 import Footer from './CardFooter.svelte';
 import Header from './CardHeader.svelte';
 import Title from './CardTitle.svelte';
-import Action from './CardAction.svelte';
 
 export {
     Root,

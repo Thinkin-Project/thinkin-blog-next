@@ -11,17 +11,17 @@
 
 <a
     href={link}
-    class="block group relative bg-zinc-900 hover:bg-zinc-800 transition-colors duration-300 p-4"
+    class="group relative block bg-zinc-900 p-4 transition-colors duration-300 hover:bg-zinc-800"
 >
-    <div class="flex items-center justify-between z-10 relative">
+    <div class="relative z-10 flex items-center justify-between">
         <div class="space-y-1">
-            <h3 class="text-xl font-medium text-zinc-100 group-hover:text-white transition-colors">
+            <h3 class="text-xl font-medium text-zinc-100 transition-colors group-hover:text-white">
                 {title}
             </h3>
-            <p class="text-zinc-500 text-base">{description || subtitle}</p>
+            <p class="text-base text-zinc-500">{description || subtitle}</p>
         </div>
         <Pin
-            class="h-5 w-5 text-zinc-600 group-hover:text-white transition-transform duration-300 group-hover:translate-x-1"
+            class="h-5 w-5 text-zinc-600 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white"
         />
     </div>
 </a>

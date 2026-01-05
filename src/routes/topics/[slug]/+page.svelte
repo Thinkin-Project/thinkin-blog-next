@@ -1,12 +1,14 @@
 <script lang="ts">
-    import { ArrowRight, CornerDownRight } from 'lucide-svelte';
-    import { Separator } from '$lib/components/ui/separator';
-    import PostListItem from '$lib/components/PostListItem.svelte';
-    import Footer from '$lib/components/Footer.svelte';
-
     import { page } from '$app/state';
 
-    const topics = ['Artificial Intelligence', 'Design', 'Engineering', 'Thoughts'];
+    import { ArrowRight, CornerDownRight } from 'lucide-svelte';
+
+    import Footer from '$lib/components/Footer.svelte';
+    import PostListItem from '$lib/components/PostListItem.svelte';
+    import { Separator } from '$lib/components/ui/separator';
+    import { TOPICS } from '$lib/constants/topics';
+
+    const topics = TOPICS;
     const currentTopic = $derived(
         topics.find((t) => t.toLowerCase().replace(' ', '-') === page.params.slug) || 'Topic'
     );
@@ -39,14 +41,14 @@
     ];
 </script>
 
-<div class="container max-w-4xl mx-auto px-6 py-8 md:py-12 space-y-16">
+<div class="container mx-auto max-w-4xl space-y-16 px-6 py-8 md:py-12">
     <!-- Topic Header -->
-    <section class="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-0">
+    <section class="animate-in space-y-4 delay-0 duration-700 fade-in slide-in-from-bottom-4">
         <!-- Header with Button and Title -->
         <div class="flex items-center gap-4">
             <a
                 href="/posts"
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-zinc-900 hover:bg-zinc-800 hover:text-accent-foreground px-2 py-1 text-zinc-400 group"
+                class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-zinc-400 ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
             >
                 <ArrowRight
                     class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
@@ -61,7 +63,7 @@
             {#each topics as topic}
                 <a
                     href="/topics/{topic.toLowerCase().replace(' ', '-')}"
-                    class="group flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
+                    class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-white"
                 >
                     <CornerDownRight class="h-4 w-4" />
                     {topic}
@@ -70,11 +72,13 @@
         </div>
 
         <!-- Subtle Divider -->
-        <Separator class="bg-zinc-900 mt-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100" />
+        <Separator
+            class="mt-4 animate-in bg-zinc-900 delay-100 duration-700 fade-in slide-in-from-bottom-4"
+        />
     </section>
 
     <!-- Post List -->
-    <section class="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+    <section class="animate-in delay-200 duration-700 fade-in slide-in-from-bottom-4">
         <ul class="space-y-2">
             {#each posts as post}
                 <PostListItem {...post} />

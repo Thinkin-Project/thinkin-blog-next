@@ -1,11 +1,12 @@
 <script lang="ts">
+    import { ArrowRight } from 'lucide-svelte';
+
     import { Button } from '$lib/components/ui/button';
     import { Input } from '$lib/components/ui/input';
-    import { ArrowRight } from 'lucide-svelte';
 </script>
 
 <section>
-    <div class="rounded-3xl bg-zinc-900 border border-zinc-800 p-8 md:p-12 space-y-8">
+    <div class="space-y-8 rounded-3xl border border-zinc-800 bg-zinc-900 p-8 md:p-12">
         <div class="flex items-baseline justify-between">
             <h2 class="text-3xl font-bold text-white">訂閱電子報</h2>
             <p class="text-zinc-400 italic">300+ 讀者</p>
@@ -15,10 +16,10 @@
                 <Input
                     type="email"
                     placeholder="你的電子郵件地址"
-                    class="bg-zinc-950 border-zinc-800 text-white placeholder:text-zinc-500 h-12 pr-32 rounded-full focus-visible:ring-0 focus-visible:bg-zinc-900 transition-colors duration-300"
+                    class="h-12 rounded-full border-zinc-800 bg-zinc-950 pr-32 text-white transition-colors duration-300 placeholder:text-zinc-500 focus-visible:bg-zinc-900 focus-visible:ring-0"
                 />
                 <Button
-                    class="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent text-zinc-500 hover:text-white transition-colors duration-300 rounded-full px-4 h-auto py-1 flex items-center gap-2 cursor-pointer"
+                    class="absolute top-1/2 right-2 flex h-auto -translate-y-1/2 cursor-pointer items-center gap-2 rounded-full bg-transparent px-4 py-1 text-zinc-500 transition-colors duration-300 hover:bg-transparent hover:text-white"
                 >
                     <ArrowRight class="h-4 w-4" />
                     訂閱

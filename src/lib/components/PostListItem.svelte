@@ -13,21 +13,21 @@
 <li class="group list-none">
     <a
         href={link}
-        class="flex flex-col md:flex-row md:items-center justify-between py-3 group-hover:bg-zinc-900/50 rounded-lg px-3 transition-colors -mx-3"
+        class="-mx-3 flex flex-col justify-between rounded-lg px-3 py-3 transition-colors group-hover:bg-zinc-900/50 md:flex-row md:items-center"
     >
-        <div class="flex items-center gap-3 relative">
+        <div class="relative flex items-center gap-3">
             <BookOpenText
-                class="h-5 w-5 text-primary opacity-0 -translate-x-4 absolute left-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out"
+                class="absolute left-0 h-5 w-5 -translate-x-4 text-primary opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100"
             />
             <div
                 class="space-y-1 transition-transform duration-300 ease-out group-hover:translate-x-8"
             >
-                <p class="text-lg font-medium group-hover:text-primary transition-colors">
+                <p class="text-lg font-medium transition-colors group-hover:text-primary">
                     {title}
                 </p>
                 <p class="text-sm text-muted-foreground">{description || subtitle}</p>
             </div>
         </div>
-        <span class="text-sm text-muted-foreground mt-2 md:mt-0 font-mono">{date}</span>
+        <span class="mt-2 font-mono text-sm text-muted-foreground md:mt-0">{date}</span>
     </a>
 </li>

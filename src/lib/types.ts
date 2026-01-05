@@ -1,4 +1,5 @@
 import type { Component } from 'svelte';
+
 import type { Icon } from 'lucide-svelte';
 
 /**

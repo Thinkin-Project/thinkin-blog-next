@@ -1,9 +1,8 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { mdsvex, escapeSvelte } from 'mdsvex';
+import { escapeSvelte, mdsvex } from 'mdsvex';
 import rehypeSlug from 'rehype-slug';
 import remarkToc from 'remark-toc';
-
 import { createHighlighter } from 'shiki';
 
 // 快取 highlighter 實例
