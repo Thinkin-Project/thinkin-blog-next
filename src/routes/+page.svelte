@@ -72,15 +72,19 @@
 
 <div class="container max-w-4xl mx-auto px-6 py-8 md:py-12 space-y-12">
     <!-- Hero Section -->
-    <Hero />
+    <div class="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-0">
+        <Hero />
+    </div>
 
     <!-- Links Section -->
-    <SocialLinks links={SOCIAL_LINKS} />
+    <div class="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+        <SocialLinks links={SOCIAL_LINKS} />
+    </div>
 
-    <hr />
+    <hr class="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200" />
 
     <!-- Featured Posts Section -->
-    <section class="space-y-8">
+    <section class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
         <h2 class="text-2xl font-bold tracking-tight">置頂文章</h2>
         <div
             class="flex flex-col gap-px bg-zinc-800 rounded-3xl overflow-hidden border border-zinc-800"
@@ -91,10 +95,10 @@
         </div>
     </section>
 
-    <hr />
+    <hr class="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400" />
 
     <!-- New Posts Section -->
-    <section class="space-y-8">
+    <section class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500">
         <div class="flex items-center justify-between">
             <h2 class="text-2xl font-bold tracking-tight">最新文章</h2>
             <a

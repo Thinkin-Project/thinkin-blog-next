@@ -4,7 +4,7 @@
 
     let {
         links = [],
-        title = 'Links',
+        title = '社群連結',
         onclick
     }: {
         links: SocialLink[];

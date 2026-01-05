@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ArrowRight } from 'lucide-svelte';
+    import { Pin } from 'lucide-svelte';
 
     let { title, subtitle, description, link } = $props<{
         title: string;
@@ -20,7 +20,7 @@
             </h3>
             <p class="text-zinc-500 text-base">{description || subtitle}</p>
         </div>
-        <ArrowRight
+        <Pin
             class="h-5 w-5 text-zinc-600 group-hover:text-white transition-transform duration-300 group-hover:translate-x-1"
         />
     </div>

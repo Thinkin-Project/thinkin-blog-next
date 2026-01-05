@@ -25,9 +25,9 @@
 
 <div class="container max-w-4xl mx-auto px-6 py-8 md:py-12 space-y-12">
     <!-- Error Message Section -->
-    <section class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <section class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-0">
         <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white">
-            404 – This page doesn't exist
+            404 – 此頁面不存在
         </h1>
 
         <a
@@ -37,15 +37,15 @@
             <ArrowRight
                 class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
             />
-            Homepage
+            首頁
         </a>
     </section>
 
-    <Separator class="bg-zinc-800" />
+    <Separator class="bg-zinc-800 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-50" />
 
-    <!-- Featured Posts (Styled as Home Page 'Featured Posts') -->
+    <!-- Featured Posts Section -->
     <section class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-        <h2 class="text-2xl font-bold tracking-tight">Featured posts</h2>
+        <h2 class="text-2xl font-bold tracking-tight">置頂文章</h2>
         <div
             class="flex flex-col gap-px bg-zinc-800 rounded-3xl overflow-hidden border border-zinc-800"
         >

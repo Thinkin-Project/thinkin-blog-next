@@ -41,7 +41,7 @@
 
 <div class="container max-w-4xl mx-auto px-6 py-8 md:py-12 space-y-16">
     <!-- Topic Header -->
-    <section class="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <section class="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-0">
         <!-- Header with Button and Title -->
         <div class="flex items-center gap-4">
             <a
@@ -70,11 +70,11 @@
         </div>
 
         <!-- Subtle Divider -->
-        <Separator class="bg-zinc-900 mt-4" />
+        <Separator class="bg-zinc-900 mt-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100" />
     </section>
 
     <!-- Post List -->
-    <section>
+    <section class="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
         <ul class="space-y-2">
             {#each posts as post}
                 <PostListItem {...post} />

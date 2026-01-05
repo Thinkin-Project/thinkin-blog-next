@@ -1,4 +1,4 @@
-<section class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+<section class="space-y-8">
     <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-white">
         Thinkin <span
             class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-500 to-pink-500"

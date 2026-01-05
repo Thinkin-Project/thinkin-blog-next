@@ -16,7 +16,7 @@
 
 {#if postAuthors.length > 0}
     <div
-        class="mt-16 pt-8 border-t border-zinc-900 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300"
+        class="mt-16 pt-8 border-t border-zinc-900"
     >
         <h3 class="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-6">
             {postAuthors.length > 1 ? '作者群' : '作者'}

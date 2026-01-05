@@ -8,7 +8,7 @@
 
 <div class="container max-w-3xl mx-auto px-6 py-8 md:py-12 space-y-16">
     <!-- Breadcrumb -->
-    <div class="animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div class="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-0">
         <a
             href="/posts"
             class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-zinc-900 hover:bg-zinc-800 hover:text-accent-foreground px-2 py-1 text-zinc-400 group"
@@ -92,7 +92,7 @@
 
     <!-- Bottom Navigation -->
     {#if data.prev || data.next}
-        <div class="flex items-center justify-between border-zinc-900">
+        <div class="flex items-center justify-between border-zinc-900 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
             <div>
                 {#if data.prev}
                     <a

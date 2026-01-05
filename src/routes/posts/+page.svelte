@@ -10,7 +10,7 @@
 
 <div class="container max-w-4xl mx-auto px-6 py-8 md:py-12 space-y-16">
     <!-- Topics Section -->
-    <section class="space-y-4">
+    <section class="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-0">
         <h2 class="text-4xl font-bold tracking-tight">主題</h2>
         <ul class="flex flex-wrap gap-4">
             {#each topics as topic}
@@ -25,11 +25,12 @@
         </ul>
 
         <!-- Subtle Divider -->
-        <Separator class="bg-zinc-900 mt-4" />
+        <Separator class="bg-zinc-900 mt-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100" />
     </section>
 
     <!-- All Posts Section -->
-    <section class="space-y-10">
+    <section class="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+        <h2 class="text-4xl font-bold tracking-tight">所有文章</h2>
         <ul class="space-y-2">
             {#each data.posts as post}
                 <PostListItem {...post} link="/posts/{post.slug}" />

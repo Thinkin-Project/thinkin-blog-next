@@ -9,7 +9,7 @@
 
 <div class="container max-w-4xl mx-auto px-6 py-8 md:py-12 space-y-16">
     <!-- Header Section -->
-    <section class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 text-center">
+    <section class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-0 text-center">
         <h1 class="text-3xl font-bold tracking-tight text-white">與我們聯絡</h1>
         <div class="max-w-2xl mx-auto space-y-4">
             <p class="text-lg text-muted-foreground leading-relaxed">
@@ -69,7 +69,7 @@
 
     <!-- Links Section -->
     {#if SOCIAL_LINKS.length > 0}
-        <div class="flex justify-center pt-8">
+        <div class="flex justify-center pt-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
             <SocialLinks links={SOCIAL_LINKS} title="社群連結" />
         </div>
     {/if}
