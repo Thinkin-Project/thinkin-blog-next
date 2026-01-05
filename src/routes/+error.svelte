@@ -4,6 +4,7 @@
     import { ArrowRight } from 'lucide-svelte';
 
     import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';
+    import EmptyState from '$lib/components/EmptyState.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import { Separator } from '$lib/components/ui/separator';
 
@@ -38,6 +39,8 @@
         >
             {#each featuredPosts as post}
                 <FeaturedPostListItem {...post} link="/posts/{post.slug}" />
+            {:else}
+                <EmptyState title="尚無置頂文章" />
             {/each}
         </div>
     </section>
