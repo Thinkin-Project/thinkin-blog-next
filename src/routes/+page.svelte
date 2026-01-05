@@ -8,66 +8,10 @@
     import SocialLinks from '$lib/components/SocialLinks.svelte';
     import { SOCIAL_LINKS } from '$lib/constants/navigation';
 
-    // Placeholder data based on spec
-    const featuredPosts = [
-        {
-            title: 'Why Walking Clears the Mind',
-            subtitle: 'The science behind movement and creativity',
-            date: '2/3/24',
-            link: '/posts/why-walking-clears-the-mind'
-        },
-        {
-            title: 'Why Nostalgia Shapes Modern Trends',
-            subtitle: 'Looking back to move forward',
-            date: '11/20/24',
-            link: '/posts/why-nostalgia-shapes-modern-trends'
-        },
-        {
-            title: 'The Philosophy of AI Ethics',
-            subtitle: 'Navigating the moral landscape of the future',
-            date: '1/23/25',
-            link: '/posts/the-philosophy-of-ai-ethics'
-        }
-    ];
+    let { data } = $props();
 
-    const newPosts = [
-        {
-            title: 'Why Walking Clears the Mind',
-            subtitle: 'Movement & Creativity',
-            date: '2/3/24',
-            link: '/posts/why-walking-clears-the-mind'
-        },
-        {
-            title: 'Why Nostalgia Shapes Modern Trends',
-            subtitle: 'Cultural Cycles',
-            date: '11/20/24',
-            link: '/posts/why-nostalgia-shapes-modern-trends'
-        },
-        {
-            title: 'The Philosophy of AI Ethics',
-            subtitle: 'Machine Morality',
-            date: '1/23/25',
-            link: '/posts/the-philosophy-of-ai-ethics'
-        },
-        {
-            title: 'Demystifying Continuous Integration',
-            subtitle: 'DevOps Basics',
-            date: '1/6/25',
-            link: '/posts/demystifying-continuous-integration'
-        },
-        {
-            title: 'Why Code Reviews Are Essential',
-            subtitle: 'Team Quality',
-            date: '7/1/24',
-            link: '/posts/why-code-reviews-are-essential'
-        },
-        {
-            title: 'How AI Is Changing the Way We Work',
-            subtitle: 'Future of Work',
-            date: '1/16/25',
-            link: '/posts/how-ai-is-changing-the-way-we-work'
-        }
-    ];
+    const featuredPosts = $derived(data.featuredPosts || []);
+    const newPosts = $derived(data.newPosts || []);
 </script>
 
 <div class="container mx-auto max-w-4xl space-y-12 px-6 py-8 md:py-12">
@@ -90,7 +34,7 @@
             class="flex flex-col gap-px overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-800"
         >
             {#each featuredPosts as post}
-                <FeaturedPostListItem {...post} />
+                <FeaturedPostListItem {...post} link="/posts/{post.slug}" />
             {/each}
         </div>
     </section>
@@ -110,7 +54,7 @@
         </div>
         <ul class="space-y-2">
             {#each newPosts as post}
-                <PostListItem {...post} />
+                <PostListItem {...post} link="/posts/{post.slug}" />
             {/each}
         </ul>
     </section>

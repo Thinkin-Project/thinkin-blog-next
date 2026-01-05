@@ -1,27 +1,13 @@
 <script lang="ts">
+    import { page } from '$app/state';
+
     import { ArrowRight } from 'lucide-svelte';
 
     import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import { Separator } from '$lib/components/ui/separator';
 
-    const featuredPosts = [
-        {
-            title: 'Demystifying Continuous Integration',
-            subtitle: 'How CI improves development workflows',
-            link: '/posts/demystifying-continuous-integration'
-        },
-        {
-            title: 'The Philosophy of AI Ethics',
-            subtitle: 'Can machines make moral decisions?',
-            link: '/posts/ai-ethics'
-        },
-        {
-            title: 'The Role of Empathy in Design',
-            subtitle: 'Why empathy is the key to great design.',
-            link: '/posts/empathy-in-design'
-        }
-    ];
+    const featuredPosts = $derived(page.data.featuredPosts || []);
 </script>
 
 <div class="container mx-auto max-w-4xl space-y-12 px-6 py-8 md:py-12">
@@ -51,7 +37,7 @@
             class="flex flex-col gap-px overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-800"
         >
             {#each featuredPosts as post}
-                <FeaturedPostListItem {...post} />
+                <FeaturedPostListItem {...post} link="/posts/{post.slug}" />
             {/each}
         </div>
     </section>

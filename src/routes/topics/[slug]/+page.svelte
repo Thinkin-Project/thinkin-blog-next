@@ -8,37 +8,13 @@
     import { Separator } from '$lib/components/ui/separator';
     import { TOPICS } from '$lib/constants/topics';
 
+    let { data } = $props();
     const topics = TOPICS;
     const currentTopic = $derived(
-        topics.find((t) => t.toLowerCase().replace(' ', '-') === page.params.slug) || 'Topic'
+        topics.find((t) => t.toLowerCase().replace(/\s+/g, '-') === page.params.slug) || 'Topic'
     );
 
-    const posts = [
-        {
-            title: 'The Philosophy of AI Ethics',
-            subtitle: 'Can machines make moral decisions?',
-            date: '1/12/25',
-            link: '/posts/the-philosophy-of-ai-ethics'
-        },
-        {
-            title: 'How AI is Changing the Way We Work',
-            subtitle: 'AI tools & their impact on productivity.',
-            date: '1/16/25',
-            link: '/posts/how-ai-is-changing-the-way-we-work'
-        },
-        {
-            title: 'The Ethics of Artificial Intelligence',
-            subtitle: 'Balancing innovation with responsibility.',
-            date: '1/9/25',
-            link: '/posts/the-ethics-of-artificial-intelligence'
-        },
-        {
-            title: 'AI in Everyday Life',
-            subtitle: 'AI is seamlessly woven into our daily routines.',
-            date: '12/12/24',
-            link: '/posts/ai-in-everyday-life'
-        }
-    ];
+    const posts = $derived(data.posts || []);
 </script>
 
 <div class="container mx-auto max-w-4xl space-y-16 px-6 py-8 md:py-12">
@@ -81,7 +57,7 @@
     <section class="animate-in delay-200 duration-700 fade-in slide-in-from-bottom-4">
         <ul class="space-y-2">
             {#each posts as post}
-                <PostListItem {...post} />
+                <PostListItem {...post} link="/posts/{post.slug}" />
             {/each}
         </ul>
     </section>
