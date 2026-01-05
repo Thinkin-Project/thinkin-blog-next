@@ -74,12 +74,6 @@
                     class="h-full w-full object-cover"
                 />
             </div>
-        {:else}
-            <div
-                class="flex aspect-2/1 w-full items-center justify-center overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900"
-            >
-                <span class="text-zinc-700 italic">No Hero Image</span>
-            </div>
         {/if}
 
         <!-- Body Content -->
