@@ -23,13 +23,15 @@
 
         <div class="grid gap-8">
             {#each postAuthors as author}
-                <div class="flex flex-col items-start gap-6 md:flex-row md:items-center">
-                    <Avatar.Root class="h-20 w-20 border border-zinc-800">
+                <div class="flex w-full flex-col gap-6 md:flex-row md:items-center">
+                    <Avatar.Root
+                        class="h-20 w-20 shrink-0 self-start border border-zinc-800 md:self-auto"
+                    >
                         <Avatar.Image src={author.avatar} alt={author.name} />
                         <Avatar.Fallback>{author.name.slice(0, 2).toUpperCase()}</Avatar.Fallback>
                     </Avatar.Root>
 
-                    <div class="flex-1 space-y-2">
+                    <div class="w-full flex-1 space-y-2">
                         <div class="flex items-center justify-between">
                             <h4 class="text-xl font-bold text-white">{author.name}</h4>
                             <div class="flex items-center gap-3">
