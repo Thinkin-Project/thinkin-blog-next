@@ -1,1 +1,1 @@
-export const TOPICS = ['Artificial Intelligence', 'Design', 'Engineering', 'Thoughts'];
+export const TOPICS = ['軟體設計原則'];
