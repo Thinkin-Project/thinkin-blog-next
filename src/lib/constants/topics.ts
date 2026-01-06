@@ -5,7 +5,8 @@ export const TOPICS: Topic[] = [
     { name: '物件導向設計原則', slug: 'object-oriented-design-principles' },
     { name: '瀏覽器擴充功能', slug: 'browser-extension' },
     { name: '測試', slug: 'test' },
-    { name: '命令列', slug: 'command-line' }
+    { name: '命令列', slug: 'command-line' },
+    { name: 'Visual Studio', slug: 'visual-studio' }
 ];
 
 /**

@@ -10,7 +10,13 @@ export const TAGS: Tag[] = [
     { name: '單元測試', slug: 'unit-test' },
     { name: 'Windows', slug: 'windows' },
     { name: 'Command Prompt', slug: 'command-prompt' },
-    { name: 'Windows Powershell', slug: 'windows-powershell' }
+    { name: 'Windows Powershell', slug: 'windows-powershell' },
+    { name: 'IDE', slug: 'ide' },
+    { name: 'Visual Studio 擴充功能', slug: 'visual-studio-extension' },
+    { name: 'Installer Projects', slug: 'installer-projects' },
+    { name: '部署', slug: 'deploy' },
+    { name: 'AxoCover', slug: 'axocover' },
+    { name: '程式碼覆蓋率', slug: 'code-coverage' },
 ];
 
 /**
