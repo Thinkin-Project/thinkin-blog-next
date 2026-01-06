@@ -6,7 +6,8 @@ export const TAGS: Tag[] = [
     { name: 'Chrome 擴充功能', slug: 'chrome-extension' },
     { name: 'JMeter', slug: 'jmeter' },
     { name: 'BlazeMeter', slug: 'blazemeter' },
-    { name: '壓力測試', slug: 'stress-test' }
+    { name: '壓力測試', slug: 'stress-test' },
+    { name: '單元測試', slug: 'unit-test' }
 ];
 
 /**
