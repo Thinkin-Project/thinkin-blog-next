@@ -2,8 +2,7 @@ import type { Tag } from '$lib/types';
 
 export const TAGS: Tag[] = [
     { name: '創建型模式', slug: 'creational-pattern' },
-    { name: '物件導向', slug: 'object-oriented' },
-    { name: 'SOLID 原則', slug: 'solid' },
+    { name: 'SOLID 原則', slug: 'solid' }
 ];
 
 /**

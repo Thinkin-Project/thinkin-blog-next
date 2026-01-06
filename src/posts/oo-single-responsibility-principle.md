@@ -6,7 +6,7 @@ date: '2020-03-06'
 drafted: false
 featured: false
 topic: 'object-oriented-design-principles'
-tags: ['solid', 'object-oriented']
+tags: ['solid']
 authors: ['neil']
 ---
 
@@ -72,7 +72,7 @@ class Client {
     constructor(article: Article) {
         this.article = article;
     }
-    
+
     // 編輯文章
     public editArticle(content: string): void {
         // 編輯文章內容
@@ -138,7 +138,7 @@ class Client {
         this.printer = new PlainTextPrinter();
         this.exporter = new SimpleExporter();
     }
-    
+
     // 編輯文章
     public editArticle(content: string): void {
         // 編輯文章內容
@@ -202,7 +202,7 @@ class Client {
         this.article = article;
         this.utility = new ConcreteUtility();
     }
-    
+
     // 編輯文章
     public editArticle(content: string): void {
         // 編輯文章內容

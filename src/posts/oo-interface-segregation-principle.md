@@ -6,7 +6,7 @@ date: '2020-03-13'
 drafted: false
 featured: false
 topic: 'object-oriented-design-principles'
-tags: ['solid', 'object-oriented']
+tags: ['solid']
 authors: ['neil']
 ---
 
@@ -52,7 +52,7 @@ ISP 為 Interface Segregation Principle 簡寫，均意為介面隔離原則。
     Plan C & Other component
 </center>
 
-有發現哪裡不對勁了嗎 Σ(*ﾟдﾟﾉ)ﾉ ？
+有發現哪裡不對勁了嗎 Σ(\*ﾟдﾟﾉ)ﾉ ？
 
 回頭看完定義，再回來看匯出元件（Export Component），確實已經違反了 ISP 原則，為什麼？
 
@@ -104,7 +104,7 @@ public class AuthenticationMethod {
         bool flag = false;
 
         Ldap ldap = new Ldap();
-        
+
         try {
             ldap.Open(...);
             flag = ldap.VerifyUserPassword(userId, password);
@@ -242,7 +242,7 @@ public class AuthenticationMethod {
 
 Ans：**如果有發生這種現象，那很有可能你不是在寫單元測試，反而可能是在做整合測試···**
 
-從剛剛套用 ISP 原則的程式碼來看，LdapBasic 屬性只有在功能正常運行時，才會取得真正的實例（_LdapBasic），而如果在單元測試執行途中，你需要做的是偽造一個實例出來並把它設定給 LdapBasic 屬性，這樣一來就不存在你寫單元測試會一併調整被測試程式這件事情 (´・ω・`)···
+從剛剛套用 ISP 原則的程式碼來看，LdapBasic 屬性只有在功能正常運行時，才會取得真正的實例（\_LdapBasic），而如果在單元測試執行途中，你需要做的是偽造一個實例出來並把它設定給 LdapBasic 屬性，這樣一來就不存在你寫單元測試會一併調整被測試程式這件事情 (´・ω・`)···
 
 ## 結尾
 

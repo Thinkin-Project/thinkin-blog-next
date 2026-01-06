@@ -6,7 +6,7 @@ date: '2020-03-11'
 drafted: false
 featured: false
 topic: 'object-oriented-design-principles'
-tags: ['solid', 'object-oriented']
+tags: ['solid']
 authors: ['neil']
 ---
 
