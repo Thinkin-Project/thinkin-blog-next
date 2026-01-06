@@ -7,7 +7,10 @@ export const TAGS: Tag[] = [
     { name: 'JMeter', slug: 'jmeter' },
     { name: 'BlazeMeter', slug: 'blazemeter' },
     { name: '壓力測試', slug: 'stress-test' },
-    { name: '單元測試', slug: 'unit-test' }
+    { name: '單元測試', slug: 'unit-test' },
+    { name: 'Windows', slug: 'windows' },
+    { name: 'Command Prompt', slug: 'command-prompt' },
+    { name: 'Windows Powershell', slug: 'windows-powershell' }
 ];
 
 /**

@@ -138,7 +138,7 @@
 
     /* 內文中的行內程式碼 */
     .prose :not(pre) > code {
-        @apply rounded-md bg-zinc-900 px-1.5 py-0.5 font-medium text-pink-300 before:content-none after:content-none;
+        @apply rounded-md bg-zinc-900 px-1.5 py-0.5 font-medium text-pink-300 before:content-none! after:content-none!;
     }
 
     /* 文章中的超連結樣式 */
