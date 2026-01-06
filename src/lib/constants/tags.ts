@@ -17,6 +17,10 @@ export const TAGS: Tag[] = [
     { name: '部署', slug: 'deploy' },
     { name: 'AxoCover', slug: 'axocover' },
     { name: '程式碼覆蓋率', slug: 'code-coverage' },
+    { name: '指令', slug: 'command' },
+    { name: 'exp', slug: 'exp' },
+    { name: 'imp', slug: 'imp' },
+    { name: '資料存取', slug: 'data-access' }
 ];
 
 /**
