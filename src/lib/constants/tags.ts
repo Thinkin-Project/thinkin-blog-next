@@ -2,7 +2,11 @@ import type { Tag } from '$lib/types';
 
 export const TAGS: Tag[] = [
     { name: '創建型模式', slug: 'creational-pattern' },
-    { name: 'SOLID 原則', slug: 'solid' }
+    { name: 'SOLID 原則', slug: 'solid' },
+    { name: 'Chrome 擴充功能', slug: 'chrome-extension' },
+    { name: 'JMeter', slug: 'jmeter' },
+    { name: 'BlazeMeter', slug: 'blazemeter' },
+    { name: '壓力測試', slug: 'stress-test' }
 ];
 
 /**
