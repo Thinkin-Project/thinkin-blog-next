@@ -7,7 +7,9 @@ export const TOPICS: Topic[] = [
     { name: '測試', slug: 'test' },
     { name: '命令列', slug: 'command-line' },
     { name: 'Visual Studio', slug: 'visual-studio' },
-    { name: 'Oracle', slug: 'oracle' }
+    { name: 'Oracle', slug: 'oracle' },
+    { name: 'IIS', slug: 'iis' },
+    { name: 'API 設計模式', slug: 'api-design-pattern' }
 ];
 
 /**

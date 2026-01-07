@@ -20,7 +20,16 @@ export const TAGS: Tag[] = [
     { name: '指令', slug: 'command' },
     { name: 'exp', slug: 'exp' },
     { name: 'imp', slug: 'imp' },
-    { name: '資料存取', slug: 'data-access' }
+    { name: '資料存取', slug: 'data-access' },
+    { name: 'ODP.NET', slug: 'odp-net' },
+    { name: '錯誤處理', slug: 'error-handling' },
+    { name: 'ORA 錯誤', slug: 'ora-error' },
+    { name: 'ODAC', slug: 'odac' },
+    { name: 'Oracle Client', slug: 'oracle-client' },
+    { name: 'ExecutionTimeout', slug: 'execution-timeout' },
+    { name: 'ConnectionTimeout', slug: 'connection-timeout' },
+    { name: '流暢介面', slug: 'fluent-interface' },
+    { name: '程式碼可讀性', slug: 'code-readability' }
 ];
 
 /**
