@@ -9,7 +9,10 @@ export const TOPICS: Topic[] = [
     { name: 'Visual Studio', slug: 'visual-studio' },
     { name: 'Oracle', slug: 'oracle' },
     { name: 'IIS', slug: 'iis' },
-    { name: 'API 設計模式', slug: 'api-design-pattern' }
+    { name: 'API 設計模式', slug: 'api-design-pattern' },
+    { name: '.NET Standard', slug: 'net-standard' },
+    { name: '.NET Core', slug: 'net-core' },
+    { name: '.NET', slug: 'net' },
 ];
 
 /**

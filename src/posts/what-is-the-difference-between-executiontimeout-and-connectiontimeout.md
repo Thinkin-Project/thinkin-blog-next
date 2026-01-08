@@ -106,7 +106,7 @@ authors: ['neil']
 
 ### 參考來源
 
-💭 [Default Limits for Web Sites <limits>](https://docs.microsoft.com/en-us/iis/configuration/system.applicationHost/sites/siteDefaults/limits#005)
+💭 [Default Limits for Web Sites &lt;limits&gt;](https://docs.microsoft.com/en-us/iis/configuration/system.applicationHost/sites/siteDefaults/limits#005)
 
 💭 [[IIS][ASP.net] 連線逾時，Session Timeout的設定](https://dotblogs.com.tw/shadow/2017/09/14/195114)
 
