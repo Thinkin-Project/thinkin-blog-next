@@ -15,13 +15,13 @@
 >
     <div class="relative z-10 flex items-center justify-between">
         <div class="space-y-1">
-            <h3 class="text-xl font-medium text-zinc-100 transition-colors group-hover:text-white">
+            <h3 class="text-xl font-medium text-foreground/90 transition-colors group-hover:text-foreground">
                 {title}
             </h3>
-            <p class="text-base text-zinc-500">{description || subtitle}</p>
+            <p class="text-base text-muted-foreground">{description || subtitle}</p>
         </div>
         <Pin
-            class="h-5 w-5 text-zinc-600 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white"
+            class="h-5 w-5 text-muted-foreground/60 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground"
         />
     </div>
 </a>

@@ -14,13 +14,13 @@
 </script>
 
 <div class="flex flex-col items-center justify-center gap-4 px-6 py-12 text-center">
-    <div class="rounded-full bg-zinc-900 p-4 text-zinc-500">
+    <div class="rounded-full bg-zinc-900 p-4 text-muted-foreground">
         <Icon class="h-8 w-8" />
     </div>
     <div class="space-y-1">
-        <p class="text-lg font-medium text-zinc-400">{title}</p>
+        <p class="text-lg font-medium text-muted-foreground">{title}</p>
         {#if message}
-            <p class="text-sm text-zinc-500">
+            <p class="text-sm text-muted-foreground/80">
                 {message}
             </p>
         {/if}

@@ -19,7 +19,7 @@
     <div class="animate-in delay-0 duration-700 fade-in slide-in-from-bottom-4">
         <a
             href="/posts"
-            class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-zinc-400 ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+            class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
         >
             <ArrowRight
                 class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
@@ -35,20 +35,20 @@
                 <h1 class="text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl">
                     {data.meta.title}
                 </h1>
-                <p class="text-xl font-light text-zinc-500 md:text-2xl">
+                <p class="text-xl font-light text-muted-foreground md:text-2xl">
                     {data.meta.description}
                 </p>
             </div>
 
             <div class="flex flex-wrap items-center gap-x-16 gap-y-6 text-sm">
                 <div class="space-y-1">
-                    <span class="flex items-center gap-2 text-zinc-500">
+                    <span class="flex items-center gap-2 text-muted-foreground">
                         <Calendar class="h-3.5 w-3.5" /> 發佈時間
                     </span>
                     <span class="block font-medium text-white">{data.meta.date}</span>
                 </div>
                 <div class="space-y-1">
-                    <span class="flex items-center gap-2 text-zinc-500">
+                    <span class="flex items-center gap-2 text-muted-foreground">
                         <Crosshair class="h-3.5 w-3.5" /> 主題
                     </span>
                     <span class="block font-medium text-white">{getTopicName(data.meta.topic)}</span
@@ -56,13 +56,13 @@
                 </div>
                 {#if data.meta.tags && data.meta.tags.length > 0}
                     <div class="space-y-1">
-                        <span class="flex items-center gap-2 text-zinc-500">
+                        <span class="flex items-center gap-2 text-muted-foreground">
                             <Tag class="h-3.5 w-3.5" /> 標籤
                         </span>
                         <div class="flex flex-wrap gap-2">
                             {#each data.meta.tags as tag}
                                 <span
-                                    class="inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-zinc-400"
+                                    class="inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-muted-foreground"
                                 >
                                     #{getTagName(tag)}
                                 </span>
@@ -85,7 +85,7 @@
         {/if}
 
         <!-- Body Content -->
-        <div class="prose max-w-none text-lg leading-relaxed text-zinc-400 prose-zinc prose-invert">
+        <div class="prose max-w-none text-lg leading-relaxed text-muted-foreground prose-zinc prose-invert">
             <data.content />
         </div>
 
@@ -102,7 +102,7 @@
                 {#if data.prev}
                     <a
                         href="/posts/{data.prev.slug}"
-                        class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-zinc-400 ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                        class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                     >
                         <ArrowRight
                             class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
@@ -116,7 +116,7 @@
                 {#if data.next}
                     <a
                         href="/posts/{data.next.slug}"
-                        class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-zinc-400 ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                        class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                     >
                         下一篇
                         <ArrowRight
