@@ -10,6 +10,14 @@
 
 <svelte:head>
     <title>{BLOG_CONFIG.name}</title>
+    <meta name="description" content={BLOG_CONFIG.description} />
+    <meta name="author" content={BLOG_CONFIG.author} />
+    <meta name="keywords" content={BLOG_CONFIG.keywords} />
+    <meta property="og:title" content={BLOG_CONFIG.name} />
+    <meta property="og:description" content={BLOG_CONFIG.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={BLOG_CONFIG.url} />
+    <meta property="og:image" content={BLOG_CONFIG.url + BLOG_CONFIG.ogImage} />
     <link rel="icon" href={favicon} />
 </svelte:head>
 

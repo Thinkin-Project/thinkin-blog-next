@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { BLOG_CONFIG } from '$lib/constants/blog';
+
     const currentYear = new Date().getFullYear();
 </script>
 
@@ -16,7 +18,7 @@
     </div>
     <div class="flex flex-row justify-between gap-8">
         <div class="flex flex-col justify-end text-right text-sm text-muted-foreground">
-            <p>CopyRight © {currentYear} Thinkin Markdown</p>
+            <p>CopyRight © {currentYear} {BLOG_CONFIG.name}</p>
         </div>
     </div>
 </footer>

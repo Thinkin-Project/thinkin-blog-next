@@ -9,6 +9,7 @@
     import { Button } from '$lib/components/ui/button';
     import { Separator } from '$lib/components/ui/separator';
     import { NAV_ITEMS, SOCIAL_LINKS } from '$lib/constants/navigation';
+    import { BLOG_CONFIG } from '$lib/constants/blog';
 
     // Svelte 5 State
     let isMenuOpen = $state(false);
@@ -44,7 +45,7 @@
     class="sticky top-0 z-50 flex items-center justify-between border-b bg-background p-6 md:hidden"
 >
     <div class="flex items-center gap-3">
-        <span class="text-lg font-bold">Thinkin Markdown</span>
+        <span class="text-lg font-bold">{BLOG_CONFIG.name}</span>
     </div>
     <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
         <Menu class="h-6 w-6" />
@@ -94,14 +95,14 @@
     <div class="space-y-6">
         <div class="flex items-center gap-4">
             <div>
-                <h2 class="text-xl font-bold tracking-tight">Thinkin Markdown</h2>
+                <h2 class="text-xl font-bold tracking-tight">{BLOG_CONFIG.name}</h2>
                 <p class="text-sm text-muted-foreground">{currentTime}</p>
             </div>
         </div>
 
         <div>
             <p class="text-sm leading-relaxed text-muted-foreground">
-                一個專注於記錄軟體開發經驗與知識，強調實用收穫與開放分享的部落格。
+                {BLOG_CONFIG.description}
             </p>
         </div>
 
