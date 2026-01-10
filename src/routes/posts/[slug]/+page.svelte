@@ -143,6 +143,18 @@
         </div>
     {/if}
 
+    <div class="animate-in delay-0 duration-700 fade-in slide-in-from-bottom-4">
+        <a
+            href="/posts"
+            class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+        >
+            <ChevronRight
+                class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
+            />
+            所有文章
+        </a>
+    </div>
+
     <!-- Footer Section -->
     <Footer />
 </div>

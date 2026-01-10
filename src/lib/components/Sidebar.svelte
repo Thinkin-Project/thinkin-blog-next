@@ -6,6 +6,7 @@
     import { Menu, X } from 'lucide-svelte';
 
     import SocialLinks from '$lib/components/SocialLinks.svelte';
+    import PostSearch from '$lib/components/PostSearch.svelte';
     import { Button } from '$lib/components/ui/button';
     import { Separator } from '$lib/components/ui/separator';
     import { NAV_ITEMS, SOCIAL_LINKS } from '$lib/constants/navigation';
@@ -63,6 +64,9 @@
                 <X class="h-6 w-6" />
             </Button>
         </div>
+        <div class="mb-6">
+            <PostSearch />
+        </div>
 
         <nav class="flex flex-col text-lg">
             <div class="flex flex-col gap-6">
@@ -105,6 +109,8 @@
                 {BLOG_CONFIG.description}
             </p>
         </div>
+
+        <PostSearch />
 
         <!-- Navigation Links -->
         <div class="flex flex-col gap-6 pt-2">
