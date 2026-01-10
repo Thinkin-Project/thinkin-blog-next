@@ -75,9 +75,9 @@
                         <div class="flex flex-wrap gap-2">
                             {#each data.meta.tags as tag}
                                 <span
-                                    class="inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-muted-foreground"
+                                    class="inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-white"
                                 >
-                                    #{getTagName(tag)}
+                                    {getTagName(tag)}
                                 </span>
                             {/each}
                         </div>
