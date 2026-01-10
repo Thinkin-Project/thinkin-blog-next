@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Github, Globe } from 'lucide-svelte';
+    import { Github, Globe, X, Facebook, Linkedin } from '$lib/components/icons';
 
     import * as Avatar from '$lib/components/ui/avatar';
     import { AUTHORS } from '$lib/constants/authors';
@@ -43,6 +43,36 @@
                                         class="text-zinc-500 transition-colors hover:text-white"
                                     >
                                         <Globe class="h-4 w-4" />
+                                    </a>
+                                {/if}
+                                {#if author.linkedin}
+                                    <a
+                                        href={author.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="text-zinc-500 transition-colors hover:text-white"
+                                    >
+                                        <Linkedin class="h-4 w-4" />
+                                    </a>
+                                {/if}
+                                {#if author.facebook}
+                                    <a
+                                        href={author.facebook}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="text-zinc-500 transition-colors hover:text-white"
+                                    >
+                                        <Facebook class="h-4 w-4" />
+                                    </a>
+                                {/if}
+                                {#if author.x}
+                                    <a
+                                        href={author.x}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="text-zinc-500 transition-colors hover:text-white"
+                                    >
+                                        <X class="h-4 w-4" />
                                     </a>
                                 {/if}
                                 {#if author.github}
