@@ -2,16 +2,16 @@
 description: Commit
 ---
 
-Goal: Generate a concise and meaningful git commit message based on the provided code changes.
+Goal: Generate a single-line git commit message based on the provided change description.
 
 Instructions:
 
-Analyze the provided `git diff` or code changes to understand the context.
+Analyze the code changes or the code snippets provided.
 
-Identify the primary type of the change (e.g., feature, bugfix, refactor, documentation).
+Focus on the high-level intent (the "why") rather than specific implementation details.
 
-Summarize the "why" and "what" of the changes, not just the "how".
+Synthesize the information into a single, concise sentence (Subject Line only).
 
-Output: Provide the final commit message.
+Output: Provide the final one-line commit message.
 
 Message Format: Refer to past cases.
