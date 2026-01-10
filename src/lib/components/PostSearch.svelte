@@ -8,12 +8,20 @@
         CommandGroup,
         CommandItem
     } from '$lib/components/ui/command';
+    import { Button } from '$lib/components/ui/button';
     import { getTopicName } from '$lib/constants/topics';
     import { getTagName } from '$lib/constants/tags';
     import { Search, FileText, Calendar, Tag as TagIcon, Folder } from 'lucide-svelte';
     import Fuse from 'fuse.js';
     import type { ArticleMeta } from '$lib/types';
     import { goto } from '$app/navigation';
+    import { cn } from '$lib/utils';
+
+    interface Props {
+        variant?: 'default' | 'icon';
+    }
+
+    let { variant = 'default' }: Props = $props();
 
     let open = $state(false);
     let query = $state('');
@@ -79,18 +87,30 @@
     }
 </script>
 
-<button
-    onclick={() => (open = true)}
-    class="flex w-full cursor-pointer items-center gap-2 rounded-lg border bg-muted/50 px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted"
->
-    <Search class="h-4 w-4" />
-    <span>搜尋文章...</span>
-    <kbd
-        class="pointer-events-none ml-auto hidden h-5 items-center gap-1 rounded border bg-background px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:flex"
+{#if variant === 'default'}
+    <button
+        onclick={() => (open = true)}
+        class="flex w-full cursor-pointer items-center gap-2 rounded-lg border bg-muted/50 px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted"
     >
-        <span class="text-xs">⌘</span>K
-    </kbd>
-</button>
+        <Search class="h-4 w-4" />
+        <span>搜尋文章...</span>
+        <kbd
+            class="pointer-events-none ml-auto hidden h-5 items-center gap-1 rounded border bg-background px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:flex"
+        >
+            <span class="text-xs">⌘</span>K
+        </kbd>
+    </button>
+{:else}
+    <Button
+        variant="ghost"
+        size="icon"
+        onclick={() => (open = true)}
+        class="cursor-pointer"
+        aria-label="搜尋文章"
+    >
+        <Search class="h-6 w-6" />
+    </Button>
+{/if}
 
 <CommandDialog bind:open shouldFilter={false}>
     <CommandInput placeholder="搜尋文章標題、描述或主題..." bind:value={query} />

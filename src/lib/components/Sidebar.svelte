@@ -48,9 +48,12 @@
     <div class="flex items-center gap-3">
         <span class="text-lg font-bold">{BLOG_CONFIG.name}</span>
     </div>
-    <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
-        <Menu class="h-6 w-6" />
-    </Button>
+    <div class="flex items-center gap-2">
+        <PostSearch variant="icon" />
+        <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
+            <Menu class="h-6 w-6" />
+        </Button>
+    </div>
 </header>
 
 <!-- Mobile Menu Overlay -->
@@ -63,9 +66,6 @@
             <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
                 <X class="h-6 w-6" />
             </Button>
-        </div>
-        <div class="mb-6">
-            <PostSearch />
         </div>
 
         <nav class="flex flex-col text-lg">
