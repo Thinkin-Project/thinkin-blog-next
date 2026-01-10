@@ -22,151 +22,156 @@
 <div class="container mx-auto px-6 py-8 md:py-12">
     <div class="flex flex-col gap-16 lg:flex-row lg:justify-center">
         <!-- Main Content -->
-        <main class="w-full max-w-3xl space-y-16">
-            <!-- Breadcrumb -->
-            <div class="animate-in delay-0 duration-700 fade-in slide-in-from-bottom-4">
-                <a
-                    href="/posts"
-                    class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+        <div class="w-full max-w-3xl">
+            <main class="space-y-16">
+                <!-- Breadcrumb -->
+                <div class="animate-in delay-0 duration-700 fade-in slide-in-from-bottom-4">
+                    <a
+                        href="/posts"
+                        class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                    >
+                        <ChevronRight
+                            class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
+                        />
+                        所有文章
+                    </a>
+                </div>
+
+                <!-- Article Header -->
+                <article
+                    class="animate-in space-y-12 delay-100 duration-700 fade-in slide-in-from-bottom-4"
                 >
-                    <ChevronRight
-                        class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
-                    />
-                    所有文章
-                </a>
-            </div>
-
-            <!-- Article Header -->
-            <article
-                class="animate-in space-y-12 delay-100 duration-700 fade-in slide-in-from-bottom-4"
-            >
-                <header class="space-y-8">
-                    <div class="space-y-4">
-                        <h1
-                            class="text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl"
-                        >
-                            {data.meta.title}
-                        </h1>
-                        <p class="text-xl font-light text-muted-foreground md:text-2xl">
-                            {data.meta.description}
-                        </p>
-                    </div>
-
-                    <div class="flex flex-wrap items-center gap-x-16 gap-y-6 text-sm">
-                        <div class="space-y-1">
-                            <span class="flex items-center gap-2 text-muted-foreground">
-                                <Calendar class="h-3.5 w-3.5" /> 發佈時間
-                            </span>
-                            <span class="block font-medium text-white">{data.meta.date}</span>
+                    <header class="space-y-8">
+                        <div class="space-y-4">
+                            <h1
+                                class="text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl"
+                            >
+                                {data.meta.title}
+                            </h1>
+                            <p class="text-xl font-light text-muted-foreground md:text-2xl">
+                                {data.meta.description}
+                            </p>
                         </div>
-                        {#if data.meta.readingTime}
+
+                        <div class="flex flex-wrap items-center gap-x-16 gap-y-6 text-sm">
                             <div class="space-y-1">
                                 <span class="flex items-center gap-2 text-muted-foreground">
-                                    <Clock class="h-3.5 w-3.5" /> 閱讀時間
+                                    <Calendar class="h-3.5 w-3.5" /> 發佈時間
+                                </span>
+                                <span class="block font-medium text-white">{data.meta.date}</span>
+                            </div>
+                            {#if data.meta.readingTime}
+                                <div class="space-y-1">
+                                    <span class="flex items-center gap-2 text-muted-foreground">
+                                        <Clock class="h-3.5 w-3.5" /> 閱讀時間
+                                    </span>
+                                    <span class="block font-medium text-white"
+                                        >{data.meta.readingTime} 分鐘</span
+                                    >
+                                </div>
+                            {/if}
+                            <div class="space-y-1">
+                                <span class="flex items-center gap-2 text-muted-foreground">
+                                    <Crosshair class="h-3.5 w-3.5" /> 主題
                                 </span>
                                 <span class="block font-medium text-white"
-                                    >{data.meta.readingTime} 分鐘</span
+                                    >{getTopicName(data.meta.topic)}</span
                                 >
                             </div>
-                        {/if}
-                        <div class="space-y-1">
-                            <span class="flex items-center gap-2 text-muted-foreground">
-                                <Crosshair class="h-3.5 w-3.5" /> 主題
-                            </span>
-                            <span class="block font-medium text-white"
-                                >{getTopicName(data.meta.topic)}</span
-                            >
-                        </div>
-                        {#if data.meta.tags && data.meta.tags.length > 0}
-                            <div class="space-y-1">
-                                <span class="flex items-center gap-2 text-muted-foreground">
-                                    <Tag class="h-3.5 w-3.5" /> 標籤
-                                </span>
-                                <div class="flex flex-wrap gap-2">
-                                    {#each data.meta.tags as tag}
-                                        <span
-                                            class="inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-white"
-                                        >
-                                            {getTagName(tag)}
-                                        </span>
-                                    {/each}
+                            {#if data.meta.tags && data.meta.tags.length > 0}
+                                <div class="space-y-1">
+                                    <span class="flex items-center gap-2 text-muted-foreground">
+                                        <Tag class="h-3.5 w-3.5" /> 標籤
+                                    </span>
+                                    <div class="flex flex-wrap gap-2">
+                                        {#each data.meta.tags as tag}
+                                            <span
+                                                class="inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-white"
+                                            >
+                                                {getTagName(tag)}
+                                            </span>
+                                        {/each}
+                                    </div>
                                 </div>
-                            </div>
-                        {/if}
-                    </div>
-                </header>
+                            {/if}
+                        </div>
+                    </header>
 
-                <!-- Hero Image Placeholder -->
-                {#if data.meta.ogImage}
+                    <!-- Hero Image Placeholder -->
+                    {#if data.meta.ogImage}
+                        <div
+                            class="aspect-2/1 w-full overflow-hidden rounded-3xl border border-zinc-800"
+                        >
+                            <img
+                                src={data.meta.ogImage}
+                                alt={data.meta.title}
+                                class="h-full w-full object-cover"
+                            />
+                        </div>
+                    {/if}
+
+                    <!-- Body Content -->
                     <div
-                        class="aspect-2/1 w-full overflow-hidden rounded-3xl border border-zinc-800"
+                        class="prose max-w-none text-lg leading-relaxed text-muted-foreground prose-zinc prose-invert"
                     >
-                        <img
-                            src={data.meta.ogImage}
-                            alt={data.meta.title}
-                            class="h-full w-full object-cover"
-                        />
+                        <data.content />
+                    </div>
+
+                    <!-- Author Block -->
+                    <AuthorBlock authorIds={data.meta.authors} />
+                </article>
+
+                <!-- Bottom Navigation -->
+                {#if data.prev || data.next}
+                    <div
+                        class="flex animate-in items-center justify-between border-zinc-900 delay-200 duration-700 fade-in slide-in-from-bottom-4"
+                    >
+                        <div>
+                            {#if data.prev}
+                                <a
+                                    href="/posts/{data.prev.slug}"
+                                    class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                >
+                                    <ChevronRight
+                                        class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
+                                    />
+                                    上一篇
+                                </a>
+                            {/if}
+                        </div>
+
+                        <div>
+                            {#if data.next}
+                                <a
+                                    href="/posts/{data.next.slug}"
+                                    class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                >
+                                    下一篇
+                                    <ChevronRight
+                                        class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+                                    />
+                                </a>
+                            {/if}
+                        </div>
                     </div>
                 {/if}
 
-                <!-- Body Content -->
-                <div
-                    class="prose max-w-none text-lg leading-relaxed text-muted-foreground prose-zinc prose-invert"
-                >
-                    <data.content />
+                <div class="animate-in delay-0 duration-700 fade-in slide-in-from-bottom-4">
+                    <a
+                        href="/posts"
+                        class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                    >
+                        <ChevronRight
+                            class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
+                        />
+                        所有文章
+                    </a>
                 </div>
-
-                <!-- Author Block -->
-                <AuthorBlock authorIds={data.meta.authors} />
-            </article>
-
-            <!-- Bottom Navigation -->
-            {#if data.prev || data.next}
-                <div
-                    class="flex animate-in items-center justify-between border-zinc-900 delay-200 duration-700 fade-in slide-in-from-bottom-4"
-                >
-                    <div>
-                        {#if data.prev}
-                            <a
-                                href="/posts/{data.prev.slug}"
-                                class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
-                            >
-                                <ChevronRight
-                                    class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
-                                />
-                                上一篇
-                            </a>
-                        {/if}
-                    </div>
-
-                    <div>
-                        {#if data.next}
-                            <a
-                                href="/posts/{data.next.slug}"
-                                class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
-                            >
-                                下一篇
-                                <ChevronRight
-                                    class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-                                />
-                            </a>
-                        {/if}
-                    </div>
-                </div>
-            {/if}
-
-            <div class="animate-in delay-0 duration-700 fade-in slide-in-from-bottom-4">
-                <a
-                    href="/posts"
-                    class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
-                >
-                    <ChevronRight
-                        class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
-                    />
-                    所有文章
-                </a>
+            </main>
+            <div class="mt-16">
+                <Footer />
             </div>
-        </main>
+        </div>
 
         <!-- Sidebar / Table of Contents -->
         <aside class="hidden w-64 shrink-0 lg:block">
@@ -176,10 +181,5 @@
                 {/key}
             </div>
         </aside>
-    </div>
-
-    <!-- Footer Section -->
-    <div class="mt-16">
-        <Footer />
     </div>
 </div>
