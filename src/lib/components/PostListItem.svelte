@@ -1,11 +1,12 @@
 <script lang="ts">
-    import { BookOpenText } from 'lucide-svelte';
+    import { BookOpenText, Clock } from 'lucide-svelte';
 
-    let { title, subtitle, description, date, link } = $props<{
+    let { title, subtitle, description, date, readingTime, link } = $props<{
         title: string;
         subtitle?: string;
         description?: string;
         date: string;
+        readingTime?: number;
         link: string;
     }>();
 </script>
@@ -28,6 +29,16 @@
                 <p class="text-sm text-muted-foreground">{description || subtitle}</p>
             </div>
         </div>
-        <span class="mt-2 font-mono text-sm text-muted-foreground md:mt-0">{date}</span>
+        <div
+            class="mt-2 flex flex-col font-mono text-xs text-muted-foreground md:mt-0 md:items-end md:gap-1"
+        >
+            <span class="text-sm">{date}</span>
+            {#if readingTime}
+                <span class="flex items-center gap-2 text-sm opacity-80">
+                    <Clock class="h-3 w-3" />
+                    {readingTime} 分鐘
+                </span>
+            {/if}
+        </div>
     </a>
 </li>

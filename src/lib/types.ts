@@ -29,6 +29,7 @@ export interface ArticleMeta {
     topic: string; // 主題
     tags: string[]; // 標籤陣列
     authors?: string[]; // 作者 ID 陣列
+    readingTime?: number; // 預估閱讀時間 (分鐘)
 }
 
 /**

@@ -1,7 +1,8 @@
 <script lang="ts">
-    import { ChevronRight, Calendar, Crosshair, Tag } from 'lucide-svelte';
+    import { ChevronRight, Calendar, Crosshair, Tag, Clock } from 'lucide-svelte';
 
     import AuthorBlock from '$lib/components/AuthorBlock.svelte';
+    import ReadingProgressBar from '$lib/components/ReadingProgressBar.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import { BLOG_CONFIG } from '$lib/constants/blog';
     import { getTopicName } from '$lib/constants/topics';
@@ -13,6 +14,8 @@
 <svelte:head>
     <title>{data.meta.title} | {BLOG_CONFIG.name}</title>
 </svelte:head>
+
+<ReadingProgressBar />
 
 <div class="container mx-auto max-w-3xl space-y-16 px-6 py-8 md:py-12">
     <!-- Breadcrumb -->
@@ -47,6 +50,16 @@
                     </span>
                     <span class="block font-medium text-white">{data.meta.date}</span>
                 </div>
+                {#if data.meta.readingTime}
+                    <div class="space-y-1">
+                        <span class="flex items-center gap-2 text-muted-foreground">
+                            <Clock class="h-3.5 w-3.5" /> 閱讀時間
+                        </span>
+                        <span class="block font-medium text-white"
+                            >{data.meta.readingTime} 分鐘</span
+                        >
+                    </div>
+                {/if}
                 <div class="space-y-1">
                     <span class="flex items-center gap-2 text-muted-foreground">
                         <Crosshair class="h-3.5 w-3.5" /> 主題

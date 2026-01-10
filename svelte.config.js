@@ -12,7 +12,30 @@ let highlighter;
 const mdsvexOptions = {
     extensions: ['.md'],
     rehypePlugins: [rehypeSlug],
-    remarkPlugins: [remarkToc],
+    remarkPlugins: [
+        remarkToc,
+        // 自定義插件計算閱讀時間
+        () => {
+            return (tree, { data }) => {
+                // 註：在 svelte.config.js 中 import 外部套件有時會有問題
+                // 這裡透過遍歷 tree 來提取純文字進而計算閱讀時間
+                let text = '';
+                const visit = (node) => {
+                    if (node.type === 'text') text += node.value;
+                    if (node.children) node.children.forEach(visit);
+                };
+                visit(tree);
+
+                // 計算閱讀時間 (簡單實作)
+                const chineseCount = (text.match(/[\u4e00-\u9fa5]/g) || []).length;
+                const englishCount = text.split(/\s+/).filter((w) => w.length > 0).length;
+                const readingTime = Math.ceil(chineseCount / 300 + englishCount / 200);
+
+                data.fm = data.fm || {};
+                data.fm.readingTime = readingTime > 0 ? readingTime : 1;
+            };
+        }
+    ],
     highlight: {
         highlighter: async (code, lang = 'text') => {
             if (!highlighter) {
