@@ -9,7 +9,7 @@
     <DialogContent class="overflow-hidden p-0 shadow-lg">
         <Command
             {shouldFilter}
-            class="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-4 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
+            class="**:[data-cmdk-group]:not([hidden])~[data-cmdk-group]:pt-0 **:[data-cmdk-input-wrapper]_svg]:h-5 **:[data-cmdk-input-wrapper]_svg]:w-5 **:[data-cmdk-item]_svg]:h-5 **:[data-cmdk-item]_svg]:w-5 **:[data-cmdk-group]:px-2 **:[data-cmdk-group-heading]:px-2 **:[data-cmdk-group-heading]:font-medium **:[data-cmdk-group-heading]:text-muted-foreground **:[data-cmdk-input]:h-12 **:[data-cmdk-item]:px-4 **:[data-cmdk-item]:py-3"
         >
             {@render children?.()}
         </Command>
