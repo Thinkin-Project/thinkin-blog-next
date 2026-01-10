@@ -39,7 +39,7 @@
                     <Input
                         id="name"
                         placeholder="你的名字"
-                        class="h-11 rounded-md border-zinc-800 bg-zinc-950 px-3 py-2 text-white transition-colors duration-300 placeholder:text-zinc-600 focus-visible:bg-zinc-900 focus-visible:ring-0"
+                        class="h-11 rounded-md border-zinc-800 bg-zinc-950! px-3 py-2 text-white transition-colors duration-300 placeholder:text-zinc-600 focus-visible:bg-zinc-900! focus-visible:ring-0"
                     />
                 </div>
                 <div class="flex w-full flex-col gap-2">
@@ -47,7 +47,7 @@
                     <Input
                         id="topic"
                         placeholder="例如：文章交流、技術諮詢"
-                        class="h-11 rounded-md border-zinc-800 bg-zinc-950 px-3 py-2 text-white transition-colors duration-300 placeholder:text-zinc-600 focus-visible:bg-zinc-900 focus-visible:ring-0"
+                        class="h-11 rounded-md border-zinc-800 bg-zinc-950! px-3 py-2 text-white transition-colors duration-300 placeholder:text-zinc-600 focus-visible:bg-zinc-900! focus-visible:ring-0"
                     />
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 <textarea
                     id="message"
                     placeholder="請輸入你想說的話..."
-                    class="flex min-h-[160px] w-full resize-none rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-white transition-colors duration-300 outline-none placeholder:text-zinc-600 focus-visible:border-ring focus-visible:ring-0"
+                    class="flex min-h-[160px] w-full resize-none rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-white transition-colors duration-300 outline-none placeholder:text-zinc-600 focus-visible:border-ring focus-visible:bg-zinc-900 focus-visible:ring-0"
                 ></textarea>
             </div>
 

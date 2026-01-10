@@ -1,11 +1,11 @@
-import { House, Mail, Newspaper } from 'lucide-svelte';
+import { House, Newspaper, Rss } from 'lucide-svelte';
 
 import type { NavItem, SocialLink } from '$lib/types';
 
 export const NAV_ITEMS: NavItem[] = [
     { name: '首頁', href: '/', icon: House },
     { name: '文章', href: '/posts', icon: Newspaper },
-    { name: '聯絡我們', href: '/contact', icon: Mail }
+    { name: 'RSS', href: '/rss.xml', icon: Rss }
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [];
