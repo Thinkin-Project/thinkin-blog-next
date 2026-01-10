@@ -1,19 +1,18 @@
 <script lang="ts">
     import { page } from '$app/state';
-
-    import { ArrowRight, CornerDownRight } from 'lucide-svelte';
+    import { ChevronRight, CornerDownRight } from 'lucide-svelte';
 
     import Footer from '$lib/components/Footer.svelte';
+    import Pagination from '$lib/components/Pagination.svelte';
     import PostListItem from '$lib/components/PostListItem.svelte';
     import { BLOG_CONFIG } from '$lib/constants/blog';
     import { Separator } from '$lib/components/ui/separator';
     import { TOPICS } from '$lib/constants/topics';
 
     let { data } = $props();
+    const { posts, pagination } = $derived(data);
     const topics = TOPICS;
     const currentTopic = $derived(topics.find((t) => t.slug === page.params.slug)?.name || 'Topic');
-
-    const posts = $derived(data.posts || []);
 </script>
 
 <svelte:head>
@@ -29,8 +28,8 @@
                 href="/posts"
                 class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-zinc-400 ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
             >
-                <ArrowRight
-                    class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
+                <ChevronRight
+                    class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
                 />
                 所有文章
             </a>
@@ -63,6 +62,11 @@
                 <PostListItem {...post} link="/posts/{post.slug}" />
             {/each}
         </ul>
+
+        <!-- Pagination Controls -->
+        {#if pagination}
+            <Pagination {...pagination} />
+        {/if}
     </section>
 
     <!-- Footer Section -->

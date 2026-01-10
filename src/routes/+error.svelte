@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from '$app/state';
 
-    import { ArrowRight } from 'lucide-svelte';
+    import { ChevronRight } from 'lucide-svelte';
 
     import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';
     import EmptyState from '$lib/components/EmptyState.svelte';
@@ -20,8 +20,8 @@
             href="/"
             class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-zinc-400 ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
         >
-            <ArrowRight
-                class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
+            <ChevronRight
+                class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
             />
             首頁
         </a>

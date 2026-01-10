@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ArrowRight, Calendar, Crosshair, Tag } from 'lucide-svelte';
+    import { ChevronRight, Calendar, Crosshair, Tag } from 'lucide-svelte';
 
     import AuthorBlock from '$lib/components/AuthorBlock.svelte';
     import Footer from '$lib/components/Footer.svelte';
@@ -21,8 +21,8 @@
             href="/posts"
             class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
         >
-            <ArrowRight
-                class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
+            <ChevronRight
+                class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
             />
             所有文章
         </a>
@@ -85,7 +85,9 @@
         {/if}
 
         <!-- Body Content -->
-        <div class="prose max-w-none text-lg leading-relaxed text-muted-foreground prose-zinc prose-invert">
+        <div
+            class="prose max-w-none text-lg leading-relaxed text-muted-foreground prose-zinc prose-invert"
+        >
             <data.content />
         </div>
 
@@ -104,8 +106,8 @@
                         href="/posts/{data.prev.slug}"
                         class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                     >
-                        <ArrowRight
-                            class="mr-2 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
+                        <ChevronRight
+                            class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
                         />
                         上一篇
                     </a>
@@ -119,8 +121,8 @@
                         class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                     >
                         下一篇
-                        <ArrowRight
-                            class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                        <ChevronRight
+                            class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
                         />
                     </a>
                 {/if}

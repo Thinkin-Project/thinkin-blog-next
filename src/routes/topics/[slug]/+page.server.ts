@@ -1,16 +1,37 @@
+import { BLOG_CONFIG } from '$lib/constants/blog';
 import { getPosts } from '$lib/server/posts';
 
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, url }) => {
     const allPosts = await getPosts();
 
     // Filter posts by topic matching the slug
-    const posts = allPosts.filter((post) => {
+    const filteredPosts = allPosts.filter((post) => {
         return post.topic === params.slug;
     });
 
+    const pageStr = url.searchParams.get('page');
+    let currentPage = pageStr ? parseInt(pageStr) : 1;
+    if (isNaN(currentPage)) currentPage = 1;
+
+    const pageSize = BLOG_CONFIG.postsPerPage;
+    const totalPosts = filteredPosts.length;
+    const totalPages = Math.ceil(totalPosts / pageSize);
+
+    // 確保頁碼在有效範圍內
+    const validPage = Math.max(1, Math.min(currentPage, totalPages || 1));
+
+    const start = (validPage - 1) * pageSize;
+    const end = start + pageSize;
+    const posts = filteredPosts.slice(start, end);
+
     return {
-        posts
+        posts,
+        pagination: {
+            currentPage: validPage,
+            totalPages,
+            totalPosts
+        }
     };
 };

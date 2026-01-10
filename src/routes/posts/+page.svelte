@@ -2,12 +2,15 @@
     import { CornerDownRight } from 'lucide-svelte';
 
     import Footer from '$lib/components/Footer.svelte';
+    import Pagination from '$lib/components/Pagination.svelte';
     import PostListItem from '$lib/components/PostListItem.svelte';
+    import { buttonVariants } from '$lib/components/ui/button';
     import Separator from '$lib/components/ui/separator/Separator.svelte';
     import { BLOG_CONFIG } from '$lib/constants/blog';
     import { TOPICS } from '$lib/constants/topics';
 
     let { data } = $props();
+    const { posts, pagination } = $derived(data);
     const topics = TOPICS;
 </script>
 
@@ -41,10 +44,15 @@
     <section class="animate-in space-y-10 delay-200 duration-700 fade-in slide-in-from-bottom-4">
         <h2 class="text-4xl font-bold tracking-tight">所有文章</h2>
         <ul class="space-y-2">
-            {#each data.posts as post}
+            {#each posts as post}
                 <PostListItem {...post} link="/posts/{post.slug}" />
             {/each}
         </ul>
+
+        <!-- Pagination Controls -->
+        {#if pagination}
+            <Pagination {...pagination} />
+        {/if}
     </section>
 
     <!-- Footer Section -->

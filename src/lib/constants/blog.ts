@@ -17,5 +17,7 @@ export const BLOG_CONFIG = {
     // 置頂文章顯示數量限制
     featuredPostsLimit: 3,
     // 最新文章顯示數量限制
-    newPostsLimit: 10
+    newPostsLimit: 10,
+    // 每頁顯示文章數量
+    postsPerPage: 10
 };
