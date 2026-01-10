@@ -71,6 +71,8 @@
     function handleSelect(slug: string) {
         searchState.close();
         query = '';
+        // 手動重置捲軸，確保新文章從頂端開始，避開舊文章的滾動位置干擾
+        window.scrollTo(0, 0);
         goto(`/posts/${slug}`);
     }
 </script>
