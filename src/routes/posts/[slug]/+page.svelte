@@ -4,6 +4,7 @@
     import { Calendar, ChevronRight, Clock, Crosshair, Tag } from 'lucide-svelte';
 
     import AuthorBlock from '$lib/components/AuthorBlock.svelte';
+    import BackToTop from '$lib/components/BackToTop.svelte';
     import Donate from '$lib/components/Donate.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import Giscus from '$lib/components/Giscus.svelte';
@@ -210,3 +211,5 @@
         </aside>
     </div>
 </div>
+
+<BackToTop />
