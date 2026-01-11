@@ -1,0 +1,7 @@
+{
+    "origins": [
+        "http://localhost:5173",
+        "https://www.thinkinmd.com",
+        "https://thinkin-blog-next.vercel.app"
+    ]
+}
