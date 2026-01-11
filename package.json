@@ -1,7 +1,9 @@
 {
     "name": "thinkin-blog-next",
     "private": true,
-    "version": "0.0.1",
+    "version": "1.0.0",
+    "license": "GPL-3.0",
+    "author": "Neil Tsai <cdcd71517@gmail.com>",
     "type": "module",
     "scripts": {
         "dev": "vite dev",

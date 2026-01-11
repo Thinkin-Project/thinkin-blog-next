@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'net-standard'
 tags: ['active-directory', 'adsi', 'winnt']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此篇文章主要帶大家**利用 .NET 透過 System.DirectoryServices 套件來確認 Windows 使用者是否為啟用狀態**，有興趣就往下看吧！

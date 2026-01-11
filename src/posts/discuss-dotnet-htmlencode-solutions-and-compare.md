@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'net'
 tags: ['xss', 'html-encode']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此篇文章主要帶大家**認識 .NET 各種 HtmlEncode 解決方案之間的比較**，有興趣就往下看吧！

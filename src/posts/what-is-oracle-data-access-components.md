@@ -8,7 +8,7 @@ drafted: false
 featured: false
 topic: 'oracle'
 tags: ['odac', 'oracle-client', 'data-access']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 ## 前言

@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'object-oriented-design-principles'
 tags: ['solid']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此篇文章偏重於以圖解方式，簡單帶大家了解 **單一職責原則** 哦，有興趣就往下看吧！

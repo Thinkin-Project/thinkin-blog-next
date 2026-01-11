@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'design-pattern'
 tags: ['creational-pattern']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此篇文章簡單帶大家了解 **Builder 建造者模式**，有興趣就往下看吧！

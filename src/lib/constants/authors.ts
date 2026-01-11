@@ -1,8 +1,8 @@
 import type { Author } from '../types';
 
 export const AUTHORS: Record<string, Author> = {
-    neil: {
-        id: 'neil',
+    ['neil-tsai']: {
+        id: 'neil-tsai',
         name: 'Neil Tsai',
         avatar: '/assets/authors/neil.jpg',
         bio: '樂於分享所見所聞所覺所知的全端工程師',

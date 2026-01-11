@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'visual-studio'
 tags: ['ide']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此篇文章主要帶大家**以不重灌系統前提下讓 Visual Studio 2019 可以重新輸入授權金鑰**，有興趣就往下看吧！

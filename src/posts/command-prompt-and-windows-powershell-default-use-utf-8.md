@@ -8,7 +8,7 @@ drafted: false
 featured: false
 topic: 'command-line'
 tags: ['windows', 'command-prompt', 'windows-powershell']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此文主要**協助各位調整 Command Prompt / Windows Powershell 預設使用 UTF-8 編碼**，有興趣就往下看吧！

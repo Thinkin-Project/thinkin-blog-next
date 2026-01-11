@@ -8,7 +8,7 @@ drafted: false
 featured: false
 topic: 'visual-studio'
 tags: ['visual-studio-extension', 'axocover', 'unit-test', 'code-coverage']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 ## 前言

@@ -8,7 +8,7 @@ drafted: false
 featured: false
 topic: 'visual-studio'
 tags: ['visual-studio-extension', 'installer-projects', 'deploy']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 ## 前言

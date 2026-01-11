@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'net-core'
 tags: ['worker-service']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此篇文章主要帶大家**利用 .NET Core 3.1 實作 Worker Service**，有興趣就往下看吧！

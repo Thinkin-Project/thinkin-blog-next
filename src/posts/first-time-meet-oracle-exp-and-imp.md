@@ -8,7 +8,7 @@ drafted: false
 featured: false
 topic: 'oracle'
 tags: ['command', 'exp', 'imp', 'data-access']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此文主要**初步了解 Oracle exp & imp 指令使用方式**哦，有興趣就往下看吧！

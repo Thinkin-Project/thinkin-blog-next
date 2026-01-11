@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'net-core'
 tags: ['crypto', 'data-protection-api']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此篇文章主要帶大家**利用 Data Protection API 實作資料保護機制於 .Net Core 3.1** 上，有興趣就往下看吧！

@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'design-pattern'
 tags: ['creational-pattern']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此篇文章簡單帶大家了解 **Singleton 單例模式** 哦，有興趣就往下看吧！

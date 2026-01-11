@@ -8,7 +8,7 @@ drafted: false
 featured: false
 topic: 'browser-extension'
 tags: ['chrome-extension', 'jmeter', 'blazemeter', 'stress-test']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 如何簡單錄製 JMeter 測試腳本，試試 Chrome 擴充功能的 BlazeMeter 吧，讓我們看下去!!

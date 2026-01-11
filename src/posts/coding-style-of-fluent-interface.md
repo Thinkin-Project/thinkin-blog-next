@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'api-design-pattern'
 tags: ['fluent-interface', 'code-readability']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 其實 [Fluent Interface（流暢介面）](https://en.wikipedia.org/wiki/Fluent_interface)不是新概念，早在西元 2005 年就由 [Eric Evans](https://en.wikipedia.org/w/index.php?title=Eric_Evans_(technologist)&action=edit&redlink=1) 和 [Martin Fowler](https://en.wikipedia.org/wiki/Martin_Fowler_(software_engineer)) 所提出，但我覺得值得讓大家初步了解其實作概念，因為真的很有趣呀ヽ(✿ﾟ▽ﾟ)ノ

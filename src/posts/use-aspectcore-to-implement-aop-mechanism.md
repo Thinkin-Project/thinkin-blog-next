@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'net-core'
 tags: ['aop', 'aspectcore']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此篇文章主要帶大家**利用 AspectCore 實作 AOP 機制於 .Net Core 3.1** 上，有興趣就往下看吧！

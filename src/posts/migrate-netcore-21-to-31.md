@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'net-core'
 tags: ['migration']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 此篇文章主要以**自身專案情況將 .NET Core 2.1 升版至 3.1 哦**，有興趣就往下看吧！

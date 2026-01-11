@@ -8,7 +8,7 @@ drafted: false
 featured: false
 topic: 'oracle'
 tags: ['odp-net', 'error-handling', 'data-access']
-authors: ['neil']
+authors: ['neil-tsai']
 ---
 
 ## 前言
