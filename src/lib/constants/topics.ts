@@ -12,7 +12,7 @@ export const TOPICS: Topic[] = [
     { name: 'API 設計模式', slug: 'api-design-pattern' },
     { name: '.NET Standard', slug: 'net-standard' },
     { name: '.NET Core', slug: 'net-core' },
-    { name: '.NET', slug: 'net' },
+    { name: '.NET', slug: 'net' }
 ];
 
 /**

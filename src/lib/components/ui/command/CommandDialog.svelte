@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Dialog, DialogContent } from '$lib/components/ui/dialog/index.js';
+
     import { Command } from './index.js';
 
     let { open = $bindable(false), children, shouldFilter = true, ...restProps } = $props();

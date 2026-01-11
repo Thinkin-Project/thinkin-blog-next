@@ -1,7 +1,7 @@
 <script lang="ts">
     import favicon from '$lib/assets/favicon.ico';
-    import Sidebar from '$lib/components/Sidebar.svelte';
     import GlobalSearch from '$lib/components/GlobalSearch.svelte';
+    import Sidebar from '$lib/components/Sidebar.svelte';
     import { BLOG_CONFIG } from '$lib/constants/blog';
 
     import './layout.css';
