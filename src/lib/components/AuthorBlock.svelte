@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { Github, Globe, X, Facebook, Linkedin } from '$lib/components/icons';
-
+    import { Facebook, Github, Globe, Linkedin, X } from '$lib/components/icons';
     import * as Avatar from '$lib/components/ui/avatar';
     import { AUTHORS } from '$lib/constants/authors';
     import type { Author } from '$lib/types';
@@ -16,7 +15,7 @@
 </script>
 
 {#if postAuthors.length > 0}
-    <div class="mt-16 border-t border-zinc-900 pt-8">
+    <div class="mt-2 border-t border-zinc-900 pt-8">
         <h3 class="mb-6 text-sm font-semibold tracking-wider text-zinc-500 uppercase">
             {postAuthors.length > 1 ? '作者群' : '作者'}
         </h3>
@@ -43,6 +42,16 @@
                                         class="text-zinc-500 transition-colors hover:text-white"
                                     >
                                         <Globe class="h-4 w-4" />
+                                    </a>
+                                {/if}
+                                {#if author.github}
+                                    <a
+                                        href={author.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="text-zinc-500 transition-colors hover:text-white"
+                                    >
+                                        <Github class="h-4 w-4" />
                                     </a>
                                 {/if}
                                 {#if author.linkedin}
@@ -73,16 +82,6 @@
                                         class="text-zinc-500 transition-colors hover:text-white"
                                     >
                                         <X class="h-4 w-4" />
-                                    </a>
-                                {/if}
-                                {#if author.github}
-                                    <a
-                                        href={author.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-zinc-500 transition-colors hover:text-white"
-                                    >
-                                        <Github class="h-4 w-4" />
                                     </a>
                                 {/if}
                             </div>

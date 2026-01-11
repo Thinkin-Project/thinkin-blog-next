@@ -1,14 +1,16 @@
 <script lang="ts">
-    import { ChevronRight, Calendar, Crosshair, Tag, Clock } from 'lucide-svelte';
+    import { page } from '$app/stores';
+
+    import { Calendar, ChevronRight, Clock, Crosshair, Tag } from 'lucide-svelte';
 
     import AuthorBlock from '$lib/components/AuthorBlock.svelte';
-    import ReadingProgressBar from '$lib/components/ReadingProgressBar.svelte';
-    import TableOfContents from '$lib/components/TableOfContents.svelte';
     import Footer from '$lib/components/Footer.svelte';
-    import { page } from '$app/stores';
+    import ReadingProgressBar from '$lib/components/ReadingProgressBar.svelte';
+    import ShareButtons from '$lib/components/ShareButtons.svelte';
+    import TableOfContents from '$lib/components/TableOfContents.svelte';
     import { BLOG_CONFIG } from '$lib/constants/blog';
-    import { getTopicName } from '$lib/constants/topics';
     import { getTagName } from '$lib/constants/tags';
+    import { getTopicName } from '$lib/constants/topics';
 
     let { data } = $props();
 </script>
@@ -20,7 +22,14 @@
 <ReadingProgressBar />
 
 <div class="container mx-auto px-6 py-8 md:py-12">
-    <div class="flex flex-col gap-16 lg:flex-row lg:justify-center">
+    <div class="flex flex-col gap-8 lg:flex-row lg:justify-center lg:gap-16">
+        <!-- Left Share Sidebar (Desktop Only) -->
+        <aside class="hidden lg:block">
+            <div class="sticky top-32 flex flex-col items-center gap-4">
+                <ShareButtons layout="vertical" title={data.meta.title} />
+            </div>
+        </aside>
+
         <!-- Main Content -->
         <div class="w-full max-w-3xl">
             <main class="space-y-16">
@@ -115,6 +124,14 @@
                         class="prose max-w-none text-lg leading-relaxed text-muted-foreground prose-zinc prose-invert"
                     >
                         <data.content />
+                    </div>
+
+                    <!-- Share Buttons (Bottom) -->
+                    <div class="mt-16 space-y-6 border-t border-zinc-900 pt-10 pb-2">
+                        <p class="text-center text-sm font-medium text-muted-foreground">
+                            如果這篇文章對你有幫助，歡迎分享給更多人！
+                        </p>
+                        <ShareButtons title={data.meta.title} />
                     </div>
 
                     <!-- Author Block -->
