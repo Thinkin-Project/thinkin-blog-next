@@ -5,12 +5,13 @@
 
     import { Menu, X } from 'lucide-svelte';
 
-    import SocialLinks from '$lib/components/SocialLinks.svelte';
+    import Donate from '$lib/components/Donate.svelte';
     import PostSearch from '$lib/components/PostSearch.svelte';
+    import SocialLinks from '$lib/components/SocialLinks.svelte';
     import { Button } from '$lib/components/ui/button';
     import { Separator } from '$lib/components/ui/separator';
-    import { NAV_ITEMS, SOCIAL_LINKS } from '$lib/constants/navigation';
     import { BLOG_CONFIG } from '$lib/constants/blog';
+    import { NAV_ITEMS, SOCIAL_LINKS } from '$lib/constants/navigation';
 
     // Svelte 5 State
     let isMenuOpen = $state(false);
@@ -68,7 +69,7 @@
             </Button>
         </div>
 
-        <nav class="flex flex-col text-lg">
+        <nav class="flex flex-1 flex-col text-lg">
             <div class="flex flex-col gap-6">
                 {#each NAV_ITEMS as item}
                     <a
@@ -88,6 +89,10 @@
             <Separator class="my-8 bg-zinc-800" />
 
             <SocialLinks links={SOCIAL_LINKS} onclick={closeMenu} />
+
+            <div class="mt-auto pt-8">
+                <Donate variant="sidebar" />
+            </div>
         </nav>
     </div>
 {/if}
@@ -127,5 +132,9 @@
                 </a>
             {/each}
         </div>
+    </div>
+
+    <div class="pt-8">
+        <Donate variant="sidebar" />
     </div>
 </nav>

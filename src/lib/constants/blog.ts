@@ -19,5 +19,13 @@ export const BLOG_CONFIG = {
     // 最新文章顯示數量限制
     newPostsLimit: 10,
     // 每頁顯示文章數量
-    postsPerPage: 10
+    postsPerPage: 10,
+    // 贊助連結
+    donations: [
+        {
+            platform: 'Ko-fi',
+            url: 'https://ko-fi.com/thinkinmd',
+            image: 'https://storage.ko-fi.com/cdn/kofi3.png?v=3'
+        }
+    ]
 };

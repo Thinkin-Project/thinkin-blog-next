@@ -4,6 +4,7 @@
     import { Calendar, ChevronRight, Clock, Crosshair, Tag } from 'lucide-svelte';
 
     import AuthorBlock from '$lib/components/AuthorBlock.svelte';
+    import Donate from '$lib/components/Donate.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import ReadingProgressBar from '$lib/components/ReadingProgressBar.svelte';
     import ShareButtons from '$lib/components/ShareButtons.svelte';
@@ -133,6 +134,9 @@
                         </p>
                         <ShareButtons title={data.meta.title} />
                     </div>
+
+                    <!-- Donate Block -->
+                    <Donate />
 
                     <!-- Author Block -->
                     <AuthorBlock authorIds={data.meta.authors} />
