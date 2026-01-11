@@ -6,6 +6,7 @@
     import AuthorBlock from '$lib/components/AuthorBlock.svelte';
     import Donate from '$lib/components/Donate.svelte';
     import Footer from '$lib/components/Footer.svelte';
+    import Giscus from '$lib/components/Giscus.svelte';
     import ReadingProgressBar from '$lib/components/ReadingProgressBar.svelte';
     import ShareButtons from '$lib/components/ShareButtons.svelte';
     import TableOfContents from '$lib/components/TableOfContents.svelte';
@@ -140,6 +141,9 @@
 
                     <!-- Author Block -->
                     <AuthorBlock authorIds={data.meta.authors} />
+
+                    <!-- Giscus Comments -->
+                    <Giscus />
                 </article>
 
                 <!-- Bottom Navigation -->

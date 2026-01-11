@@ -27,5 +27,20 @@ export const BLOG_CONFIG = {
             url: 'https://ko-fi.com/thinkinmd',
             image: 'https://storage.ko-fi.com/cdn/kofi3.png?v=3'
         }
-    ]
+    ],
+    // Giscus 留言系統設定
+    giscus: {
+        repo: '',
+        repoId: '',
+        category: 'Announcements',
+        categoryId: '',
+        mapping: 'title',
+        strict: '0',
+        reactionsEnabled: '1',
+        emitMetadata: '0',
+        inputPosition: 'top',
+        theme: 'dark',
+        lang: 'en',
+        loading: 'lazy'
+    }
 };
