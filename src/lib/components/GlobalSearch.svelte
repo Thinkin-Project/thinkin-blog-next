@@ -1,19 +1,22 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+
+    import { goto } from '$app/navigation';
+
+    import Fuse from 'fuse.js';
+    import { Calendar, FileText, Folder, Tag as TagIcon } from 'lucide-svelte';
+
     import {
         CommandDialog,
-        CommandInput,
-        CommandList,
         CommandGroup,
-        CommandItem
+        CommandInput,
+        CommandItem,
+        CommandList
     } from '$lib/components/ui/command';
-    import { getTopicName } from '$lib/constants/topics';
     import { getTagName } from '$lib/constants/tags';
-    import { FileText, Calendar, Tag as TagIcon, Folder } from 'lucide-svelte';
-    import Fuse from 'fuse.js';
-    import type { ArticleMeta } from '$lib/types';
-    import { goto } from '$app/navigation';
+    import { getTopicName } from '$lib/constants/topics';
     import { searchState } from '$lib/search.svelte';
+    import type { ArticleMeta } from '$lib/types';
 
     let query = $state('');
     let posts = $state<ArticleMeta[]>([]);
@@ -91,7 +94,7 @@
                         class="cursor-pointer py-3"
                     >
                         <div class="flex w-full items-start gap-3">
-                            <div class="mt-1 rounded-full bg-primary/10 p-2 text-primary">
+                            <div class="mt-4 rounded-full bg-primary/10 p-2 text-primary">
                                 <FileText class="h-4 w-4" />
                             </div>
                             <div class="flex flex-col gap-1 overflow-hidden text-left">

@@ -40,7 +40,7 @@
     <div class="mt-12 flex items-center justify-center gap-4">
         <a
             href={currentPage > 1 ? `?page=${currentPage - 1}` : undefined}
-            class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 {currentPage ===
+            class="group inline-flex items-center justify-center rounded-md border border-input bg-card px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-secondary hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 {currentPage ===
             1
                 ? 'pointer-events-none opacity-50'
                 : ''}"
@@ -60,8 +60,8 @@
                         href="?page={pageNum}"
                         class="flex h-8 w-8 items-center justify-center rounded-md border text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 {currentPage ===
                         pageNum
-                            ? 'border-zinc-700 bg-zinc-800 text-white'
-                            : 'border-transparent text-muted-foreground hover:bg-zinc-900 hover:text-white'}"
+                            ? 'border-primary bg-primary text-primary-foreground'
+                            : 'border-transparent text-muted-foreground hover:bg-secondary'}"
                     >
                         {pageNum}
                     </a>
@@ -71,7 +71,7 @@
 
         <a
             href={currentPage < totalPages ? `?page=${currentPage + 1}` : undefined}
-            class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 {currentPage ===
+            class="group inline-flex items-center justify-center rounded-md border border-input bg-card px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-secondary hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 {currentPage ===
             totalPages
                 ? 'pointer-events-none opacity-50'
                 : ''}"

@@ -35,19 +35,19 @@
             name: 'LinkedIn',
             icon: Linkedin,
             href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-            color: 'hover:text-[#0A66C2] hover:bg-zinc-800'
+            color: 'hover:text-[#0A66C2] hover:bg-secondary'
         },
         {
             name: 'Facebook',
             icon: Facebook,
             href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-            color: 'hover:text-[#1877F2] hover:bg-zinc-800'
+            color: 'hover:text-[#1877F2] hover:bg-secondary'
         },
         {
             name: 'X',
             icon: X,
             href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-            color: 'hover:text-white hover:bg-zinc-800'
+            color: 'hover:text-foreground hover:bg-secondary'
         }
     ]);
 
@@ -78,7 +78,7 @@
             rel="noopener noreferrer"
             title="分享至 {link.name}"
             class={cn(
-                'flex h-10 w-10 items-center justify-center rounded-full border border-zinc-800 text-muted-foreground transition-all duration-200',
+                'flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-200',
                 link.color
             )}
         >
@@ -91,7 +91,7 @@
         onclick={copyToClipboard}
         title="複製連結"
         class={cn(
-            'flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-zinc-800 text-muted-foreground transition-all duration-200 hover:bg-zinc-800 hover:text-white',
+            'flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-200 hover:bg-secondary hover:text-foreground',
             copied && 'border-green-500/50 text-green-500 hover:text-green-400'
         )}
     >

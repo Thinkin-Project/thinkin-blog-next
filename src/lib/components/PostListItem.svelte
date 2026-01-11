@@ -1,5 +1,6 @@
 <script lang="ts">
     import { BookOpenText, Calendar, Clock } from 'lucide-svelte';
+
     import { getTagName } from '$lib/constants/tags';
 
     let {
@@ -24,7 +25,7 @@
 <li class="group list-none">
     <a
         href={link}
-        class="-mx-3 flex flex-col justify-between rounded-lg px-3 py-3 transition-colors group-hover:bg-zinc-900/50 md:flex-row md:items-center"
+        class="-mx-3 flex flex-col justify-between rounded-lg px-3 py-3 transition-colors hover:bg-secondary/50 md:flex-row md:items-center"
     >
         <div class="relative flex items-center gap-3">
             <BookOpenText
@@ -37,7 +38,7 @@
                     <div class="flex flex-wrap gap-2">
                         {#each tags as tag}
                             <span
-                                class="inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-muted-foreground transition-colors group-hover:border-primary/30 group-hover:text-primary"
+                                class="inline-flex items-center justify-center rounded-md border border-border bg-card px-2 py-0.5 text-xs font-medium whitespace-nowrap text-muted-foreground transition-colors group-hover:border-primary/30 group-hover:text-primary"
                             >
                                 {getTagName(tag)}
                             </span>

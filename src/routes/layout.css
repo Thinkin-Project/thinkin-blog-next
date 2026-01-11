@@ -4,6 +4,7 @@
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant no-transitions (&:is(.no-transitions, .no-transitions *));
 
 :root {
     --radius: 0.625rem;
@@ -120,13 +121,19 @@
     * {
         @apply border-border outline-ring/50;
     }
+
+    .no-transitions,
+    .no-transitions * {
+        transition: none !important;
+    }
+
     body {
         @apply bg-background font-sans text-foreground;
     }
 
     /* 優化文章 Markdown 內的圖片樣式 */
     .prose img {
-        @apply mx-auto my-4! rounded-2xl border border-white/5 shadow-xl;
+        @apply mx-auto my-4! rounded-2xl border border-secondary shadow-xl;
     }
 
     /* 確保圖片下方間距正常 */
@@ -136,20 +143,20 @@
 
     /* 優化程式碼區塊 (Shiki) */
     .prose pre {
-        @apply my-8 flex flex-col overflow-hidden rounded-2xl border border-white/5 bg-zinc-950/50 p-0! shadow-2xl;
+        @apply my-8 flex flex-col overflow-hidden rounded-2xl border border-secondary bg-zinc-950/50 p-0! shadow-2xl;
     }
 
     /* 內文中的行內程式碼 */
     .prose :not(pre) > code {
-        @apply rounded-md bg-zinc-900 px-1.5 py-0.5 font-medium text-pink-300 before:content-none! after:content-none!;
+        @apply rounded-md bg-secondary px-1.5 py-0.5 font-medium text-pink-600 before:content-none! after:content-none! dark:text-pink-300;
     }
 
     /* 文章中的超連結樣式 */
     .prose a {
-        @apply text-white underline decoration-white underline-offset-4 transition-all duration-300;
+        @apply text-foreground underline decoration-foreground underline-offset-4 transition-all duration-300;
 
         &:hover {
-            @apply text-zinc-400! decoration-zinc-400!;
+            @apply text-muted-foreground! decoration-muted-foreground!;
         }
     }
 
@@ -160,7 +167,7 @@
     /* 模擬視窗按鈕效果 (選配) */
     .prose pre::before {
         content: '';
-        @apply block h-8 w-full shrink-0 border-b border-white/5 bg-zinc-900/50;
+        @apply block h-8 w-full shrink-0 border-b border-secondary bg-zinc-900/50;
         background-image:
             radial-gradient(circle, #ff5f56 6px, transparent 6px),
             radial-gradient(circle, #ffbd2e 6px, transparent 6px),

@@ -8,6 +8,7 @@
     import Donate from '$lib/components/Donate.svelte';
     import PostSearch from '$lib/components/PostSearch.svelte';
     import SocialLinks from '$lib/components/SocialLinks.svelte';
+    import ThemeToggle from '$lib/components/ThemeToggle.svelte';
     import { Button } from '$lib/components/ui/button';
     import { Separator } from '$lib/components/ui/separator';
     import { BLOG_CONFIG } from '$lib/constants/blog';
@@ -50,9 +51,15 @@
         <span class="text-lg font-bold">{BLOG_CONFIG.name}</span>
     </div>
     <div class="flex items-center gap-2">
+        <ThemeToggle />
         <PostSearch variant="icon" />
-        <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
-            <Menu class="h-6 w-6" />
+        <Button
+            variant="ghost"
+            size="icon"
+            onclick={toggleMenu}
+            class="cursor-pointer text-muted-foreground hover:text-foreground"
+        >
+            <Menu class="h-5 w-5" />
         </Button>
     </div>
 </header>
@@ -64,8 +71,13 @@
     >
         <div class="mb-8 flex items-center justify-between">
             <span class="text-lg font-bold">選單</span>
-            <Button variant="ghost" size="icon" onclick={toggleMenu} class="cursor-pointer">
-                <X class="h-6 w-6" />
+            <Button
+                variant="ghost"
+                size="icon"
+                onclick={toggleMenu}
+                class="cursor-pointer text-muted-foreground hover:text-foreground"
+            >
+                <X class="h-5 w-5" />
             </Button>
         </div>
 
@@ -86,7 +98,7 @@
                 {/each}
             </div>
 
-            <Separator class="my-8 bg-zinc-800" />
+            <Separator class="my-8 bg-border" />
 
             <SocialLinks links={SOCIAL_LINKS} onclick={closeMenu} />
 
@@ -134,7 +146,8 @@
         </div>
     </div>
 
-    <div class="pt-8">
+    <div class="space-y-4 pt-8">
         <Donate variant="sidebar" />
+        <ThemeToggle variant="full" />
     </div>
 </nav>

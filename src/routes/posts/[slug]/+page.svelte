@@ -39,7 +39,7 @@
                 <div class="animate-in delay-0 duration-700 fade-in slide-in-from-bottom-4">
                     <a
                         href="/posts"
-                        class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                        class="group inline-flex items-center justify-center rounded-md border border-input bg-card px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-secondary hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                     >
                         <ChevronRight
                             class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
@@ -55,7 +55,7 @@
                     <header class="space-y-8">
                         <div class="space-y-4">
                             <h1
-                                class="text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl"
+                                class="text-4xl leading-tight font-bold tracking-tight text-foreground md:text-5xl"
                             >
                                 {data.meta.title}
                             </h1>
@@ -69,14 +69,16 @@
                                 <span class="flex items-center gap-2 text-muted-foreground">
                                     <Calendar class="h-3.5 w-3.5" /> 發佈時間
                                 </span>
-                                <span class="block font-medium text-white">{data.meta.date}</span>
+                                <span class="block font-medium text-foreground"
+                                    >{data.meta.date}</span
+                                >
                             </div>
                             {#if data.meta.readingTime}
                                 <div class="space-y-1">
                                     <span class="flex items-center gap-2 text-muted-foreground">
                                         <Clock class="h-3.5 w-3.5" /> 閱讀時間
                                     </span>
-                                    <span class="block font-medium text-white"
+                                    <span class="block font-medium text-foreground"
                                         >{data.meta.readingTime} 分鐘</span
                                     >
                                 </div>
@@ -85,7 +87,7 @@
                                 <span class="flex items-center gap-2 text-muted-foreground">
                                     <Crosshair class="h-3.5 w-3.5" /> 主題
                                 </span>
-                                <span class="block font-medium text-white"
+                                <span class="block font-medium text-foreground"
                                     >{getTopicName(data.meta.topic)}</span
                                 >
                             </div>
@@ -97,7 +99,7 @@
                                     <div class="flex flex-wrap gap-2">
                                         {#each data.meta.tags as tag}
                                             <span
-                                                class="inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-white"
+                                                class="inline-flex items-center justify-center rounded-md border border-border bg-secondary px-2 py-0.5 text-xs font-medium whitespace-nowrap text-foreground"
                                             >
                                                 {getTagName(tag)}
                                             </span>
@@ -111,7 +113,7 @@
                     <!-- Hero Image Placeholder -->
                     {#if data.meta.ogImage}
                         <div
-                            class="aspect-2/1 w-full overflow-hidden rounded-3xl border border-zinc-800"
+                            class="aspect-2/1 w-full overflow-hidden rounded-3xl border border-secondary"
                         >
                             <img
                                 src={data.meta.ogImage}
@@ -123,13 +125,13 @@
 
                     <!-- Body Content -->
                     <div
-                        class="prose max-w-none text-lg leading-relaxed text-muted-foreground prose-zinc prose-invert"
+                        class="prose max-w-none text-lg leading-relaxed text-muted-foreground dark:prose-invert"
                     >
                         <data.content />
                     </div>
 
                     <!-- Share Buttons (Bottom) -->
-                    <div class="mt-16 space-y-6 border-t border-zinc-900 pt-10 pb-2">
+                    <div class="mt-16 space-y-6 border-t border-border pt-12">
                         <p class="text-center text-sm font-medium text-muted-foreground">
                             如果這篇文章對你有幫助，歡迎分享給更多人！
                         </p>
@@ -149,13 +151,13 @@
                 <!-- Bottom Navigation -->
                 {#if data.prev || data.next}
                     <div
-                        class="flex animate-in items-center justify-between border-zinc-900 delay-200 duration-700 fade-in slide-in-from-bottom-4"
+                        class="mt-10 flex animate-in items-center justify-between border-t border-border pt-10 delay-200 duration-700 fade-in slide-in-from-bottom-4"
                     >
                         <div>
                             {#if data.prev}
                                 <a
                                     href="/posts/{data.prev.slug}"
-                                    class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                    class="group inline-flex items-center justify-center rounded-md border border-input bg-card px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-secondary hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                                 >
                                     <ChevronRight
                                         class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
@@ -169,7 +171,7 @@
                             {#if data.next}
                                 <a
                                     href="/posts/{data.next.slug}"
-                                    class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                    class="group inline-flex items-center justify-center rounded-md border border-input bg-card px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-secondary hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                                 >
                                     下一篇
                                     <ChevronRight
@@ -184,7 +186,7 @@
                 <div class="animate-in delay-0 duration-700 fade-in slide-in-from-bottom-4">
                     <a
                         href="/posts"
-                        class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                        class="group inline-flex items-center justify-center rounded-md border border-input bg-card px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-secondary hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                     >
                         <ChevronRight
                             class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"

@@ -7,8 +7,9 @@
 </script>
 
 <section class="space-y-8">
-    <h1 class="text-5xl font-bold tracking-tighter text-white md:text-7xl">
-        {firstPart} <span
+    <h1 class="text-5xl font-bold tracking-tighter text-foreground md:text-7xl">
+        {firstPart}
+        <span
             class="bg-linear-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
             >{secondPart}</span
         >

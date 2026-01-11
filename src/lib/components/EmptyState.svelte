@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { Inbox } from 'lucide-svelte';
     import type { Component } from 'svelte';
+
+    import { Inbox } from 'lucide-svelte';
 
     let {
         title = '尚無內容',
@@ -14,7 +15,7 @@
 </script>
 
 <div class="flex flex-col items-center justify-center gap-4 px-6 py-12 text-center">
-    <div class="rounded-full bg-zinc-900 p-4 text-muted-foreground">
+    <div class="rounded-full bg-secondary p-4 text-muted-foreground">
         <Icon class="h-8 w-8" />
     </div>
     <div class="space-y-1">

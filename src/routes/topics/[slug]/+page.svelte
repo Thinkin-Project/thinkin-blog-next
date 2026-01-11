@@ -1,12 +1,13 @@
 <script lang="ts">
     import { page } from '$app/state';
+
     import { ChevronRight, CornerDownRight } from 'lucide-svelte';
 
     import Footer from '$lib/components/Footer.svelte';
     import Pagination from '$lib/components/Pagination.svelte';
     import PostListItem from '$lib/components/PostListItem.svelte';
-    import { BLOG_CONFIG } from '$lib/constants/blog';
     import { Separator } from '$lib/components/ui/separator';
+    import { BLOG_CONFIG } from '$lib/constants/blog';
     import { TOPICS } from '$lib/constants/topics';
 
     let { data } = $props();
@@ -26,14 +27,14 @@
         <div class="flex items-center gap-4">
             <a
                 href="/posts"
-                class="group inline-flex items-center justify-center rounded-md border border-input bg-zinc-900 px-2 py-1 text-sm font-medium whitespace-nowrap text-zinc-400 ring-offset-background transition-colors hover:bg-zinc-800 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                class="group inline-flex items-center justify-center rounded-md border border-input bg-card px-2 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground ring-offset-background transition-colors hover:bg-secondary hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
             >
                 <ChevronRight
                     class="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1"
                 />
                 所有文章
             </a>
-            <h1 class="text-3xl font-bold tracking-tight text-white">{currentTopic}</h1>
+            <h1 class="text-3xl font-bold tracking-tight text-foreground">{currentTopic}</h1>
         </div>
 
         <!-- Sub-nav Categories -->
@@ -41,7 +42,7 @@
             {#each topics as topic}
                 <a
                     href="/topics/{topic.slug}"
-                    class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-white"
+                    class="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                     <CornerDownRight class="h-4 w-4" />
                     {topic.name}
@@ -51,7 +52,7 @@
 
         <!-- Subtle Divider -->
         <Separator
-            class="mt-4 animate-in bg-zinc-900 delay-100 duration-700 fade-in slide-in-from-bottom-4"
+            class="mt-4 animate-in bg-border delay-100 duration-700 fade-in slide-in-from-bottom-4"
         />
     </section>
 

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { tick } from 'svelte';
+
     import { pushState } from '$app/navigation';
 
     interface Heading {
@@ -65,10 +66,10 @@
                 <a
                     href="#{heading.slug}"
                     onclick={(e) => scrollTo(e, heading.slug)}
-                    class="block text-sm transition-colors duration-200 hover:text-white
+                    class="block text-sm transition-colors duration-200 hover:text-foreground
                     {heading.level === 3 ? 'pl-8' : 'pl-4'}
                     {activeId === heading.slug
-                        ? 'font-medium text-white'
+                        ? 'font-medium text-foreground'
                         : 'text-muted-foreground'}"
                 >
                     {heading.title}
@@ -81,7 +82,7 @@
 <style>
     /* 這裡可以加一些微調的樣式，例如左側的指示條 */
     ul {
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 1px solid var(--border);
     }
 
     a {
@@ -90,14 +91,14 @@
         width: 100%;
     }
 
-    .text-white::before {
+    .text-foreground::before {
         content: '';
         position: absolute;
         left: -1px;
         top: 0;
         bottom: 0;
         width: 2px;
-        background-color: white;
+        background-color: var(--foreground);
         z-index: 10;
     }
 </style>

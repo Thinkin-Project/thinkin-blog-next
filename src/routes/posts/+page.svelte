@@ -36,7 +36,7 @@
 
         <!-- Subtle Divider -->
         <Separator
-            class="mt-4 animate-in bg-zinc-900 delay-100 duration-700 fade-in slide-in-from-bottom-4"
+            class="mt-4 animate-in bg-border delay-100 duration-700 fade-in slide-in-from-bottom-4"
         />
     </section>
 

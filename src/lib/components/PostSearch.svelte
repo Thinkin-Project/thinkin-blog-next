@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { Button } from '$lib/components/ui/button';
     import { Search } from 'lucide-svelte';
+
+    import { Button } from '$lib/components/ui/button';
     import { searchState } from '$lib/search.svelte';
 
     interface Props {
@@ -28,9 +29,9 @@
         variant="ghost"
         size="icon"
         onclick={() => searchState.open()}
-        class="cursor-pointer"
+        class="cursor-pointer text-muted-foreground hover:text-foreground"
         aria-label="搜尋文章"
     >
-        <Search class="h-6 w-6" />
+        <Search class="h-5 w-5" />
     </Button>
 {/if}

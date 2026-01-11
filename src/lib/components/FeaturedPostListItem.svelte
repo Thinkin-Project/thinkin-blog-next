@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { Pin, Clock, Calendar } from 'lucide-svelte';
+    import { Calendar, Clock, Pin } from 'lucide-svelte';
+
     import { getTagName } from '$lib/constants/tags';
 
     let {
@@ -23,7 +24,7 @@
 
 <a
     href={link}
-    class="group relative block bg-zinc-900 p-4 transition-colors duration-300 hover:bg-zinc-800"
+    class="group relative block bg-card p-4 transition-colors duration-300 hover:bg-secondary/50"
 >
     <div class="relative z-10 flex items-center justify-between">
         <div class="space-y-1">
@@ -31,7 +32,7 @@
                 <div class="mb-2 flex flex-wrap gap-2">
                     {#each tags as tag}
                         <span
-                            class="inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-muted-foreground transition-colors group-hover:border-primary/30 group-hover:text-primary"
+                            class="inline-flex items-center justify-center rounded-md border border-border bg-background px-2 py-0.5 text-xs font-medium whitespace-nowrap text-muted-foreground transition-colors group-hover:border-primary/30 group-hover:text-primary"
                         >
                             {getTagName(tag)}
                         </span>

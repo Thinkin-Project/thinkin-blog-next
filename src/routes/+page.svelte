@@ -1,8 +1,8 @@
 <script lang="ts">
     import { ArrowRight } from 'lucide-svelte';
 
-    import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';
     import EmptyState from '$lib/components/EmptyState.svelte';
+    import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import Hero from '$lib/components/Hero.svelte';
     import PostListItem from '$lib/components/PostListItem.svelte';
@@ -37,7 +37,7 @@
     <section class="animate-in space-y-8 delay-300 duration-700 fade-in slide-in-from-bottom-4">
         <h2 class="text-2xl font-bold tracking-tight">置頂文章</h2>
         <div
-            class="flex flex-col gap-px overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-800"
+            class="flex flex-col gap-px overflow-hidden rounded-3xl border border-border bg-border"
         >
             {#each featuredPosts as post}
                 <FeaturedPostListItem {...post} link="/posts/{post.slug}" />

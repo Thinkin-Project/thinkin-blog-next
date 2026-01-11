@@ -19,7 +19,7 @@
 {#if donations.length > 0}
     <div class={cn('animate-in duration-700 fade-in slide-in-from-bottom-4', className)}>
         {#if variant === 'default'}
-            <div class="rounded-3xl border border-zinc-800 bg-zinc-900/50 p-8 text-center md:p-12">
+            <div class="rounded-3xl border border-border bg-secondary/30 p-8 text-center md:p-12">
                 <div class="mb-6 flex justify-center">
                     <div
                         class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary"
@@ -27,7 +27,7 @@
                         <Coffee class="h-6 w-6" />
                     </div>
                 </div>
-                <h3 class="mb-3 text-2xl font-bold text-white">贊助支持</h3>
+                <h3 class="mb-3 text-2xl font-bold text-foreground">贊助支持</h3>
                 <p class="mx-auto mb-8 max-w-md text-muted-foreground">
                     如果你喜歡我們的文章，或是這些內容對你有幫助，歡迎透過以下平台請我們喝杯咖啡，支持我們持續創作！
                 </p>
@@ -47,7 +47,7 @@
                                 />
                             {:else}
                                 <span
-                                    class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-zinc-950 transition-colors hover:bg-zinc-200"
+                                    class="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 font-bold text-foreground transition-colors hover:bg-secondary"
                                 >
                                     {#if donation.icon}
                                         <donation.icon class="h-5 w-5" />
