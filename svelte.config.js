@@ -5,8 +5,8 @@ import rehypeSlug from 'rehype-slug';
 import remarkToc from 'remark-toc';
 import { createHighlighter } from 'shiki';
 
-// 快取 highlighter 實例
-let highlighter;
+// 快取 highlighter 實例的 Promise，避免並行處理時多次建立
+let highlighterPromise;
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
@@ -38,8 +38,8 @@ const mdsvexOptions = {
     ],
     highlight: {
         highlighter: async (code, lang = 'text') => {
-            if (!highlighter) {
-                highlighter = await createHighlighter({
+            if (!highlighterPromise) {
+                highlighterPromise = createHighlighter({
                     themes: ['github-dark'],
                     langs: [
                         'javascript',
@@ -54,6 +54,7 @@ const mdsvexOptions = {
                     ]
                 });
             }
+            const highlighter = await highlighterPromise;
             const html = highlighter.codeToHtml(code, { lang, theme: 'github-dark' });
             return `{@html \`${escapeSvelte(html)}\`}`;
         }
