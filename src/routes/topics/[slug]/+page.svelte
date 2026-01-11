@@ -39,7 +39,7 @@
 
         <!-- Sub-nav Categories -->
         <div class="flex flex-wrap gap-4 pt-2">
-            {#each topics as topic}
+            {#each topics as topic (topic.slug)}
                 <a
                     href="/topics/{topic.slug}"
                     class="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -59,7 +59,7 @@
     <!-- Post List -->
     <section class="animate-in delay-200 duration-700 fade-in slide-in-from-bottom-4">
         <ul class="space-y-2">
-            {#each posts as post}
+            {#each posts as post (post.slug)}
                 <PostListItem {...post} link="/posts/{post.slug}" />
             {/each}
         </ul>

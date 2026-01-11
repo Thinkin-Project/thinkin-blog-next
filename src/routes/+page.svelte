@@ -39,7 +39,7 @@
         <div
             class="flex flex-col gap-px overflow-hidden rounded-3xl border border-border bg-border"
         >
-            {#each featuredPosts as post}
+            {#each featuredPosts as post (post.slug)}
                 <FeaturedPostListItem {...post} link="/posts/{post.slug}" />
             {:else}
                 <EmptyState title="尚無置頂文章" />
@@ -61,7 +61,7 @@
             </a>
         </div>
         <ul class="space-y-2">
-            {#each newPosts as post}
+            {#each newPosts as post (post.slug)}
                 <PostListItem {...post} link="/posts/{post.slug}" />
             {/each}
         </ul>

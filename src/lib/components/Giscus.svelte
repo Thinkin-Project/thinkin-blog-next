@@ -55,6 +55,7 @@
         script.setAttribute('crossorigin', 'anonymous');
         script.async = true;
 
+        // eslint-disable-next-line svelte/no-dom-manipulating
         container?.appendChild(script);
     });
 </script>

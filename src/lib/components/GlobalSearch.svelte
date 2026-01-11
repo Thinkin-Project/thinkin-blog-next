@@ -87,7 +87,7 @@
             <div class="py-6 text-center text-sm text-muted-foreground">找不到相關文章</div>
         {:else if results.length > 0}
             <CommandGroup heading={query.trim() === '' ? '最近文章' : '搜尋結果'}>
-                {#each results as post}
+                {#each results as post (post.slug)}
                     <CommandItem
                         value={post.title}
                         onSelect={() => handleSelect(post.slug)}

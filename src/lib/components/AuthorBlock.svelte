@@ -21,7 +21,7 @@
         </h3>
 
         <div class="grid gap-8">
-            {#each postAuthors as author}
+            {#each postAuthors as author (author.id)}
                 <div class="flex w-full flex-col gap-6 md:flex-row md:items-center">
                     <Avatar.Root
                         class="h-20 w-20 shrink-0 self-start border border-border md:self-auto"

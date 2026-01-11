@@ -97,7 +97,7 @@
                                         <Tag class="h-3.5 w-3.5" /> 標籤
                                     </span>
                                     <div class="flex flex-wrap gap-2">
-                                        {#each data.meta.tags as tag}
+                                        {#each data.meta.tags as tag (tag)}
                                             <span
                                                 class="inline-flex items-center justify-center rounded-md border border-border bg-secondary px-2 py-0.5 text-xs font-medium whitespace-nowrap text-foreground"
                                             >

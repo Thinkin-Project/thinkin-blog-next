@@ -71,7 +71,7 @@
         className
     )}
 >
-    {#each shareLinks as link}
+    {#each shareLinks as link (link.name)}
         <a
             href={link.href}
             target="_blank"

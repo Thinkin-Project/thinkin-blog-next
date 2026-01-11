@@ -18,7 +18,7 @@
     <section>
         <ul class="space-y-4">
             <h2 class="text-2xl font-bold tracking-tight">{title}</h2>
-            {#each links as link}
+            {#each links as link (link.url)}
                 <li class="group">
                     <a
                         href={link.url}

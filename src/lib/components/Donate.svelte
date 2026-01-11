@@ -32,7 +32,7 @@
                     如果你喜歡我們的文章，或是這些內容對你有幫助，歡迎透過以下平台請我們喝杯咖啡，支持我們持續創作！
                 </p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    {#each donations as donation}
+                    {#each donations as donation (donation.url)}
                         <a
                             href={donation.url}
                             target="_blank"
@@ -67,7 +67,7 @@
                     支持創作
                 </p>
                 <div class="flex flex-wrap gap-3">
-                    {#each donations as donation}
+                    {#each donations as donation (donation.url)}
                         <a
                             href={donation.url}
                             target="_blank"

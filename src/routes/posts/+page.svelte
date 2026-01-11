@@ -4,7 +4,6 @@
     import Footer from '$lib/components/Footer.svelte';
     import Pagination from '$lib/components/Pagination.svelte';
     import PostListItem from '$lib/components/PostListItem.svelte';
-    import { buttonVariants } from '$lib/components/ui/button';
     import Separator from '$lib/components/ui/separator/Separator.svelte';
     import { BLOG_CONFIG } from '$lib/constants/blog';
     import { TOPICS } from '$lib/constants/topics';
@@ -23,7 +22,7 @@
     <section class="animate-in space-y-4 delay-0 duration-700 fade-in slide-in-from-bottom-4">
         <h2 class="text-4xl font-bold tracking-tight">主題</h2>
         <ul class="flex flex-wrap gap-4">
-            {#each topics as topic}
+            {#each topics as topic (topic.slug)}
                 <a
                     href="/topics/{topic.slug}"
                     class="group flex cursor-pointer items-center gap-2 text-muted-foreground transition-colors duration-300 hover:text-foreground"
@@ -44,7 +43,7 @@
     <section class="animate-in space-y-10 delay-200 duration-700 fade-in slide-in-from-bottom-4">
         <h2 class="text-4xl font-bold tracking-tight">所有文章</h2>
         <ul class="space-y-2">
-            {#each posts as post}
+            {#each posts as post (post.slug)}
                 <PostListItem {...post} link="/posts/{post.slug}" />
             {/each}
         </ul>

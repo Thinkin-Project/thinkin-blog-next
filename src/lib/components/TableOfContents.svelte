@@ -61,7 +61,7 @@
 <nav class="space-y-4">
     <p class="text-xs font-bold tracking-widest text-muted-foreground uppercase">文章目錄</p>
     <ul class="space-y-2.5">
-        {#each headings as heading}
+        {#each headings as heading (heading.slug)}
             <li>
                 <a
                     href="#{heading.slug}"

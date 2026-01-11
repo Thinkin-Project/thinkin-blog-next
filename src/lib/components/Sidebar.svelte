@@ -83,7 +83,7 @@
 
         <nav class="flex flex-1 flex-col text-lg">
             <div class="flex flex-col gap-6">
-                {#each NAV_ITEMS as item}
+                {#each NAV_ITEMS as item (item.name)}
                     <a
                         href={item.href}
                         class="flex items-center gap-3 font-medium transition-colors {page.url
@@ -131,7 +131,7 @@
 
         <!-- Navigation Links -->
         <div class="flex flex-col gap-6 pt-2">
-            {#each NAV_ITEMS as item}
+            {#each NAV_ITEMS as item (item.name)}
                 <a
                     href={item.href}
                     class="flex items-center gap-3 font-medium transition-colors {page.url

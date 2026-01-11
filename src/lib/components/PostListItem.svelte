@@ -36,7 +36,7 @@
             >
                 {#if tags && tags.length > 0}
                     <div class="flex flex-wrap gap-2">
-                        {#each tags as tag}
+                        {#each tags as tag (tag)}
                             <span
                                 class="inline-flex items-center justify-center rounded-md border border-border bg-card px-2 py-0.5 text-xs font-medium whitespace-nowrap text-muted-foreground transition-colors group-hover:border-primary/30 group-hover:text-primary"
                             >

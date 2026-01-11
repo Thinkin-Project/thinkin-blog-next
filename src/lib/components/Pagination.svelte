@@ -50,7 +50,7 @@
         </a>
 
         <div class="flex items-center gap-1">
-            {#each pages as pageNum}
+            {#each pages as pageNum (pageNum)}
                 {#if pageNum === '...'}
                     <span class="flex h-8 w-8 items-center justify-center text-zinc-500">
                         ...
