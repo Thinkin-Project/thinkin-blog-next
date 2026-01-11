@@ -48,11 +48,11 @@
         <div
             class="flex items-center gap-1 rounded-full bg-zinc-100 px-2 py-1 text-[10px] font-bold dark:bg-zinc-800"
         >
-            <span class={themeState.current === 'light' ? 'text-blue-500' : 'text-zinc-500'}
+            <span class={themeState.current === 'light' ? 'text-pink-500' : 'text-zinc-500'}
                 >LIGHT</span
             >
             <span class="text-zinc-600">/</span>
-            <span class={themeState.current === 'dark' ? 'text-blue-400' : 'text-zinc-500'}
+            <span class={themeState.current === 'dark' ? 'text-pink-400' : 'text-zinc-500'}
                 >DARK</span
             >
         </div>
