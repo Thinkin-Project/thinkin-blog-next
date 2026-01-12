@@ -27,6 +27,9 @@ export const load: PageServerLoad = async ({ url }) => {
             currentPage: validPage,
             totalPages,
             totalPosts
+        },
+        meta: {
+            title: '所有文章'
         }
     };
 };

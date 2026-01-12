@@ -7,7 +7,6 @@
     import Pagination from '$lib/components/Pagination.svelte';
     import PostListItem from '$lib/components/PostListItem.svelte';
     import { Separator } from '$lib/components/ui/separator';
-    import { BLOG_CONFIG } from '$lib/constants/blog';
     import { TOPICS } from '$lib/constants/topics';
 
     let { data } = $props();
@@ -15,10 +14,6 @@
     const topics = TOPICS;
     const currentTopic = $derived(topics.find((t) => t.slug === page.params.slug)?.name || 'Topic');
 </script>
-
-<svelte:head>
-    <title>{currentTopic} | {BLOG_CONFIG.name}</title>
-</svelte:head>
 
 <div class="container mx-auto max-w-4xl space-y-16 px-6 py-8 md:py-12">
     <!-- Topic Header -->

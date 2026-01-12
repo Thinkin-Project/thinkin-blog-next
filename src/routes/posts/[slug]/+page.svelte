@@ -11,16 +11,11 @@
     import ReadingProgressBar from '$lib/components/ReadingProgressBar.svelte';
     import ShareButtons from '$lib/components/ShareButtons.svelte';
     import TableOfContents from '$lib/components/TableOfContents.svelte';
-    import { BLOG_CONFIG } from '$lib/constants/blog';
     import { getTagName } from '$lib/constants/tags';
     import { getTopicName } from '$lib/constants/topics';
 
     let { data } = $props();
 </script>
-
-<svelte:head>
-    <title>{data.meta.title} | {BLOG_CONFIG.name}</title>
-</svelte:head>
 
 <ReadingProgressBar />
 

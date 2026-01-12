@@ -7,7 +7,6 @@
     import Hero from '$lib/components/Hero.svelte';
     import PostListItem from '$lib/components/PostListItem.svelte';
     import SocialLinks from '$lib/components/SocialLinks.svelte';
-    import { BLOG_CONFIG } from '$lib/constants/blog';
     import { SOCIAL_LINKS } from '$lib/constants/navigation';
 
     let { data } = $props();
@@ -15,10 +14,6 @@
     const featuredPosts = $derived(data.featuredPosts || []);
     const newPosts = $derived(data.newPosts || []);
 </script>
-
-<svelte:head>
-    <title>{BLOG_CONFIG.name} | 首頁</title>
-</svelte:head>
 
 <div class="container mx-auto max-w-4xl space-y-12 px-6 py-8 md:py-12">
     <!-- Hero Section -->

@@ -1,4 +1,5 @@
 import { BLOG_CONFIG } from '$lib/constants/blog';
+import { TOPICS } from '$lib/constants/topics';
 import { getPosts } from '$lib/server/posts';
 
 import type { PageServerLoad } from './$types';
@@ -26,12 +27,17 @@ export const load: PageServerLoad = async ({ params, url }) => {
     const end = start + pageSize;
     const posts = filteredPosts.slice(start, end);
 
+    const currentTopic = TOPICS.find((t) => t.slug === params.slug)?.name || '主題';
+
     return {
         posts,
         pagination: {
             currentPage: validPage,
             totalPages,
             totalPosts
+        },
+        meta: {
+            title: currentTopic
         }
     };
 };

@@ -10,6 +10,9 @@ export const load: PageServerLoad = async () => {
     const newPosts = allPosts.slice(0, BLOG_CONFIG.newPostsLimit);
 
     return {
-        newPosts
+        newPosts,
+        meta: {
+            title: '首頁'
+        }
     };
 };

@@ -202,13 +202,13 @@ authors: ['neil-tsai']
 ```typescript
 // topics.ts
 export const TOPICS: Topic[] = [
-    { name: '設計模式', slug: 'design-pattern' },
+    { name: '設計模式', slug: 'design-pattern' }
     // 新增更多主題...
 ];
 
 // tags.ts
 export const TAGS: Tag[] = [
-    { name: '創建型模式', slug: 'creational-pattern' },
+    { name: '創建型模式', slug: 'creational-pattern' }
     // 新增更多標籤...
 ];
 ```
@@ -225,9 +225,9 @@ export const AUTHORS: Record<string, Author> = {
         avatar: '/assets/authors/neil.jpg',
         bio: '作者簡介',
         website: 'https://example.com',
-        github: 'https://github.com/username',
+        github: 'https://github.com/username'
         // 可選: linkedin, facebook, x
-    },
+    }
     // 新增更多作者...
 };
 ```
