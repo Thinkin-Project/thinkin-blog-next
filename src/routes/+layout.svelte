@@ -2,6 +2,7 @@
     import { page } from '$app/state';
 
     import favicon from '$lib/assets/favicon.ico';
+    import CookieConsent from '$lib/components/CookieConsent.svelte';
     import GlobalSearch from '$lib/components/GlobalSearch.svelte';
     import Sidebar from '$lib/components/Sidebar.svelte';
     import { BLOG_CONFIG } from '$lib/constants/blog';
@@ -24,6 +25,7 @@
 </script>
 
 <GlobalSearch />
+<CookieConsent />
 
 <svelte:head>
     <title>{title}</title>

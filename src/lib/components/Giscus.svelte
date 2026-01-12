@@ -37,26 +37,52 @@
     onMount(() => {
         if (!isValidConfig) return;
 
-        const script = document.createElement('script');
-        script.src = 'https://giscus.app/client.js';
-        script.setAttribute('data-repo', repo);
-        script.setAttribute('data-repo-id', repoId);
-        script.setAttribute('data-category', category);
-        script.setAttribute('data-category-id', categoryId);
-        script.setAttribute('data-mapping', mapping);
-        script.setAttribute('data-strict', strict);
-        script.setAttribute('data-reactions-enabled', reactionsEnabled);
-        script.setAttribute('data-emit-metadata', emitMetadata);
-        script.setAttribute('data-input-position', inputPosition);
-        script.setAttribute('data-theme', themeState.current);
+        // Check for cookie consent if the library is available
+        const isConsentAccepted = () => {
+            if (typeof window !== 'undefined' && 'CookieConsent' in window) {
+                // @ts-ignore
+                return window.CookieConsent.acceptedCategory('functionality');
+            }
+            return true; // Fallback if library not loaded yet or disabled
+        };
 
-        script.setAttribute('data-lang', lang);
-        script.setAttribute('data-loading', loading);
-        script.setAttribute('crossorigin', 'anonymous');
-        script.async = true;
+        let isLoaded = false;
+        const loadGiscus = () => {
+            if (isLoaded) return;
+            isLoaded = true;
 
-        // eslint-disable-next-line svelte/no-dom-manipulating
-        container?.appendChild(script);
+            const script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.setAttribute('data-repo', repo);
+            script.setAttribute('data-repo-id', repoId);
+            script.setAttribute('data-category', category);
+            script.setAttribute('data-category-id', categoryId);
+            script.setAttribute('data-mapping', mapping);
+            script.setAttribute('data-strict', strict);
+            script.setAttribute('data-reactions-enabled', reactionsEnabled);
+            script.setAttribute('data-emit-metadata', emitMetadata);
+            script.setAttribute('data-input-position', inputPosition);
+            script.setAttribute('data-theme', themeState.current);
+
+            script.setAttribute('data-lang', lang);
+            script.setAttribute('data-loading', loading);
+            script.setAttribute('crossorigin', 'anonymous');
+            script.async = true;
+
+            // eslint-disable-next-line svelte/no-dom-manipulating
+            container?.appendChild(script);
+        };
+
+        if (isConsentAccepted()) {
+            loadGiscus();
+        } else {
+            // Listen for consent changes
+            window.addEventListener('cc:onConsent', () => {
+                if (isConsentAccepted()) {
+                    loadGiscus();
+                }
+            });
+        }
     });
 </script>
 
