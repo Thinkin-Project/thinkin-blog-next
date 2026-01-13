@@ -1,6 +1,14 @@
+import { dev } from '$app/environment';
+
 import type { ArticleMeta } from '$lib/types';
 
+let cachedPosts: ArticleMeta[] | null = null;
+
 export async function getPosts() {
+    if (cachedPosts && !dev) {
+        return cachedPosts;
+    }
+
     let posts: ArticleMeta[] = [];
 
     const paths = import.meta.glob('/src/posts/*.md', { eager: true });
@@ -22,6 +30,7 @@ export async function getPosts() {
         (first, second) => new Date(second.date).getTime() - new Date(first.date).getTime()
     );
 
+    cachedPosts = posts;
     return posts;
 }
 
