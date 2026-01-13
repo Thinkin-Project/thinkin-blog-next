@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount, tick } from 'svelte';
+    import { onMount } from 'svelte';
 
     import { Cookie, MessageSquareOff } from 'lucide-svelte';
 
@@ -21,9 +21,11 @@
     } = BLOG_CONFIG.giscus;
 
     let container: HTMLDivElement | undefined = $state();
-    let isValidConfig = $state(!!(repo && repoId && categoryId));
+    const isValidConfig = !!(repo && repoId && categoryId);
     let isConsentGiven = $state(false);
+    let isLoaded = false;
 
+    // Handle theme changes
     $effect(() => {
         const currentTheme = themeState.current;
         const iframe = container?.querySelector('iframe.giscus-frame') as HTMLIFrameElement;
@@ -35,21 +37,9 @@
         }
     });
 
-    onMount(() => {
-        if (!isValidConfig) return;
-
-        // Check for cookie consent if the library is available
-        const checkConsent = () => {
-            if (typeof window !== 'undefined' && 'CookieConsent' in window) {
-                isConsentGiven = window.CookieConsent.acceptedCategory('functionality');
-            } else {
-                isConsentGiven = true;
-            }
-        };
-
-        let isLoaded = false;
-        const loadGiscus = () => {
-            if (!isConsentGiven || isLoaded) return;
+    // Handle initial loading and consent changes
+    $effect(() => {
+        if (isValidConfig && isConsentGiven && container && !isLoaded) {
             isLoaded = true;
 
             const script = document.createElement('script');
@@ -71,26 +61,36 @@
             script.async = true;
 
             // eslint-disable-next-line svelte/no-dom-manipulating
-            container?.appendChild(script);
+            container.appendChild(script);
+        }
+    });
+
+    onMount(() => {
+        if (!isValidConfig) return;
+
+        const checkConsent = () => {
+            if (typeof window !== 'undefined' && 'CookieConsent' in window) {
+                isConsentGiven = window.CookieConsent.acceptedCategory('functionality');
+            } else {
+                // If CookieConsent is not used/available, assume consent is given
+                isConsentGiven = true;
+            }
         };
 
         const handleConsentChange = () => {
-            setTimeout(async () => {
-                checkConsent();
-                if (isConsentGiven) {
-                    await tick(); // Ensure the DOM container is rendered
-                    loadGiscus();
-                }
-            }, 100);
+            checkConsent();
         };
 
+        // Initial check
         checkConsent();
-        if (isConsentGiven) {
-            loadGiscus();
-        }
 
         window.addEventListener('cc:onConsent', handleConsentChange);
-        return () => window.removeEventListener('cc:onConsent', handleConsentChange);
+        window.addEventListener('cc:onChange', handleConsentChange);
+
+        return () => {
+            window.removeEventListener('cc:onConsent', handleConsentChange);
+            window.removeEventListener('cc:onChange', handleConsentChange);
+        };
     });
 </script>
 
