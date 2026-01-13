@@ -4,6 +4,10 @@
     import * as CookieConsent from 'vanilla-cookieconsent';
     import 'vanilla-cookieconsent/dist/cookieconsent.css';
 
+    import { BLOG_CONFIG } from '$lib/constants/blog';
+
+    const { lang } = BLOG_CONFIG;
+
     /**
      * @type {CookieConsent.CookieConsentConfig}
      */
@@ -52,9 +56,9 @@
             }
         },
         language: {
-            default: 'zh-Hant',
+            default: lang,
             translations: {
-                'zh-Hant': {
+                [lang]: {
                     consentModal: {
                         title: 'Cookie 使用聲明',
                         description:

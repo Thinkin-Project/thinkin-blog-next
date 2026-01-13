@@ -87,6 +87,7 @@ pnpm preview
 | `PUBLIC_BLOG_AUTHOR`      | 作者名稱            | `Neil Tsai`                              |
 | `PUBLIC_BLOG_KEYWORDS`    | 預設關鍵字          | `軟體開發, 工程實踐, 技術分享, 持續學習` |
 | `PUBLIC_BLOG_OG_IMAGE`    | Open Graph 預設圖片 | `/assets/og-image.jpg`                   |
+| `PUBLIC_BLOG_LANG`        | 部落格語系          | `zh-Hant`                                |
 
 ### 顯示限制
 
@@ -110,7 +111,6 @@ pnpm preview
 | `PUBLIC_GISCUS_EMIT_METADATA`     | 發送 metadata     | `0`             |
 | `PUBLIC_GISCUS_INPUT_POSITION`    | 輸入框位置        | `top`           |
 | `PUBLIC_GISCUS_THEME`             | 主題              | `dark`          |
-| `PUBLIC_GISCUS_LANG`              | 語言              | `zh-TW`         |
 | `PUBLIC_GISCUS_LOADING`           | 載入模式          | `lazy`          |
 
 ## 專案結構

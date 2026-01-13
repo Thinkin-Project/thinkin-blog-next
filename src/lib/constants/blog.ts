@@ -16,6 +16,8 @@ export const BLOG_CONFIG = {
     author: env.PUBLIC_BLOG_AUTHOR || 'Neil Tsai',
     // 預設關鍵字
     keywords: env.PUBLIC_BLOG_KEYWORDS || '軟體開發, 工程實踐, 技術分享, 持續學習',
+    // 預設語言
+    lang: env.PUBLIC_BLOG_LANG || 'zh-Hant',
     // 預設 OG 圖片
     ogImage: env.PUBLIC_BLOG_OG_IMAGE || '/assets/og-image.jpg',
     // 置頂文章顯示數量限制
@@ -44,7 +46,7 @@ export const BLOG_CONFIG = {
         emitMetadata: env.PUBLIC_GISCUS_EMIT_METADATA || '0',
         inputPosition: env.PUBLIC_GISCUS_INPUT_POSITION || 'top',
         theme: env.PUBLIC_GISCUS_THEME || 'dark',
-        lang: env.PUBLIC_GISCUS_LANG || 'zh-TW',
+        lang: env.PUBLIC_BLOG_LANG || 'zh-Hant',
         loading: env.PUBLIC_GISCUS_LOADING || 'lazy'
     }
 };
