@@ -41,11 +41,8 @@
         // Check for cookie consent if the library is available
         const checkConsent = () => {
             if (typeof window !== 'undefined' && 'CookieConsent' in window) {
-                // @ts-expect-error - CookieConsent is attached to window globally
                 isConsentGiven = window.CookieConsent.acceptedCategory('functionality');
             } else {
-                // If the library isn't loaded yet, we assume it's true to not block the script
-                // but since we want to be consent-first, we'll wait for the script to load.
                 isConsentGiven = true;
             }
         };

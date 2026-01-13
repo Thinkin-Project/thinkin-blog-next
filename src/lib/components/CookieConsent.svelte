@@ -5,9 +5,9 @@
     import 'vanilla-cookieconsent/dist/cookieconsent.css';
 
     /**
-     * @type {import('vanilla-cookieconsent').Config}
+     * @type {CookieConsent.CookieConsentConfig}
      */
-    const config: import('vanilla-cookieconsent').Config = {
+    const config: CookieConsent.CookieConsentConfig = {
         guiOptions: {
             consentModal: {
                 layout: 'box',
@@ -116,58 +116,17 @@
 
         // Expose to window for other components (like Giscus or Privacy page)
         if (typeof window !== 'undefined') {
-            // @ts-expect-error - CookieConsent is attached to window globally
             window.CookieConsent = CookieConsent;
         }
     });
 </script>
 
 <style>
-    /* 整合部落格的設計語系與變數 */
-    :global(:root) {
-        --cc-font-family: var(--font-sans);
-        --cc-modal-border-radius: var(--radius);
-        --cc-btn-border-radius: calc(var(--radius) - 2px);
-
-        /* 基礎顏色 */
-        --cc-bg: var(--background);
-        --cc-text: var(--foreground);
-
-        /* 按鈕顏色 */
-        --cc-btn-primary-bg: var(--primary);
-        --cc-btn-primary-text: var(--primary-foreground);
-
-        --cc-btn-secondary-bg: var(--secondary);
-        --cc-btn-secondary-text: var(--secondary-foreground);
-
-        --cc-separator-border: var(--border);
-        --cc-footer-bg: var(--muted);
-        --cc-footer-text: var(--muted-foreground);
-
-        --cc-toggle-on-bg: var(--primary);
-        --cc-toggle-off-bg: var(--muted-foreground);
-        --cc-toggle-on-knob-bg: var(--primary-foreground);
-        --cc-toggle-off-knob-bg: var(--background);
-    }
-
     /* ============================================== */
-    /* 1. 全局佈局與結構修正 (適用於 Light & Dark)    */
+    /* 全局佈局與結構修正 (適用於 Light & Dark)    */
     /* ============================================== */
-
-    /* 視窗與容器結構 */
-    :global(#cc-main .pm) {
-        display: flex !important;
-        flex-direction: column !important;
-        height: auto !important;
-        max-height: 85vh !important;
-        border-radius: 12px !important;
-    }
-
-    :global(#cc-main .cc__modal) {
-        border-radius: 12px !important;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-        backdrop-filter: blur(16px) !important;
-        overflow: hidden !important;
+    :global(#cc-main .pm__body) {
+        padding: 1rem !important;
     }
 
     /* 確保所有模式下的區塊間距一致 */
@@ -179,113 +138,175 @@
         padding: 1rem !important;
     }
 
-    /* 修正中間內容產生的滑動條問題 */
-    :global(#cc-main .pm__body) {
-        flex: 1 !important;
-        overflow-y: auto !important;
-        padding: 0 1.2rem !important; /* 統一左右間距 */
+    :global(#cc-main .cm__btns) {
+        padding: 1rem !important;
     }
 
     /* ============================================== */
-    /* 2. 深色模式主題 (僅覆蓋顏色，不改結構)       */
+    /* 淺色模式主題    */
     /* ============================================== */
-
-    /* 視窗底色 */
-    :global(html.dark #cc-main),
-    :global(html.dark #cc-main .cc__modal) {
-        --cc-bg: #09090b !important; /* Zinc 950 */
-        --cc-text: #fafafa !important; /* Zinc 50 */
-        background-color: #09090b !important;
-        color: #fafafa !important;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    :global(#cc-main .cm__btn[data-role='all']) {
+        background-color: #27272a;
+        border: none;
     }
 
-    /* Header 與 Footer 邊線 */
+    :global(#cc-main .cm__btn[data-role='all']:hover) {
+        background-color: #3f3f46;
+    }
+
+    :global(#cc-main .cm__btn[data-role='necessary']) {
+        background-color: #27272a;
+        border: none;
+    }
+
+    :global(#cc-main .cm__btn[data-role='necessary']:hover) {
+        background-color: #3f3f46;
+    }
+
+    :global(#cc-main .pm__btn[data-role='all']) {
+        background-color: #27272a;
+        border: none;
+    }
+
+    :global(#cc-main .pm__btn[data-role='all']:hover) {
+        background-color: #3f3f46;
+    }
+
+    :global(#cc-main .pm__btn[data-role='necessary']) {
+        background-color: #27272a;
+        border: none;
+    }
+
+    :global(#cc-main .pm__btn[data-role='necessary']:hover) {
+        background-color: #3f3f46;
+    }
+
+    /* ============================================== */
+    /* 深色模式主題    */
+    /* ============================================== */
+    :global(html.dark #cc-main .cm__body) {
+        background-color: var(--secondary);
+    }
+
+    :global(html.dark #cc-main .cm__title) {
+        color: #ffffff;
+    }
+
+    :global(html.dark #cc-main .cm__desc) {
+        color: var(--muted-foreground);
+    }
+
+    :global(html.dark #cc-main .cm__btns) {
+        border-color: var(--muted-foreground);
+    }
+
+    :global(html.dark #cc-main .cm__btn[data-role='all']) {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+        border: none;
+    }
+
+    :global(html.dark #cc-main .cm__btn[data-role='all']:hover) {
+        background-color: var(--primary);
+        opacity: 0.9;
+    }
+
+    :global(html.dark #cc-main .cm__btn[data-role='necessary']) {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+        border: none;
+    }
+
+    :global(html.dark #cc-main .cm__btn[data-role='necessary']:hover) {
+        background-color: var(--primary);
+        opacity: 0.9;
+    }
+
+    :global(html.dark #cc-main .cm__footer) {
+        background-color: var(--secondary);
+        border-color: var(--muted-foreground);
+    }
+
+    :global(html.dark #cc-main .cm__links .cm__link-group a) {
+        color: var(--primary);
+    }
+
+    :global(html.dark #cc-main .pm--box) {
+        background-color: var(--secondary);
+    }
+
     :global(html.dark #cc-main .pm__header) {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-color: var(--muted-foreground);
+        color: #ffffff;
     }
 
-    :global(html.dark #cc-main .pm__footer),
-    :global(html.dark #cc-main .cc__footer) {
-        border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
-        background: rgba(9, 9, 11, 0.8) !important;
+    :global(html.dark #cc-main .pm__section-title[role='heading']) {
+        background-color: transparent;
+        border-color: var(--primary-foreground);
+        color: #ffffff;
     }
 
-    /* 區塊卡片配色 (維持結構，僅變色) */
-    :global(html.dark #cc-main .pm__section),
-    :global(html.dark #cc-main .pm__category) {
-        background: #18181b !important; /* Zinc 900 */
-        border: 1px solid #27272a !important; /* Zinc 800 */
+    :global(html.dark #cc-main .pm__section-title[role='heading']):hover {
+        background-color: transparent;
     }
 
-    :global(html.dark #cc-main .pm__section:hover) {
-        background: #18181b !important;
-        border-color: #3f3f46 !important; /* Zinc 700 */
+    :global(html.dark #cc-main .pm__section-title:not([role='heading'])) {
+        background-color: var(--primary-foreground);
+        border-color: var(--primary-foreground);
+        color: #ffffff;
     }
 
-    /* 區塊內部分隔線 */
-    :global(html.dark #cc-main .pm__section-title),
-    :global(html.dark #cc-main .pm__category-title) {
-        border-bottom-color: #27272a !important;
+    :global(html.dark #cc-main .pm__section-title):hover {
+        background-color: #141416;
+        border-color: #141416;
+        color: #ffffff;
     }
 
-    /* 文字顏色覆蓋 */
-    :global(html.dark #cc-main .pm__title) {
-        color: #fafafa !important;
+    :global(html.dark #cc-main .pm__section-desc-wrapper) {
+        border-color: var(--primary-foreground);
     }
-    :global(html.dark #cc-main .pm__section-title) {
-        color: #f4f4f5 !important;
-    }
+
     :global(html.dark #cc-main .pm__section-desc) {
-        color: #a1a1aa !important;
+        background-color: transparent;
+        color: var(--muted-foreground);
     }
 
-    /* 按鈕樣式 (Zinc 風格) */
-    :global(#cc-main .pm__btn) {
-        border-radius: 8px !important;
-        font-weight: 500 !important;
+    :global(html.dark #cc-main .pm__section-desc a) {
+        color: var(--primary);
     }
 
-    /* 深色模式按鈕配色 */
-    :global(html.dark #cc-main .pm__btn) {
-        background: #27272a !important;
-        color: #ffffff !important;
-        border: 1px solid #3f3f46 !important;
+    :global(html.dark #cc-main .pm__section:last-child) {
+        background-color: var(--secondary);
+        border-color: var(--primary-foreground);
     }
 
-    :global(html.dark #cc-main .pm__btn:hover) {
-        background: #3f3f46 !important;
+    :global(html.dark #cc-main .pm__section:last-child):hover {
+        background-color: var(--primary-foreground);
     }
 
-    :global(html.dark #cc-main .pm__btn--secondary) {
-        background: transparent !important;
-        border-color: rgba(255, 255, 255, 0.1) !important;
+    :global(html.dark #cc-main .pm__btn[data-role='all']) {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+        border: none;
     }
 
-    :global(html.dark #cc-main .pm__btn--secondary:hover) {
-        background: rgba(255, 255, 255, 0.05) !important;
+    :global(html.dark #cc-main .pm__btn[data-role='all']:hover) {
+        background-color: var(--primary);
+        opacity: 0.9;
     }
 
-    /* 其他元件顏色 */
-    :global(html.dark #cc-main .pm__badge) {
-        background: rgba(244, 114, 182, 0.1) !important;
-        color: #f472b6 !important;
-        border: 1px solid rgba(244, 114, 182, 0.2) !important;
+    :global(html.dark #cc-main .pm__btn[data-role='necessary']) {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+        border: none;
     }
 
-    :global(html.dark #cc-main .pm__category-arrow) {
-        stroke: #71717a !important;
-    }
-    :global(html.dark #cc-main .pm__section:hover .pm__category-arrow) {
-        stroke: #fafafa !important;
+    :global(html.dark #cc-main .pm__btn[data-role='necessary']:hover) {
+        background-color: var(--primary);
+        opacity: 0.9;
     }
 
-    :global(html.dark #cc-main .cc__footer-links a) {
-        color: #71717a !important;
-    }
-    :global(html.dark #cc-main .cc__footer-links a:hover) {
-        color: #fafafa !important;
-        text-decoration: underline !important;
+    :global(html.dark #cc-main .pm__footer) {
+        border-color: var(--muted-foreground);
     }
 </style>
