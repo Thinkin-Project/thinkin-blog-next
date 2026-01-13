@@ -24,6 +24,8 @@
 - 📑 文章目錄 (Table of Contents)
 - 🏷️ 主題分類與標籤系統
 - 💬 Giscus 留言整合
+- 🔒 隱私權政策頁面
+- 🍪 Cookie 同意管理
 - ☕ 贊助功能 (Ko-fi)
 - 📖 閱讀進度條
 - 📱 響應式設計
@@ -127,6 +129,7 @@ src/
 ├── routes/             # SvelteKit 路由
 │   ├── posts/          # 文章頁面
 │   ├── topics/         # 主題分類
+│   ├── privacy/        # 隱私權政策
 │   ├── contact/        # 聯絡頁面
 │   ├── rss.xml/        # RSS Feed
 │   └── sitemap.xml/    # Sitemap
