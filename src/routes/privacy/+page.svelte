@@ -54,7 +54,7 @@
                             class="inline-flex cursor-pointer items-center justify-center rounded-md bg-zinc-800 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 active:scale-95"
                             onclick={() => {
                                 if (typeof window !== 'undefined' && 'CookieConsent' in window) {
-                                    // @ts-ignore
+                                    // @ts-expect-error - CookieConsent is attached to window globally
                                     window.CookieConsent.showPreferences();
                                 }
                             }}

@@ -7,7 +7,7 @@
     /**
      * @type {import('vanilla-cookieconsent').Config}
      */
-    const config: any = {
+    const config: import('vanilla-cookieconsent').Config = {
         guiOptions: {
             consentModal: {
                 layout: 'box',
@@ -68,7 +68,7 @@
                         title: 'Cookie 偏好設定',
                         acceptAllBtn: '全部接受',
                         acceptNecessaryBtn: '僅接受必要',
-                        saveSettingsBtn: '儲存設定',
+                        savePreferencesBtn: '儲存設定',
                         closeIconLabel: '關閉',
                         serviceCounterLabel: '服務項',
                         sections: [
@@ -101,13 +101,13 @@
                         ]
                     }
                 }
-            },
-            onConsent: () => {
-                window.dispatchEvent(new CustomEvent('cc:onConsent'));
-            },
-            onChange: () => {
-                window.dispatchEvent(new CustomEvent('cc:onConsent'));
             }
+        },
+        onConsent: () => {
+            window.dispatchEvent(new CustomEvent('cc:onConsent'));
+        },
+        onChange: () => {
+            window.dispatchEvent(new CustomEvent('cc:onConsent'));
         }
     };
 
@@ -116,7 +116,7 @@
 
         // Expose to window for other components (like Giscus or Privacy page)
         if (typeof window !== 'undefined') {
-            // @ts-ignore
+            // @ts-expect-error - CookieConsent is attached to window globally
             window.CookieConsent = CookieConsent;
         }
     });
@@ -156,7 +156,9 @@
 
     /* 視窗與容器結構 */
     :global(#cc-main .pm) {
-        height: auto !important; /* 自動高度，避免空洞 */
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
         max-height: 85vh !important;
         border-radius: 12px !important;
     }
@@ -179,7 +181,8 @@
 
     /* 修正中間內容產生的滑動條問題 */
     :global(#cc-main .pm__body) {
-        flex: none !important;
+        flex: 1 !important;
+        overflow-y: auto !important;
         padding: 0 1.2rem !important; /* 統一左右間距 */
     }
 

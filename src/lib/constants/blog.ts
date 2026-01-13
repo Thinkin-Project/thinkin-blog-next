@@ -44,7 +44,7 @@ export const BLOG_CONFIG = {
         emitMetadata: env.PUBLIC_GISCUS_EMIT_METADATA || '0',
         inputPosition: env.PUBLIC_GISCUS_INPUT_POSITION || 'top',
         theme: env.PUBLIC_GISCUS_THEME || 'dark',
-        lang: env.PUBLIC_GISCUS_LANG || 'en',
+        lang: env.PUBLIC_GISCUS_LANG || 'zh-TW',
         loading: env.PUBLIC_GISCUS_LOADING || 'lazy'
     }
 };

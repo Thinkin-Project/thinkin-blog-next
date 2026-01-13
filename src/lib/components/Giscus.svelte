@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, tick } from 'svelte';
 
-    import { MessageSquareOff } from 'lucide-svelte';
+    import { Cookie, MessageSquareOff } from 'lucide-svelte';
 
     import { BLOG_CONFIG } from '$lib/constants/blog';
     import { themeState } from '$lib/theme.svelte';
@@ -22,6 +22,7 @@
 
     let container: HTMLDivElement | undefined = $state();
     let isValidConfig = $state(!!(repo && repoId && categoryId));
+    let isConsentGiven = $state(false);
 
     $effect(() => {
         const currentTheme = themeState.current;
@@ -38,17 +39,20 @@
         if (!isValidConfig) return;
 
         // Check for cookie consent if the library is available
-        const isConsentAccepted = () => {
+        const checkConsent = () => {
             if (typeof window !== 'undefined' && 'CookieConsent' in window) {
-                // @ts-ignore
-                return window.CookieConsent.acceptedCategory('functionality');
+                // @ts-expect-error - CookieConsent is attached to window globally
+                isConsentGiven = window.CookieConsent.acceptedCategory('functionality');
+            } else {
+                // If the library isn't loaded yet, we assume it's true to not block the script
+                // but since we want to be consent-first, we'll wait for the script to load.
+                isConsentGiven = true;
             }
-            return true; // Fallback if library not loaded yet or disabled
         };
 
         let isLoaded = false;
         const loadGiscus = () => {
-            if (isLoaded) return;
+            if (!isConsentGiven || isLoaded) return;
             isLoaded = true;
 
             const script = document.createElement('script');
@@ -73,23 +77,28 @@
             container?.appendChild(script);
         };
 
-        if (isConsentAccepted()) {
-            loadGiscus();
-        } else {
-            // Listen for consent changes
-            window.addEventListener('cc:onConsent', () => {
-                if (isConsentAccepted()) {
+        const handleConsentChange = () => {
+            setTimeout(async () => {
+                checkConsent();
+                if (isConsentGiven) {
+                    await tick(); // Ensure the DOM container is rendered
                     loadGiscus();
                 }
-            });
+            }, 100);
+        };
+
+        checkConsent();
+        if (isConsentGiven) {
+            loadGiscus();
         }
+
+        window.addEventListener('cc:onConsent', handleConsentChange);
+        return () => window.removeEventListener('cc:onConsent', handleConsentChange);
     });
 </script>
 
 <div class="giscus-container mt-16 border-t border-border pt-12">
-    {#if isValidConfig}
-        <div bind:this={container}></div>
-    {:else}
+    {#if !isValidConfig}
         <div
             class="animate-in rounded-3xl border border-border bg-secondary/50 p-8 text-center duration-700 fade-in slide-in-from-bottom-4 md:p-12"
         >
@@ -106,6 +115,32 @@
                 目前討論功能正在準備中，稍後將會開放。感謝你的耐心等待！
             </p>
         </div>
+    {:else if !isConsentGiven}
+        <div
+            class="animate-in rounded-3xl border border-border bg-secondary/50 p-8 text-center duration-700 fade-in slide-in-from-bottom-4 md:p-12"
+        >
+            <div class="mb-6 flex justify-center">
+                <div
+                    class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary"
+                >
+                    <Cookie class="h-6 w-6" />
+                </div>
+            </div>
+            <h3 class="mb-3 text-2xl font-bold">留言功能需要 Cookie 授權</h3>
+
+            <p class="mx-auto mb-6 max-w-md text-muted-foreground">
+                為了載入留言功能，我們需要您同意使用「功能性 Cookie」。您可以隨時在設定中調整。
+            </p>
+
+            <button
+                onclick={() => window.CookieConsent?.showPreferences()}
+                class="inline-flex cursor-pointer items-center justify-center rounded-xl bg-primary px-6 py-2.5 font-medium text-primary-foreground transition-all hover:bg-primary/90 active:scale-95"
+            >
+                開啟 Cookie 設定
+            </button>
+        </div>
+    {:else}
+        <div bind:this={container}></div>
     {/if}
 </div>
 
