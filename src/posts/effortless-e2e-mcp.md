@@ -80,7 +80,7 @@ authors: ['neil-tsai']
 - **分析網路與 console 錯誤**：協助定位 CORS 問題或 JS 錯誤。
 - **執行效能追蹤**：分析 [LCP](https://jamespolik.pixnet.net/blog/posts/17346689970)、[CLS](https://jamespolik.pixnet.net/blog/posts/17346689970) 等指標。
 
-### 為什麼 MCP 對自然語言 E2E 測試很重要？
+### MCP 對自然語言 E2E 測試很重要嗎？
 
 - <span style="color: #FF5151;">傳統 AI Agent 是「盲寫」：只能根據程式碼去<a href="https://www.youtube.com/watch?v=wE3oTZLijsI" target="_blank">預測</a>結果</span>
 - <span style="color: #FF9224;">MCP 給了 AI 一雙「眼睛」：能夠看到程式碼執行後的真實效果，大幅提升自然語言指令的準確性與可操作性</span>
