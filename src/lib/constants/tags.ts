@@ -40,7 +40,9 @@ export const TAGS: Tag[] = [
     { name: '遷移', slug: 'migration' },
     { name: 'Worker Service', slug: 'worker-service' },
     { name: 'AspectCore', slug: 'aspectcore' },
-    { name: 'AOP', slug: 'aop' }
+    { name: 'AOP', slug: 'aop' },
+    { name: 'E2E 測試', slug: 'e2e-test' },
+    { name: 'MCP', slug: 'mcp' }
 ];
 
 /**
