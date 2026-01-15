@@ -133,7 +133,12 @@
 
     /* 優化文章 Markdown 內的圖片樣式 */
     .prose img {
-        @apply mx-auto my-4! rounded-2xl border border-secondary shadow-xl;
+        @apply mx-auto my-4! rounded-2xl border border-secondary shadow-xl transition-all duration-300;
+    }
+
+    /* 可點擊放大圖片的互動效果 */
+    .prose img.zoomable-image {
+        @apply cursor-zoom-in hover:scale-[1.02] hover:shadow-2xl hover:brightness-105;
     }
 
     /* 確保圖片下方間距正常 */

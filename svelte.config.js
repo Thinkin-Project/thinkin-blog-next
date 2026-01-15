@@ -14,6 +14,23 @@ const mdsvexOptions = {
     rehypePlugins: [rehypeSlug],
     remarkPlugins: [
         remarkToc,
+        // 自定義插件處理圖片優化 (Lazy Loading & Zoomable class)
+        () => {
+            return (tree) => {
+                const visit = (node) => {
+                    if (node.type === 'image') {
+                        node.data = node.data || {};
+                        node.data.hProperties = node.data.hProperties || {};
+                        node.data.hProperties.loading = 'lazy';
+                        node.data.hProperties.decoding = 'async';
+                        // 添加識別用的 class，方便後續燈箱攔截
+                        node.data.hProperties.class = 'zoomable-image';
+                    }
+                    if (node.children) node.children.forEach(visit);
+                };
+                visit(tree);
+            };
+        },
         // 自定義插件計算閱讀時間
         () => {
             return (tree, { data }) => {
