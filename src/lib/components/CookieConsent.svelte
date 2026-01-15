@@ -89,7 +89,7 @@
                             {
                                 title: '功能性 Cookie',
                                 description:
-                                    '用於提供增強功能與個人化內容（例如嵌入的 Giscus 留言系統或影片）。',
+                                    '用於提供增強功能與個人化內容（例如嵌入的留言功能或影片）。',
                                 linkedCategory: 'functionality'
                             },
                             {
