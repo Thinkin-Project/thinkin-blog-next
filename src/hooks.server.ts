@@ -16,11 +16,11 @@ export async function handle({ event, resolve }) {
         'Content-Security-Policy': [
             "default-src 'self'",
             "script-src 'self' 'unsafe-inline' https://giscus.app",
-            "style-src 'self' 'unsafe-inline' https://giscus.app",
+            "style-src 'self' 'unsafe-inline' https://giscus.app https://fonts.googleapis.com",
             "img-src 'self' data: https://storage.ko-fi.com https://ko-fi.com",
             "frame-src 'self' https://giscus.app",
             "connect-src 'self' https://giscus.app",
-            "font-src 'self' data:",
+            "font-src 'self' data: https://fonts.gstatic.com",
             "object-src 'none'",
             "base-uri 'self'",
             "form-action 'self'",
