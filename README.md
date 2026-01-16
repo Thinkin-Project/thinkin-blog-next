@@ -121,7 +121,8 @@ src/
 │   ├── components/     # UI 元件
 │   │   ├── ui/         # shadcn-svelte 元件
 │   │   └── icons/      # 自定義圖示
-│   ├── constants/      # 設定常數
+│   ├── constants/      # 網站設定常數
+│   ├── data/           # 分類與作者資料 (JSON)
 │   ├── server/         # 伺服器端邏輯
 │   ├── utils/          # 工具函式
 │   └── types.ts        # TypeScript 型別
@@ -195,44 +196,40 @@ authors: ['neil-tsai']
 
 ### 主題與標籤設定
 
-主題和標籤定義於 `src/lib/constants/` 目錄：
+主題和標籤定義於 `src/lib/data/` 目錄：
 
-- **主題 (Topic)**: `src/lib/constants/topics.ts`
-- **標籤 (Tag)**: `src/lib/constants/tags.ts`
+- **主題 (Topic)**: `src/lib/data/topics.json`
+- **標籤 (Tag)**: `src/lib/data/tags.json`
 
-新增主題或標籤時，請編輯對應的檔案：
+新增主題或標籤時，請編輯對應的 JSON 檔案：
 
-```typescript
-// topics.ts
-export const TOPICS: Topic[] = [
-    { name: '設計模式', slug: 'design-pattern' }
-    // 新增更多主題...
-];
+```json
+// topics.json
+[
+    { "name": "設計模式", "slug": "design-pattern" }
+]
 
-// tags.ts
-export const TAGS: Tag[] = [
-    { name: '創建型模式', slug: 'creational-pattern' }
-    // 新增更多標籤...
-];
+// tags.json
+[
+    { "name": "創建型模式", "slug": "creational-pattern" }
+]
 ```
 
 ### 作者設定
 
-作者定義於 `src/lib/constants/authors.ts`：
+作者定義於 `src/lib/data/authors.json`：
 
-```typescript
-export const AUTHORS: Record<string, Author> = {
-    ['neil-tsai']: {
-        id: 'neil-tsai',
-        name: 'Neil Tsai',
-        avatar: '/assets/authors/neil.jpg',
-        bio: '作者簡介',
-        website: 'https://example.com',
-        github: 'https://github.com/username'
-        // 可選: linkedin, facebook, x
+```json
+{
+    "neil-tsai": {
+        "id": "neil-tsai",
+        "name": "Neil Tsai",
+        "avatar": "/assets/authors/neil.jpg",
+        "bio": "作者簡介",
+        "website": "https://example.com",
+        "github": "https://github.com/username"
     }
-    // 新增更多作者...
-};
+}
 ```
 
 作者頭像請放置於 `static/assets/authors/` 目錄。
