@@ -4,8 +4,28 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params, data }) => {
     try {
-        const post = await import(`../../../posts/${params.slug}.md`);
-        const rawContent = await import(`../../../posts/${params.slug}.md?raw`);
+        const post = await import(`../../../posts/${params.slug}/index.md`);
+        const rawContent = await import(`../../../posts/${params.slug}/index.md?raw`);
+
+        // 解析 ogImage 路徑 (如果存在且為相對路徑)
+        let ogImageUrl = post.metadata.ogImage;
+        if (ogImageUrl && ogImageUrl.startsWith('.')) {
+            // 取得所有文章圖片的 URL 映射
+            const images = import.meta.glob('/src/posts/**/*.{jpg,jpeg,png,webp,svg,gif}', {
+                query: '?url',
+                import: 'default',
+                eager: true
+            });
+
+            // 構建與 import.meta.glob 格式一致的完整路徑
+            // 例如 ./hero.jpeg -> /src/posts/slug/hero.jpeg
+            const normalizedPath = ogImageUrl.startsWith('./') ? ogImageUrl.slice(2) : ogImageUrl;
+            const fullPath = `/src/posts/${params.slug}/${normalizedPath}`;
+
+            if (images[fullPath]) {
+                ogImageUrl = images[fullPath] as string;
+            }
+        }
 
         // 提取標題 (h2, h3)
         const headings = rawContent.default
@@ -14,8 +34,6 @@ export const load: PageLoad = async ({ params, data }) => {
             .map((line: string) => {
                 const level = line.startsWith('### ') ? 3 : 2;
                 const title = line.replace(/^#{2,3}\s+/, '').trim();
-                // 這裡的 slug 需與 rehype-slug 產生的邏輯一致
-                // 移除大部分標點符號，保留中文與英數字，空格轉連字號
                 const slug = title
                     .toLowerCase()
                     .replace(/[^\w\s\u4e00-\u9fa5-]/g, '')
@@ -26,7 +44,10 @@ export const load: PageLoad = async ({ params, data }) => {
 
         return {
             content: post.default,
-            meta: post.metadata,
+            meta: {
+                ...post.metadata,
+                ogImage: ogImageUrl
+            },
             headings,
             ...data
         };

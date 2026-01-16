@@ -1,4 +1,5 @@
-import tagsJson from '$lib/data/tags.json';
+import tagsJson from '$posts/_metadata/tags.json';
+
 import type { Tag } from '$lib/types';
 
 export const TAGS: Tag[] = tagsJson;

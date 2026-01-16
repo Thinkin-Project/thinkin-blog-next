@@ -1,4 +1,4 @@
-import authorsJson from '$lib/data/authors.json';
+import authorsJson from '$posts/_metadata/authors.json';
 
 import type { Author } from '../types';
 

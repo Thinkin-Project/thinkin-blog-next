@@ -11,15 +11,33 @@ export async function getPosts() {
 
     let posts: ArticleMeta[] = [];
 
-    const paths = import.meta.glob('/src/posts/*.md', { eager: true });
+    const paths = import.meta.glob('/src/posts/*/index.md', { eager: true });
+    // 取得所有文章圖片的 URL 映射
+    const images = import.meta.glob('/src/posts/**/*.{jpg,jpeg,png,webp,svg,gif}', {
+        query: '?url',
+        import: 'default',
+        eager: true
+    });
 
     for (const path in paths) {
         const file = paths[path];
-        const slug = path.split('/').at(-1)?.replace('.md', '');
+        // 路徑格式如 /src/posts/my-post/index.md, slug 是倒數第二層
+        const slug = path.split('/').at(-2);
 
         if (file && typeof file === 'object' && 'metadata' in file && slug) {
             const metadata = file.metadata as Omit<ArticleMeta, 'slug'>;
-            const post = { ...metadata, slug } as ArticleMeta;
+
+            // 解析 ogImage 路徑
+            let ogImage = metadata.ogImage;
+            if (ogImage && ogImage.startsWith('.')) {
+                const normalizedPath = ogImage.startsWith('./') ? ogImage.slice(2) : ogImage;
+                const fullPath = `/src/posts/${slug}/${normalizedPath}`;
+                if (images[fullPath]) {
+                    ogImage = images[fullPath] as string;
+                }
+            }
+
+            const post = { ...metadata, ogImage, slug } as ArticleMeta;
             if (!post.drafted) {
                 posts.push(post);
             }

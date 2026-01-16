@@ -1,4 +1,5 @@
-import topicsJson from '$lib/data/topics.json';
+import topicsJson from '$posts/_metadata/topics.json';
+
 import type { Topic } from '$lib/types';
 
 export const TOPICS: Topic[] = topicsJson;

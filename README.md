@@ -121,20 +121,17 @@ src/
 │   ├── components/     # UI 元件
 │   │   ├── ui/         # shadcn-svelte 元件
 │   │   └── icons/      # 自定義圖示
-│   ├── constants/      # 網站設定常數
-│   ├── data/           # 分類與作者資料 (JSON)
+│   ├── constants/      # 網站設定常數 (部分引用自 $posts/_metadata)
 │   ├── server/         # 伺服器端邏輯
 │   ├── utils/          # 工具函式
 │   └── types.ts        # TypeScript 型別
-├── posts/              # Markdown 文章
+├── posts/              # 內容中心 (整合文稿、資源與元數據)
+│   ├── _metadata/      # 分類、標籤與作者定義
+│   └── {slug}/         # 文章目錄
+│       ├── index.md    # 文章主體
+│       └── images/     # 文章專用圖片
 ├── routes/             # SvelteKit 路由
-│   ├── posts/          # 文章頁面
-│   ├── topics/         # 主題分類
-│   ├── privacy/        # 隱私權政策
-│   ├── contact/        # 聯絡頁面
-│   ├── rss.xml/        # RSS Feed
-│   └── sitemap.xml/    # Sitemap
-└── static/             # 靜態資源
+└── static/             # 全站通用靜態資源
 ```
 
 ## 腳本指令
@@ -151,7 +148,7 @@ src/
 
 ## 如何新增文章
 
-在 `src/posts/` 目錄下建立新的 `.md` 檔案，檔名將作為 URL slug。
+在 `src/posts/` 目錄下建立新的 **資料夾**，資料夾名稱將作為 URL slug，並在該資料夾內建立 `index.md`。
 
 ### Frontmatter 結構
 
@@ -188,18 +185,21 @@ authors: ['neil-tsai']
 
 ### 圖片資源
 
-文章內的圖片請放置於 `static/assets/posts/{slug}/` 目錄，並使用絕對路徑引用：
+文章內的圖片請放置於該文章目錄下的 `images/` 目錄，並使用相對路徑引用：
 
 ```markdown
-![圖片說明](/assets/posts/your-article-slug/image.png)
+![圖片說明](./images/image.png)
 ```
+
+> [!TIP]
+> 採用相對路徑後，Vite 於建置時會自動優化這些圖片並處理內容雜湊（Cache Busting）。
 
 ### 主題與標籤設定
 
-主題和標籤定義於 `src/lib/data/` 目錄：
+主題和標籤定義於 `src/posts/_metadata/` 目錄：
 
-- **主題 (Topic)**: `src/lib/data/topics.json`
-- **標籤 (Tag)**: `src/lib/data/tags.json`
+- **主題 (Topic)**: `src/posts/_metadata/topics.json`
+- **標籤 (Tag)**: `src/posts/_metadata/tags.json`
 
 新增主題或標籤時，請編輯對應的 JSON 檔案：
 
@@ -217,7 +217,7 @@ authors: ['neil-tsai']
 
 ### 作者設定
 
-作者定義於 `src/lib/data/authors.json`：
+作者定義於 `src/posts/_metadata/authors.json`：
 
 ```json
 {
