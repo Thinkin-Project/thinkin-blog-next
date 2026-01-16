@@ -15,14 +15,32 @@
     const meta = $derived(page.data.meta || {});
     const title = $derived(meta.title ? `${meta.title} | ${BLOG_CONFIG.name}` : BLOG_CONFIG.name);
     const description = $derived(meta.description || BLOG_CONFIG.description);
-    const ogImage = $derived(
-        meta.ogImage
-            ? `${BLOG_CONFIG.url}${meta.ogImage}`
-            : `${BLOG_CONFIG.url}${BLOG_CONFIG.ogImage}`
-    );
-    const ogUrl = $derived(
-        meta.slug ? `${BLOG_CONFIG.url}/posts/${meta.slug}` : BLOG_CONFIG.url + page.url.pathname
-    );
+    const ogImage = $derived.by(() => {
+        const imagePath = meta.ogImage || BLOG_CONFIG.ogImage;
+        if (!imagePath) return '';
+
+        // 如果已經是絕對網址 (http:// 或 https://)，直接回傳
+        if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+            return imagePath;
+        }
+
+        // 確保 BLOG_CONFIG.url 與 imagePath 之間只有一個斜線
+        const baseUrl = BLOG_CONFIG.url.endsWith('/')
+            ? BLOG_CONFIG.url.slice(0, -1)
+            : BLOG_CONFIG.url;
+        const normalizedPath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+
+        return `${baseUrl}${normalizedPath}`;
+    });
+    const ogUrl = $derived.by(() => {
+        const baseUrl = BLOG_CONFIG.url.endsWith('/')
+            ? BLOG_CONFIG.url.slice(0, -1)
+            : BLOG_CONFIG.url;
+        if (meta.slug) {
+            return `${baseUrl}/posts/${meta.slug}`;
+        }
+        return `${baseUrl}${page.url.pathname}`;
+    });
 </script>
 
 <GlobalSearch />
