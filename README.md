@@ -136,19 +136,30 @@ src/
 
 ## 腳本指令
 
-| 指令           | 說明                |
-| -------------- | ------------------- |
-| `pnpm dev`     | 啟動開發伺服器      |
-| `pnpm build`   | 建置生產版本        |
-| `pnpm preview` | 預覽生產版本        |
-| `pnpm check`   | TypeScript 型別檢查 |
-| `pnpm lint`    | 程式碼品質檢查      |
-| `pnpm format`  | 格式化程式碼        |
-| `pnpm update`  | 更新所有依賴        |
+| 指令            | 說明                |
+| --------------- | ------------------- |
+| `pnpm dev`      | 啟動開發伺服器      |
+| `pnpm build`    | 建置生產版本        |
+| `pnpm preview`  | 預覽生產版本        |
+| `pnpm check`    | TypeScript 型別檢查 |
+| `pnpm lint`     | 程式碼品質檢查      |
+| `pnpm format`   | 格式化程式碼        |
+| `pnpm update`   | 更新所有依賴        |
+| `pnpm new-post` | 建立新文章 (互動式) |
 
 ## 如何新增文章
 
-在 `src/posts/` 目錄下建立新的 **資料夾**，資料夾名稱將作為 URL slug，並在該資料夾內建立 `index.md`。
+建議使用內建的 **互動式 CLI 工具**，它會自動為您建立目錄、產生 Markdown 模板，並協助您維護元數據 JSON：
+
+```bash
+pnpm new-post
+```
+
+該工具將引導您填寫標題、描述、Slug，並從現有清單中選擇作者、主題與標籤。如果您輸入了清單中不存在的技術標籤或主題，工具也會詢問是否要自動註冊至 `src/posts/_metadata/`。
+
+### 手動建立文章
+
+如果您偏好手動操作，請在 `src/posts/` 目錄下建立新的 **資料夾**，資料夾名稱將作為 URL slug，並在該資料夾內建立 `index.md`。
 
 ### Frontmatter 結構
 
@@ -173,7 +184,7 @@ authors: ['neil-tsai']
 | `title`       | ✅   | 文章標題                                    |
 | `description` | ✅   | 文章描述                                    |
 | `ogImage`     | ⬜   | 自訂社群分享圖片路徑                        |
-| `slug`        | ✅   | URL 識別碼，需與檔案名相同                  |
+| `slug`        | ✅   | URL 識別碼，需與目錄名稱相同                |
 | `date`        | ✅   | 發佈日期 (YYYY-MM-DD)                       |
 | `updated`     | ⬜   | 最後更新日期                                |
 | `drafted`     | ✅   | 是否為草稿，`true` 時不會顯示於網站         |
