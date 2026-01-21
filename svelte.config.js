@@ -93,7 +93,8 @@ const config = {
         // See https://svelte.dev/docs/kit/adapters for more information about adapters.
         adapter: adapter(),
         alias: {
-            $posts: 'src/posts'
+            $posts: 'src/posts',
+            $content: 'src/content'
         }
     }
 };

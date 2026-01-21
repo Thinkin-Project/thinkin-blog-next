@@ -4,7 +4,7 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async () => {
     try {
-        const post = await import('../../pages/privacy.md');
+        const post = await import('$content/privacy.md');
         const meta = post.metadata || {};
 
         return {

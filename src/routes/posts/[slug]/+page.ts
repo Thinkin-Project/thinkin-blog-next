@@ -4,8 +4,8 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params, data }) => {
     try {
-        const post = await import(`../../../posts/${params.slug}/index.md`);
-        const rawContent = await import(`../../../posts/${params.slug}/index.md?raw`);
+        const post = await import(`$posts/${params.slug}/index.md`);
+        const rawContent = await import(`$posts/${params.slug}/index.md?raw`);
 
         // 解析 ogImage 路徑 (如果存在且為相對路徑)
         let ogImageUrl = post.metadata.ogImage;
