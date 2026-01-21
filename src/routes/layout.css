@@ -148,12 +148,12 @@
 
     /* 優化程式碼區塊 (Shiki) */
     .prose pre {
-        @apply my-8 flex flex-col overflow-hidden rounded-2xl border border-secondary bg-zinc-950/50 p-0! shadow-2xl;
+        @apply my-8 flex max-w-full flex-col overflow-hidden rounded-2xl border border-secondary bg-zinc-950/50 p-0! shadow-2xl;
     }
 
     /* 內文中的行內程式碼 */
     .prose :not(pre) > code {
-        @apply rounded-md bg-secondary px-1.5 py-0.5 font-medium text-pink-600 before:content-none! after:content-none! dark:text-pink-300;
+        @apply rounded-md bg-secondary px-1.5 py-0.5 font-medium wrap-break-word text-pink-600 before:content-none! after:content-none! dark:text-pink-300;
     }
 
     /* 文章中的超連結樣式 */
@@ -166,7 +166,7 @@
     }
 
     .prose pre code {
-        @apply block overflow-x-auto bg-transparent px-6! py-4! font-mono text-sm leading-relaxed;
+        @apply block min-w-0 overflow-x-auto bg-transparent px-6! py-4! font-mono text-sm leading-relaxed;
     }
 
     /* 模擬視窗按鈕效果 (選配) */

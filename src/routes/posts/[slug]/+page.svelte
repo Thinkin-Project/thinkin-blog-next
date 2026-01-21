@@ -29,7 +29,7 @@
         </aside>
 
         <!-- Main Content -->
-        <div class="w-full max-w-3xl">
+        <div class="w-full max-w-3xl min-w-0">
             <main class="space-y-16">
                 <!-- Breadcrumb -->
                 <div class="animate-in delay-0 duration-700 fade-in slide-in-from-bottom-4">
