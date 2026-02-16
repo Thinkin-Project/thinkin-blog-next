@@ -53,7 +53,13 @@
 
     async function copyToClipboard() {
         try {
-            await navigator.clipboard.writeText(displayUrl);
+            const plainText = displayUrl;
+            const htmlContent = `<a href="${displayUrl}">${title}</a>`;
+            const clipboardItem = new ClipboardItem({
+                'text/plain': new Blob([plainText], { type: 'text/plain' }),
+                'text/html': new Blob([htmlContent], { type: 'text/html' })
+            });
+            await navigator.clipboard.write([clipboardItem]);
             copied = true;
             setTimeout(() => {
                 copied = false;
