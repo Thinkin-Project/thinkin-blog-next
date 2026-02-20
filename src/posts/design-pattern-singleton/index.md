@@ -69,7 +69,7 @@ class Singleton {
 2. 若單純僅使用該模式，它算是**打破了 [SRP](/posts/oo-single-responsibility-principle)**（Singleton 類別包含了**創建目標類別實例的職責**及**目標類別實例原有的行為執行職責**），但可以透過工廠（Factory）來分離出創建實例的職責
 3. 因第 1 點關係，故會導致**類別之間緊密耦合（Tight coupling）**
 4. 因第 3 點關係，**單元測試會變得較為困難**，因單元測試比較大的前提會是類別之間需[鬆耦合（Loose coupling）](https://en.wikipedia.org/wiki/Loose_coupling)，從而可以獨立對它們進行單元測試
-5. 由於保證只能取到一個且相同的實例，所以在**[多執行緒（Multi-threading）](<https://en.wikipedia.org/wiki/Thread_(computing)#Multithreading>)下，需要特別注意狀態變化**，若要最小程度的影響應用程式，則該實例執行途中變動幅度應該要最小
+5. 由於保證只能取到一個且相同的實例，所以在**[多執行緒（Multi-threading）](https://en.wikipedia.org/wiki/Thread_(computing)#Multithreading)下，需要特別注意狀態變化**，若要最小程度的影響應用程式，則該實例執行途中變動幅度應該要最小
 6. 因第 5 點關係，一但取出之實例對於商業邏輯有極大程度影響時，則每一次商業邏輯的結果不一定會如預期，間接導致單元測試很難撰寫（因為沒有可以預期的案例）
 7. 一般來說透過靜態方法來初始化實例是比較好的方式，但靜態方法會導致開發人員知道他們不需要知道的類別內部程式碼結構
 8. 因第 7 點關係，若有寫過單元測試就會知道，即便使用一些單元測試框架，也非常不好處理靜態方法···

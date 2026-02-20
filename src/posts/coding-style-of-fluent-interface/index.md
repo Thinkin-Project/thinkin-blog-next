@@ -10,7 +10,7 @@ tags: ['fluent-interface', 'code-readability']
 authors: ['neil-tsai']
 ---
 
-其實 [Fluent Interface（流暢介面）](https://en.wikipedia.org/wiki/Fluent_interface)不是新概念，早在西元 2005 年就由 [Eric Evans](https://en.wikipedia.org/w/index.php?title=Eric_Evans_(technologist)&action=edit&redlink=1) 和 [Martin Fowler](https://en.wikipedia.org/wiki/Martin_Fowler_(software_engineer)) 所提出，但我覺得值得讓大家初步了解其實作概念，因為真的很有趣呀ヽ(✿ﾟ▽ﾟ)ノ
+其實 [Fluent Interface（流暢介面）](https://en.wikipedia.org/wiki/Fluent_interface)不是新概念，早在西元 2005 年就由 Eric Evans 和 [Martin Fowler](https://en.wikipedia.org/wiki/Martin_Fowler_(software_engineer)) 所提出，但我覺得值得讓大家初步了解其實作概念，因為真的很有趣呀ヽ(✿ﾟ▽ﾟ)ノ
 
 ## Fluent Interface 介紹
 
@@ -273,10 +273,6 @@ Extension Method 也蠻值得討論的，不過微軟官方文件已經寫得蠻
 💭 [擴充方法 (C# 程式設計手冊)](https://docs.microsoft.com/zh-tw/dotnet/csharp/programming-guide/classes-and-structs/extension-methods)
 
 ## 參考
-
-💭 [Fluent Interface from Java design patterns](https://java-design-patterns.com/patterns/fluentinterface/)
-
-💭 [How to Design and Implement the Fluent Interface Pattern in C#](https://assist-software.net/blog/design-and-implement-fluent-interface-pattern-c)
 
 💭 [利用 Swift 5.1 新功能實作 Fluent Interface 讓程式碼更易讀流暢！](https://www.appcoda.com.tw/fluent-interface/)
 

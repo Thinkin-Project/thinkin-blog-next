@@ -228,8 +228,6 @@ public class ServiceAopAttribute : AbstractInterceptorAttribute
 
 💭 [Asp.Net Core轻量级Aop解决方案：AspectCore](https://www.cnblogs.com/liuhaoyang/p/aspectcore-introduction-1.html)
 
-💭 [.NET Core中使用开源的AOP框架 AspectCore](http://www.vnfan.com/buffett/d/f51118e10b91283.html)
-
 ## 結尾
 
 以前在維護公司專案的時候，也有使用到 AOP 的概念來切離關注點，只是那時候對 AOP 的認識甚少，少到我根本也不知道為什麼要套用 AOP，直到最近需要 Survey AOP 概念時，才真正了解為什麼要 AOP？那它究竟能幫助我們到什麼程度？
