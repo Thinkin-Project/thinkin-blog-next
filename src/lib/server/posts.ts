@@ -10,37 +10,70 @@ export async function getPosts() {
     }
 
     let posts: ArticleMeta[] = [];
-
-    const paths = import.meta.glob('/src/posts/*/index.md', { eager: true });
-    // 取得所有文章圖片的 URL 映射
+    // non-eager glob: returns loader functions we call when needed
+    const paths = import.meta.glob('/src/posts/*/index.md');
+    // images as URL loaders (non-eager)
     const images = import.meta.glob('/src/posts/**/*.{jpg,jpeg,png,webp,svg,gif}', {
         query: '?url',
-        import: 'default',
-        eager: true
+        import: 'default'
     });
 
-    for (const path in paths) {
-        const file = paths[path];
-        // 路徑格式如 /src/posts/my-post/index.md, slug 是倒數第二層
-        const slug = path.split('/').at(-2);
+    // load post modules and resolve their images in parallel per-post
+    const entries = Object.entries(paths) as [string, () => Promise<unknown>][];
 
-        if (file && typeof file === 'object' && 'metadata' in file && slug) {
+    const perPostPromises = entries.map(async ([path, loader]) => {
+        try {
+            const file = await loader();
+            const slug = path.split('/').at(-2);
+
+            if (!file || typeof file !== 'object' || !('metadata' in file) || !slug) {
+                return { path, error: new Error('invalid markdown') };
+            }
+
             const metadata = file.metadata as Omit<ArticleMeta, 'slug'>;
 
-            // 解析 ogImage 路徑
+            // Basic metadata validation
+            if (!metadata.title || !metadata.description || !metadata.date) {
+                return { path, error: new Error('missing title, description, or date') };
+            }
+            if (isNaN(new Date(metadata.date).getTime())) {
+                return { path, error: new Error(`invalid date format: ${metadata.date}`) };
+            }
+
+            // resolve ogImage URL if it's a relative path (do this per-post)
             let ogImage = metadata.ogImage;
             if (ogImage && ogImage.startsWith('.')) {
                 const normalizedPath = ogImage.startsWith('./') ? ogImage.slice(2) : ogImage;
                 const fullPath = `/src/posts/${slug}/${normalizedPath}`;
-                if (images[fullPath]) {
-                    ogImage = images[fullPath] as string;
+                const imgLoader = images[fullPath] as (() => Promise<unknown>) | undefined;
+                if (imgLoader) {
+                    try {
+                        const img = await imgLoader();
+                        ogImage = img as string;
+                    } catch (e) {
+                        return { path, error: e };
+                    }
                 }
             }
 
             const post = { ...metadata, ogImage, slug } as ArticleMeta;
-            if (!post.drafted) {
-                posts.push(post);
-            }
+            return { path, post };
+        } catch (e) {
+            return { path, error: e };
+        }
+    });
+
+    const results = await Promise.all(perPostPromises);
+
+    for (const result of results) {
+        if ('error' in result) {
+            console.warn(`Failed to process post ${result.path}:`, result.error);
+            continue;
+        }
+
+        const post = result.post as ArticleMeta | undefined;
+        if (post && !post.drafted) {
+            posts.push(post);
         }
     }
 
