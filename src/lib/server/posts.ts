@@ -30,14 +30,11 @@ export async function getPosts() {
                 return { path, error: new Error('invalid markdown') };
             }
 
-            const metadata = file.metadata as Omit<ArticleMeta, 'slug'>;
+            const metadata = file.metadata as ArticleMeta;
 
-            // Basic metadata validation
-            if (!metadata.title || !metadata.description || !metadata.date) {
-                return { path, error: new Error('missing title, description, or date') };
-            }
-            if (isNaN(new Date(metadata.date).getTime())) {
-                return { path, error: new Error(`invalid date format: ${metadata.date}`) };
+            const { ok, errors } = validateMetadata(metadata);
+            if (!ok) {
+                return { path, error: new Error(errors.join('; ')) };
             }
 
             // resolve ogImage URL if it's a relative path (do this per-post)
@@ -93,4 +90,29 @@ export async function getAdjacentPosts(currentSlug: string) {
         next: index > 0 ? posts[index - 1] : null, // Newer post
         prev: index < posts.length - 1 ? posts[index + 1] : null // Older post
     };
+}
+
+function validateMetadata(metadata: ArticleMeta) {
+    const errors: string[] = [];
+
+    if (!metadata.title || !metadata.description) {
+        errors.push('missing title or description');
+    }
+    if (!metadata.slug) {
+        errors.push('missing slug');
+    } else {
+        if (typeof metadata.slug !== 'string') {
+            errors.push('slug must be a string');
+        } else if (!/^[a-z0-9-]+$/.test(metadata.slug)) {
+            errors.push(`invalid slug format: ${metadata.slug}`);
+        }
+    }
+    if (metadata.date && isNaN(new Date(metadata.date).getTime())) {
+        errors.push(`invalid date format: ${metadata.date}`);
+    }
+    if (!Array.isArray(metadata.authors) || metadata.authors.length === 0) {
+        errors.push('missing authors');
+    }
+
+    return { ok: errors.length === 0, errors };
 }
