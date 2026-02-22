@@ -1,22 +1,10 @@
 import { BLOG_CONFIG } from '$lib/constants/blog';
 import { getPosts } from '$lib/server/posts';
+import { buildAbsoluteUrl, escapeXml } from '$lib/utils/xml';
 
 export const GET = async () => {
     const posts = await getPosts();
     const siteUrl = BLOG_CONFIG.url;
-
-    const escapeXml = (str: string) =>
-        str.replace(
-            /[&<>"']/g,
-            (m) =>
-                ({
-                    '&': '&amp;',
-                    '<': '&lt;',
-                    '>': '&gt;',
-                    '"': '&quot;',
-                    "'": '&apos;'
-                })[m] || m
-        );
 
     const body = `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -26,20 +14,16 @@ export const GET = async () => {
   <priority>1.0</priority>
 </url>
 <url>
-  <loc>${escapeXml(siteUrl)}/posts</loc>
+  <loc>${escapeXml(buildAbsoluteUrl('/posts', siteUrl))}</loc>
   <changefreq>daily</changefreq>
   <priority>0.8</priority>
 </url>
 ${posts
-    .map(
-        (post) => `
-<url>
-  <loc>${escapeXml(siteUrl)}/posts/${escapeXml(post.slug)}</loc>
-  <changefreq>weekly</changefreq>
-  <lastmod>${escapeXml(post.updated || post.date)}</lastmod>
-  <priority>0.6</priority>
-</url>`
-    )
+    .map((post) => {
+        const loc = buildAbsoluteUrl(`/posts/${encodeURIComponent(post.slug)}`, siteUrl);
+        const lastmod = new Date(post.updated || post.date).toISOString();
+        return `\n<url>\n  <loc>${escapeXml(loc)}</loc>\n  <changefreq>weekly</changefreq>\n  <lastmod>${escapeXml(lastmod)}</lastmod>\n  <priority>0.6</priority>\n</url>`;
+    })
     .join('')}
 </urlset>`;
 
