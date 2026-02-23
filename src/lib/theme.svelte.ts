@@ -1,6 +1,11 @@
 import { browser } from '$app/environment';
 
-export type Theme = 'light' | 'dark';
+import {
+    type Theme,
+    applyThemeDocumentClass,
+    resolveInitialTheme,
+    syncThemePreference
+} from '$lib/utils/theme';
 
 class ThemeState {
     #currentTheme = $state<Theme>('dark');
@@ -8,11 +13,10 @@ class ThemeState {
     constructor() {
         if (browser) {
             const storedTheme = localStorage.getItem('theme') as Theme | null;
-            if (storedTheme) {
-                this.#currentTheme = storedTheme;
-            } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-                this.#currentTheme = 'light';
-            }
+            this.#currentTheme = resolveInitialTheme(
+                storedTheme,
+                window.matchMedia('(prefers-color-scheme: light)').matches
+            );
 
             // Initial sync
             this.#updateDocument(this.#currentTheme);
@@ -34,11 +38,7 @@ class ThemeState {
         this.#currentTheme = theme;
         if (browser) {
             this.#updateDocument(theme);
-            if (persist) {
-                localStorage.setItem('theme', theme);
-            } else {
-                localStorage.removeItem('theme');
-            }
+            syncThemePreference(localStorage, theme, persist);
         }
     }
 
@@ -48,21 +48,7 @@ class ThemeState {
 
     #updateDocument(theme: Theme) {
         if (browser) {
-            // 防止切換主題時的過渡動畫造成閃爍
-            document.documentElement.classList.add('no-transitions');
-
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-
-            // 強制重繪並移除 class
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    document.documentElement.classList.remove('no-transitions');
-                });
-            });
+            applyThemeDocumentClass(document.documentElement, theme, requestAnimationFrame);
         }
     }
 }

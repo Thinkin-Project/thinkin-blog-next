@@ -1,5 +1,17 @@
 import { afterEach, vi } from 'vitest';
 
+type StateFn = (<T>(value: T) => T) & { frozen?: <T>(value: T) => T };
+
+const stateShim = ((value: unknown) => value) as StateFn;
+stateShim.frozen = <T>(value: T) => value;
+
+if (!('$state' in globalThis)) {
+    Object.defineProperty(globalThis, '$state', {
+        writable: true,
+        value: stateShim
+    });
+}
+
 export function setupBrowserMocks() {
     if (typeof window === 'undefined') {
         return;

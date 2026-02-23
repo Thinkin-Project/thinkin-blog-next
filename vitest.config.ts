@@ -1,8 +1,14 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import path from 'node:path';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
     plugins: [sveltekit()],
+    resolve: {
+        alias: {
+            '$app/environment': path.resolve('src/test/mocks/app-environment.ts')
+        }
+    },
     test: {
         projects: [
             {
