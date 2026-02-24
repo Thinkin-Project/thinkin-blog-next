@@ -14,6 +14,22 @@ async function loadHandleModule(dev: boolean) {
 }
 
 type HandleEventInput = Parameters<Handle>[0];
+function makeHandleEvent(url: string): HandleEventInput {
+    const request = new Request(url);
+    const event = {
+        url: new URL(url),
+        params: {},
+        request,
+        locals: {},
+        platform: undefined,
+        routeId: null,
+        cookies: {},
+        fetch: (input: RequestInfo, init?: RequestInit) => fetch(input, init),
+        getClientAddress: () => '127.0.0.1'
+    };
+
+    return event as unknown as HandleEventInput;
+}
 
 describe('server hook', () => {
     it('returns 404 for chrome devtools metadata request in dev mode', async () => {
@@ -21,11 +37,11 @@ describe('server hook', () => {
         const resolve = vi.fn();
 
         const response = await handle({
-            event: {
-                url: new URL('https://example.com/.well-known/appspecific/com.chrome.devtools.json')
-            },
+            event: makeHandleEvent(
+                'https://example.com/.well-known/appspecific/com.chrome.devtools.json'
+            ),
             resolve
-        } as HandleEventInput);
+        } as unknown as HandleEventInput);
 
         expect(response.status).toBe(404);
         expect(resolve).not.toHaveBeenCalled();
@@ -43,11 +59,9 @@ describe('server hook', () => {
         });
 
         const response = await handle({
-            event: {
-                url: new URL('https://example.com/posts')
-            },
+            event: makeHandleEvent('https://example.com/posts'),
             resolve
-        } as HandleEventInput);
+        } as unknown as HandleEventInput);
 
         const html = await response.text();
 
