@@ -1,3 +1,4 @@
+import type { Handle } from '@sveltejs/kit';
 import { describe, expect, it, vi } from 'vitest';
 
 async function loadHandleModule(dev: boolean) {
@@ -12,6 +13,8 @@ async function loadHandleModule(dev: boolean) {
     return import('../../hooks.server');
 }
 
+type HandleEventInput = Parameters<Handle>[0];
+
 describe('server hook', () => {
     it('returns 404 for chrome devtools metadata request in dev mode', async () => {
         const { handle } = await loadHandleModule(true);
@@ -22,7 +25,7 @@ describe('server hook', () => {
                 url: new URL('https://example.com/.well-known/appspecific/com.chrome.devtools.json')
             },
             resolve
-        } as never);
+        } as HandleEventInput);
 
         expect(response.status).toBe(404);
         expect(resolve).not.toHaveBeenCalled();
@@ -44,7 +47,7 @@ describe('server hook', () => {
                 url: new URL('https://example.com/posts')
             },
             resolve
-        } as never);
+        } as HandleEventInput);
 
         const html = await response.text();
 

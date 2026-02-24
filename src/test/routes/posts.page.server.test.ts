@@ -44,7 +44,9 @@ describe('posts page load', () => {
     it('uses page 1 when page query is missing', async () => {
         mockedGetPosts.mockResolvedValue(Array.from({ length: 23 }, (_, i) => makePost(i + 1)));
 
-        const result = await runLoad({ url: new URL('https://example.com/posts') } as never);
+        const result = await runLoad({
+            url: new URL('https://example.com/posts')
+        } as PostsLoadInput);
 
         expect(result.pagination.currentPage).toBe(1);
         expect(result.pagination.totalPages).toBe(3);
@@ -57,17 +59,17 @@ describe('posts page load', () => {
 
         const nanResult = await runLoad({
             url: new URL('https://example.com/posts?page=abc')
-        } as never);
+        } as PostsLoadInput);
         expect(nanResult.pagination.currentPage).toBe(1);
 
         const negativeResult = await runLoad({
             url: new URL('https://example.com/posts?page=-3')
-        } as never);
+        } as PostsLoadInput);
         expect(negativeResult.pagination.currentPage).toBe(1);
 
         const overMaxResult = await runLoad({
             url: new URL('https://example.com/posts?page=99')
-        } as never);
+        } as PostsLoadInput);
         expect(overMaxResult.pagination.currentPage).toBe(2);
     });
 
@@ -76,7 +78,7 @@ describe('posts page load', () => {
 
         const result = await runLoad({
             url: new URL('https://example.com/posts?page=2')
-        } as never);
+        } as PostsLoadInput);
 
         expect(result.posts).toHaveLength(10);
         expect(result.posts[0].slug).toBe('post-11');

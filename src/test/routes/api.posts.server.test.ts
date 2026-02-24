@@ -18,6 +18,7 @@ vi.mock('$lib/constants/tags', () => ({
 }));
 
 const mockedGetPosts = vi.mocked(getPosts);
+type ApiPostsGetInput = Parameters<typeof GET>[0];
 
 function makePost(index: number): ArticleMeta {
     return {
@@ -37,7 +38,7 @@ describe('api/posts GET', () => {
     it('returns mapped search index shape', async () => {
         mockedGetPosts.mockResolvedValue([makePost(1)]);
 
-        const response = await GET({} as never);
+        const response = await GET({} as ApiPostsGetInput);
         const body = (await response.json()) as Array<Record<string, unknown>>;
 
         expect(response.status).toBe(200);
@@ -55,7 +56,7 @@ describe('api/posts GET', () => {
     it('returns empty array when there are no posts', async () => {
         mockedGetPosts.mockResolvedValue([]);
 
-        const response = await GET({} as never);
+        const response = await GET({} as ApiPostsGetInput);
         const body = (await response.json()) as unknown[];
 
         expect(response.status).toBe(200);

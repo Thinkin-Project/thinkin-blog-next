@@ -21,6 +21,8 @@ const mockedGetPosts = vi.mocked(getPosts);
 
 type PageLoadOutput = Exclude<Awaited<ReturnType<typeof pageLoad>>, void>;
 type LayoutLoadOutput = Exclude<Awaited<ReturnType<typeof layoutLoad>>, void>;
+type PageLoadInput = Parameters<typeof pageLoad>[0];
+type LayoutLoadInput = Parameters<typeof layoutLoad>[0];
 
 function makePost(index: number, featured = false): ArticleMeta {
     return {
@@ -37,13 +39,13 @@ function makePost(index: number, featured = false): ArticleMeta {
 }
 
 async function runPageLoad(): Promise<PageLoadOutput> {
-    const result = await pageLoad({} as never);
+    const result = await pageLoad({} as PageLoadInput);
     expect(result).toBeDefined();
     return result as PageLoadOutput;
 }
 
 async function runLayoutLoad(): Promise<LayoutLoadOutput> {
-    const result = await layoutLoad({} as never);
+    const result = await layoutLoad({} as LayoutLoadInput);
     expect(result).toBeDefined();
     return result as LayoutLoadOutput;
 }

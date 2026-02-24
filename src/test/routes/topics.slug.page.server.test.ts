@@ -59,7 +59,7 @@ describe('topic page load', () => {
         const result = await runLoad({
             params: { slug: 'dotnet' },
             url: new URL('https://example.com/topics/dotnet?page=1')
-        } as never);
+        } as TopicsLoadInput);
 
         expect(result.posts).toHaveLength(2);
         expect(result.pagination.totalPosts).toBe(3);
@@ -74,7 +74,7 @@ describe('topic page load', () => {
         const result = await runLoad({
             params: { slug: 'unknown-topic' },
             url: new URL('https://example.com/topics/unknown-topic')
-        } as never);
+        } as TopicsLoadInput);
 
         expect(result.posts).toHaveLength(0);
         expect(result.pagination.totalPosts).toBe(0);
@@ -93,7 +93,7 @@ describe('topic page load', () => {
         const result = await runLoad({
             params: { slug: 'dotnet' },
             url: new URL('https://example.com/topics/dotnet?page=999')
-        } as never);
+        } as TopicsLoadInput);
 
         expect(result.pagination.currentPage).toBe(2);
         expect(result.posts).toHaveLength(1);
