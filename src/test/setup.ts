@@ -1,9 +1,9 @@
 import { afterEach, vi } from 'vitest';
 
-type StateFn = (<T>(value: T) => T) & { frozen?: <T>(value: T) => T };
+type StateFn = (<T>(value: T) => T) & { raw?: <T>(value: T) => T };
 
 const stateShim = ((value: unknown) => value) as StateFn;
-stateShim.frozen = <T>(value: T) => value;
+stateShim.raw = <T>(value: T) => value;
 
 if (!('$state' in globalThis)) {
     Object.defineProperty(globalThis, '$state', {
