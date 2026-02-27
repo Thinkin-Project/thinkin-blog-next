@@ -6,6 +6,7 @@ let cachedPosts: ArticleMeta[] | null = null;
 
 type PostLoader = () => Promise<unknown>;
 type ImageLoaderMap = Record<string, PostLoader>;
+type RawPostLoaderMap = Record<string, () => Promise<string>>;
 export type ProcessPostEntryResult =
     | { path: string; post: ArticleMeta }
     | { path: string; error: unknown };
@@ -129,6 +130,21 @@ export function finalizePosts(posts: ArticleMeta[]) {
 export async function getAdjacentPosts(currentSlug: string) {
     const posts = await getPosts();
     return calculateAdjacentPosts(posts, currentSlug);
+}
+
+export function getRawPostLoaders() {
+    return import.meta.glob('/src/posts/*/index.md?raw', {
+        import: 'default'
+    }) as RawPostLoaderMap;
+}
+
+export async function getRawPost(slug: string) {
+    const loader = getRawPostLoaders()[`/src/posts/${slug}/index.md?raw`];
+    if (!loader) {
+        return null;
+    }
+
+    return loader();
 }
 
 export function calculateAdjacentPosts(posts: ArticleMeta[], currentSlug: string) {
