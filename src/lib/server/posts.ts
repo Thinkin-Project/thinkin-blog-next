@@ -133,13 +133,14 @@ export async function getAdjacentPosts(currentSlug: string) {
 }
 
 export function getRawPostLoaders() {
-    return import.meta.glob('/src/posts/*/index.md?raw', {
+    return import.meta.glob('/src/posts/*/index.md', {
+        query: '?raw',
         import: 'default'
     }) as RawPostLoaderMap;
 }
 
 export async function getRawPost(slug: string) {
-    const loader = getRawPostLoaders()[`/src/posts/${slug}/index.md?raw`];
+    const loader = getRawPostLoaders()[`/src/posts/${slug}/index.md`];
     if (!loader) {
         return null;
     }

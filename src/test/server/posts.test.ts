@@ -218,6 +218,25 @@ describe('posts server module', () => {
         expect(adjacent).toEqual({ next: null, prev: null });
     });
 
+    it('exposes raw markdown loaders keyed by post file path', async () => {
+        const postsModule = await import('../../lib/server/posts');
+        const loaders = postsModule.getRawPostLoaders();
+
+        expect(loaders).toHaveProperty('/src/posts/design-pattern-builder/index.md');
+        expect(typeof loaders['/src/posts/design-pattern-builder/index.md']).toBe('function');
+    });
+
+    it('returns raw markdown when slug exists and null when missing', async () => {
+        const postsModule = await import('../../lib/server/posts');
+        const raw = await postsModule.getRawPost('design-pattern-builder');
+
+        expect(raw).toContain("title: 'Builder 建造者模式'");
+
+        const missingRaw = await postsModule.getRawPost('missing-post');
+
+        expect(missingRaw).toBeNull();
+    });
+
     it('returns null adjacent posts when slug is not found', async () => {
         const postsModule = await import('../../lib/server/posts');
         const adjacent = postsModule.calculateAdjacentPosts(
