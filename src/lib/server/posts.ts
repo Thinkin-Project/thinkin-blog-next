@@ -6,9 +6,15 @@ let cachedPosts: ArticleMeta[] | null = null;
 
 type PostLoader = () => Promise<unknown>;
 type ImageLoaderMap = Record<string, PostLoader>;
+type RawPostLoaderMap = Record<string, () => Promise<string>>;
 export type ProcessPostEntryResult =
     | { path: string; post: ArticleMeta }
     | { path: string; error: unknown };
+
+const rawPostLoaders = import.meta.glob('/src/posts/*/index.md', {
+    query: '?raw',
+    import: 'default'
+}) as RawPostLoaderMap;
 
 export async function getPosts() {
     if (cachedPosts && !dev) {
@@ -145,4 +151,17 @@ export function calculateAdjacentPosts(posts: ArticleMeta[], currentSlug: string
         next: index > 0 ? posts[index - 1] : null, // Newer post
         prev: index < posts.length - 1 ? posts[index + 1] : null // Older post
     };
+}
+
+export function getRawPostLoaders() {
+    return rawPostLoaders;
+}
+
+export async function getRawPost(slug: string) {
+    const loader = getRawPostLoaders()[`/src/posts/${slug}/index.md`];
+    if (!loader) {
+        return null;
+    }
+
+    return loader();
 }
