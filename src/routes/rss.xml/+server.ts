@@ -32,8 +32,8 @@ ${posts
 
     return new Response(body, {
         headers: {
-            'Cache-Control': 'max-age=0, s-maxage=3600',
-            'Content-Type': 'application/xml'
+            'Content-Type': 'application/xml; charset=utf-8',
+            'Cache-Control': 'max-age=0, s-maxage=3600'
         }
     });
 };

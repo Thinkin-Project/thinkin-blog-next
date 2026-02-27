@@ -36,7 +36,7 @@ describe('rss.xml GET', () => {
         const response = await GET();
         const body = await response.text();
 
-        expect(response.headers.get('Content-Type')).toBe('application/xml');
+        expect(response.headers.get('Content-Type')).toBe('application/xml; charset=utf-8');
         expect(response.headers.get('Cache-Control')).toBe('max-age=0, s-maxage=3600');
         expect(body).toContain('<rss version="2.0"');
         expect(body).toContain('<title>Site &amp; Name</title>');

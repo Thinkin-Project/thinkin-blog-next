@@ -9,6 +9,7 @@ export const GET: RequestHandler = async () => {
         publishedPosts.map(async (post) => {
             const rawContent = await getRawPost(post.slug);
             if (!rawContent) {
+                console.warn(`Missing raw markdown for published post: ${post.slug}`);
                 return null;
             }
 
@@ -18,7 +19,8 @@ export const GET: RequestHandler = async () => {
 
     return new Response(parts.filter(Boolean).join('\n\n'), {
         headers: {
-            'Content-Type': 'text/plain; charset=utf-8'
+            'Content-Type': 'text/plain; charset=utf-8',
+            'Cache-Control': 'max-age=0, s-maxage=3600'
         }
     });
 };
