@@ -1,7 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { GET } from '../../routes/posts/[slug].md/+server';
 import { getPosts, getRawPost } from '$lib/server/posts';
+
+import { GET } from '../../routes/posts/[slug].md/+server';
 
 vi.mock('$lib/server/posts', () => ({
     getPosts: vi.fn(),
@@ -32,7 +33,9 @@ describe('post slug .md GET', () => {
     it('returns 404 for drafted post', async () => {
         mockedGetPosts.mockResolvedValue([{ slug: 'draft-post', drafted: true }]);
 
-        await expect(GET({ params: { slug: 'draft-post' } } as PostSlugMdGetInput)).rejects.toMatchObject({
+        await expect(
+            GET({ params: { slug: 'draft-post' } } as PostSlugMdGetInput)
+        ).rejects.toMatchObject({
             status: 404
         });
     });

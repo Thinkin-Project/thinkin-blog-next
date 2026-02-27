@@ -1,8 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { getPosts, getRawPost } from '$lib/server/posts';
+
 import { GET as getLlmsFull } from '../../routes/llms-full.txt/+server';
 import { GET as getLlms } from '../../routes/llms.txt/+server';
-import { getPosts, getRawPost } from '$lib/server/posts';
 
 vi.mock('$lib/server/posts', () => ({
     getPosts: vi.fn(),

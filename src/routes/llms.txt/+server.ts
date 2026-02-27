@@ -6,7 +6,10 @@ export const GET: RequestHandler = async () => {
     const posts = await getPosts();
     const body = posts
         .filter((post) => !post.drafted)
-        .map((post) => `[${post.title}](/posts/${encodeURIComponent(post.slug)}.md): ${post.description}`)
+        .map(
+            (post) =>
+                `[${post.title}](/posts/${encodeURIComponent(post.slug)}.md): ${post.description}`
+        )
         .join('\n');
 
     return new Response(body, {
