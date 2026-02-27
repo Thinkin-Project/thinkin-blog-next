@@ -26,7 +26,7 @@ describe('post slug .md GET', () => {
         const response = await GET({ params: { slug: 'hello-world' } } as PostSlugMdGetInput);
         const body = await response.text();
 
-        expect(response.headers.get('Content-Type')).toBe('text/plain');
+        expect(response.headers.get('Content-Type')).toBe('text/plain; charset=utf-8');
         expect(body).toBe('# Hello world');
     });
 

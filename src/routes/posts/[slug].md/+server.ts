@@ -17,7 +17,7 @@ export const GET: RequestHandler = async ({ params }) => {
 
     return new Response(rawContent, {
         headers: {
-            'Content-Type': 'text/plain'
+            'Content-Type': 'text/plain; charset=utf-8'
         }
     });
 };

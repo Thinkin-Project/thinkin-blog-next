@@ -31,7 +31,7 @@ describe('llms routes GET', () => {
         const response = await getLlms();
         const body = await response.text();
 
-        expect(response.headers.get('Content-Type')).toBe('text/plain');
+        expect(response.headers.get('Content-Type')).toBe('text/plain; charset=utf-8');
         expect(body).toBe('[First Post](/posts/first-post.md): First Description');
     });
 
@@ -61,7 +61,7 @@ describe('llms routes GET', () => {
 
         const llmsFullResponse = await getLlmsFull();
         const llmsFullBody = await llmsFullResponse.text();
-        expect(llmsFullResponse.headers.get('Content-Type')).toBe('text/plain');
+        expect(llmsFullResponse.headers.get('Content-Type')).toBe('text/plain; charset=utf-8');
         expect(llmsFullBody).toBe('# Published body');
         expect(llmsFullBody).not.toContain('Draft');
         expect(mockedGetRawPost).toHaveBeenCalledTimes(1);
