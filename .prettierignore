@@ -4,7 +4,14 @@ pnpm-lock.yaml
 yarn.lock
 bun.lock
 bun.lockb
+skills-lock.json
 
 # Miscellaneous
 /static/
 /src/posts/
+
+# Settings
+.agent/
+.agents/
+.github/
+.vscode/
