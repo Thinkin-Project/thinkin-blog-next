@@ -24,9 +24,9 @@ export default defineConfig({
             },
             {
                 test: {
-                    name: 'jsdom',
+                    name: 'browser',
                     include: ['src/**/*.dom.test.ts', 'src/**/*.browser.test.ts'],
-                    environment: 'jsdom',
+                    environment: 'happy-dom',
                     setupFiles: ['src/test/setup.ts'],
                     clearMocks: true,
                     restoreMocks: true
