@@ -144,7 +144,7 @@ src/
 | `pnpm check`    | TypeScript 型別檢查 |
 | `pnpm lint`     | 程式碼品質檢查      |
 | `pnpm format`   | 格式化程式碼        |
-| `pnpm update`   | 更新所有依賴        |
+| `pnpm upgrade`   | 更新所有依賴        |
 | `pnpm new-post` | 建立新文章 (互動式) |
 
 ## 如何新增文章
