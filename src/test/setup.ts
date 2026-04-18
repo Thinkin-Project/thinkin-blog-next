@@ -56,6 +56,55 @@ export function setupBrowserMocks() {
             value: (callback: FrameRequestCallback) => setTimeout(() => callback(Date.now()), 16)
         });
     }
+
+    if (!window.IntersectionObserver) {
+        Object.defineProperty(window, 'IntersectionObserver', {
+            writable: true,
+            value: class IntersectionObserver {
+                readonly root: Element | Document | null = null;
+                readonly rootMargin: string = '0px';
+                readonly scrollMargin: string = '0px';
+                readonly thresholds = [0];
+
+                constructor(
+                    private readonly callback: IntersectionObserverCallback,
+                    private readonly options?: IntersectionObserverInit
+                ) {
+                    if (options?.rootMargin) {
+                        this.rootMargin = options.rootMargin;
+                    }
+                    if (typeof options?.threshold === 'number') {
+                        this.thresholds = [options.threshold];
+                    }
+                }
+
+                observe(target: Element) {
+                    this.callback(
+                        [
+                            {
+                                isIntersecting: true,
+                                intersectionRatio: 1,
+                                target,
+                                time: performance.now(),
+                                boundingClientRect: target.getBoundingClientRect(),
+                                intersectionRect: target.getBoundingClientRect(),
+                                rootBounds: null
+                            }
+                        ],
+                        this as IntersectionObserver
+                    );
+                }
+
+                unobserve() {}
+
+                disconnect() {}
+
+                takeRecords() {
+                    return [];
+                }
+            }
+        });
+    }
 }
 
 setupBrowserMocks();
