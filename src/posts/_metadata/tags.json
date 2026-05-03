@@ -40,5 +40,6 @@
     { "name": "AspectCore", "slug": "aspectcore" },
     { "name": "AOP", "slug": "aop" },
     { "name": "E2E 測試", "slug": "e2e-test" },
-    { "name": "MCP", "slug": "mcp" }
+    { "name": "MCP", "slug": "mcp" },
+    { "name": "提示工程", "slug": "prompt-engineering" }
 ]
