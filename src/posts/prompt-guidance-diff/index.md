@@ -1,5 +1,5 @@
 ---
-title: '提示引導的差異性'
+title: 'OpenAI 與 Anthropic 模型提示引導的差異性'
 description: 'AI 真的變笨了嗎？還是人不懂得變通？'
 slug: 'prompt-guidance-diff'
 date: '2026-05-03'
