@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { mount, onMount, unmount } from 'svelte';
+    import { mount, unmount } from 'svelte';
 
     import { page } from '$app/stores';
 
@@ -19,7 +19,10 @@
 
     let { data } = $props();
 
-    onMount(() => {
+    $effect(() => {
+        data.content;
+        if (typeof window === 'undefined') return;
+
         const cleanupTasks: Array<() => void> = [];
         const codeBlocks = document.querySelectorAll<HTMLElement>('.prose pre');
 
@@ -31,7 +34,7 @@
 
             const buttonHost = document.createElement('div');
             buttonHost.className = 'code-button-host';
-            codeElement.appendChild(buttonHost);
+            pre.appendChild(buttonHost);
             pre.dataset.copyCodeReady = 'true';
 
             const mountedComponent = mount(CodeBlockCopyButton, {
