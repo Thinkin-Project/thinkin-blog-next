@@ -148,7 +148,7 @@
 
     /* 優化程式碼區塊 (Shiki) */
     .prose pre {
-        @apply my-8 flex max-w-full flex-col overflow-hidden rounded-2xl border border-secondary bg-zinc-950/50 p-0! shadow-2xl;
+        @apply relative my-8 flex max-w-full flex-col overflow-hidden rounded-2xl border border-secondary bg-zinc-950/50 p-0! shadow-2xl;
     }
 
     /* 內文中的行內程式碼 */
@@ -186,5 +186,36 @@
             32px center,
             52px center;
         background-repeat: no-repeat;
+    }
+
+    /* 程式碼區塊右上角的按鈕容器 */
+    .prose .code-button-host {
+        @apply pointer-events-none absolute top-10 right-2 z-10 opacity-0 transition-opacity duration-200;
+    }
+
+    .prose pre:hover .code-button-host,
+    .prose pre:focus-within .code-button-host {
+        @apply pointer-events-auto opacity-100;
+    }
+
+    /* 複製原始碼按鈕 */
+    .prose .code-copy-button {
+        @apply inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-zinc-600/80 bg-zinc-900/90 text-zinc-200 transition-all duration-200;
+
+        &:hover {
+            @apply border-zinc-400 bg-zinc-800 text-white;
+        }
+
+        &:focus-visible {
+            @apply ring-2 ring-zinc-300 ring-offset-2 ring-offset-zinc-950 outline-none;
+        }
+    }
+
+    .prose .code-copy-button-success {
+        @apply border-emerald-400/80 text-emerald-300 hover:border-emerald-300 hover:text-emerald-200;
+    }
+
+    .prose .code-copy-button-error {
+        @apply border-rose-400/80 text-rose-300 hover:border-rose-300 hover:text-rose-200;
     }
 }

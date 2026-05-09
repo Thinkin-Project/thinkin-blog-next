@@ -1,10 +1,13 @@
 <script lang="ts">
+    import { mount, unmount } from 'svelte';
+
     import { page } from '$app/stores';
 
     import { Calendar, ChevronRight, Clock, Crosshair, Tag } from 'lucide-svelte';
 
     import AuthorBlock from '$lib/components/AuthorBlock.svelte';
     import BackToTop from '$lib/components/BackToTop.svelte';
+    import CodeBlockCopyButton from '$lib/components/CodeBlockCopyButton.svelte';
     import Donate from '$lib/components/Donate.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import Giscus from '$lib/components/Giscus.svelte';
@@ -15,6 +18,43 @@
     import { getTopicName } from '$lib/constants/topics';
 
     let { data } = $props();
+
+    $effect(() => {
+        data.content;
+        if (typeof window === 'undefined') return;
+
+        const cleanupTasks: Array<() => void> = [];
+        const codeBlocks = document.querySelectorAll<HTMLElement>('.prose pre');
+
+        for (const pre of codeBlocks) {
+            if (pre.dataset.copyCodeReady === 'true') continue;
+
+            const codeElement = pre.querySelector<HTMLElement>('code');
+            if (!codeElement) continue;
+
+            const buttonHost = document.createElement('div');
+            buttonHost.className = 'code-button-host';
+            pre.appendChild(buttonHost);
+            pre.dataset.copyCodeReady = 'true';
+
+            const mountedComponent = mount(CodeBlockCopyButton, {
+                target: buttonHost,
+                props: {
+                    code: codeElement.textContent ?? ''
+                }
+            });
+
+            cleanupTasks.push(() => {
+                unmount(mountedComponent);
+                buttonHost.remove();
+                delete pre.dataset.copyCodeReady;
+            });
+        }
+
+        return () => {
+            for (const cleanup of cleanupTasks) cleanup();
+        };
+    });
 </script>
 
 <ReadingProgressBar />
