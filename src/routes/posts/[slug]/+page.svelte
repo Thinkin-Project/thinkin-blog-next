@@ -20,7 +20,7 @@
     let { data } = $props();
 
     $effect(() => {
-        data.content;
+        if (!data.content) return;
         if (typeof window === 'undefined') return;
 
         const cleanupTasks: Array<() => void> = [];
