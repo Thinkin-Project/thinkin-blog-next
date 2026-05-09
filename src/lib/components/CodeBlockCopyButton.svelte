@@ -1,10 +1,16 @@
 <script lang="ts">
+    import { onDestroy } from 'svelte';
+
     import { Check, ClipboardList, X } from 'lucide-svelte';
 
     let { code }: { code: string } = $props();
 
     let status = $state<'idle' | 'success' | 'error'>('idle');
     let resetTimer: ReturnType<typeof setTimeout> | undefined;
+
+    onDestroy(() => {
+        if (resetTimer) clearTimeout(resetTimer);
+    });
 
     async function copyToClipboard() {
         try {
