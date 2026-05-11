@@ -170,5 +170,9 @@
     {
         "name": "提示工程",
         "slug": "prompt-engineering"
+    },
+    {
+        "name": "產出物驅動",
+        "slug": "artifact-driven"
     }
 ]
