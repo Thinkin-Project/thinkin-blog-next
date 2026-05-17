@@ -1,4 +1,6 @@
 import { BLOG_CONFIG } from '$lib/constants/blog';
+import { resolveTagSlug } from '$lib/constants/tags';
+import { resolveTopicSlug } from '$lib/constants/topics';
 import { getPosts, getRawPost } from '$lib/server/posts';
 import type { ArticleMeta } from '$lib/types';
 
@@ -94,14 +96,22 @@ export function createPostSummary(post: ArticleMeta): WebMcpPostSummary {
 }
 
 export function matchesTaxonomy(post: ArticleMeta, topic?: string, tag?: string): boolean {
-    const normalizedTopic = topic?.trim();
-    const normalizedTag = tag?.trim();
+    const resolvedTopic = topic ? resolveTopicSlug(topic) : undefined;
+    const resolvedTag = tag ? resolveTagSlug(tag) : undefined;
 
-    if (normalizedTopic && post.topic !== normalizedTopic) {
+    if (topic && !resolvedTopic) {
         return false;
     }
 
-    if (normalizedTag && !post.tags.includes(normalizedTag)) {
+    if (tag && !resolvedTag) {
+        return false;
+    }
+
+    if (resolvedTopic && post.topic !== resolvedTopic) {
+        return false;
+    }
+
+    if (resolvedTag && !post.tags.includes(resolvedTag)) {
         return false;
     }
 

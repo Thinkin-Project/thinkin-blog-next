@@ -1,178 +1,222 @@
 [
     {
         "name": "創建型模式",
-        "slug": "creational-pattern"
+        "slug": "creational-pattern",
+        "aliases": []
     },
     {
         "name": "SOLID 原則",
-        "slug": "solid"
+        "slug": "solid",
+        "aliases": []
     },
     {
         "name": "Chrome 擴充功能",
-        "slug": "chrome-extension"
+        "slug": "chrome-extension",
+        "aliases": []
     },
     {
         "name": "JMeter",
-        "slug": "jmeter"
+        "slug": "jmeter",
+        "aliases": []
     },
     {
         "name": "BlazeMeter",
-        "slug": "blazemeter"
+        "slug": "blazemeter",
+        "aliases": []
     },
     {
         "name": "壓力測試",
-        "slug": "stress-test"
+        "slug": "stress-test",
+        "aliases": []
     },
     {
         "name": "單元測試",
-        "slug": "unit-test"
+        "slug": "unit-test",
+        "aliases": []
     },
     {
         "name": "Windows",
-        "slug": "windows"
+        "slug": "windows",
+        "aliases": []
     },
     {
         "name": "Command Prompt",
-        "slug": "command-prompt"
+        "slug": "command-prompt",
+        "aliases": []
     },
     {
         "name": "Windows Powershell",
-        "slug": "windows-powershell"
+        "slug": "windows-powershell",
+        "aliases": []
     },
     {
         "name": "IDE",
-        "slug": "ide"
+        "slug": "ide",
+        "aliases": []
     },
     {
         "name": "Visual Studio 擴充功能",
-        "slug": "visual-studio-extension"
+        "slug": "visual-studio-extension",
+        "aliases": []
     },
     {
         "name": "Installer Projects",
-        "slug": "installer-projects"
+        "slug": "installer-projects",
+        "aliases": []
     },
     {
         "name": "部署",
-        "slug": "deploy"
+        "slug": "deploy",
+        "aliases": []
     },
     {
         "name": "AxoCover",
-        "slug": "axocover"
+        "slug": "axocover",
+        "aliases": []
     },
     {
         "name": "程式碼覆蓋率",
-        "slug": "code-coverage"
+        "slug": "code-coverage",
+        "aliases": []
     },
     {
         "name": "指令",
-        "slug": "command"
+        "slug": "command",
+        "aliases": []
     },
     {
         "name": "exp",
-        "slug": "exp"
+        "slug": "exp",
+        "aliases": []
     },
     {
         "name": "imp",
-        "slug": "imp"
+        "slug": "imp",
+        "aliases": []
     },
     {
         "name": "資料存取",
-        "slug": "data-access"
+        "slug": "data-access",
+        "aliases": []
     },
     {
         "name": "ODP.NET",
-        "slug": "odp-net"
+        "slug": "odp-net",
+        "aliases": []
     },
     {
         "name": "錯誤處理",
-        "slug": "error-handling"
+        "slug": "error-handling",
+        "aliases": []
     },
     {
         "name": "ORA 錯誤",
-        "slug": "ora-error"
+        "slug": "ora-error",
+        "aliases": []
     },
     {
         "name": "ODAC",
-        "slug": "odac"
+        "slug": "odac",
+        "aliases": []
     },
     {
         "name": "Oracle Client",
-        "slug": "oracle-client"
+        "slug": "oracle-client",
+        "aliases": []
     },
     {
         "name": "ExecutionTimeout",
-        "slug": "execution-timeout"
+        "slug": "execution-timeout",
+        "aliases": []
     },
     {
         "name": "ConnectionTimeout",
-        "slug": "connection-timeout"
+        "slug": "connection-timeout",
+        "aliases": []
     },
     {
         "name": "流暢介面",
-        "slug": "fluent-interface"
+        "slug": "fluent-interface",
+        "aliases": []
     },
     {
         "name": "程式碼可讀性",
-        "slug": "code-readability"
+        "slug": "code-readability",
+        "aliases": []
     },
     {
         "name": "Active Directory",
-        "slug": "active-directory"
+        "slug": "active-directory",
+        "aliases": []
     },
     {
         "name": "Active Directory Service Interface",
-        "slug": "adsi"
+        "slug": "adsi",
+        "aliases": []
     },
     {
         "name": "WinNT",
-        "slug": "winnt"
+        "slug": "winnt",
+        "aliases": []
     },
     {
         "name": "XSS",
-        "slug": "xss"
+        "slug": "xss",
+        "aliases": []
     },
     {
         "name": "HTML 編碼",
-        "slug": "html-encode"
+        "slug": "html-encode",
+        "aliases": []
     },
     {
         "name": "加解密",
-        "slug": "crypto"
+        "slug": "crypto",
+        "aliases": []
     },
     {
         "name": "資料保護 API",
-        "slug": "data-protection-api"
+        "slug": "data-protection-api",
+        "aliases": []
     },
     {
         "name": "遷移",
-        "slug": "migration"
+        "slug": "migration",
+        "aliases": []
     },
     {
         "name": "Worker Service",
-        "slug": "worker-service"
+        "slug": "worker-service",
+        "aliases": []
     },
     {
         "name": "AspectCore",
-        "slug": "aspectcore"
+        "slug": "aspectcore",
+        "aliases": []
     },
     {
         "name": "AOP",
-        "slug": "aop"
+        "slug": "aop",
+        "aliases": []
     },
     {
         "name": "E2E 測試",
-        "slug": "e2e-test"
+        "slug": "e2e-test",
+        "aliases": []
     },
     {
         "name": "MCP",
-        "slug": "mcp"
+        "slug": "mcp",
+        "aliases": []
     },
     {
         "name": "提示工程",
-        "slug": "prompt-engineering"
+        "slug": "prompt-engineering",
+        "aliases": []
     },
     {
         "name": "產出物驅動",
-        "slug": "artifact-driven"
+        "slug": "artifact-driven",
+        "aliases": []
     }
 ]

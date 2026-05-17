@@ -1,54 +1,67 @@
 [
     {
         "name": "設計模式",
-        "slug": "design-pattern"
+        "slug": "design-pattern",
+        "aliases": []
     },
     {
         "name": "物件導向設計原則",
-        "slug": "object-oriented-design-principles"
+        "slug": "object-oriented-design-principles",
+        "aliases": []
     },
     {
         "name": "瀏覽器擴充功能",
-        "slug": "browser-extension"
+        "slug": "browser-extension",
+        "aliases": []
     },
     {
         "name": "測試",
-        "slug": "test"
+        "slug": "test",
+        "aliases": []
     },
     {
         "name": "命令列",
-        "slug": "command-line"
+        "slug": "command-line",
+        "aliases": []
     },
     {
         "name": "Visual Studio",
-        "slug": "visual-studio"
+        "slug": "visual-studio",
+        "aliases": []
     },
     {
         "name": "Oracle",
-        "slug": "oracle"
+        "slug": "oracle",
+        "aliases": []
     },
     {
         "name": "IIS",
-        "slug": "iis"
+        "slug": "iis",
+        "aliases": []
     },
     {
         "name": "API 設計模式",
-        "slug": "api-design-pattern"
+        "slug": "api-design-pattern",
+        "aliases": []
     },
     {
         "name": ".NET Standard",
-        "slug": "net-standard"
+        "slug": "net-standard",
+        "aliases": []
     },
     {
         "name": ".NET Core",
-        "slug": "net-core"
+        "slug": "net-core",
+        "aliases": []
     },
     {
         "name": ".NET",
-        "slug": "net"
+        "slug": "net",
+        "aliases": []
     },
     {
         "name": "人工智慧",
-        "slug": "artificial-intelligence"
+        "slug": "artificial-intelligence",
+        "aliases": []
     }
 ]

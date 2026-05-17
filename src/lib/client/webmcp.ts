@@ -48,11 +48,11 @@ const SEARCH_POSTS_SCHEMA = {
         },
         topic: {
             type: 'string',
-            description: 'Topic slug such as dotnet or design-pattern'
+            description: 'Topic name or slug such as .NET or design-pattern'
         },
         tag: {
             type: 'string',
-            description: 'Tag slug such as mcp or svelte'
+            description: 'Tag name or slug such as MCP or svelte'
         },
         limit: {
             type: 'integer',
@@ -235,7 +235,7 @@ const WEB_MCP_TOOLS: ModelContextTool[] = [
         name: 'search_posts',
         title: 'Search Posts',
         description:
-            'Search published posts using a natural language query, topic slug, or tag slug. When no filters are provided, this tool returns the most recently published posts.',
+            'Search published posts using a natural language query, topic name or slug, or tag name or slug. When no filters are provided, this tool returns the most recently published posts.',
         inputSchema: SEARCH_POSTS_SCHEMA,
         annotations: READ_ONLY_ANNOTATIONS,
         execute: executeSearchPosts

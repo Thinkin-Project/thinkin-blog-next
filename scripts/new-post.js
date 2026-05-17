@@ -143,7 +143,7 @@ async function main() {
             }
         ]);
         if (newTopic.slug) {
-            topics.push(newTopic);
+            topics.push({ ...newTopic, aliases: [] });
             saveMetadata('topics', topics);
             topicRes.selectedTopic = newTopic.slug;
         }
@@ -175,7 +175,7 @@ async function main() {
             }
         ]);
         if (newTag.slug) {
-            tags.push(newTag);
+            tags.push({ ...newTag, aliases: [] });
             saveMetadata('tags', tags);
             tagRes.selectedTags = tagRes.selectedTags
                 .filter((v) => v !== '__new__')

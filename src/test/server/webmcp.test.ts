@@ -19,6 +19,38 @@ vi.mock('$lib/constants/blog', () => ({
     }
 }));
 
+vi.mock('$lib/constants/topics', () => ({
+    resolveTopicSlug: vi.fn((input: string) => {
+        const normalizedInput = input.trim().toLowerCase();
+
+        if (normalizedInput === 'dotnet' || normalizedInput === '.net') {
+            return 'dotnet';
+        }
+
+        if (normalizedInput === 'svelte') {
+            return 'svelte';
+        }
+
+        return undefined;
+    })
+}));
+
+vi.mock('$lib/constants/tags', () => ({
+    resolveTagSlug: vi.fn((input: string) => {
+        const normalizedInput = input.trim().toLowerCase();
+
+        if (normalizedInput === 'mcp') {
+            return 'mcp';
+        }
+
+        if (normalizedInput === 'architecture') {
+            return 'architecture';
+        }
+
+        return undefined;
+    })
+}));
+
 vi.mock('$lib/server/posts', () => ({
     getPosts: vi.fn(),
     getRawPost: vi.fn()
@@ -97,6 +129,34 @@ describe('webmcp server service', () => {
         expect(result.mode).toBe('search');
         expect(result.total).toBe(1);
         expect(result.results.map((post) => post.slug)).toEqual(['mcp-dotnet']);
+        expect(mockedGetRawPost).not.toHaveBeenCalled();
+    });
+
+    it('filters search results by topic display name and tag slug without loading raw markdown', async () => {
+        mockedGetPosts.mockResolvedValue([
+            makePost({ slug: 'mcp-dotnet', topic: 'dotnet', tags: ['mcp'] }),
+            makePost({ slug: 'svelte-webmcp', topic: 'svelte', tags: ['mcp'] }),
+            makePost({ slug: 'dotnet-clean', topic: 'dotnet', tags: ['architecture'] })
+        ]);
+
+        const result = await searchPosts({ topic: '.NET', tag: 'mcp' });
+
+        expect(result.mode).toBe('search');
+        expect(result.total).toBe(1);
+        expect(result.results.map((post) => post.slug)).toEqual(['mcp-dotnet']);
+        expect(mockedGetRawPost).not.toHaveBeenCalled();
+    });
+
+    it('returns no matches when taxonomy input cannot be resolved to a canonical slug', async () => {
+        mockedGetPosts.mockResolvedValue([
+            makePost({ slug: 'mcp-dotnet', topic: 'dotnet', tags: ['mcp'] })
+        ]);
+
+        const result = await searchPosts({ topic: 'unknown-topic' });
+
+        expect(result.mode).toBe('search');
+        expect(result.total).toBe(0);
+        expect(result.results).toEqual([]);
         expect(mockedGetRawPost).not.toHaveBeenCalled();
     });
 
