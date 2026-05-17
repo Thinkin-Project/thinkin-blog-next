@@ -32,6 +32,7 @@
 - 🔗 社群分享按鈕
 - 📡 RSS Feed
 - 🗺️ Sitemap
+- 🛠️ WebMCP 整合
 
 ## 開始使用
 
