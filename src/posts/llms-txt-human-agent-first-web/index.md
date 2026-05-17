@@ -1,6 +1,6 @@
 ---
 title: 'llms.txt：網站正在從 Human-first 走向 Human 及 Agent-first'
-description: '分析 AI 時代網站架構正在如何的被改變'
+description: '分析 AI 時代網站架構的演變，以及從 Human-first 轉向 Agent-first 的趨勢'
 slug: 'llms-txt-human-agent-first-web'
 date: '2026-05-17'
 drafted: false
