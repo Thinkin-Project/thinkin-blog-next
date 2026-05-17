@@ -6,7 +6,7 @@ date: '2026-05-12'
 drafted: false
 featured: true
 topic: 'artificial-intelligence'
-tags: ['artifact-driven']
+tags: ['document', 'artifact-driven']
 authors: ['neil-tsai']
 ---
 

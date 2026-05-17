@@ -215,6 +215,11 @@
         "aliases": []
     },
     {
+        "name": "文件",
+        "slug": "document",
+        "aliases": []
+    },
+    {
         "name": "產出物驅動",
         "slug": "artifact-driven",
         "aliases": []
