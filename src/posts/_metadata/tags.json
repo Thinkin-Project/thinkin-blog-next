@@ -223,5 +223,20 @@
         "name": "產出物驅動",
         "slug": "artifact-driven",
         "aliases": []
+    },
+    {
+        "name": "AI 代理",
+        "slug": "ai-agent",
+        "aliases": []
+    },
+    {
+        "name": "網站",
+        "slug": "website",
+        "aliases": []
+    },
+    {
+        "name": "llms.txt",
+        "slug": "llms-txt",
+        "aliases": []
     }
 ]
