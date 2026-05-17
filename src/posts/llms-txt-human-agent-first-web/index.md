@@ -35,16 +35,16 @@ https://example.com/llms.txt
 通常會使用 Markdown 撰寫，內容可能長這樣：
 
 ```md
-\# Product Name
+# Product Name
 
 簡短介紹這個網站或產品。
 
-\#\# Docs
+## Docs
 
 - [Getting Started](https://example.com/docs/start.md)
 - [API Reference](https://example.com/docs/api.md)
 
-\#\# Examples
+## Examples
 
 - [Example Apps](https://example.com/examples.md)
 ```
