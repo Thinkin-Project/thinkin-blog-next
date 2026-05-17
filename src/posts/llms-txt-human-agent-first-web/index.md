@@ -194,8 +194,6 @@ HTML → Browser → Human
 - 人怎麼搜尋？
 - 人怎麼理解資訊？
 
----
-
 但 AI 代理出現後，網站不再只面對人類。
 
 開始也要面對：
@@ -352,6 +350,8 @@ Content → Agent → Human
 - 被 AI 正確操作
 
 而這種從 Human-first 走向 Human 及 Agent-first 的轉變，可能才是 AI 時代網站最值得注意的事情之一。
+
+📌 順帶一提，本部落格也有提供 [llms.txt](https://www.thinkinmd.com/llms.txt) 及 [llms-full.txt](https://www.thinkinmd.com/llms-full.txt)，幫助 AI 代理更好地理解網站內容。
 
 ## 參考
 
