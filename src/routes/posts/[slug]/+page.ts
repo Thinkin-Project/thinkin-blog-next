@@ -27,20 +27,43 @@ export const load: PageLoad = async ({ params, data }) => {
             }
         }
 
-        // 提取標題 (h2, h3)
-        const headings = rawContent.default
-            .split('\n')
-            .filter((line: string) => line.startsWith('## ') || line.startsWith('### '))
-            .map((line: string) => {
-                const level = line.startsWith('### ') ? 3 : 2;
-                const title = line.replace(/^#{2,3}\s+/, '').trim();
-                const slug = title
-                    .toLowerCase()
-                    .replace(/[^\w\s\u4e00-\u9fa5-]/g, '')
-                    .trim()
-                    .replace(/\s+/g, '-');
-                return { level, title, slug };
-            });
+        // 提取標題 (h2, h3)，並跳過 code fence 內的內容
+        const headingLines: string[] = [];
+        const lines = rawContent.default.split('\n');
+        let activeFence: '```' | '~~~' | null = null;
+
+        for (const line of lines) {
+            const trimmed = line.trimStart();
+
+            if (trimmed.startsWith('```') || trimmed.startsWith('~~~')) {
+                const fence = trimmed.startsWith('```') ? '```' : '~~~';
+                if (!activeFence) {
+                    activeFence = fence;
+                } else if (activeFence === fence) {
+                    activeFence = null;
+                }
+                continue;
+            }
+
+            if (activeFence) {
+                continue;
+            }
+
+            if (line.startsWith('## ') || line.startsWith('### ')) {
+                headingLines.push(line);
+            }
+        }
+
+        const headings = headingLines.map((line: string) => {
+            const level = line.startsWith('### ') ? 3 : 2;
+            const title = line.replace(/^#{2,3}\s+/, '').trim();
+            const slug = title
+                .toLowerCase()
+                .replace(/[^\w\s\u4e00-\u9fa5-]/g, '')
+                .trim()
+                .replace(/\s+/g, '-');
+            return { level, title, slug };
+        });
 
         return {
             content: post.default,
