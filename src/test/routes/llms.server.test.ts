@@ -59,8 +59,21 @@ describe('llms routes GET', () => {
         expect(response.headers.get('Content-Type')).toBe('text/plain; charset=utf-8');
         expect(response.headers.get('Cache-Control')).toBe('max-age=0, s-maxage=3600');
         expect(body).toBe(
-            '# Thinkin Markdown\n\n## Articles\n\n- [First Post](https://example.com/posts/first-post.md): First Description'
+            '# Thinkin Markdown\n\n## WebMCP\n\nThese tools provide structured, read-only access to published blog content.\n\nWhen WebMCP is available, compatible AI agents can access the following tools:\n\n- `search_posts(query?, topic?, tag?, limit?)`: Search published posts using a natural language query, topic name or slug, or tag name or slug. When no filters are provided, this tool returns the most recently published posts.\n- `get_post(slug)`: Retrieve a published post as structured data, including metadata, canonical URL, and markdown content.\n- `find_related_posts(slug, limit?)`: Retrieve related published posts for a given post slug, prioritizing shared topics and tags.\n\n## Articles\n\n- [First Post](https://example.com/posts/first-post.md): First Description'
         );
+    });
+
+    it('adds a WebMCP section to /llms.txt', async () => {
+        mockedGetPosts.mockResolvedValue([makePost()]);
+
+        const response = await getLlms({} as LlmsGetInput);
+        const body = await response.text();
+
+        expect(body).toContain('## WebMCP');
+        expect(body).toContain('`search_posts(query?, topic?, tag?, limit?)`');
+        expect(body).toContain('`get_post(slug)`');
+        expect(body).toContain('`find_related_posts(slug, limit?)`');
+        expect(body.indexOf('## WebMCP')).toBeLessThan(body.indexOf('## Articles'));
     });
 
     it('excludes drafted posts from /llms.txt and /llms-full.txt', async () => {
@@ -117,6 +130,34 @@ describe('llms routes GET', () => {
         const body = await response.text();
 
         expect(body).toBe('# First body\n\n# Second body');
+    });
+
+    it('preserves llms-full raw markdown aggregation semantics without adding llms.txt metadata blocks', async () => {
+        mockedGetPosts.mockResolvedValue([
+            makePost({
+                title: 'First',
+                slug: 'first'
+            }),
+            makePost({
+                title: 'Second',
+                slug: 'second'
+            })
+        ]);
+        mockedGetRawPost.mockImplementation(async (slug: string) =>
+            slug === 'first'
+                ? '---\ntitle: First\n---\n# First body'
+                : '## Second body\n\nMore markdown'
+        );
+
+        const response = await getLlmsFull({} as LlmsFullGetInput);
+        const body = await response.text();
+
+        expect(body).toBe(
+            '---\ntitle: First\n---\n# First body\n\n## Second body\n\nMore markdown'
+        );
+        expect(body).not.toContain('## WebMCP');
+        expect(body).not.toContain('## Articles');
+        expect(body).not.toContain('https://example.com/posts/');
     });
 
     it('skips missing raw markdown and logs warning in /llms-full.txt', async () => {

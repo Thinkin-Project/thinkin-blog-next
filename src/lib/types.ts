@@ -65,6 +65,7 @@ export interface SocialLink {
 export interface Topic {
     name: string;
     slug: string;
+    aliases: string[];
 }
 
 /**
@@ -73,6 +74,7 @@ export interface Topic {
 export interface Tag {
     name: string;
     slug: string;
+    aliases: string[];
 }
 
 /**
