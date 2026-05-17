@@ -1,6 +1,6 @@
 import { BLOG_CONFIG } from '$lib/constants/blog';
-import { resolveTagSlug } from '$lib/constants/tags';
-import { resolveTopicSlug } from '$lib/constants/topics';
+import { getTagName, resolveTagSlug } from '$lib/constants/tags';
+import { getTopicName, resolveTopicSlug } from '$lib/constants/topics';
 import { getPosts, getRawPost } from '$lib/server/posts';
 import type { ArticleMeta } from '$lib/types';
 
@@ -163,7 +163,7 @@ export function compareByScoreAndDate<T extends RankedPost>(first: T, second: T)
         return second.score - first.score;
     }
 
-    return new Date(second.post.date).getTime() - new Date(first.post.date).getTime();
+    return second.post.date.localeCompare(first.post.date);
 }
 
 export async function searchPosts(input: SearchPostsInput): Promise<SearchPostsResult> {
@@ -234,18 +234,20 @@ export async function getPost(slug: string): Promise<WebMcpPostPayload | null> {
 }
 
 export function describeRelatedReason(source: ArticleMeta, candidate: ArticleMeta): string {
+    const topicName = getTopicName(candidate.topic);
     const sharedTags = candidate.tags.filter((tag) => source.tags.includes(tag));
+    const tagNames = sharedTags.map(getTagName);
 
     if (candidate.topic === source.topic && sharedTags.length > 0) {
-        return `Same topic and shared tags: ${sharedTags.join(', ')}`;
+        return `Same topic (${topicName}) and shared tags: ${tagNames.join(', ')}`;
     }
 
     if (candidate.topic === source.topic) {
-        return 'Related post from the same topic';
+        return `Related post from the same topic: ${topicName}`;
     }
 
     if (sharedTags.length > 0) {
-        return `Shared tags: ${sharedTags.join(', ')}`;
+        return `Shared tags: ${tagNames.join(', ')}`;
     }
 
     return 'Recently published related post';

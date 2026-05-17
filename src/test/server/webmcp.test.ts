@@ -20,6 +20,21 @@ vi.mock('$lib/constants/blog', () => ({
 }));
 
 vi.mock('$lib/constants/topics', () => ({
+    getTopicName: vi.fn((slug: string) => {
+        if (slug === 'dotnet') {
+            return '.NET';
+        }
+
+        if (slug === 'svelte') {
+            return 'Svelte';
+        }
+
+        if (slug === 'career') {
+            return 'Career';
+        }
+
+        return slug;
+    }),
     resolveTopicSlug: vi.fn((input: string) => {
         const normalizedInput = input.trim().toLowerCase();
 
@@ -36,6 +51,21 @@ vi.mock('$lib/constants/topics', () => ({
 }));
 
 vi.mock('$lib/constants/tags', () => ({
+    getTagName: vi.fn((slug: string) => {
+        if (slug === 'mcp') {
+            return 'MCP';
+        }
+
+        if (slug === 'api') {
+            return 'API';
+        }
+
+        if (slug === 'architecture') {
+            return 'Architecture';
+        }
+
+        return slug;
+    }),
     resolveTagSlug: vi.fn((input: string) => {
         const normalizedInput = input.trim().toLowerCase();
 
@@ -238,7 +268,7 @@ describe('webmcp server service', () => {
 
         expect(strong.score).toBeGreaterThan(medium.score);
         expect(strong.reason).toContain('Same topic');
-        expect(strong.reason).toContain('mcp');
+        expect(strong.reason).toContain('MCP');
     });
 
     it('returns related posts with explainable reasons and stable ordering', async () => {
@@ -279,8 +309,9 @@ describe('webmcp server service', () => {
             'shared-tag-only',
             'fallback-recent'
         ]);
-        expect(result?.results[0]?.reason).toBe('Same topic and shared tags: mcp, api');
-        expect(result?.results[2]?.reason).toBe('Shared tags: mcp');
+        expect(result?.results[0]?.reason).toBe('Same topic (.NET) and shared tags: MCP, API');
+        expect(result?.results[1]?.reason).toBe('Related post from the same topic: .NET');
+        expect(result?.results[2]?.reason).toBe('Shared tags: MCP');
         expect(result?.results[3]?.reason).toBe('Recently published related post');
     });
 
