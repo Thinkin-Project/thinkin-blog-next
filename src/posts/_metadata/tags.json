@@ -258,5 +258,10 @@
         "name": "程式碼審查",
         "slug": "code-review",
         "aliases": []
+    },
+    {
+        "name": "WebMCP",
+        "slug": "webmcp",
+        "aliases": []
     }
 ]
