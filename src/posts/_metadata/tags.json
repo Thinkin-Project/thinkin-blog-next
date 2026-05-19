@@ -238,5 +238,25 @@
         "name": "llms.txt",
         "slug": "llms-txt",
         "aliases": []
+    },
+    {
+        "name": "軟體工程",
+        "slug": "software-engineering",
+        "aliases": []
+    },
+    {
+        "name": "工程文化",
+        "slug": "engineering-culture",
+        "aliases": []
+    },
+    {
+        "name": "開發者生產力",
+        "slug": "developer-productivity",
+        "aliases": []
+    },
+    {
+        "name": "程式碼審查",
+        "slug": "code-review",
+        "aliases": []
     }
 ]
