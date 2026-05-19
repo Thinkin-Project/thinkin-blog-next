@@ -5,7 +5,7 @@ slug: 'effortless-e2e-mcp'
 date: '2026-01-14'
 drafted: false
 featured: true
-topic: 'test'
+topic: 'artificial-intelligence'
 tags: ['e2e-test', 'mcp']
 authors: ['neil-tsai']
 ---
