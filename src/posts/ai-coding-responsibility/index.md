@@ -1,5 +1,5 @@
 ---
-title: 'AI 可以幫你寫程式碼，但不能幫你負責任'
+title: 'AI 可以幫你寫程式碼，但不能替你負責'
 description: 'AI 協助開發已成常態的今天，工程師真正需要學會的，不只是如何下提示詞，而是如何對 AI 產生的內容負責'
 slug: 'ai-coding-responsibility'
 date: '2026-05-19'
