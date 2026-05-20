@@ -6,7 +6,7 @@ date: '2026-05-19'
 drafted: false
 featured: false
 topic: 'artificial-intelligence'
-tags: ['software-engineering', 'engineering-mindset', 'developer-growth']
+tags: ['software-engineering', 'engineering-culture', 'developer-productivity', 'code-review']
 authors: ['neil-tsai']
 ---
 
