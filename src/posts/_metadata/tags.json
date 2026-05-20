@@ -245,18 +245,13 @@
         "aliases": []
     },
     {
-        "name": "工程文化",
-        "slug": "engineering-culture",
+        "name": "工程思維",
+        "slug": "engineering-mindset",
         "aliases": []
     },
     {
-        "name": "開發者生產力",
-        "slug": "developer-productivity",
-        "aliases": []
-    },
-    {
-        "name": "程式碼審查",
-        "slug": "code-review",
+        "name": "開發者成長",
+        "slug": "developer-growth",
         "aliases": []
     },
     {
