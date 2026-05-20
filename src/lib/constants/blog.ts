@@ -1,4 +1,4 @@
-import { env } from '$env/dynamic/public';
+import * as env from '$env/static/public';
 
 /**
  * 部落格相關設定

@@ -2,10 +2,35 @@ import { describe, expect, it, vi } from 'vitest';
 
 type PublicEnv = Record<string, string | undefined>;
 
+const defaultPublicEnv: PublicEnv = {
+    PUBLIC_BLOG_NAME: undefined,
+    PUBLIC_BLOG_DESCRIPTION: undefined,
+    PUBLIC_BLOG_URL: undefined,
+    PUBLIC_BLOG_AUTHOR: undefined,
+    PUBLIC_BLOG_KEYWORDS: undefined,
+    PUBLIC_BLOG_LANG: undefined,
+    PUBLIC_BLOG_OG_IMAGE: undefined,
+    PUBLIC_FEATURED_POSTS_LIMIT: undefined,
+    PUBLIC_NEW_POSTS_LIMIT: undefined,
+    PUBLIC_POSTS_PER_PAGE: undefined,
+    PUBLIC_GISCUS_REPO: undefined,
+    PUBLIC_GISCUS_REPO_ID: undefined,
+    PUBLIC_GISCUS_CATEGORY: undefined,
+    PUBLIC_GISCUS_CATEGORY_ID: undefined,
+    PUBLIC_GISCUS_MAPPING: undefined,
+    PUBLIC_GISCUS_STRICT: undefined,
+    PUBLIC_GISCUS_REACTIONS_ENABLED: undefined,
+    PUBLIC_GISCUS_EMIT_METADATA: undefined,
+    PUBLIC_GISCUS_INPUT_POSITION: undefined,
+    PUBLIC_GISCUS_THEME: undefined,
+    PUBLIC_GISCUS_LOADING: undefined
+};
+
 async function loadBlogConfig(envOverrides: PublicEnv) {
     vi.resetModules();
-    vi.doMock('$env/dynamic/public', () => ({
-        env: envOverrides
+    vi.doMock('$env/static/public', () => ({
+        ...defaultPublicEnv,
+        ...envOverrides
     }));
 
     return import('../../lib/constants/blog');
