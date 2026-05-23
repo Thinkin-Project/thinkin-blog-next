@@ -100,7 +100,7 @@ authors: ['neil-tsai']
 ```csharp
 public string GetUserDisplayName(string name)
 {
-    return "<div>" + name + "</div>";
+    return $"<div>{name}</div>";
 }
 ```
 
