@@ -131,7 +131,7 @@ GetUserDisplayName("<script>alert(1)</script>");
 ```csharp
 public string GetUserDisplayName(string name)
 {
-    return "<div>" + HttpUtility.HtmlEncode(name) + "</div>";
+    return $"<div>{HttpUtility.HtmlEncode(name)}</div>";
 }
 ```
 
