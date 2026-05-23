@@ -46,12 +46,7 @@ export function writeStorage<T>(
     value: T | null,
     serializer: StorageSerializer<T>
 ): void {
-    if (value === null) {
-        storage.removeItem(key);
-        return;
-    }
-
-    const serializedValue = serializer(value);
+    const serializedValue = value === null ? null : serializer(value);
 
     if (serializedValue === null) {
         storage.removeItem(key);
