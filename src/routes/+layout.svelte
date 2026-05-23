@@ -73,7 +73,7 @@
 
 <div class="flex min-h-screen w-full flex-col bg-background text-foreground md:flex-row">
     <Sidebar />
-    <main class="flex-1">
+    <main class="min-w-0 flex-1">
         {@render children()}
     </main>
 </div>

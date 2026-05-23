@@ -10,15 +10,16 @@ export function resolveInitialTheme(storedTheme: Theme | null, prefersLight: boo
 
 export function syncThemePreference(
     storage: Pick<Storage, 'setItem' | 'removeItem'>,
+    key: string,
     theme: Theme,
     persist: boolean
 ) {
     if (persist) {
-        storage.setItem('theme', theme);
+        storage.setItem(key, theme);
         return;
     }
 
-    storage.removeItem('theme');
+    storage.removeItem(key);
 }
 
 export function applyThemeDocumentClass(

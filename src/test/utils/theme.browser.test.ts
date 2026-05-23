@@ -1,6 +1,13 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import {
+    STORAGE_KEYS,
+    booleanStorage,
+    readStorage,
+    stringStorage,
+    writeStorage
+} from '../../lib/utils/storage';
+import {
     type Theme,
     applyThemeDocumentClass,
     resolveInitialTheme,
@@ -19,20 +26,36 @@ describe('theme utils', () => {
         const setItem = vi.fn();
         const removeItem = vi.fn();
 
-        syncThemePreference({ setItem, removeItem }, 'light', true);
+        syncThemePreference({ setItem, removeItem }, STORAGE_KEYS.theme, 'light', true);
 
-        expect(setItem).toHaveBeenCalledWith('theme', 'light');
+        expect(setItem).toHaveBeenCalledWith(STORAGE_KEYS.theme, 'light');
         expect(removeItem).not.toHaveBeenCalled();
+    });
+
+    it('reads and writes boolean storage via codec', () => {
+        const map = new Map<string, string>();
+        const storage = {
+            getItem: (key: string) => map.get(key) ?? null,
+            setItem: (key: string, value: string) => map.set(key, value),
+            removeItem: (key: string) => map.delete(key)
+        };
+
+        writeStorage(storage, STORAGE_KEYS.sidebarCollapsed, true, booleanStorage.serialize);
+
+        expect(readStorage(storage, STORAGE_KEYS.sidebarCollapsed, booleanStorage.parse)).toBe(
+            true
+        );
+        expect(readStorage(storage, STORAGE_KEYS.theme, stringStorage.parse)).toBeNull();
     });
 
     it('removes persisted key when persist=false', () => {
         const setItem = vi.fn();
         const removeItem = vi.fn();
 
-        syncThemePreference({ setItem, removeItem }, 'dark', false);
+        syncThemePreference({ setItem, removeItem }, STORAGE_KEYS.theme, 'dark', false);
 
         expect(setItem).not.toHaveBeenCalled();
-        expect(removeItem).toHaveBeenCalledWith('theme');
+        expect(removeItem).toHaveBeenCalledWith(STORAGE_KEYS.theme);
     });
 
     it('applies dark/light class and removes no-transitions after two raf ticks', () => {

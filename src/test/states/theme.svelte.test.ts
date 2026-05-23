@@ -1,5 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { STORAGE_KEYS, stringStorage, writeStorage } from '../../lib/utils/storage';
+
 vi.mock('$lib/utils/theme', async () => {
     const actual = await import('../../lib/utils/theme');
     return actual;
@@ -38,7 +40,7 @@ describe('themeState', () => {
     it('initializes from stored theme and updates document class', async () => {
         const classList = createFakeClassList();
         const localStorage = createStorage();
-        localStorage.setItem('theme', 'light');
+        writeStorage(localStorage, STORAGE_KEYS.theme, 'light', stringStorage.serialize);
 
         const addEventListener = vi.fn();
         const matchMedia = vi.fn((query: string) => ({
@@ -129,10 +131,10 @@ describe('themeState', () => {
 
         darkChangeHandler?.({ matches: true });
         expect(themeState.current).toBe('dark');
-        expect(localStorage.getItem('theme')).toBeNull();
+        expect(localStorage.getItem(STORAGE_KEYS.theme)).toBeNull();
 
         themeState.toggle();
         expect(themeState.current).toBe('light');
-        expect(localStorage.getItem('theme')).toBe('light');
+        expect(localStorage.getItem(STORAGE_KEYS.theme)).toBe('light');
     });
 });

@@ -9,7 +9,7 @@
         variant = 'default',
         class: className
     }: {
-        variant?: 'default' | 'sidebar';
+        variant?: 'default' | 'sidebar' | 'icon';
         class?: string;
     } = $props();
 
@@ -92,6 +92,25 @@
                         </a>
                     {/each}
                 </div>
+            </div>
+        {:else if variant === 'icon'}
+            <div class="flex flex-col items-center gap-3">
+                {#each donations as donation (donation.url)}
+                    <a
+                        href={donation.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+                        aria-label={`贊助支持：${donation.platform}`}
+                        title={`贊助支持：${donation.platform}`}
+                    >
+                        {#if donation.icon}
+                            <donation.icon class="h-4 w-4" />
+                        {:else}
+                            <Coffee class="h-4 w-4" />
+                        {/if}
+                    </a>
+                {/each}
             </div>
         {/if}
     </div>
