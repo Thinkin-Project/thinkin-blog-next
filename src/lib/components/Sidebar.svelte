@@ -1,9 +1,11 @@
 <script lang="ts">
+    import { browser } from '$app/environment';
     import { onMount } from 'svelte';
 
     import { page } from '$app/state';
 
-    import { Menu, X } from 'lucide-svelte';
+    import favicon from '$lib/assets/favicon.ico';
+    import { ChevronsLeft, ChevronsRight, Menu, X } from 'lucide-svelte';
 
     import Donate from '$lib/components/Donate.svelte';
     import PostSearch from '$lib/components/PostSearch.svelte';
@@ -13,9 +15,11 @@
     import { Separator } from '$lib/components/ui/separator';
     import { BLOG_CONFIG } from '$lib/constants/blog';
     import { NAV_ITEMS, SOCIAL_LINKS } from '$lib/constants/navigation';
+    import { STORAGE_KEYS, booleanStorage, readStorage, writeStorage } from '$lib/utils/storage';
 
     // Svelte 5 State
     let isMenuOpen = $state(false);
+    let isDesktopSidebarCollapsed = $state(false);
 
     function toggleMenu() {
         isMenuOpen = !isMenuOpen;
@@ -25,9 +29,43 @@
         isMenuOpen = false;
     }
 
+    function toggleDesktopSidebar(): void {
+        isDesktopSidebarCollapsed = !isDesktopSidebarCollapsed;
+
+        if (browser) {
+            writeStorage(
+                localStorage,
+                STORAGE_KEYS.sidebarCollapsed,
+                isDesktopSidebarCollapsed,
+                booleanStorage.serialize
+            );
+        }
+    }
+
+    const desktopNavClass = (href: string): string =>
+        `flex items-center font-medium transition-colors ${
+            isDesktopSidebarCollapsed ? 'justify-center rounded-xl p-3' : 'gap-3'
+        } ${
+            page.url.pathname === href
+                ? 'text-foreground'
+                : 'text-muted-foreground hover:text-primary'
+        }`;
+
     let currentTime = $state('--:--:-- --');
 
     onMount(() => {
+        if (browser) {
+            const storedSidebarState = readStorage(
+                localStorage,
+                STORAGE_KEYS.sidebarCollapsed,
+                booleanStorage.parse
+            );
+
+            if (storedSidebarState !== null) {
+                isDesktopSidebarCollapsed = storedSidebarState;
+            }
+        }
+
         const updateTime = () => {
             const now = new Date();
             currentTime = now.toLocaleTimeString('en-US', {
@@ -111,43 +149,91 @@
 
 <!-- Left Sidebar (Desktop Profile) -->
 <nav
-    class="z-40 hidden w-full flex-col justify-between border-b bg-background/95 p-8 backdrop-blur md:sticky md:top-0 md:flex md:h-screen md:w-80 md:border-r md:border-b-0"
+    class="z-40 hidden w-full flex-col justify-between overflow-hidden border-b bg-background/95 backdrop-blur transition-[width,padding] duration-300 md:sticky md:top-0 md:flex md:h-screen md:flex-none md:shrink-0 md:border-r md:border-b-0 {isDesktopSidebarCollapsed
+        ? 'md:w-24 md:p-4'
+        : 'md:w-80 md:p-8'}"
 >
-    <div class="space-y-6">
-        <div class="flex items-center gap-4">
+    <div class={isDesktopSidebarCollapsed ? 'space-y-4' : 'space-y-6'}>
+        <div class="flex items-start justify-between gap-3">
+            {#if isDesktopSidebarCollapsed}
+                <Button
+                    variant="ghost"
+                    size="icon"
+                    onclick={toggleDesktopSidebar}
+                    class="group relative mx-auto h-12 w-12 cursor-pointer rounded-2xl text-foreground hover:bg-accent"
+                    aria-label="開啟側邊欄"
+                    title="開啟側邊欄"
+                >
+                    <img
+                        src={favicon}
+                        alt={`${BLOG_CONFIG.name} favicon`}
+                        class="h-6 w-6 transition-opacity duration-200 group-hover:opacity-0"
+                    />
+                    <ChevronsRight
+                        class="absolute h-5 w-5 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                    />
+                </Button>
+            {:else}
+                <div>
+                    <h2 class="text-xl font-bold tracking-tight">{BLOG_CONFIG.name}</h2>
+                    <p class="text-sm text-muted-foreground">{currentTime}</p>
+                </div>
+                <Button
+                    variant="ghost"
+                    size="icon"
+                    onclick={toggleDesktopSidebar}
+                    class="cursor-pointer text-muted-foreground hover:text-foreground"
+                    aria-label="關閉側邊欄"
+                    title="關閉側邊欄"
+                >
+                    <ChevronsLeft class="h-5 w-5" />
+                </Button>
+            {/if}
+        </div>
+
+        {#if !isDesktopSidebarCollapsed}
             <div>
-                <h2 class="text-xl font-bold tracking-tight">{BLOG_CONFIG.name}</h2>
-                <p class="text-sm text-muted-foreground">{currentTime}</p>
+                <p class="text-sm leading-relaxed text-muted-foreground">
+                    {BLOG_CONFIG.description}
+                </p>
             </div>
-        </div>
+        {/if}
 
-        <div>
-            <p class="text-sm leading-relaxed text-muted-foreground">
-                {BLOG_CONFIG.description}
-            </p>
+        <div class={isDesktopSidebarCollapsed ? 'flex justify-center' : ''}>
+            <PostSearch variant={isDesktopSidebarCollapsed ? 'icon' : 'default'} />
         </div>
-
-        <PostSearch />
 
         <!-- Navigation Links -->
-        <div class="flex flex-col gap-6 pt-2">
+        <div
+            class="flex flex-col {isDesktopSidebarCollapsed
+                ? 'items-center gap-2 pt-1'
+                : 'gap-6 pt-2'}"
+        >
             {#each NAV_ITEMS as item (item.name)}
                 <a
                     href={item.href}
-                    class="flex items-center gap-3 font-medium transition-colors {page.url
-                        .pathname === item.href
-                        ? 'text-foreground'
-                        : 'text-muted-foreground hover:text-primary'}"
+                    class={desktopNavClass(item.href)}
+                    aria-label={isDesktopSidebarCollapsed ? item.name : undefined}
+                    title={isDesktopSidebarCollapsed ? item.name : undefined}
                 >
-                    <item.icon class="h-4 w-4" />
-                    {item.name}
+                    <item.icon class="h-4 w-4 shrink-0" />
+                    {#if !isDesktopSidebarCollapsed}
+                        <span>{item.name}</span>
+                    {/if}
                 </a>
             {/each}
         </div>
     </div>
 
-    <div class="space-y-4 pt-8">
-        <Donate variant="sidebar" />
-        <ThemeToggle variant="full" />
+    <div class={isDesktopSidebarCollapsed ? 'space-y-3 pt-6' : 'space-y-4 pt-8'}>
+        <div class={isDesktopSidebarCollapsed ? 'flex justify-center' : ''}>
+            <Donate variant={isDesktopSidebarCollapsed ? 'icon' : 'sidebar'} />
+        </div>
+        <div class={isDesktopSidebarCollapsed ? 'flex justify-center' : ''}>
+            <ThemeToggle
+                variant={isDesktopSidebarCollapsed ? 'icon' : 'full'}
+                class={isDesktopSidebarCollapsed ? 'h-10 w-10 rounded-xl' : ''}
+            />
+        </div>
     </div>
 </nav>

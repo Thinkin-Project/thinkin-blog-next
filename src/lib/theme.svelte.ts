@@ -7,12 +7,18 @@ import {
     syncThemePreference
 } from '$lib/utils/theme';
 
+import { STORAGE_KEYS, readStorage, stringStorage } from './utils/storage';
+
 class ThemeState {
     #currentTheme = $state<Theme>('dark');
 
     constructor() {
         if (browser) {
-            const storedTheme = localStorage.getItem('theme') as Theme | null;
+            const storedTheme = readStorage(
+                localStorage,
+                STORAGE_KEYS.theme,
+                stringStorage.parse
+            ) as Theme | null;
             this.#currentTheme = resolveInitialTheme(
                 storedTheme,
                 window.matchMedia('(prefers-color-scheme: light)').matches
@@ -23,7 +29,7 @@ class ThemeState {
 
             // Listen for system changes if no manual override exists
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                if (!localStorage.getItem('theme')) {
+                if (!readStorage(localStorage, STORAGE_KEYS.theme, stringStorage.parse)) {
                     this.setTheme(e.matches ? 'dark' : 'light', false);
                 }
             });
@@ -38,7 +44,7 @@ class ThemeState {
         this.#currentTheme = theme;
         if (browser) {
             this.#updateDocument(theme);
-            syncThemePreference(localStorage, theme, persist);
+            syncThemePreference(localStorage, STORAGE_KEYS.theme, theme, persist);
         }
     }
 
