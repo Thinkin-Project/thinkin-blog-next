@@ -170,7 +170,7 @@
                         class="h-6 w-6 transition-opacity duration-200 group-hover:opacity-0"
                     />
                     <ChevronsRight
-                        class="absolute h-5 w-5 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                        class="absolute inset-0 m-auto h-5 w-5 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                     />
                 </Button>
             {:else}
