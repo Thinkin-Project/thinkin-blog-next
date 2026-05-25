@@ -5,7 +5,7 @@
     import { page } from '$app/state';
 
     import favicon from '$lib/assets/favicon.ico';
-    import { ChevronsLeft, ChevronsRight, Menu, X } from 'lucide-svelte';
+    import { Menu, X, PanelRight } from 'lucide-svelte';
 
     import Donate from '$lib/components/Donate.svelte';
     import PostSearch from '$lib/components/PostSearch.svelte';
@@ -160,7 +160,7 @@
                     variant="ghost"
                     size="icon"
                     onclick={toggleDesktopSidebar}
-                    class="group relative mx-auto h-12 w-12 cursor-pointer rounded-2xl text-foreground hover:bg-accent"
+                    class="group relative mx-auto h-12 w-12 cursor-e-resize rounded-2xl text-foreground hover:bg-accent"
                     aria-label="開啟側邊欄"
                     title="開啟側邊欄"
                 >
@@ -169,8 +169,8 @@
                         alt={`${BLOG_CONFIG.name} favicon`}
                         class="h-6 w-6 transition-opacity duration-200 group-hover:opacity-0"
                     />
-                    <ChevronsRight
-                        class="absolute inset-0 m-auto h-5 w-5 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                    <PanelRight
+                        class="absolute inset-0 m-auto h-5 w-5 rotate-180 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                     />
                 </Button>
             {:else}
@@ -182,11 +182,11 @@
                     variant="ghost"
                     size="icon"
                     onclick={toggleDesktopSidebar}
-                    class="cursor-pointer text-muted-foreground hover:text-foreground"
+                    class="cursor-e-resize text-muted-foreground hover:text-foreground"
                     aria-label="關閉側邊欄"
                     title="關閉側邊欄"
                 >
-                    <ChevronsLeft class="h-5 w-5" />
+                    <PanelRight class="h-5 w-5 rotate-180" />
                 </Button>
             {/if}
         </div>
