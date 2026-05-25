@@ -42,7 +42,7 @@
     });
 </script>
 
-<div class="fixed top-0 right-0 left-0 z-50 h-1 bg-zinc-900/50 backdrop-blur-sm md:left-80">
+<div class="sticky top-0 z-50 h-1 w-full bg-zinc-900/50 backdrop-blur-sm">
     <div
         class="h-full bg-linear-to-r from-pink-500 via-purple-500 to-indigo-500 transition-all duration-150 ease-out"
         style="width: {progress}%"
