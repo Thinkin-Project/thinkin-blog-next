@@ -2,7 +2,7 @@
     import { Command as CommandPrimitive } from 'cmdk-sv';
     import { Search } from 'lucide-svelte';
 
-    import { cn } from '$lib/utils.js';
+    import { cn } from '$lib/utils';
 
     let { value = $bindable(''), class: className = undefined, ...restProps } = $props();
 </script>
