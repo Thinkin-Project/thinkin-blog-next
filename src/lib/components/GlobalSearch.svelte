@@ -15,7 +15,7 @@
     } from '$lib/components/ui/command';
     import { getTagName } from '$lib/constants/tags';
     import { getTopicName } from '$lib/constants/topics';
-    import { searchState } from '$lib/search.svelte';
+    import { searchState } from '$lib/states/search.svelte';
     import type { ArticleMeta } from '$lib/types';
 
     let query = $state('');

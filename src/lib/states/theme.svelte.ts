@@ -7,7 +7,7 @@ import {
     syncThemePreference
 } from '$lib/utils/theme';
 
-import { STORAGE_KEYS, readStorage, stringStorage } from './utils/storage';
+import { STORAGE_KEYS, readStorage, stringStorage } from '../utils/storage';
 
 class ThemeState {
     #currentTheme = $state<Theme>('dark');

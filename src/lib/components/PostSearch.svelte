@@ -2,7 +2,7 @@
     import { Search } from 'lucide-svelte';
 
     import { Button } from '$lib/components/ui/button';
-    import { searchState } from '$lib/search.svelte';
+    import { searchState } from '$lib/states/search.svelte';
 
     interface Props {
         variant?: 'default' | 'icon';

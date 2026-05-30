@@ -6,7 +6,7 @@ describe('searchState', () => {
     });
 
     it('toggles isOpen state', async () => {
-        const { searchState } = await import('../../lib/search.svelte.ts');
+        const { searchState } = await import('../../lib/states/search.svelte.ts');
 
         expect(searchState.isOpen).toBe(false);
         searchState.toggle();
@@ -16,7 +16,7 @@ describe('searchState', () => {
     });
 
     it('opens and closes explicitly', async () => {
-        const { searchState } = await import('../../lib/search.svelte.ts');
+        const { searchState } = await import('../../lib/states/search.svelte.ts');
 
         searchState.open();
         expect(searchState.isOpen).toBe(true);

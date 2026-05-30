@@ -76,7 +76,7 @@ describe('themeState', () => {
 
         vi.doMock('$app/environment', () => ({ browser: true, dev: false }));
 
-        const { themeState } = await import('../../lib/theme.svelte.ts');
+        const { themeState } = await import('../../lib/states/theme.svelte.ts');
 
         expect(themeState.current).toBe('light');
         expect(classList.contains('dark')).toBe(false);
@@ -125,7 +125,7 @@ describe('themeState', () => {
 
         vi.doMock('$app/environment', () => ({ browser: true, dev: false }));
 
-        const { themeState } = await import('../../lib/theme.svelte.ts');
+        const { themeState } = await import('../../lib/states/theme.svelte.ts');
 
         expect(themeState.current).toBe('light');
 

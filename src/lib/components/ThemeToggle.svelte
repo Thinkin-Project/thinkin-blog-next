@@ -2,7 +2,7 @@
     import { Moon, Sun } from 'lucide-svelte';
 
     import { Button } from '$lib/components/ui/button';
-    import { themeState } from '$lib/theme.svelte';
+    import { themeState } from '$lib/states/theme.svelte';
     import { cn } from '$lib/utils';
 
     interface Props {
