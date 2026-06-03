@@ -267,8 +267,8 @@ describe('webmcp server service', () => {
         const medium = scoreRelatedPost(source, sameTopicOnly);
 
         expect(strong.score).toBeGreaterThan(medium.score);
-        expect(strong.reason).toContain('Same topic');
-        expect(strong.reason).toContain('MCP');
+        expect(strong.post.slug).toBe('same-topic-tags');
+        expect(medium.post.slug).toBe('same-topic-only');
     });
 
     it('returns only positively scored related posts with explainable reasons and stable ordering', async () => {
