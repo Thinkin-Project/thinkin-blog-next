@@ -182,7 +182,62 @@
 
                     <!-- Giscus Comments -->
                     <Giscus />
+
                 </article>
+
+                {#if data.relatedPosts?.length}
+                    <section class="space-y-6 border-t border-border pt-12">
+                        <div class="space-y-3">
+                            <div class="space-y-2">
+                                <h2 class="text-2xl font-bold tracking-tight text-foreground">
+                                    推推，這 {data.relatedPosts.length} 篇也值得你順手看完～
+                                </h2>
+                            </div>
+                            <div class="space-y-4">
+                                <p class="text-lg leading-relaxed font-medium text-muted-foreground">
+                                    根據相同主題與共享標籤，幫你整理出最相關的延伸閱讀。
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grid gap-4 md:grid-cols-3">
+                            {#each data.relatedPosts as post (post.slug)}
+                                <a
+                                    href="/posts/{post.slug}"
+                                    class="group flex h-full flex-col rounded-2xl border border-border bg-card/80 p-5 transition-colors hover:bg-secondary hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
+                                >
+                                    <div
+                                        class="mb-4 flex items-center gap-2 text-xs font-medium text-muted-foreground"
+                                    >
+                                        <span class="rounded-full bg-secondary px-2 py-1">
+                                            {getTopicName(post.topic)}
+                                        </span>
+                                        <span>{post.date}</span>
+                                    </div>
+
+                                    <h3
+                                        class="text-lg leading-snug font-semibold text-foreground transition-colors group-hover:text-accent-foreground"
+                                    >
+                                        {post.title}
+                                    </h3>
+
+                                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-muted-foreground">
+                                        {post.description}
+                                    </p>
+
+                                    <span
+                                        class="mt-auto inline-flex items-center gap-1 pt-6 text-sm font-medium text-foreground"
+                                    >
+                                        前往閱讀
+                                        <ChevronRight
+                                            class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                                        />
+                                    </span>
+                                </a>
+                            {/each}
+                        </div>
+                    </section>
+                {/if}
 
                 <!-- Bottom Navigation -->
                 {#if data.prev || data.next}

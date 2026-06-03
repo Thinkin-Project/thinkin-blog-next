@@ -267,11 +267,11 @@ describe('webmcp server service', () => {
         const medium = scoreRelatedPost(source, sameTopicOnly);
 
         expect(strong.score).toBeGreaterThan(medium.score);
-        expect(strong.reason).toContain('Same topic');
-        expect(strong.reason).toContain('MCP');
+        expect(strong.post.slug).toBe('same-topic-tags');
+        expect(medium.post.slug).toBe('same-topic-only');
     });
 
-    it('returns related posts with explainable reasons and stable ordering', async () => {
+    it('returns only positively scored related posts with explainable reasons and stable ordering', async () => {
         mockedGetPosts.mockResolvedValue([
             makePost({ slug: 'source', topic: 'dotnet', tags: ['mcp', 'api'], date: '2026-03-12' }),
             makePost({
@@ -291,28 +291,44 @@ describe('webmcp server service', () => {
                 topic: 'svelte',
                 tags: ['mcp'],
                 date: '2026-03-09'
-            }),
-            makePost({
-                slug: 'fallback-recent',
-                topic: 'career',
-                tags: ['notes'],
-                date: '2026-03-08'
             })
         ]);
 
         const result = await findRelatedPosts({ slug: 'source', limit: 4 });
 
         expect(result?.source.slug).toBe('source');
+        expect(result?.total).toBe(3);
         expect(result?.results.map((post) => post.slug)).toEqual([
             'same-topic-tags',
             'same-topic-newer',
-            'shared-tag-only',
-            'fallback-recent'
+            'shared-tag-only'
         ]);
         expect(result?.results[0]?.reason).toBe('Same topic (.NET) and shared tags: MCP, API');
         expect(result?.results[1]?.reason).toBe('Related post from the same topic: .NET');
         expect(result?.results[2]?.reason).toBe('Shared tags: MCP');
-        expect(result?.results[3]?.reason).toBe('Recently published related post');
+    });
+
+    it('returns no related results when every candidate scores zero', async () => {
+        mockedGetPosts.mockResolvedValue([
+            makePost({ slug: 'source', topic: 'dotnet', tags: ['mcp'], date: '2026-03-12' }),
+            makePost({
+                slug: 'different-topic-a',
+                topic: 'svelte',
+                tags: ['architecture'],
+                date: '2026-03-11'
+            }),
+            makePost({
+                slug: 'different-topic-b',
+                topic: 'career',
+                tags: ['notes'],
+                date: '2026-03-10'
+            })
+        ]);
+
+        const result = await findRelatedPosts({ slug: 'source', limit: 3 });
+
+        expect(result?.total).toBe(0);
+        expect(result?.results).toEqual([]);
     });
 
     it('returns null when related source post is missing', async () => {

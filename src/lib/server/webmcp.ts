@@ -59,9 +59,7 @@ interface RankedPost {
     score: number;
 }
 
-interface RankedRelatedPost extends RankedPost {
-    reason: string;
-}
+type RankedRelatedPost = RankedPost;
 
 export function clampLimit(
     value: number | undefined,
@@ -261,8 +259,7 @@ export function scoreRelatedPost(source: ArticleMeta, candidate: ArticleMeta): R
 
     return {
         post: candidate,
-        score,
-        reason: describeRelatedReason(source, candidate)
+        score
     };
 }
 
@@ -279,11 +276,12 @@ export async function findRelatedPosts(
     const rankedPosts = posts
         .filter((post) => post.slug !== sourcePost.slug)
         .map((post) => scoreRelatedPost(sourcePost, post))
+        .filter((entry) => entry.score > 0)
         .sort(compareByScoreAndDate);
 
     const results = rankedPosts.slice(0, limit).map((entry) => ({
         ...createPostSummary(entry.post),
-        reason: entry.reason
+        reason: describeRelatedReason(sourcePost, entry.post)
     }));
 
     return {
