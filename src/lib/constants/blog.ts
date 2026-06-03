@@ -26,6 +26,8 @@ export const BLOG_CONFIG = {
     newPostsLimit: Number(env.PUBLIC_NEW_POSTS_LIMIT) || 10,
     // 每頁顯示文章數量
     postsPerPage: Number(env.PUBLIC_POSTS_PER_PAGE) || 10,
+    // 相關文章顯示數量限制
+    relatedPostsLimit: Number(env.PUBLIC_RELATED_POSTS_LIMIT) || 3,
     // 贊助連結
     donations: [
         {

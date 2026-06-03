@@ -13,6 +13,7 @@ const defaultPublicEnv: PublicEnv = {
     PUBLIC_FEATURED_POSTS_LIMIT: undefined,
     PUBLIC_NEW_POSTS_LIMIT: undefined,
     PUBLIC_POSTS_PER_PAGE: undefined,
+    PUBLIC_RELATED_POSTS_LIMIT: undefined,
     PUBLIC_GISCUS_REPO: undefined,
     PUBLIC_GISCUS_REPO_ID: undefined,
     PUBLIC_GISCUS_CATEGORY: undefined,
@@ -47,17 +48,20 @@ describe('BLOG_CONFIG', () => {
         expect(BLOG_CONFIG.featuredPostsLimit).toBe(3);
         expect(BLOG_CONFIG.newPostsLimit).toBe(10);
         expect(BLOG_CONFIG.postsPerPage).toBe(10);
+        expect(BLOG_CONFIG.relatedPostsLimit).toBe(3);
     });
 
     it('parses numeric env values and falls back when invalid', async () => {
         const { BLOG_CONFIG } = await loadBlogConfig({
             PUBLIC_FEATURED_POSTS_LIMIT: '5',
             PUBLIC_NEW_POSTS_LIMIT: 'abc',
-            PUBLIC_POSTS_PER_PAGE: '12'
+            PUBLIC_POSTS_PER_PAGE: '12',
+            PUBLIC_RELATED_POSTS_LIMIT: '4'
         });
 
         expect(BLOG_CONFIG.featuredPostsLimit).toBe(5);
         expect(BLOG_CONFIG.newPostsLimit).toBe(10);
         expect(BLOG_CONFIG.postsPerPage).toBe(12);
+        expect(BLOG_CONFIG.relatedPostsLimit).toBe(4);
     });
 });

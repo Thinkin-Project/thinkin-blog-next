@@ -279,6 +279,7 @@ export async function findRelatedPosts(
     const rankedPosts = posts
         .filter((post) => post.slug !== sourcePost.slug)
         .map((post) => scoreRelatedPost(sourcePost, post))
+        .filter((entry) => entry.score > 0)
         .sort(compareByScoreAndDate);
 
     const results = rankedPosts.slice(0, limit).map((entry) => ({

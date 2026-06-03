@@ -97,6 +97,7 @@ pnpm preview
 | `PUBLIC_FEATURED_POSTS_LIMIT` | 置頂文章數量 | `3`    |
 | `PUBLIC_NEW_POSTS_LIMIT`      | 最新文章數量 | `10`   |
 | `PUBLIC_POSTS_PER_PAGE`       | 每頁文章數量 | `10`   |
+| `PUBLIC_RELATED_POSTS_LIMIT`  | 相關文章數量 | `3`    |
 
 ### Giscus 留言系統
 
