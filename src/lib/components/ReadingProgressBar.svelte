@@ -44,7 +44,7 @@
 </script>
 
 <div
-    class="sticky top-0 z-40 h-1 w-full bg-zinc-900/50 backdrop-blur-sm"
+    class="fixed top-0 left-0 z-50 h-1 w-full bg-zinc-900/50 backdrop-blur-sm md:sticky md:z-40"
     role="progressbar"
     aria-valuenow={ariaValueNow}
     aria-valuemin={0}
