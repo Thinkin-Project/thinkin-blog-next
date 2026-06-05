@@ -1,7 +1,7 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'node:path';
-import { defineConfig } from 'vitest/config';
+import { defineConfig, configDefaults } from 'vitest/config';
 
 export default defineConfig({
     plugins: [tailwindcss(), sveltekit()],
@@ -15,7 +15,12 @@ export default defineConfig({
         passWithNoTests: true,
         coverage: {
             provider: 'v8',
-            reporter: ['text', 'html']
+            reporter: ['text', 'html'],
+            exclude: [
+                ...configDefaults.coverage.exclude,
+                'src/posts/**',
+                '**/*.{png,jpg,jpeg,gif,webp,svg,ico}'
+            ]
         },
         projects: [
             {
