@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
-    import { Cookie, MessageSquareOff } from 'lucide-svelte';
+    import { Cookie, MessageSquareOff } from '@lucide/svelte';
 
     import { BLOG_CONFIG } from '$lib/constants/blog';
     import { themeState } from '$lib/states/theme.svelte';

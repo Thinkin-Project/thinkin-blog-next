@@ -3,7 +3,7 @@
 
     import { page } from '$app/stores';
 
-    import { Calendar, ChevronRight, Clock, Crosshair, Tag } from 'lucide-svelte';
+    import { Calendar, ChevronRight, Clock, Crosshair, Tag } from '@lucide/svelte';
 
     import AuthorBlock from '$lib/components/AuthorBlock.svelte';
     import BackToTop from '$lib/components/BackToTop.svelte';
@@ -182,7 +182,6 @@
 
                     <!-- Giscus Comments -->
                     <Giscus />
-
                 </article>
 
                 {#if data.relatedPosts?.length}
@@ -194,7 +193,9 @@
                                 </h2>
                             </div>
                             <div class="space-y-4">
-                                <p class="text-lg leading-relaxed font-medium text-muted-foreground">
+                                <p
+                                    class="text-lg leading-relaxed font-medium text-muted-foreground"
+                                >
                                     根據相同主題與共享標籤，幫你整理出最相關的延伸閱讀。
                                 </p>
                             </div>
@@ -221,7 +222,9 @@
                                         {post.title}
                                     </h3>
 
-                                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-muted-foreground">
+                                    <p
+                                        class="mt-3 line-clamp-3 text-sm leading-6 text-muted-foreground"
+                                    >
                                         {post.description}
                                     </p>
 

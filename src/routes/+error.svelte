@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from '$app/state';
 
-    import { ChevronRight } from 'lucide-svelte';
+    import { ChevronRight } from '@lucide/svelte';
 
     import EmptyState from '$lib/components/EmptyState.svelte';
     import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';

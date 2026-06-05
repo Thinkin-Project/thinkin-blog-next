@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { Component } from 'svelte';
 
-    import { Inbox } from 'lucide-svelte';
+    import { Inbox } from '@lucide/svelte';
 
     let {
         title = '尚無內容',

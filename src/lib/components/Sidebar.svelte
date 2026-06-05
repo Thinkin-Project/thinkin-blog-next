@@ -5,7 +5,7 @@
     import { page } from '$app/state';
 
     import favicon from '$lib/assets/favicon.ico';
-    import { Menu, X, PanelRight } from 'lucide-svelte';
+    import { Menu, X, PanelRight } from '@lucide/svelte';
 
     import Donate from '$lib/components/Donate.svelte';
     import PostSearch from '$lib/components/PostSearch.svelte';

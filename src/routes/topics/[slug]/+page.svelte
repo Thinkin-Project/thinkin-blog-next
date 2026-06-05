@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from '$app/state';
 
-    import { ChevronRight, CornerDownRight } from 'lucide-svelte';
+    import { ChevronRight, CornerDownRight } from '@lucide/svelte';
 
     import Footer from '$lib/components/Footer.svelte';
     import Pagination from '$lib/components/Pagination.svelte';

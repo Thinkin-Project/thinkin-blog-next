@@ -1,4 +1,4 @@
-import { House, Newspaper, Rss, Shield } from 'lucide-svelte';
+import { House, Newspaper, Rss, Shield } from '@lucide/svelte';
 
 import type { NavItem, SocialLink } from '$lib/types';
 

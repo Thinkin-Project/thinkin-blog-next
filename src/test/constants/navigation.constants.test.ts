@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 async function loadNavigation() {
     vi.resetModules();
-    vi.doMock('lucide-svelte', () => ({
+    vi.doMock('@lucide/svelte', () => ({
         House: 'House',
         Newspaper: 'Newspaper',
         Shield: 'Shield',

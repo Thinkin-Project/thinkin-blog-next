@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ArrowRight } from 'lucide-svelte';
+    import { ArrowRight } from '@lucide/svelte';
 
     import EmptyState from '$lib/components/EmptyState.svelte';
     import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';

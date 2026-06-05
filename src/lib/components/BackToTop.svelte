@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
-    import { ArrowUp } from 'lucide-svelte';
+    import { ArrowUp } from '@lucide/svelte';
 
     import { Button } from '$lib/components/ui/button';
     import { cn } from '$lib/utils';

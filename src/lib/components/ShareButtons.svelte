@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
-    import { Check, Link } from 'lucide-svelte';
+    import { Check, Link } from '@lucide/svelte';
 
     import { cn } from '$lib/utils';
 

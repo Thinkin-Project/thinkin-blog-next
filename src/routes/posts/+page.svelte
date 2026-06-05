@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { CornerDownRight } from 'lucide-svelte';
+    import { CornerDownRight } from '@lucide/svelte';
 
     import Footer from '$lib/components/Footer.svelte';
     import Pagination from '$lib/components/Pagination.svelte';

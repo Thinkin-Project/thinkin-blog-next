@@ -22,7 +22,6 @@
         "@eslint/compat": "^2.1.0",
         "@eslint/js": "^10.0.1",
         "@internationalized/date": "^3.12.1",
-        "@lucide/svelte": "^1.16.0",
         "@sveltejs/adapter-auto": "^7.0.1",
         "@sveltejs/kit": "^2.60.1",
         "@sveltejs/vite-plugin-svelte": "^7.1.2",
@@ -65,9 +64,9 @@
     },
     "packageManager": "pnpm@10.33.4",
     "dependencies": {
+        "@lucide/svelte": "^1.16.0",
         "cmdk-sv": "^0.0.19",
         "fuse.js": "^7.3.0",
-        "lucide-svelte": "^1.0.1",
         "vanilla-cookieconsent": "^3.1.0"
     }
 }

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onDestroy } from 'svelte';
 
-    import { Check, ClipboardList, X } from 'lucide-svelte';
+    import { Check, ClipboardList, X } from '@lucide/svelte';
 
     let { code }: { code: string } = $props();
 

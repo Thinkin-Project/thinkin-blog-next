@@ -1,4 +1,4 @@
-// 從 lucide-svelte 匯出常用的圖標
+// 從 @lucide/svelte 匯出常用的圖標
 export {
     Globe,
     Mail,
@@ -14,7 +14,7 @@ export {
     ChevronRight,
     ChevronDown,
     MessageSquare
-} from 'lucide-svelte';
+} from '@lucide/svelte';
 
 // 匯出自定義圖標
 export { default as Github } from './Github.svelte';

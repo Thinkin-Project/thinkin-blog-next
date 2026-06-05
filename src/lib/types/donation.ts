@@ -1,4 +1,4 @@
-import type { Icon } from 'lucide-svelte';
+import type { Icon } from '@lucide/svelte';
 
 /**
  * 贊助連結項目

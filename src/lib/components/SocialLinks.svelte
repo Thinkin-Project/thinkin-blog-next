@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ArrowRight } from 'lucide-svelte';
+    import { ArrowRight } from '@lucide/svelte';
 
     import type { SocialLink } from '$lib/types';
 

@@ -4,7 +4,7 @@
     import { goto } from '$app/navigation';
 
     import Fuse from 'fuse.js';
-    import { Calendar, FileText, Folder, Tag as TagIcon } from 'lucide-svelte';
+    import { Calendar, FileText, Folder, Tag as TagIcon } from '@lucide/svelte';
 
     import {
         CommandDialog,

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Search } from 'lucide-svelte';
+    import { Search } from '@lucide/svelte';
 
     import { Button } from '$lib/components/ui/button';
     import { searchState } from '$lib/states/search.svelte';

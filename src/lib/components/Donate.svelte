@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Coffee } from 'lucide-svelte';
+    import { Coffee } from '@lucide/svelte';
 
     import { BLOG_CONFIG } from '$lib/constants/blog';
     import type { DonationLink } from '$lib/types';
