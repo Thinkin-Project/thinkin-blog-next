@@ -48,6 +48,38 @@ describe('theme utils', () => {
         expect(readStorage(storage, STORAGE_KEYS.theme, stringStorage.parse)).toBeNull();
     });
 
+    it('parses false and invalid values correctly via boolean codec', () => {
+        const map = new Map<string, string>();
+        const storage = {
+            getItem: (key: string) => map.get(key) ?? null,
+            setItem: (key: string, value: string) => map.set(key, value),
+            removeItem: (key: string) => map.delete(key)
+        };
+
+        writeStorage(storage, STORAGE_KEYS.sidebarCollapsed, false, booleanStorage.serialize);
+        expect(readStorage(storage, STORAGE_KEYS.sidebarCollapsed, booleanStorage.parse)).toBe(
+            false
+        );
+
+        storage.setItem(STORAGE_KEYS.sidebarCollapsed, 'invalid');
+        expect(
+            readStorage(storage, STORAGE_KEYS.sidebarCollapsed, booleanStorage.parse)
+        ).toBeNull();
+    });
+
+    it('removes item from storage when writing null value', () => {
+        const map = new Map<string, string>();
+        const storage = {
+            getItem: (key: string) => map.get(key) ?? null,
+            setItem: (key: string, value: string) => map.set(key, value),
+            removeItem: (key: string) => map.delete(key)
+        };
+
+        storage.setItem(STORAGE_KEYS.sidebarCollapsed, 'true');
+        writeStorage(storage, STORAGE_KEYS.sidebarCollapsed, null, booleanStorage.serialize);
+        expect(storage.getItem(STORAGE_KEYS.sidebarCollapsed)).toBeNull();
+    });
+
     it('removes persisted key when persist=false', () => {
         const setItem = vi.fn();
         const removeItem = vi.fn();

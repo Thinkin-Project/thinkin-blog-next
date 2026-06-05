@@ -141,7 +141,7 @@ describe('posts server module', () => {
         }
     });
 
-    it('validates metadata with expected errors and accepts valid metadata', async () => {
+    it('returns validation errors for invalid metadata', async () => {
         const postsModule = await import('../../lib/server/posts');
 
         const invalid = postsModule.validateMetadata(
@@ -159,8 +159,12 @@ describe('posts server module', () => {
         expect(invalid.errors).toContain('invalid slug format: INVALID_SLUG');
         expect(invalid.errors).toContain('invalid date format: not-a-date');
         expect(invalid.errors).toContain('missing authors');
+    });
 
+    it('accepts valid metadata with no errors', async () => {
+        const postsModule = await import('../../lib/server/posts');
         const valid = postsModule.validateMetadata(makePost());
+
         expect(valid.ok).toBe(true);
         expect(valid.errors).toHaveLength(0);
     });
@@ -258,12 +262,15 @@ describe('posts server module', () => {
         expect(typeof loaders['/src/posts/design-pattern-builder/index.md']).toBe('function');
     });
 
-    it('returns raw markdown when slug exists and null when missing', async () => {
+    it('returns raw markdown when slug exists', async () => {
         const postsModule = await import('../../lib/server/posts');
         const raw = await postsModule.getRawPost('design-pattern-builder');
 
         expect(raw).toContain("title: 'Builder 建造者模式'");
+    });
 
+    it('returns null when raw markdown slug is missing', async () => {
+        const postsModule = await import('../../lib/server/posts');
         const missingRaw = await postsModule.getRawPost('missing-post');
 
         expect(missingRaw).toBeNull();

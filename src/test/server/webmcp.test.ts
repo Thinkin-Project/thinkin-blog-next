@@ -239,10 +239,12 @@ describe('webmcp server service', () => {
         });
     });
 
-    it('returns null when post metadata or raw markdown is missing', async () => {
+    it('returns null when post metadata is missing', async () => {
         mockedGetPosts.mockResolvedValue([]);
         expect(await getPost('missing')).toBeNull();
+    });
 
+    it('returns null when raw markdown content is missing', async () => {
         mockedGetPosts.mockResolvedValue([makePost({ slug: 'missing-raw' })]);
         mockedGetRawPost.mockResolvedValue(null);
         expect(await getPost('missing-raw')).toBeNull();
