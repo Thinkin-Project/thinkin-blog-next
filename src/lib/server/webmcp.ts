@@ -44,7 +44,7 @@ export interface SearchPostsResult {
     results: WebMcpPostSummary[];
 }
 
-export interface RelatedPostResult extends WebMcpPostSummary {
+interface RelatedPostResult extends WebMcpPostSummary {
     reason: string;
 }
 
@@ -73,7 +73,7 @@ export function clampLimit(
     return Math.min(Math.max(value, 1), maxValue);
 }
 
-export function getPostUrl(slug: string): string {
+function getPostUrl(slug: string): string {
     return `${BLOG_CONFIG.url}/posts/${encodeURIComponent(slug)}`;
 }
 
@@ -93,7 +93,7 @@ export function createPostSummary(post: ArticleMeta): WebMcpPostSummary {
     };
 }
 
-export function matchesTaxonomy(post: ArticleMeta, topic?: string, tag?: string): boolean {
+function matchesTaxonomy(post: ArticleMeta, topic?: string, tag?: string): boolean {
     const resolvedTopic = topic ? resolveTopicSlug(topic) : undefined;
     const resolvedTag = tag ? resolveTagSlug(tag) : undefined;
 
@@ -116,7 +116,7 @@ export function matchesTaxonomy(post: ArticleMeta, topic?: string, tag?: string)
     return true;
 }
 
-export async function scoreSearchPost(
+async function scoreSearchPost(
     post: ArticleMeta,
     normalizedQuery: string | undefined
 ): Promise<number> {
@@ -156,7 +156,7 @@ export async function scoreSearchPost(
     return stripFrontmatter(rawPost).toLowerCase().includes(normalizedQuery) ? 1 : 0;
 }
 
-export function compareByScoreAndDate<T extends RankedPost>(first: T, second: T): number {
+function compareByScoreAndDate<T extends RankedPost>(first: T, second: T): number {
     if (second.score !== first.score) {
         return second.score - first.score;
     }
@@ -231,7 +231,7 @@ export async function getPost(slug: string): Promise<WebMcpPostPayload | null> {
     };
 }
 
-export function describeRelatedReason(source: ArticleMeta, candidate: ArticleMeta): string {
+function describeRelatedReason(source: ArticleMeta, candidate: ArticleMeta): string {
     const topicName = getTopicName(candidate.topic);
     const sharedTags = candidate.tags.filter((tag) => source.tags.includes(tag));
     const tagNames = sharedTags.map(getTagName);

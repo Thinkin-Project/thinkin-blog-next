@@ -60,9 +60,6 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      cookie:
-        specifier: 0.7.2
-        version: 0.7.2
       eslint:
         specifier: ^10.4.0
         version: 10.4.0(jiti@2.6.1)
@@ -72,30 +69,18 @@ importers:
       eslint-plugin-svelte:
         specifier: ^3.17.1
         version: 3.17.1(eslint@10.4.0(jiti@2.6.1))(svelte@5.55.7)
-      flatted:
-        specifier: 3.4.2
-        version: 3.4.2
       globals:
         specifier: ^17.6.0
         version: 17.6.0
       happy-dom:
         specifier: ^20.9.0
         version: 20.9.0
-      lodash-es:
-        specifier: 4.18.1
-        version: 4.18.1
       mdsvex:
         specifier: ^0.12.7
         version: 0.12.7(svelte@5.55.7)
       mdsvex-relative-images:
         specifier: ^2.0.0
         version: 2.0.0
-      minimatch:
-        specifier: 9.0.9
-        version: 9.0.9
-      postcss:
-        specifier: 8.5.10
-        version: 8.5.10
       prettier:
         specifier: ^3.8.3
         version: 3.8.3
@@ -1072,10 +1057,6 @@ packages:
 
   cookie@0.6.0:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
-    engines: {node: '>= 0.6'}
-
-  cookie@0.7.2:
-    resolution: {integrity: sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==}
     engines: {node: '>= 0.6'}
 
   cross-spawn@7.0.6:
@@ -3052,8 +3033,6 @@ snapshots:
   convert-source-map@2.0.0: {}
 
   cookie@0.6.0: {}
-
-  cookie@0.7.2: {}
 
   cross-spawn@7.0.6:
     dependencies:
