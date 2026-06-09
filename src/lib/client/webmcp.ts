@@ -1,3 +1,5 @@
+import { goto } from '$app/navigation';
+
 type JsonRecord = Record<string, unknown>;
 
 type ToolAnnotations = {
@@ -244,9 +246,7 @@ async function executeFindRelatedPosts(input: JsonRecord): Promise<unknown> {
 
 async function navigateToUrl(url: string): Promise<void> {
     try {
-        const { navigateWithGoto } = await import('./navigation');
-        await navigateWithGoto(url);
-        return;
+        await goto(url);
     } catch {
         window.location.assign(url);
     }

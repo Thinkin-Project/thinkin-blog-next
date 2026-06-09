@@ -59,7 +59,7 @@ const mdsvexOptions = {
         highlighter: async (code, lang = 'text') => {
             if (!highlighterPromise) {
                 highlighterPromise = createHighlighter({
-                    themes: ['github-dark'],
+                    themes: ['github-dark', 'github-light'],
                     langs: [
                         'javascript',
                         'typescript',
@@ -74,7 +74,13 @@ const mdsvexOptions = {
                 });
             }
             const highlighter = await highlighterPromise;
-            const html = highlighter.codeToHtml(code, { lang, theme: 'github-dark' });
+            const html = highlighter.codeToHtml(code, {
+                lang,
+                themes: {
+                    light: 'github-light',
+                    dark: 'github-dark'
+                }
+            });
             return `{@html \`${escapeSvelte(html)}\`}`;
         }
     }

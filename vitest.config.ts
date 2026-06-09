@@ -24,6 +24,12 @@ export default defineConfig({
         },
         projects: [
             {
+                resolve: {
+                    alias: {
+                        '$app/environment': path.resolve('src/test/mocks/app-environment.ts'),
+                        '$app/navigation': path.resolve('src/test/mocks/app-navigation.ts')
+                    }
+                },
                 test: {
                     name: 'node',
                     include: ['src/**/*.{test,spec}.{ts,js}'],
@@ -35,6 +41,12 @@ export default defineConfig({
                 }
             },
             {
+                resolve: {
+                    alias: {
+                        '$app/environment': path.resolve('src/test/mocks/app-environment.ts'),
+                        '$app/navigation': path.resolve('src/test/mocks/app-navigation.ts')
+                    }
+                },
                 test: {
                     name: 'browser',
                     include: ['src/**/*.dom.test.ts', 'src/**/*.browser.test.ts'],

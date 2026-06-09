@@ -148,7 +148,19 @@
 
     /* 優化程式碼區塊 (Shiki) */
     .prose pre {
-        @apply relative my-8 flex max-w-full flex-col overflow-hidden rounded-2xl border border-secondary bg-zinc-950/50 p-0! shadow-2xl;
+        @apply relative my-8 flex max-w-full flex-col overflow-hidden rounded-2xl border border-secondary p-0! shadow-2xl;
+    }
+
+    /* Shiki 雙主題暗色模式樣式覆寫 */
+    html.dark .prose pre {
+        @apply bg-[#24292e]!;
+    }
+
+    html.dark .prose pre code span {
+        color: var(--shiki-dark) !important;
+        font-style: var(--shiki-dark-font-style) !important;
+        font-weight: var(--shiki-dark-font-weight) !important;
+        text-decoration: var(--shiki-dark-text-decoration) !important;
     }
 
     /* 內文中的行內程式碼 */
@@ -172,7 +184,7 @@
     /* 模擬視窗按鈕效果 (選配) */
     .prose pre::before {
         content: '';
-        @apply block h-8 w-full shrink-0 border-b border-secondary bg-zinc-900/50;
+        @apply block h-8 w-full shrink-0 border-b border-secondary bg-zinc-100;
         background-image:
             radial-gradient(circle, #ff5f56 6px, transparent 6px),
             radial-gradient(circle, #ffbd2e 6px, transparent 6px),
@@ -186,6 +198,11 @@
             32px center,
             52px center;
         background-repeat: no-repeat;
+    }
+
+    /* 暗色模式下的模擬視窗按鈕效果 */
+    html.dark .prose pre::before {
+        @apply bg-zinc-900/50!;
     }
 
     /* 程式碼區塊右上角的按鈕容器 */

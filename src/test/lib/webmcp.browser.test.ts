@@ -1,18 +1,8 @@
+import { goto } from '$app/navigation';
+
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { setupWebMcpBridge } from '../../lib/client/webmcp';
-
-const { navigateWithGotoMock } = vi.hoisted(() => ({
-    navigateWithGotoMock: vi.fn()
-}));
-
-vi.mock('$lib/client/navigation', () => ({
-    navigateWithGoto: navigateWithGotoMock
-}));
-
-vi.mock('../../lib/client/navigation', () => ({
-    navigateWithGoto: navigateWithGotoMock
-}));
 
 type RegisteredTool = {
     name: string;
@@ -43,8 +33,8 @@ describe('setupWebMcpBridge', () => {
         });
 
         assignLocationMock = vi.spyOn(window.location, 'assign').mockImplementation(() => {});
-        navigateWithGotoMock.mockReset();
-        navigateWithGotoMock.mockResolvedValue(undefined);
+        vi.mocked(goto).mockReset();
+        vi.mocked(goto).mockResolvedValue(undefined);
     });
 
     afterEach(() => {
@@ -224,7 +214,7 @@ describe('setupWebMcpBridge', () => {
                 })
             })
         );
-        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/post-slug');
+        expect(goto).toHaveBeenCalledWith('/posts/post-slug');
         expect(assignLocationMock).not.toHaveBeenCalled();
         expect(navigateResult).toEqual({
             success: true,
@@ -455,8 +445,8 @@ describe('setupWebMcpBridge', () => {
             status: 404
         });
 
-        expect(navigateWithGotoMock).toHaveBeenCalledTimes(1);
-        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/verified-post');
+        expect(goto).toHaveBeenCalledTimes(1);
+        expect(goto).toHaveBeenCalledWith('/posts/verified-post');
         expect(assignLocationMock).not.toHaveBeenCalled();
     });
 
@@ -510,7 +500,7 @@ describe('setupWebMcpBridge', () => {
         });
 
         expect(requestUserInteractionCalls).toHaveBeenCalledTimes(1);
-        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/interactive-post');
+        expect(goto).toHaveBeenCalledWith('/posts/interactive-post');
         expect(assignLocationMock).not.toHaveBeenCalled();
     });
 
@@ -525,7 +515,7 @@ describe('setupWebMcpBridge', () => {
             }
         });
 
-        navigateWithGotoMock.mockRejectedValueOnce(new Error('goto unavailable'));
+        vi.mocked(goto).mockRejectedValueOnce(new Error('goto unavailable'));
 
         const fetchMock = vi.fn(
             async () =>
@@ -557,7 +547,7 @@ describe('setupWebMcpBridge', () => {
             url: '/posts/fallback-post'
         });
 
-        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/fallback-post');
+        expect(goto).toHaveBeenCalledWith('/posts/fallback-post');
         expect(assignLocationMock).toHaveBeenCalledWith('/posts/fallback-post');
     });
 });
