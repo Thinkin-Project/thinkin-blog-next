@@ -2,19 +2,37 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { setupWebMcpBridge } from '../../lib/client/webmcp';
 
+const { navigateWithGotoMock } = vi.hoisted(() => ({
+    navigateWithGotoMock: vi.fn()
+}));
+
+vi.mock('$lib/client/navigation', () => ({
+    navigateWithGoto: navigateWithGotoMock
+}));
+
+vi.mock('../../lib/client/navigation', () => ({
+    navigateWithGoto: navigateWithGotoMock
+}));
+
 type RegisteredTool = {
     name: string;
     inputSchema?: Record<string, unknown>;
     annotations?: {
         readOnlyHint?: boolean;
     };
-    execute: (input: Record<string, unknown>) => Promise<unknown>;
+    execute: (
+        input: Record<string, unknown>,
+        client?: {
+            requestUserInteraction?: <T>(callback: () => Promise<T>) => Promise<T>;
+        }
+    ) => Promise<unknown>;
 };
 
 describe('setupWebMcpBridge', () => {
     const originalNavigator = globalThis.navigator;
     const originalSecureContext = globalThis.isSecureContext;
     const originalFetch = globalThis.fetch;
+    let assignLocationMock: ReturnType<typeof vi.spyOn>;
 
     beforeEach(() => {
         vi.restoreAllMocks();
@@ -23,6 +41,10 @@ describe('setupWebMcpBridge', () => {
             configurable: true,
             value: true
         });
+
+        assignLocationMock = vi.spyOn(window.location, 'assign').mockImplementation(() => {});
+        navigateWithGotoMock.mockReset();
+        navigateWithGotoMock.mockResolvedValue(undefined);
     });
 
     afterEach(() => {
@@ -50,7 +72,7 @@ describe('setupWebMcpBridge', () => {
         expect(cleanup).toBeTypeOf('function');
     });
 
-    it('registers three read-only tools and aborts them during cleanup', () => {
+    it('registers the WebMCP tools and aborts them during cleanup', () => {
         const registerTool = vi.fn();
         Object.defineProperty(globalThis, 'navigator', {
             configurable: true,
@@ -63,15 +85,19 @@ describe('setupWebMcpBridge', () => {
 
         const cleanup = setupWebMcpBridge();
 
-        expect(registerTool).toHaveBeenCalledTimes(3);
+        expect(registerTool).toHaveBeenCalledTimes(4);
 
         const registeredTools = registerTool.mock.calls.map(([tool]) => tool as RegisteredTool);
         expect(registeredTools.map((tool) => tool.name)).toEqual([
             'search_posts',
             'get_post',
-            'find_related_posts'
+            'find_related_posts',
+            'navigate_post'
         ]);
-        expect(registeredTools.every((tool) => tool.annotations?.readOnlyHint === true)).toBe(true);
+        expect(
+            registeredTools.slice(0, 3).every((tool) => tool.annotations?.readOnlyHint === true)
+        ).toBe(true);
+        expect(registeredTools[3]?.annotations?.readOnlyHint).toBeUndefined();
 
         const signal = registerTool.mock.calls[0]?.[1]?.signal as AbortSignal;
         expect(signal.aborted).toBe(false);
@@ -158,6 +184,9 @@ describe('setupWebMcpBridge', () => {
             slug: 'post-slug',
             limit: 99
         });
+        const navigateResult = await tools.get('navigate_post')?.execute({
+            slug: 'post-slug'
+        });
 
         expect(fetchMock).toHaveBeenNthCalledWith(
             1,
@@ -186,6 +215,22 @@ describe('setupWebMcpBridge', () => {
                 })
             })
         );
+        expect(fetchMock).toHaveBeenNthCalledWith(
+            4,
+            '/api/webmcp/posts/post-slug',
+            expect.objectContaining({
+                headers: expect.objectContaining({
+                    Accept: 'application/json'
+                })
+            })
+        );
+        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/post-slug');
+        expect(assignLocationMock).not.toHaveBeenCalled();
+        expect(navigateResult).toEqual({
+            success: true,
+            slug: 'post-slug',
+            url: '/posts/post-slug'
+        });
     });
 
     it('omits empty filters and falls back to default limits in query strings', async () => {
@@ -262,6 +307,9 @@ describe('setupWebMcpBridge', () => {
             'WebMCP tool requires a valid string value for slug.'
         );
         await expect(tools.get('find_related_posts')?.execute({ slug: '   ' })).rejects.toThrow(
+            'WebMCP tool requires a valid string value for slug.'
+        );
+        await expect(tools.get('navigate_post')?.execute({ slug: '   ' })).rejects.toThrow(
             'WebMCP tool requires a valid string value for slug.'
         );
     });
@@ -346,5 +394,170 @@ describe('setupWebMcpBridge', () => {
                 status: 502
             }
         );
+    });
+
+    it('only navigates after the target post is verified to exist', async () => {
+        const registerTool = vi.fn();
+        Object.defineProperty(globalThis, 'navigator', {
+            configurable: true,
+            value: {
+                modelContext: {
+                    registerTool
+                }
+            }
+        });
+
+        const fetchMock = vi
+            .fn()
+            .mockResolvedValueOnce(
+                new Response(JSON.stringify({ slug: 'verified-post' }), {
+                    status: 200,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+            )
+            .mockResolvedValueOnce(
+                new Response(JSON.stringify({ message: 'Post not found' }), {
+                    status: 404,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+            );
+        Object.defineProperty(globalThis, 'fetch', {
+            configurable: true,
+            value: fetchMock
+        });
+
+        setupWebMcpBridge();
+
+        const tools = new Map(
+            registerTool.mock.calls.map(([tool]) => [tool.name, tool as RegisteredTool])
+        );
+
+        await expect(
+            tools.get('navigate_post')?.execute({
+                slug: 'verified-post'
+            })
+        ).resolves.toEqual({
+            success: true,
+            slug: 'verified-post',
+            url: '/posts/verified-post'
+        });
+
+        await expect(
+            tools.get('navigate_post')?.execute({
+                slug: 'missing-post'
+            })
+        ).rejects.toMatchObject({
+            message: 'Post not found',
+            status: 404
+        });
+
+        expect(navigateWithGotoMock).toHaveBeenCalledTimes(1);
+        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/verified-post');
+        expect(assignLocationMock).not.toHaveBeenCalled();
+    });
+
+    it('uses requestUserInteraction when available for navigation side effects', async () => {
+        const registerTool = vi.fn();
+        Object.defineProperty(globalThis, 'navigator', {
+            configurable: true,
+            value: {
+                modelContext: {
+                    registerTool
+                }
+            }
+        });
+
+        const fetchMock = vi.fn(
+            async () =>
+                new Response(JSON.stringify({ slug: 'interactive-post' }), {
+                    status: 200,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+        );
+        Object.defineProperty(globalThis, 'fetch', {
+            configurable: true,
+            value: fetchMock
+        });
+
+        setupWebMcpBridge();
+
+        const tools = new Map(
+            registerTool.mock.calls.map(([tool]) => [tool.name, tool as RegisteredTool])
+        );
+        const requestUserInteractionCalls = vi.fn();
+        const requestUserInteraction = async <T>(callback: () => Promise<T>): Promise<T> => {
+            requestUserInteractionCalls();
+            return callback();
+        };
+
+        await expect(
+            tools.get('navigate_post')?.execute(
+                {
+                    slug: 'interactive-post'
+                },
+                { requestUserInteraction }
+            )
+        ).resolves.toEqual({
+            success: true,
+            slug: 'interactive-post',
+            url: '/posts/interactive-post'
+        });
+
+        expect(requestUserInteractionCalls).toHaveBeenCalledTimes(1);
+        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/interactive-post');
+        expect(assignLocationMock).not.toHaveBeenCalled();
+    });
+
+    it('falls back to window.location.assign when goto is unavailable', async () => {
+        const registerTool = vi.fn();
+        Object.defineProperty(globalThis, 'navigator', {
+            configurable: true,
+            value: {
+                modelContext: {
+                    registerTool
+                }
+            }
+        });
+
+        navigateWithGotoMock.mockRejectedValueOnce(new Error('goto unavailable'));
+
+        const fetchMock = vi.fn(
+            async () =>
+                new Response(JSON.stringify({ slug: 'fallback-post' }), {
+                    status: 200,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+        );
+        Object.defineProperty(globalThis, 'fetch', {
+            configurable: true,
+            value: fetchMock
+        });
+
+        setupWebMcpBridge();
+
+        const tools = new Map(
+            registerTool.mock.calls.map(([tool]) => [tool.name, tool as RegisteredTool])
+        );
+
+        await expect(
+            tools.get('navigate_post')?.execute({
+                slug: 'fallback-post'
+            })
+        ).resolves.toEqual({
+            success: true,
+            slug: 'fallback-post',
+            url: '/posts/fallback-post'
+        });
+
+        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/fallback-post');
+        expect(assignLocationMock).toHaveBeenCalledWith('/posts/fallback-post');
     });
 });
