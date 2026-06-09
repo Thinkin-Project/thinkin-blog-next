@@ -146,12 +146,12 @@
         @apply my-8;
     }
 
-    /* 優化程式碼區塊 (Shiki) */
+    /* 優化程式碼區塊（亮色模式）*/
     .prose pre {
         @apply relative my-8 flex max-w-full flex-col overflow-hidden rounded-2xl border border-secondary p-0! shadow-2xl;
     }
 
-    /* Shiki 雙主題暗色模式樣式覆寫 */
+    /* 優化程式碼區塊（暗色模式）*/
     html.dark .prose pre {
         @apply bg-[#24292e]!;
     }
@@ -181,7 +181,7 @@
         @apply block min-w-0 overflow-x-auto bg-transparent px-6! py-4! font-mono text-sm leading-relaxed;
     }
 
-    /* 模擬視窗按鈕效果 (選配) */
+    /* 模擬視窗按鈕效果（亮色模式）*/
     .prose pre::before {
         content: '';
         @apply block h-8 w-full shrink-0 border-b border-secondary bg-zinc-100;
@@ -200,7 +200,7 @@
         background-repeat: no-repeat;
     }
 
-    /* 暗色模式下的模擬視窗按鈕效果 */
+    /* 模擬視窗按鈕效果（暗色模式）*/
     html.dark .prose pre::before {
         @apply bg-zinc-900/50!;
     }
@@ -215,9 +215,30 @@
         @apply pointer-events-auto opacity-100;
     }
 
-    /* 複製原始碼按鈕 */
+    /* 複製原始碼按鈕（亮色模式）*/
     .prose .code-copy-button {
-        @apply inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-zinc-600/80 bg-zinc-900/90 text-zinc-200 transition-all duration-200;
+        @apply inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-zinc-200 bg-white/90 text-zinc-600 transition-all duration-200;
+
+        &:hover {
+            @apply border-zinc-400 bg-zinc-50 text-zinc-900;
+        }
+
+        &:focus-visible {
+            @apply ring-2 ring-zinc-400 ring-offset-2 ring-offset-white outline-none;
+        }
+    }
+
+    .prose .code-copy-button-success {
+        @apply border-emerald-500/80 text-emerald-600 hover:border-emerald-600 hover:text-emerald-700;
+    }
+
+    .prose .code-copy-button-error {
+        @apply border-rose-500/80 text-rose-600 hover:border-rose-600 hover:text-rose-700;
+    }
+
+    /* 複製原始碼按鈕（暗色模式）*/
+    html.dark .prose .code-copy-button {
+        @apply border-zinc-600/80 bg-zinc-900/90 text-zinc-200;
 
         &:hover {
             @apply border-zinc-400 bg-zinc-800 text-white;
@@ -228,11 +249,11 @@
         }
     }
 
-    .prose .code-copy-button-success {
+    html.dark .prose .code-copy-button-success {
         @apply border-emerald-400/80 text-emerald-300 hover:border-emerald-300 hover:text-emerald-200;
     }
 
-    .prose .code-copy-button-error {
+    html.dark .prose .code-copy-button-error {
         @apply border-rose-400/80 text-rose-300 hover:border-rose-300 hover:text-rose-200;
     }
 }
