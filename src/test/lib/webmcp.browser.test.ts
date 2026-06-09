@@ -2,6 +2,18 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { setupWebMcpBridge } from '../../lib/client/webmcp';
 
+const { navigateWithGotoMock } = vi.hoisted(() => ({
+    navigateWithGotoMock: vi.fn()
+}));
+
+vi.mock('$lib/client/navigation', () => ({
+    navigateWithGoto: navigateWithGotoMock
+}));
+
+vi.mock('../../lib/client/navigation', () => ({
+    navigateWithGoto: navigateWithGotoMock
+}));
+
 type RegisteredTool = {
     name: string;
     inputSchema?: Record<string, unknown>;
@@ -31,6 +43,8 @@ describe('setupWebMcpBridge', () => {
         });
 
         assignLocationMock = vi.spyOn(window.location, 'assign').mockImplementation(() => {});
+        navigateWithGotoMock.mockReset();
+        navigateWithGotoMock.mockResolvedValue(undefined);
     });
 
     afterEach(() => {
@@ -210,7 +224,8 @@ describe('setupWebMcpBridge', () => {
                 })
             })
         );
-        expect(assignLocationMock).toHaveBeenCalledWith('/posts/post-slug');
+        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/post-slug');
+        expect(assignLocationMock).not.toHaveBeenCalled();
         expect(navigateResult).toEqual({
             success: true,
             slug: 'post-slug',
@@ -440,8 +455,9 @@ describe('setupWebMcpBridge', () => {
             status: 404
         });
 
-        expect(assignLocationMock).toHaveBeenCalledTimes(1);
-        expect(assignLocationMock).toHaveBeenCalledWith('/posts/verified-post');
+        expect(navigateWithGotoMock).toHaveBeenCalledTimes(1);
+        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/verified-post');
+        expect(assignLocationMock).not.toHaveBeenCalled();
     });
 
     it('uses requestUserInteraction when available for navigation side effects', async () => {
@@ -494,6 +510,54 @@ describe('setupWebMcpBridge', () => {
         });
 
         expect(requestUserInteractionCalls).toHaveBeenCalledTimes(1);
-        expect(assignLocationMock).toHaveBeenCalledWith('/posts/interactive-post');
+        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/interactive-post');
+        expect(assignLocationMock).not.toHaveBeenCalled();
+    });
+
+    it('falls back to window.location.assign when goto is unavailable', async () => {
+        const registerTool = vi.fn();
+        Object.defineProperty(globalThis, 'navigator', {
+            configurable: true,
+            value: {
+                modelContext: {
+                    registerTool
+                }
+            }
+        });
+
+        navigateWithGotoMock.mockRejectedValueOnce(new Error('goto unavailable'));
+
+        const fetchMock = vi.fn(
+            async () =>
+                new Response(JSON.stringify({ slug: 'fallback-post' }), {
+                    status: 200,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+        );
+        Object.defineProperty(globalThis, 'fetch', {
+            configurable: true,
+            value: fetchMock
+        });
+
+        setupWebMcpBridge();
+
+        const tools = new Map(
+            registerTool.mock.calls.map(([tool]) => [tool.name, tool as RegisteredTool])
+        );
+
+        await expect(
+            tools.get('navigate_post')?.execute({
+                slug: 'fallback-post'
+            })
+        ).resolves.toEqual({
+            success: true,
+            slug: 'fallback-post',
+            url: '/posts/fallback-post'
+        });
+
+        expect(navigateWithGotoMock).toHaveBeenCalledWith('/posts/fallback-post');
+        expect(assignLocationMock).toHaveBeenCalledWith('/posts/fallback-post');
     });
 });

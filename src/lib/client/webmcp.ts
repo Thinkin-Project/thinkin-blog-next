@@ -242,6 +242,16 @@ async function executeFindRelatedPosts(input: JsonRecord): Promise<unknown> {
     return getJson(`${path}${buildQueryString({ limit })}`);
 }
 
+async function navigateToUrl(url: string): Promise<void> {
+    try {
+        const { navigateWithGoto } = await import('./navigation');
+        await navigateWithGoto(url);
+        return;
+    } catch {
+        window.location.assign(url);
+    }
+}
+
 async function executeNavigatePost(
     input: JsonRecord,
     client: ModelContextClient = {}
@@ -251,7 +261,7 @@ async function executeNavigatePost(
 
     const url = `/posts/${encodeURIComponent(slug)}`;
     const navigate = async () => {
-        window.location.assign(url);
+        await navigateToUrl(url);
         return {
             success: true,
             slug,
