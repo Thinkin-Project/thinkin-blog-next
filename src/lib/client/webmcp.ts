@@ -96,6 +96,18 @@ const FIND_RELATED_POSTS_SCHEMA = {
     additionalProperties: false
 } as const satisfies JsonRecord;
 
+const NAVIGATE_POST_SCHEMA = {
+    type: 'object',
+    properties: {
+        slug: {
+            type: 'string',
+            description: 'Slug of the post to navigate to'
+        }
+    },
+    required: ['slug'],
+    additionalProperties: false
+} as const satisfies JsonRecord;
+
 let activeRegistrationController: AbortController | null = null;
 
 class HttpError extends Error {
@@ -230,6 +242,30 @@ async function executeFindRelatedPosts(input: JsonRecord): Promise<unknown> {
     return getJson(`${path}${buildQueryString({ limit })}`);
 }
 
+async function executeNavigatePost(
+    input: JsonRecord,
+    client: ModelContextClient = {}
+): Promise<unknown> {
+    const slug = normalizeRequiredString(input.slug, 'slug');
+    await executeGetPost({ slug });
+
+    const url = `/posts/${encodeURIComponent(slug)}`;
+    const navigate = async () => {
+        window.location.assign(url);
+        return {
+            success: true,
+            slug,
+            url
+        };
+    };
+
+    if (typeof client.requestUserInteraction === 'function') {
+        return client.requestUserInteraction(navigate);
+    }
+
+    return navigate();
+}
+
 const WEB_MCP_TOOLS: ModelContextTool[] = [
     {
         name: 'search_posts',
@@ -257,6 +293,14 @@ const WEB_MCP_TOOLS: ModelContextTool[] = [
         inputSchema: FIND_RELATED_POSTS_SCHEMA,
         annotations: READ_ONLY_ANNOTATIONS,
         execute: executeFindRelatedPosts
+    },
+    {
+        name: 'navigate_post',
+        title: 'Navigate Post',
+        description:
+            'Verify that a published post exists for the given slug, then navigate to that post page.',
+        inputSchema: NAVIGATE_POST_SCHEMA,
+        execute: executeNavigatePost
     }
 ];
 
