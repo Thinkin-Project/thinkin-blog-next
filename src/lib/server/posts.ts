@@ -2,7 +2,10 @@ import { dev } from '$app/environment';
 
 import type { ArticleMeta } from '$lib/types';
 
+const DEV_CACHE_TTL = 3000; // 開發環境下的快取有效時間（毫秒），以降低頻繁 I/O 操作對開發體驗的影響
+
 let cachedPosts: ArticleMeta[] | null = null;
+let lastCacheTime = 0;
 
 type PostLoader = () => Promise<unknown>;
 type ImageLoaderMap = Record<string, PostLoader>;
@@ -17,8 +20,11 @@ const rawPostLoaders = import.meta.glob('/src/posts/*/index.md', {
 }) as RawPostLoaderMap;
 
 export async function getPosts() {
-    if (cachedPosts && !dev) {
-        return cachedPosts;
+    const now = Date.now();
+    if (cachedPosts) {
+        if (!dev || now - lastCacheTime < DEV_CACHE_TTL) {
+            return cachedPosts;
+        }
     }
 
     // non-eager glob: returns loader functions we call when needed
@@ -41,6 +47,7 @@ export async function getPosts() {
     posts = finalizePosts(posts);
 
     cachedPosts = posts;
+    lastCacheTime = now;
     return posts;
 }
 

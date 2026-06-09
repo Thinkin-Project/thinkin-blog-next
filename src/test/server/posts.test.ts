@@ -34,6 +34,32 @@ describe('posts server module', () => {
         expect(firstCall).toBe(secondCall);
     });
 
+    it('uses cache in dev mode within TTL', async () => {
+        vi.doMock('$app/environment', () => ({ dev: true, browser: false }));
+        const { getPosts } = await import('../../lib/server/posts');
+
+        const firstCall = await getPosts();
+        const secondCall = await getPosts();
+
+        expect(firstCall).toBe(secondCall);
+    });
+
+    it('bypasses cache in dev mode after TTL expires', async () => {
+        vi.doMock('$app/environment', () => ({ dev: true, browser: false }));
+        const { getPosts } = await import('../../lib/server/posts');
+
+        const nowSpy = vi.spyOn(Date, 'now');
+
+        nowSpy.mockReturnValue(1000);
+        const firstCall = await getPosts();
+
+        // 3.001 seconds later
+        nowSpy.mockReturnValue(4001);
+        const secondCall = await getPosts();
+
+        expect(firstCall).not.toBe(secondCall);
+    });
+
     it('returns error when markdown loader throws unexpectedly', async () => {
         const postsModule = await import('../../lib/server/posts');
         const loaderError = new Error('boom');
