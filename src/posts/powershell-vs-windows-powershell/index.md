@@ -30,7 +30,7 @@ authors: ['neil-tsai']
 
 最簡單的判斷方式是：
 
-```bash
+```powershell
 $PSVersionTable
 ```
 
@@ -48,7 +48,7 @@ Windows 系統長期內建的版本，常見版本是 5.1。
 
 它的執行檔通常是：
 
-```bash
+```powershell
 powershell.exe
 ```
 
@@ -60,7 +60,7 @@ powershell.exe
 
 它的執行檔通常是：
 
-```bash
+```powershell
 pwsh.exe
 ```
 

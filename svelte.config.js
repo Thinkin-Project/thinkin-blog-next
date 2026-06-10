@@ -69,7 +69,8 @@ const mdsvexOptions = {
                         'json',
                         'bash',
                         'markdown',
-                        'csharp'
+                        'csharp',
+                        'powershell'
                     ]
                 });
             }
