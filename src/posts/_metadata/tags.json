@@ -45,7 +45,7 @@
         "aliases": []
     },
     {
-        "name": "Windows Powershell",
+        "name": "Windows PowerShell",
         "slug": "windows-powershell",
         "aliases": []
     },
@@ -257,6 +257,11 @@
     {
         "name": "WebMCP",
         "slug": "webmcp",
+        "aliases": []
+    },
+    {
+        "name": "PowerShell",
+        "slug": "powershell",
         "aliases": []
     }
 ]

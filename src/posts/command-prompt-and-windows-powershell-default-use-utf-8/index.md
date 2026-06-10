@@ -1,5 +1,5 @@
 ---
-title: 'Command Prompt / Windows Powershell 預設使用 UTF-8 編碼'
+title: 'Command Prompt / Windows PowerShell 預設使用 UTF-8 編碼'
 description: '解決 Windows 惱人的亂碼問題'
 ogImage: './hero.jpg'
 slug: 'command-prompt-and-windows-powershell-default-use-utf-8'
@@ -11,7 +11,7 @@ tags: ['windows', 'command-prompt', 'windows-powershell']
 authors: ['neil-tsai']
 ---
 
-此文主要**協助各位調整 Command Prompt / Windows Powershell 預設使用 UTF-8 編碼**，有興趣就往下看吧！
+此文主要**協助各位調整 Command Prompt / Windows PowerShell 預設使用 UTF-8 編碼**，有興趣就往下看吧！
 
 ## 前言
 
@@ -23,7 +23,7 @@ authors: ['neil-tsai']
     Default Code Page
 </center>
 
-所以今天就來談談 Win 10 環境下，如何調整 Command Prompt / Windows Powershell 預設使用 UTF-8 編碼 。
+所以今天就來談談 Win 10 環境下，如何調整 Command Prompt / Windows PowerShell 預設使用 UTF-8 編碼 。
 
 ## 臨時修改
 
@@ -31,7 +31,7 @@ authors: ['neil-tsai']
 > chcp 65001
 ```
 
-僅調整**當下 Process**（Command Prompt / Windows Powershell）的字碼頁（CodePage）為 65001。
+僅調整**當下 Process**（Command Prompt / Windows PowerShell）的字碼頁（CodePage）為 65001。
 
 ![cmd-powershell-2](./images/cmd-powershell-2.jpg)
 
@@ -61,11 +61,11 @@ authors: ['neil-tsai']
     CodePage 65001 now actived
 </center>
 
-### Windows Powershell
+### Windows PowerShell
 
-如果 Windows Powershell 要預設使用 UTF-8 編碼相比於 Command Prompt 就複雜得多… 畢竟微軟出品 (´\_ゝ`)
+如果 Windows PowerShell 要預設使用 UTF-8 編碼相比於 Command Prompt 就複雜得多… 畢竟微軟出品 (´\_ゝ`)
 
-💭 [Using UTF-8 Encoding (CHCP 65001) in Command Prompt / Windows Powershell (Windows 10)](https://stackoverflow.com/questions/57131654/using-utf-8-encoding-chcp-65001-in-command-prompt-windows-powershell-window)
+💭 [Using UTF-8 Encoding (CHCP 65001) in Command Prompt / Windows PowerShell (Windows 10)](https://stackoverflow.com/questions/57131654/using-utf-8-encoding-chcp-65001-in-command-prompt-windows-powershell-window)
 
 上文有比較詳細的討論，下面這邊就稍微圖解一下：
 
@@ -119,4 +119,4 @@ authors: ['neil-tsai']
 
 感謝各位花時間看完此篇小文，如果本文中有描述錯誤，還請各位指教。
 
-希望這篇文章可以解決掉大多數人對於 Command Prompt / Windows Powershell 預設使用 UTF-8 編碼的困擾哦◝( ﾟ∀ ﾟ )◟
+希望這篇文章可以解決掉大多數人對於 Command Prompt / Windows PowerShell 預設使用 UTF-8 編碼的困擾哦◝( ﾟ∀ ﾟ )◟
