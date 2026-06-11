@@ -60,7 +60,7 @@ authors: ['neil-tsai']
 
 所以我想留一個問題給你：
 
-你有替你的 CI Pipeline 設 Alert。你知道每次 Deploy 的平均時間，知道哪支測試最常 Flaky，知道 P95 在哪裡開始讓人不舒服。
+你替你的 CI Pipeline 設了 Alert。你知道每次 Deploy 的平均時間，知道哪支測試最常 Flaky，知道 P95 在哪裡開始讓人不舒服。
 
 那你有沒有替自己設過任何一個指標，來判斷今天的 AI 協作是值得的？
 
