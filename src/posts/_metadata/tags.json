@@ -263,5 +263,10 @@
         "name": "PowerShell",
         "slug": "powershell",
         "aliases": []
+    },
+    {
+        "name": "可觀測性",
+        "slug": "observability",
+        "aliases": []
     }
 ]
