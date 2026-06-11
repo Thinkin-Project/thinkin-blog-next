@@ -1,5 +1,5 @@
 ---
-title: '你替 API 加了監控，但你量測過自己跟 AI 的協作過程嗎？'
+title: '我們習慣幫 API 加上監控，卻忘了量測自己與 AI 的協作效率'
 description: '大家都說 AI 讓他們變快了。但「感覺變快」跟「真的變快」之間，差的是你從來沒有設過的那個 Metric'
 slug: 'ai-collaboration-observability'
 date: '2026-06-11'
