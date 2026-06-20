@@ -1,0 +1,65 @@
+{
+  "env": {
+    "CLAUDE_CODE_USE_POWERSHELL_TOOL": "1",
+    "POWERSHELL_TELEMETRY_OPTOUT": "1"
+  },
+  "defaultShell": "powershell",
+  "permissions": {
+    "allow": [
+      "PowerShell",
+      "Read",
+      "Write",
+      "Edit",
+      "MultiEdit",
+      "Glob",
+      "WebFetch",
+      "WebSearch",
+      "NotebookRead",
+      "NotebookEdit"
+    ],
+    "deny": ["Bash"]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git add -A && git commit -m 'backup: before Claude Code edit' --allow-empty || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/block-dangerous.js"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/format-lint.js"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git add -A && git commit -m 'feat: Claude Code auto-commit' || true"
+          }
+        ]
+      }
+    ]
+  }
+}
