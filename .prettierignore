@@ -16,3 +16,5 @@ skills-lock.json
 .agents/
 .github/
 .vscode/
+.claude/
+.codex/
