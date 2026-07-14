@@ -20,6 +20,7 @@ type RegisteredTool = {
 
 describe('setupWebMcpBridge', () => {
     const originalNavigator = globalThis.navigator;
+    const originalDocumentModelContext = document.modelContext;
     const originalSecureContext = globalThis.isSecureContext;
     const originalFetch = globalThis.fetch;
     let assignLocationMock: ReturnType<typeof vi.spyOn>;
@@ -41,6 +42,10 @@ describe('setupWebMcpBridge', () => {
         Object.defineProperty(globalThis, 'navigator', {
             configurable: true,
             value: originalNavigator
+        });
+        Object.defineProperty(document, 'modelContext', {
+            configurable: true,
+            value: originalDocumentModelContext
         });
         Object.defineProperty(globalThis, 'isSecureContext', {
             configurable: true,
@@ -64,12 +69,10 @@ describe('setupWebMcpBridge', () => {
 
     it('registers the WebMCP tools and aborts them during cleanup', () => {
         const registerTool = vi.fn();
-        Object.defineProperty(globalThis, 'navigator', {
+        Object.defineProperty(document, 'modelContext', {
             configurable: true,
             value: {
-                modelContext: {
-                    registerTool
-                }
+                registerTool
             }
         });
 
@@ -98,25 +101,43 @@ describe('setupWebMcpBridge', () => {
     });
 
     it('skips registration when modelContext is missing or invalid', () => {
-        Object.defineProperty(globalThis, 'navigator', {
+        Object.defineProperty(document, 'modelContext', {
             configurable: true,
-            value: {
-                modelContext: {}
-            }
+            value: {}
         });
 
         const cleanup = setupWebMcpBridge();
         expect(cleanup).toBeTypeOf('function');
     });
 
-    it('aborts the previous registration when setup is called again', () => {
+    it('falls back to navigator.modelContext when document.modelContext is unavailable', () => {
         const registerTool = vi.fn();
+        Object.defineProperty(document, 'modelContext', {
+            configurable: true,
+            value: undefined
+        });
         Object.defineProperty(globalThis, 'navigator', {
             configurable: true,
             value: {
                 modelContext: {
                     registerTool
                 }
+            }
+        });
+
+        const cleanup = setupWebMcpBridge();
+
+        expect(registerTool).toHaveBeenCalledTimes(4);
+
+        cleanup();
+    });
+
+    it('aborts the previous registration when setup is called again', () => {
+        const registerTool = vi.fn();
+        Object.defineProperty(document, 'modelContext', {
+            configurable: true,
+            value: {
+                registerTool
             }
         });
 
@@ -132,12 +153,10 @@ describe('setupWebMcpBridge', () => {
 
     it('calls the dedicated WebMCP routes with normalized query strings', async () => {
         const registerTool = vi.fn();
-        Object.defineProperty(globalThis, 'navigator', {
+        Object.defineProperty(document, 'modelContext', {
             configurable: true,
             value: {
-                modelContext: {
-                    registerTool
-                }
+                registerTool
             }
         });
 
@@ -225,12 +244,10 @@ describe('setupWebMcpBridge', () => {
 
     it('omits empty filters and falls back to default limits in query strings', async () => {
         const registerTool = vi.fn();
-        Object.defineProperty(globalThis, 'navigator', {
+        Object.defineProperty(document, 'modelContext', {
             configurable: true,
             value: {
-                modelContext: {
-                    registerTool
-                }
+                registerTool
             }
         });
 
@@ -278,12 +295,10 @@ describe('setupWebMcpBridge', () => {
 
     it('throws a readable error when required slug inputs are missing', async () => {
         const registerTool = vi.fn();
-        Object.defineProperty(globalThis, 'navigator', {
+        Object.defineProperty(document, 'modelContext', {
             configurable: true,
             value: {
-                modelContext: {
-                    registerTool
-                }
+                registerTool
             }
         });
 
@@ -306,12 +321,10 @@ describe('setupWebMcpBridge', () => {
 
     it('surfaces API error messages from JSON and text responses', async () => {
         const registerTool = vi.fn();
-        Object.defineProperty(globalThis, 'navigator', {
+        Object.defineProperty(document, 'modelContext', {
             configurable: true,
             value: {
-                modelContext: {
-                    registerTool
-                }
+                registerTool
             }
         });
 
@@ -388,12 +401,10 @@ describe('setupWebMcpBridge', () => {
 
     it('only navigates after the target post is verified to exist', async () => {
         const registerTool = vi.fn();
-        Object.defineProperty(globalThis, 'navigator', {
+        Object.defineProperty(document, 'modelContext', {
             configurable: true,
             value: {
-                modelContext: {
-                    registerTool
-                }
+                registerTool
             }
         });
 
@@ -452,12 +463,10 @@ describe('setupWebMcpBridge', () => {
 
     it('uses requestUserInteraction when available for navigation side effects', async () => {
         const registerTool = vi.fn();
-        Object.defineProperty(globalThis, 'navigator', {
+        Object.defineProperty(document, 'modelContext', {
             configurable: true,
             value: {
-                modelContext: {
-                    registerTool
-                }
+                registerTool
             }
         });
 
@@ -506,12 +515,10 @@ describe('setupWebMcpBridge', () => {
 
     it('falls back to window.location.assign when goto is unavailable', async () => {
         const registerTool = vi.fn();
-        Object.defineProperty(globalThis, 'navigator', {
+        Object.defineProperty(document, 'modelContext', {
             configurable: true,
             value: {
-                modelContext: {
-                    registerTool
-                }
+                registerTool
             }
         });
 

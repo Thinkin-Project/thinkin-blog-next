@@ -60,10 +60,10 @@ WebMCP 目前主要有**兩種註冊方式**：
 WebMCP 的主要入口是：
 
 ```ts
-navigator.modelContext
+document.modelContext
 ```
 
-網站可以透過 `navigator.modelContext.registerTool()` 註冊工具。
+網站可以透過 `document.modelContext.registerTool()` 註冊工具。
 
 一個工具通常會包含：
 
@@ -78,7 +78,7 @@ navigator.modelContext
 ```ts
 const controller = new AbortController();
 
-navigator.modelContext.registerTool(
+document.modelContext.registerTool(
   {
     name: 'get_post',
     description: 'Retrieve a published blog post by slug.',
@@ -112,7 +112,7 @@ navigator.modelContext.registerTool(
 **支援 WebMCP 的環境會註冊工具；不支援的環境則什麼都不做**，既有功能都不會受到影響。
 
 ```ts
-if (!('modelContext' in navigator)) {
+if (!document.modelContext) {
   return;
 }
 ```

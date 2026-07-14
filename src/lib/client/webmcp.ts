@@ -31,6 +31,10 @@ type ModelContext = {
 };
 
 declare global {
+    interface Document {
+        modelContext?: ModelContext;
+    }
+
     interface Navigator {
         modelContext?: ModelContext;
     }
@@ -123,11 +127,11 @@ class HttpError extends Error {
 }
 
 function getModelContext(): ModelContext | null {
-    if (typeof navigator === 'undefined' || globalThis.isSecureContext !== true) {
+    if (typeof document === 'undefined' || globalThis.isSecureContext !== true) {
         return null;
     }
 
-    const { modelContext } = navigator;
+    const modelContext = document.modelContext ?? navigator?.modelContext;
     if (!modelContext || typeof modelContext.registerTool !== 'function') {
         return null;
     }
