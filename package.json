@@ -19,7 +19,6 @@
         "new-post": "node scripts/new-post.js"
     },
     "devDependencies": {
-        "@eslint/compat": "^2.1.0",
         "@eslint/js": "^10.0.1",
         "@sveltejs/adapter-auto": "^7.0.1",
         "@sveltejs/kit": "^2.69.3",
