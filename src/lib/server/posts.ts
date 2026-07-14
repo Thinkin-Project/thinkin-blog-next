@@ -11,8 +11,7 @@ type PostLoader = () => Promise<unknown>;
 type ImageLoaderMap = Record<string, PostLoader>;
 type RawPostLoaderMap = Record<string, () => Promise<string>>;
 export type ProcessPostEntryResult =
-    | { path: string; post: ArticleMeta }
-    | { path: string; error: unknown };
+    { path: string; post: ArticleMeta } | { path: string; error: unknown };
 
 const rawPostLoaders = import.meta.glob('/src/posts/*/index.md', {
     query: '?raw',
