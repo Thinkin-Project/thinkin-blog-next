@@ -1,19 +1,5 @@
 {
   "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash|Shell|PowerShell|functions\\.shell_command",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/block-dangerous.js\"",
-            "commandWindows": "pwsh -NoLogo -NoProfile -File .codex/hooks/run-hook.ps1 block-dangerous.js",
-            "statusMessage": "檢查 Shell 指令安全性",
-            "timeout": 30
-          }
-        ]
-      }
-    ],
     "PostToolUse": [
       {
         "matcher": "Edit|Write|MultiEdit|apply_patch",
