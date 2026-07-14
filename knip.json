@@ -1,0 +1,9 @@
+{
+    "$schema": "https://unpkg.com/knip@5/schema.json",
+    "entry": [
+        ".claude/hooks/format-lint.js",
+        ".codex/hooks/format-lint.js",
+        "src/lib/components/icons/index.ts",
+        "src/lib/components/ui/**/index.ts"
+    ]
+}

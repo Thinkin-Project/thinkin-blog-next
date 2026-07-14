@@ -1,5 +1,3 @@
-import type { Component } from 'svelte';
-
 /**
  * 文章的 Frontmatter/Metadata 結構
  */
@@ -16,11 +14,4 @@ export interface ArticleMeta {
     tags: string[]; // 標籤陣列
     authors?: string[]; // 作者 ID 陣列
     readingTime?: number; // 預估閱讀時間 (分鐘)
-}
-
-/**
- * 完整文章資料結構
- */
-export interface Article extends ArticleMeta {
-    content: Component; // mdsvex 編譯後的組件
 }

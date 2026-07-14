@@ -16,6 +16,7 @@
         "format": "prettier --write .",
         "lint": "prettier --check . && eslint .",
         "upgrade": "npx npm-check-updates -u && pnpm install",
+        "knip": "pnpm dlx knip",
         "new-post": "node scripts/new-post.js"
     },
     "devDependencies": {

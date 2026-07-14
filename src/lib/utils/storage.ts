@@ -1,4 +1,3 @@
-export type StorageAdapter = Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
 export type StorageParser<T> = (rawValue: string) => T | null;
 export type StorageSerializer<T> = (value: T) => string | null;
 export type StorageCodec<T> = {
