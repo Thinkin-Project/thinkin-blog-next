@@ -9,5 +9,11 @@
         "facebook": "https://www.facebook.com/cai.qing.lin.190940",
         "x": "https://x.com/cdcd71517",
         "github": "https://github.com/cdcd72"
+    },
+    "chatgpt": {
+        "id": "chatgpt",
+        "name": "ChatGPT",
+        "avatar": "/assets/authors/chatgpt.png",
+        "bio": "Neil Tsai 的文章協作夥伴"
     }
 }
