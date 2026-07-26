@@ -42,7 +42,7 @@ Here are some examples ...
 
 🔓 但是，當模型能力持續提升，這些過去用來協助模型的內容，也可能反過來成為限制。
 
-Anthropic 在 [The new rules of context engineering for Claude 5 generation models](https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models) 中提到，他們為 Claude Opus 5、Claude Fable 5 等新一代模型，刪除了 Claude Code 超過 80% 的 System Prompt，卻沒有在程式開發評測中觀察到很明顯的退步。
+**Anthropic 的觀察：** 在 [The new rules of context engineering for Claude 5 generation models](https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models) 中，他們提到為 Claude Opus 5、Claude Fable 5 等新一代模型刪除了 Claude Code 超過 80% 的 System Prompt，卻沒有在程式開發評測中觀察到很明顯的退步。
 
 這並不只是一次 Prompt 瘦身。
 
@@ -58,7 +58,7 @@ Anthropic 在 [The new rules of context engineering for Claude 5 generation mode
 
 例如，不要隨意刪除檔案、不要產生冗長註解、不要在沒有要求的情況下新增文件。
 
-🚧 這些限制可以降低模型失控的可能性。
+這些限制可以降低模型失控的可能性。
 
 **但當規則不斷累積，不同來源的指令也可能開始互相衝突。**
 
@@ -82,7 +82,7 @@ Skill 可能要求：
 
 💥 **每一條指令單獨來看都有道理，但放在同一個 Context 裡卻可能彼此拉扯。**
 
-💡 Anthropic 也在內部使用紀錄中觀察到類似問題：System Prompt、Skills 與使用者要求，可能同時對文件與註解提出衝突的指示。Claude 通常仍能推斷使用者意圖，但必須花費更多判斷成本處理重疊或矛盾的訊息。
+**Anthropic 的觀察：** 他們也在內部使用紀錄中發現，System Prompt、Skills 與使用者要求，可能同時對文件與註解提出衝突的指示。Claude 通常仍能推斷使用者意圖，但必須花費更多判斷成本處理重疊或矛盾的訊息。
 
 換句話說，繁重 Prompt 的問題不只是消耗更多 Token。
 
@@ -98,7 +98,7 @@ Skill 可能要求：
 
 ### 過去：用明確規則約束模型
 
-早期 Claude Code 的 System Prompt，曾經對程式碼註解提出非常具體的限制，例如預設不要撰寫註解、不要產生多段 Docstring，也不要在沒有要求時建立規劃或分析文件。
+**Anthropic 的做法：** 早期 Claude Code 的 System Prompt 曾經對程式碼註解提出非常具體的限制，例如預設不要撰寫註解、不要產生多段 Docstring，也不要在沒有要求時建立規劃或分析文件。
 
 這類規則的優點很明顯。
 
@@ -109,11 +109,11 @@ Skill 可能要求：
 - 過度擴張任務範圍
 - 用形式上的完整掩蓋實作問題
 
-🔥 **但這些規則並不適用於所有情境。**
+但這些規則並不適用於所有情境。
 
 複雜的演算法可能真的需要多行說明；某些專案本身也可能非常重視文件；使用者甚至可能明確要求補上設計決策。
 
-💡 因此，Anthropic 對新模型採取了更簡單的指示：
+**Anthropic 的做法：** 他們對新模型採取了更簡單的指示：
 
 ```text
 Write code that reads like the surrounding code:
@@ -138,9 +138,9 @@ match its comment density, naming, and idiom.
 提供判斷原則，讓模型根據實際 Context 決定。
 ```
 
-💡 Anthropic 認為，新一代模型已經具備更好的判斷能力，不再需要過去為了避免最糟情況而加入的所有限制。
+**Anthropic 的觀察：** 新一代模型已經具備更好的判斷能力，不再需要過去為了避免最糟情況而加入的所有限制。
 
-🔥 **但也不代表所有規則都應該刪除。**
+**但也不代表所有規則都應該刪除。**
 
 涉及安全、權限、資料破壞或法規要求的限制，仍然需要明確而強制的邊界。
 
@@ -162,7 +162,7 @@ match its comment density, naming, and idiom.
 
 這對早期模型很有幫助，因為範例可以示範預期行為。
 
-💡 但 Anthropic 發現，對較新的模型而言，範例也可能把模型限制在既有的探索空間之中。
+**Anthropic 的觀察：** 對較新的模型而言，範例也可能把模型限制在既有的探索空間之中。
 
 模型容易模仿範例，而不是理解工具真正能表達的能力。
 
@@ -202,7 +202,7 @@ status:
 | 用範例示範固定操作 | 用介面表達工具能力         |
 | 縮小模型的行動空間 | 提供足夠資訊讓模型自行選擇 |
 
-🔥 **也就是說，我們不再試圖把所有決策預先寫進 Prompt。**
+也就是說，我們不再試圖把所有決策預先寫進 Prompt。
 
 ## 二、不要把所有資訊一次塞進 Context
 
@@ -210,7 +210,7 @@ status:
 
 這也是上下文工程（Context Engineering）中很重要的**漸進式揭露（Progressive Disclosure）**。
 
-### 過去：把所有內容放在最前面
+### 按需載入：不要一開始提供所有內容
 
 以前，我們擔心模型找不到資訊，因此傾向把所有規範集中放進 System Prompt、CLAUDE.md 或單一 Skill：
 
@@ -225,7 +225,7 @@ System Prompt
 └── 錯誤處理方式
 ```
 
-🔥 **問題是，一次任務通常不需要使用全部內容。**
+**問題是，一次任務通常不需要使用全部內容。**
 
 修改一個按鈕樣式時，不一定需要載入完整的部署流程。
 
@@ -233,7 +233,7 @@ System Prompt
 
 這些資訊雖然可能有用，卻不一定對目前任務有用。
 
-💡 Anthropic 過去也將 Code Review 與驗證流程直接放在 Claude Code 的 System Prompt 中，因為這些資訊在需要時非常重要。但後來，他們將相關內容移到獨立 Skills，讓 Claude 在適合的時機選擇性載入。
+**Anthropic 的做法：** 他們過去將 Code Review 與驗證流程直接放在 Claude Code 的 System Prompt 中，因為這些資訊在需要時非常重要；後來則將相關內容移到獨立 Skills，讓 Claude 在適合的時機選擇性載入。
 
 新的流程更接近：
 
@@ -251,17 +251,17 @@ System Prompt
 
 > 不要因為資訊未來可能有用，就在一開始全部提供；而是在資訊真正需要時，再把它加入 Context。
 
----
+### 讓資訊回到正確的位置
 
-📌 **漸進式揭露其實不只適用於 Skills**
+漸進式揭露其實不只適用於 Skills。
 
-💡 Anthropic 也將這種做法應用在工具上。
+**Anthropic 的做法：** 他們也將這種做法應用在工具上。
 
 部分 Tool 會採用延遲載入（Deferred Loading）。模型一開始只知道工具存在，需要使用時，再透過搜尋取得完整定義。
 
 這讓 Agent 可以擁有更多工具，而不需要讓每一個工具的完整 Schema 從任務開始就佔用 Context。
 
-🔥 **相同概念也能套用在專案文件中。**
+相同概念也能套用在專案文件中。
 
 與其建立一個巨大的 CLAUDE.md：
 
@@ -289,9 +289,9 @@ CLAUDE.md 負責告訴模型：
 - 有哪些重要陷阱
 - 其他資訊可以去哪裡取得
 
-🔥 **詳細規則則留在對應文件或 Skill。**
+詳細規則則留在對應文件或 Skill。
 
-💡 Anthropic 對 CLAUDE.md 的建議也是保持輕量：簡短說明 Repository 的用途，把主要篇幅留給模型無法從檔案系統直接推論的特殊狀況與陷阱。若有多項驗證規則，可以建立 Verification Skill，再從 CLAUDE.md 指向它。
+**Anthropic 的建議：** CLAUDE.md 應保持輕量，簡短說明 Repository 的用途，把主要篇幅留給模型無法從檔案系統直接推論的特殊狀況與陷阱。若有多項驗證規則，可以建立 Verification Skill，再從 CLAUDE.md 指向它。
 
 因此，CLAUDE.md 不需要重複告訴模型：
 
@@ -319,7 +319,7 @@ CLAUDE.md 負責告訴模型：
 
 > 不要描述模型看得到的事情，而要補充模型看不到的事情。
 
-### 過去：在多個位置重複提醒
+### 避免在多個位置重複同一條規則
 
 早期模型有時更容易注意 Context 尾端的指令，因此同一項工具說明可能同時出現在：
 
@@ -332,9 +332,9 @@ CLAUDE.md 負責告訴模型：
 
 但它也增加了維護成本。
 
-🔥 **只要其中一處更新、其他位置沒有同步，就可能產生互相矛盾的版本。**
+**只要其中一處更新、其他位置沒有同步，就可能產生互相矛盾的版本。**
 
-💡 Anthropic 發現，新模型已經不再需要這些重複內容，因此可以把工具的使用方式放回 Tool Description，並從 System Prompt 移除重複指示。
+**Anthropic 的觀察：** 新模型已經不再需要這些重複內容，因此可以把工具的使用方式放回 Tool Description，並從 System Prompt 移除重複指示。
 
 過去：
 
@@ -352,7 +352,7 @@ Tool Description：完整而清楚地說明 search 工具
 
 這不只縮短 Context，也讓每項資訊有更清楚的歸屬。
 
-## 三、不要讓 Prompt 承擔所有 Context
+## 三、讓 Context 各自回到適合的位置
 
 > 第三個改變，是重新理解 Prompt 在 AI 系統中的位置。
 
@@ -384,13 +384,13 @@ System Prompt
         Language Model
 ```
 
-💡 Anthropic 將這整套組裝與管理模型輸入資訊的過程稱為 **Context Engineering**。Prompt 只是其中一小部分，實際 Context 還包含 System Prompt、Skills、CLAUDE.md、Memory 與其他來源。
+**Anthropic 的定義：** 他們將這整套組裝與管理模型輸入資訊的過程稱為 **Context Engineering**。Prompt 只是其中一小部分，實際 Context 還包含 System Prompt、Skills、CLAUDE.md、Memory 與其他來源。
 
 這也解釋了另外兩項改變：Auto-memory 與 Rich References。
 
 ### 過去：把 Memory 寫進 CLAUDE.md
 
-過去 Claude Code 鼓勵使用者透過快速鍵，把需要記住的內容寫入 CLAUDE.md。
+過去 Claude Code 鼓勵使用者透過一些捷徑，把需要記住的內容寫入 CLAUDE.md。
 
 這讓 CLAUDE.md 同時承擔：
 
@@ -400,9 +400,9 @@ System Prompt
 - 工作記憶
 - 歷史資訊
 
-🔥 **久而久之，檔案很容易持續膨脹。**
+久而久之，檔案很容易持續膨脹。
 
-現在，Claude 可以自動保存與工作及使用者相關的 Memory，不再需要將所有長期資訊手動塞進 CLAUDE.md。
+**Anthropic 的做法：** 現在，Claude 可以自動保存與工作及使用者相關的 Memory，不再需要將所有長期資訊手動塞進 CLAUDE.md。
 
 這代表不同資訊可以回到更適合的位置：
 
@@ -419,7 +419,7 @@ System Prompt
 
 ### 過去：只提供文字規格
 
-🔥 **另一個重要變化，是 Reference 不再局限於簡單的 Markdown 規格。**
+另一個重要變化，是 Reference 不再局限於簡單的 Markdown 規格。
 
 過去，Plan Mode 通常會產生 Markdown 計畫，長期任務也常把需求寫成規格文件。
 
@@ -432,7 +432,7 @@ System Prompt
 - 評分 Rubric
 - 完整程式碼實作
 
-💡 Anthropic 特別指出，Reference 可以直接是程式碼。規格可能是一組詳細測試，也可能是另一個程式庫中準備移植的函式；Rubric 則可以提供驗證 Agent 判斷品質的依據。
+**Anthropic 的觀察：** Reference 可以直接是程式碼。規格可能是一組詳細測試，也可能是另一個程式庫中準備移植的函式；Rubric 則可以提供驗證 Agent 判斷品質的依據。
 
 這帶來一個很重要的改變。
 
@@ -445,9 +445,9 @@ System Prompt
 標題使用較大的字體……
 ```
 
-🔥 **有時直接提供一份 HTML Mockup，會比長篇自然語言更精確。**
+**有時直接提供一份 HTML Mockup，會比長篇自然語言更精確。**
 
-💡 Anthropic 也建議，在適合的情境下優先提供程式碼形式的 Reference；例如 HTML Mockup 往往比單純的設計描述或截圖，能提供更清楚且高還原度的指示。
+**Anthropic 的建議：** 在適合的情境下優先提供程式碼形式的 Reference；例如 HTML Mockup 往往比單純的設計描述或截圖，能提供更清楚且高還原度的指示。
 
 這與 Artifact-driven Workflow 的概念相當接近：
 
@@ -510,47 +510,11 @@ CLAUDE.md
 
 這就是 Context Engineering 與傳統 Prompt Engineering 最明顯的差異。
 
-## 我看到的，其實是 Agent 架構的演進
+## 這對 Agent 架構意味著什麼
 
-最近一段時間，我持續在研究：
+Hook、Skill、Subagent、Memory、Tool、Reference，以及 Planner 與 Executor，看似是不同工具的新功能，但本質上都在做同一件事：把固定流程、可重用知識、長期偏好、操作能力與驗收依據，交給最適合的元件管理。
 
-- Hook
-- Subagent
-- Planner 與 Executor
-- Agentic Workflow
-- Artifact-driven Workflow
-
-原本看起來，這些只是不同 AI 工具推出的新功能。
-
-但從 Context Engineering 的角度重新理解後，它們其實都在處理同一件事情：
-
-> 不要讓 Prompt 承擔所有責任。
-
-Hook 負責在特定生命週期執行固定流程。
-
-Skill 負責封裝可重複使用的知識與做法。
-
-Subagent 負責隔離專業任務與 Context。
-
-Memory 負責保存長期資訊。
-
-Tool 負責提供可操作的能力。
-
-Reference 負責提供更具體的目標與驗收依據。
-
-Planner 負責判斷目前需要什麼資訊與能力。
-
-Executor 則在取得適當 Context 後執行任務。
-
-整體架構從：
-
-```text
-巨大 Prompt
-    ↓
-  Model
-```
-
-逐漸變成：
+整體架構因而從「巨大 Prompt 直接交給 Model」，逐漸變成：
 
 ```text
 Planner
@@ -564,9 +528,7 @@ Executor
 Verification
 ```
 
-Prompt 並沒有消失。
-
-它只是重新回到更適合自己的位置：
+Prompt 並沒有消失；它只是重新回到更適合自己的位置：
 
 > 描述這一次要完成的任務。
 
