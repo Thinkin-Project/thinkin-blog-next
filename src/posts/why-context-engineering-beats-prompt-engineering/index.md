@@ -229,9 +229,9 @@ System Prompt
 
 修改一個按鈕樣式時，不一定需要載入完整的部署流程。
 
-修正文件錯字時，也不需要理解所有資料庫遷移規則。
+修正文件錯字時，也不需要理解所有資料庫移轉規則。
 
-這些資訊雖然可能有用，卻不一定對當前任務有用。
+這些資訊雖然可能有用，卻不一定對目前任務有用。
 
 💡 Anthropic 過去也將 Code Review 與驗證流程直接放在 Claude Code 的 System Prompt 中，因為這些資訊在需要時非常重要。但後來，他們將相關內容移到獨立 Skills，讓 Claude 在適合的時機選擇性載入。
 
@@ -259,7 +259,7 @@ System Prompt
 
 部分 Tool 會採用延遲載入（Deferred Loading）。模型一開始只知道工具存在，需要使用時，再透過搜尋取得完整定義。
 
-這讓 Agent 可以擁有更多工具，而不需要讓每一個工具的完整 Schema 從任務開始就占用 Context。
+這讓 Agent 可以擁有更多工具，而不需要讓每一個工具的完整 Schema 從任務開始就佔用 Context。
 
 🔥 **相同概念也能套用在專案文件中。**
 
@@ -270,7 +270,7 @@ CLAUDE.md
 └── 收錄所有專案知識與操作流程
 ```
 
-更合適的方式可能是建立一棵可以按需探索的文件樹：
+更合適的方式可能是建立一套可以按需探索的文件結構：
 
 ```text
 CLAUDE.md
@@ -390,7 +390,7 @@ System Prompt
 
 ### 過去：把 Memory 寫進 CLAUDE.md
 
-過去 Claude Code 鼓勵使用者透過快捷方式，把需要記住的內容寫入 CLAUDE.md。
+過去 Claude Code 鼓勵使用者透過快速鍵，把需要記住的內容寫入 CLAUDE.md。
 
 這讓 CLAUDE.md 同時承擔：
 
@@ -412,7 +412,7 @@ System Prompt
 | 特定領域的操作方式    | Skill            |
 | 工具的使用方法        | Tool Description |
 | 使用者的長期偏好      | Memory           |
-| 當前任務的要求        | Prompt           |
+| 目前任務的要求        | Prompt           |
 | 詳細規格與驗收依據    | Reference        |
 
 **Prompt 不需要再扮演整個系統的知識庫。**
@@ -447,7 +447,7 @@ System Prompt
 
 🔥 **有時直接提供一份 HTML Mockup，會比長篇自然語言更精確。**
 
-💡 Anthropic 也建議，在適合的情境下優先提供程式碼形式的 Reference；例如 HTML Mockup 往往比單純的設計描述或截圖，能提供更清楚且高保真的指示。
+💡 Anthropic 也建議，在適合的情境下優先提供程式碼形式的 Reference；例如 HTML Mockup 往往比單純的設計描述或截圖，能提供更清楚且高還原度的指示。
 
 這與 Artifact-driven Workflow 的概念相當接近：
 
@@ -599,7 +599,7 @@ Prompt 並沒有消失。
 
 如果是工具操作方式，則應該由 Tool 介面自己說清楚。
 
-只有當這項資訊確實屬於當前任務，它才需要出現在 Prompt 裡。
+只有當這項資訊確實屬於目前任務，它才需要出現在 Prompt 裡。
 
 ## 結語
 
