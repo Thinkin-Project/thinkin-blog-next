@@ -268,5 +268,15 @@
         "name": "可觀測性",
         "slug": "observability",
         "aliases": []
+    },
+    {
+        "name": "Agentic 工作流",
+        "slug": "agentic-workflow",
+        "aliases": []
+    },
+    {
+        "name": "上下文工程",
+        "slug": "context-engineering",
+        "aliases": []
     }
 ]

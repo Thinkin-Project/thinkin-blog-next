@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'artificial-intelligence'
 tags: ['software-engineering', 'engineering-mindset', 'developer-growth', 'observability']
-authors: ['neil-tsai']
+authors: ['neil-tsai', 'chatgpt']
 ---
 
 ## 四十分鐘換來一個錯的方向

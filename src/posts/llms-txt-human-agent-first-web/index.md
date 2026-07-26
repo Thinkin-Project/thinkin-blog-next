@@ -7,7 +7,7 @@ drafted: false
 featured: true
 topic: 'artificial-intelligence'
 tags: ['ai-agent', 'website', 'llms-txt']
-authors: ['neil-tsai']
+authors: ['neil-tsai', 'chatgpt']
 ---
 
 最近如果有在關注 AI、開發者工具或技術文件，應該多少都看過 `llms.txt` 這個東西。

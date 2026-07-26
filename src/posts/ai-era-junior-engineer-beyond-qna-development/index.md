@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'artificial-intelligence'
 tags: ['software-engineering', 'engineering-mindset', 'developer-growth']
-authors: ['neil-tsai']
+authors: ['neil-tsai', 'chatgpt']
 ---
 
 ## 前言
