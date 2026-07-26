@@ -7,7 +7,7 @@ drafted: false
 featured: true
 topic: 'artificial-intelligence'
 tags: ['e2e-test', 'mcp']
-authors: ['neil-tsai']
+authors: ['neil-tsai', 'chatgpt']
 ---
 
 此篇文章帶大家了解如何運用 **Chrome DevTools MCP 協助 E2E 測試**，有興趣就往下吧！

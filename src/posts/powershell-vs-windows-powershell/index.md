@@ -7,7 +7,7 @@ drafted: false
 featured: false
 topic: 'command-line'
 tags: ['windows-powershell', 'powershell']
-authors: ['neil-tsai']
+authors: ['neil-tsai', 'chatgpt']
 ---
 
 很多人在 Windows 上使用命令列工具時，會把「Windows PowerShell」和「PowerShell」混在一起講。

@@ -7,7 +7,7 @@ drafted: false
 featured: true
 topic: 'artificial-intelligence'
 tags: ['document', 'artifact-driven']
-authors: ['neil-tsai']
+authors: ['neil-tsai', 'chatgpt']
 ---
 
 最近看到一篇很有意思的文章：

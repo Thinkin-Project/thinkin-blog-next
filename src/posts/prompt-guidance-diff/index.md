@@ -7,7 +7,7 @@ drafted: false
 featured: true
 topic: 'artificial-intelligence'
 tags: ['prompt-engineering']
-authors: ['neil-tsai']
+authors: ['neil-tsai', 'chatgpt']
 ---
 
 ## 前言
