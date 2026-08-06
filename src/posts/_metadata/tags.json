@@ -278,5 +278,10 @@
         "name": "上下文工程",
         "slug": "context-engineering",
         "aliases": []
+    },
+    {
+        "name": "簡報",
+        "slug": "presentation",
+        "aliases": []
     }
 ]
