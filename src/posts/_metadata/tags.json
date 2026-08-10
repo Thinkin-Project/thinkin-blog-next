@@ -283,5 +283,15 @@
         "name": "簡報",
         "slug": "presentation",
         "aliases": []
+    },
+    {
+        "name": "技能",
+        "slug": "skill",
+        "aliases": []
+    },
+    {
+        "name": "知識管理",
+        "slug": "knowledge-management",
+        "aliases": []
     }
 ]
