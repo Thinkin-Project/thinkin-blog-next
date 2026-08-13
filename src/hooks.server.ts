@@ -1,8 +1,10 @@
 import { dev } from '$app/environment';
 
+import type { Handle } from '@sveltejs/kit';
+
 import { BLOG_CONFIG } from '$lib/constants/blog';
 
-export async function handle({ event, resolve }) {
+export const handle: Handle = async ({ event, resolve }) => {
     if (dev && event.url.pathname === '/.well-known/appspecific/com.chrome.devtools.json') {
         return new Response(undefined, { status: 404 });
     }
@@ -39,4 +41,4 @@ export async function handle({ event, resolve }) {
     });
 
     return response;
-}
+};
