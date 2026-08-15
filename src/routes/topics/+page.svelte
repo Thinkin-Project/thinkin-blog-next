@@ -28,6 +28,7 @@
                 type="text"
                 bind:value={query}
                 placeholder="搜尋主題..."
+                aria-label="搜尋主題"
                 class="w-full bg-transparent text-foreground outline-none placeholder:text-muted-foreground"
             />
         </div>
