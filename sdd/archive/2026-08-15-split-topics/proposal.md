@@ -26,6 +26,7 @@
 - `src/routes/posts/+page.svelte`（移除「主題」清單區塊與不再使用的 import）
 - `src/routes/posts/[slug]/+page.svelte`（主題欄位改為可點擊 `<a>`，套用類似標籤 badge 的樣式）
 - `src/routes/topics/[slug]/+page.svelte`（移除內嵌的「Sub-nav Categories」主題清單區塊，避免與新的 `/topics` 索引頁重複；保留返回按鈕與主題標題）
+    - 實作完成後使用者主動調整：一併移除返回按鈕，詳見 `tasks.md` 任務 13 的說明
 
 不變：
 
