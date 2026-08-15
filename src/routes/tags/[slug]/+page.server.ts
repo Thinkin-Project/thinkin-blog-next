@@ -1,0 +1,43 @@
+import { BLOG_CONFIG } from '$lib/constants/blog';
+import { TAGS } from '$lib/constants/tags';
+import { getPosts } from '$lib/server/posts';
+
+import type { PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async ({ params, url }) => {
+    const allPosts = await getPosts();
+
+    // Filter posts by tags containing the slug
+    const filteredPosts = allPosts.filter((post) => {
+        return post.tags.includes(params.slug);
+    });
+
+    const pageStr = url.searchParams.get('page');
+    let currentPage = pageStr ? parseInt(pageStr) : 1;
+    if (isNaN(currentPage)) currentPage = 1;
+
+    const pageSize = BLOG_CONFIG.postsPerPage;
+    const totalPosts = filteredPosts.length;
+    const totalPages = Math.ceil(totalPosts / pageSize);
+
+    // 確保頁碼在有效範圍內
+    const validPage = Math.max(1, Math.min(currentPage, totalPages || 1));
+
+    const start = (validPage - 1) * pageSize;
+    const end = start + pageSize;
+    const posts = filteredPosts.slice(start, end);
+
+    const currentTag = TAGS.find((t) => t.slug === params.slug)?.name || '標籤';
+
+    return {
+        posts,
+        pagination: {
+            currentPage: validPage,
+            totalPages,
+            totalPosts
+        },
+        meta: {
+            title: currentTag
+        }
+    };
+};

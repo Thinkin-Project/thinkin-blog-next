@@ -6,6 +6,7 @@ async function loadNavigation() {
         House: 'House',
         Newspaper: 'Newspaper',
         Folders: 'Folders',
+        Tags: 'Tags',
         Shield: 'Shield',
         Rss: 'Rss'
     }));
@@ -25,6 +26,7 @@ describe('navigation constants', () => {
         expect(hrefs).toContain('/');
         expect(hrefs).toContain('/posts');
         expect(hrefs).toContain('/topics');
+        expect(hrefs).toContain('/tags');
         expect(hrefs).toContain('/privacy');
         expect(hrefs).toContain('/rss.xml');
     });
