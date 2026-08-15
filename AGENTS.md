@@ -207,49 +207,19 @@ pnpm run lint
 
 ### 專案結構
 
-預設責任分工如下：
-
-- `src/routes/`：SvelteKit 路由與頁面
-- `src/lib/components/`：共用元件
-- `src/lib/components/ui/`：Shadcn 元件
-- `src/lib/server/`：Server-only 邏輯
-- `src/lib/client/`：Client-only 邏輯
-- `src/lib/states/`：共用狀態與互動邏輯
-- `src/lib/constants/`：跨模組常數與可共享設定值
-- `src/lib/utils/`：工具函式
-- `src/lib/types/`：共用型別
-- `src/content/`、`src/data/` 或其他內容來源目錄：內容型資料與靜態資料來源
-- `src/test/`：測試程式碼
-- `static/`：靜態資源
-- `scripts/`：自動化、建置與維護腳本
-
-若專案已有既定結構，優先遵循既有慣例。
+新增檔案、判斷某段邏輯該放在哪個目錄、或需要了解各資料夾的責任分工時，先讀 [專案結構](docs/project-structure.md)。
 
 ### SvelteKit 開發原則
 
-- 遵循 SvelteKit 官方 routing、load、actions 與 endpoint 慣例。
-- 可於 Server 執行的邏輯，優先不要移至 Client。
-- 不得將 Server-only 邏輯暴露給 Client。
-- 頁面初始化資料優先透過 `load` 提供。
-- 資料寫入與表單提交優先使用 `actions`。
+新增或修改 route、page、load 或 actions 相關程式碼前，先讀 [SvelteKit 開發原則](docs/sveltekit-principles.md)。
 
 ### UI 與樣式
 
-- 採 Mobile-first 設計。
-- 優先使用 Tailwind CSS。
-- 優先使用 Shadcn Svelte 元件。
-- Theme、色彩與設計 Token 優先透過 CSS Variables 或 Theme Tokens 管理。
-- 優先先定義 Design Tokens，再於 Tailwind 或 CSS 中使用，避免在模板內重複硬寫 arbitrary values。
-- 僅在 Utility Classes 無法清楚表達時加入自訂 CSS。
-- 當樣式涉及 pseudo-elements、多層背景、複合 gradients 或 masks、材質效果或較複雜動畫時，可使用局部 CSS 或 `@layer components`。
-- 不要為了追求零 CSS 而將複合樣式硬拆成冗長的 Utility Classes。
-- 不因小需求新增大型全域樣式檔。
-- 若既有全域樣式已有可重用且合理的複合樣式，可沿用；新增樣式時仍以 Tailwind-first 為原則。
+新增或修改樣式、UI 元件前，先讀 [UI 與樣式](docs/ui-styling.md)。
 
 ### 表單與驗證
 
-- 所有外部輸入皆應驗證與清理，包括 request body、query params、route params、form data、cookies、headers 與 CLI 參數。
-- 修改資料流時，若專案已有 Schema 機制，應同步更新相關 Schema 與型別定義，避免漂移。
+新增或修改表單、驗證或資料寫入相關程式碼前，先讀 [表單與驗證](docs/forms-validation.md)。
 
 ## 10. Definition of Done
 
