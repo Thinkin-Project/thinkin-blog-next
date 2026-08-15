@@ -137,11 +137,12 @@
                                     </span>
                                     <div class="flex flex-wrap gap-2">
                                         {#each data.meta.tags as tag (tag)}
-                                            <span
-                                                class="inline-flex items-center justify-center rounded-md border border-border bg-secondary px-2 py-0.5 text-xs font-medium whitespace-nowrap text-foreground"
+                                            <a
+                                                href="/tags/{tag}"
+                                                class="inline-flex items-center justify-center rounded-md border border-border bg-secondary px-2 py-0.5 text-xs font-medium whitespace-nowrap text-foreground transition-colors hover:bg-secondary/70 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
                                             >
                                                 {getTagName(tag)}
-                                            </span>
+                                            </a>
                                         {/each}
                                     </div>
                                 </div>

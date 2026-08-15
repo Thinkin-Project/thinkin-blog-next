@@ -1,22 +1,22 @@
 import { error } from '@sveltejs/kit';
 
 import { BLOG_CONFIG } from '$lib/constants/blog';
-import { TOPICS } from '$lib/constants/topics';
+import { TAGS } from '$lib/constants/tags';
 import { getPosts } from '$lib/server/posts';
 
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params, url }) => {
-    const currentTopic = TOPICS.find((t) => t.slug === params.slug);
-    if (!currentTopic) {
-        error(404, `Could not find topic ${params.slug}`);
+    const currentTag = TAGS.find((t) => t.slug === params.slug);
+    if (!currentTag) {
+        error(404, `Could not find tag ${params.slug}`);
     }
 
     const allPosts = await getPosts();
 
-    // Filter posts by topic matching the slug
+    // Filter posts by tags containing the slug
     const filteredPosts = allPosts.filter((post) => {
-        return post.topic === params.slug;
+        return post.tags.includes(params.slug);
     });
 
     const pageStr = url.searchParams.get('page');
@@ -42,7 +42,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
             totalPosts
         },
         meta: {
-            title: currentTopic.name
+            title: currentTag.name
         }
     };
 };

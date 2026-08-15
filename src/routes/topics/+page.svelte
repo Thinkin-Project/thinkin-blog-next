@@ -54,7 +54,7 @@
         </section>
     {:else}
         <p class="animate-in py-6 text-center text-sm text-muted-foreground duration-700 fade-in">
-            找不到符合的主題
+            找不到相關主題
         </p>
     {/if}
 
