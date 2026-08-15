@@ -68,19 +68,18 @@ describe('topic page load', () => {
         expect((result.posts as ArticleMeta[]).every((post) => post.topic === 'dotnet')).toBe(true);
     });
 
-    it('returns empty list and valid pagination for unknown topic', async () => {
+    it('throws 404 for unknown topic', async () => {
         mockedGetPosts.mockResolvedValue([makePost(1, 'dotnet')]);
 
-        const result = await runLoad({
-            params: { slug: 'unknown-topic' },
-            url: new URL('https://example.com/topics/unknown-topic')
-        } as TopicsLoadInput);
-
-        expect(result.posts).toHaveLength(0);
-        expect(result.pagination.totalPosts).toBe(0);
-        expect(result.pagination.totalPages).toBe(0);
-        expect(result.pagination.currentPage).toBe(1);
-        expect(result.meta.title).toBe('主題');
+        await expect(
+            load({
+                params: { slug: 'unknown-topic' },
+                url: new URL('https://example.com/topics/unknown-topic')
+            } as TopicsLoadInput)
+        ).rejects.toMatchObject({
+            status: 404,
+            body: { message: 'Could not find topic unknown-topic' }
+        });
     });
 
     it('normalizes out-of-range page query', async () => {

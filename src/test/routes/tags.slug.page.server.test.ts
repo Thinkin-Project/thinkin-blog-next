@@ -70,19 +70,18 @@ describe('tag page load', () => {
         ).toBe(true);
     });
 
-    it('returns empty list and valid pagination for unknown tag', async () => {
+    it('throws 404 for unknown tag', async () => {
         mockedGetPosts.mockResolvedValue([makePost(1, ['javascript'])]);
 
-        const result = await runLoad({
-            params: { slug: 'unknown-tag' },
-            url: new URL('https://example.com/tags/unknown-tag')
-        } as TagsLoadInput);
-
-        expect(result.posts).toHaveLength(0);
-        expect(result.pagination.totalPosts).toBe(0);
-        expect(result.pagination.totalPages).toBe(0);
-        expect(result.pagination.currentPage).toBe(1);
-        expect(result.meta.title).toBe('標籤');
+        await expect(
+            load({
+                params: { slug: 'unknown-tag' },
+                url: new URL('https://example.com/tags/unknown-tag')
+            } as TagsLoadInput)
+        ).rejects.toMatchObject({
+            status: 404,
+            body: { message: 'Could not find tag unknown-tag' }
+        });
     });
 
     it('normalizes out-of-range page query', async () => {

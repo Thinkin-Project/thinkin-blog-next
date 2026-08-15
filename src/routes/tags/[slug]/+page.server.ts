@@ -1,3 +1,5 @@
+import { error } from '@sveltejs/kit';
+
 import { BLOG_CONFIG } from '$lib/constants/blog';
 import { TAGS } from '$lib/constants/tags';
 import { getPosts } from '$lib/server/posts';
@@ -5,6 +7,11 @@ import { getPosts } from '$lib/server/posts';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params, url }) => {
+    const currentTag = TAGS.find((t) => t.slug === params.slug);
+    if (!currentTag) {
+        error(404, `Could not find tag ${params.slug}`);
+    }
+
     const allPosts = await getPosts();
 
     // Filter posts by tags containing the slug
@@ -27,8 +34,6 @@ export const load: PageServerLoad = async ({ params, url }) => {
     const end = start + pageSize;
     const posts = filteredPosts.slice(start, end);
 
-    const currentTag = TAGS.find((t) => t.slug === params.slug)?.name || '標籤';
-
     return {
         posts,
         pagination: {
@@ -37,7 +42,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
             totalPosts
         },
         meta: {
-            title: currentTag
+            title: currentTag.name
         }
     };
 };
