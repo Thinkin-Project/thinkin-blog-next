@@ -123,9 +123,12 @@
                                 <span class="flex items-center gap-2 text-muted-foreground">
                                     <Crosshair class="h-3.5 w-3.5" /> 主題
                                 </span>
-                                <span class="block font-medium text-foreground"
-                                    >{getTopicName(data.meta.topic)}</span
+                                <a
+                                    href="/topics/{data.meta.topic}"
+                                    class="inline-flex items-center rounded-full bg-secondary px-2 py-1 text-xs font-medium whitespace-nowrap text-foreground transition-colors hover:bg-secondary/70 hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
                                 >
+                                    {getTopicName(data.meta.topic)}
+                                </a>
                             </div>
                             {#if data.meta.tags && data.meta.tags.length > 0}
                                 <div class="space-y-1">
