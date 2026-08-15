@@ -5,6 +5,7 @@ async function loadNavigation() {
     vi.doMock('@lucide/svelte', () => ({
         House: 'House',
         Newspaper: 'Newspaper',
+        Folders: 'Folders',
         Shield: 'Shield',
         Rss: 'Rss'
     }));
@@ -23,6 +24,7 @@ describe('navigation constants', () => {
 
         expect(hrefs).toContain('/');
         expect(hrefs).toContain('/posts');
+        expect(hrefs).toContain('/topics');
         expect(hrefs).toContain('/privacy');
         expect(hrefs).toContain('/rss.xml');
     });
