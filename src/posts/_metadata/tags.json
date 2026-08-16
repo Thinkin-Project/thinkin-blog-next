@@ -293,5 +293,15 @@
         "name": "知識管理",
         "slug": "knowledge-management",
         "aliases": []
+    },
+    {
+        "name": "知識即程式碼",
+        "slug": "knowledge-as-code",
+        "aliases": []
+    },
+    {
+        "name": "Open Knowledge Format",
+        "slug": "open-knowledge-format",
+        "aliases": []
     }
 ]
