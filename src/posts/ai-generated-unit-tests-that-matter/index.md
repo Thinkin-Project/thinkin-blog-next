@@ -4,7 +4,7 @@ description: 'AI 很會寫測試，但真正困難的是讓測試值得信任。
 slug: 'ai-generated-unit-tests-that-matter'
 date: '2026-08-05'
 drafted: false
-featured: true
+featured: false
 topic: 'artificial-intelligence'
 tags: ['ai-agent', 'agentic-workflow', 'unit-test', 'software-engineering']
 authors: ['neil-tsai', 'chatgpt']

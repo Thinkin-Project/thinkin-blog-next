@@ -4,7 +4,7 @@ description: '分析 AI 時代網站架構的演變，以及從 Human-first 轉�
 slug: 'llms-txt-human-agent-first-web'
 date: '2026-05-17'
 drafted: false
-featured: true
+featured: false
 topic: 'artificial-intelligence'
 tags: ['ai-agent', 'website', 'llms-txt']
 authors: ['neil-tsai', 'chatgpt']

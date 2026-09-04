@@ -4,7 +4,7 @@ description: '運用 Chrome DevTools MCP 協助 E2E 測試'
 slug: 'effortless-e2e-mcp'
 date: '2026-01-14'
 drafted: false
-featured: true
+featured: false
 topic: 'artificial-intelligence'
 tags: ['e2e-test', 'mcp']
 authors: ['neil-tsai', 'chatgpt']

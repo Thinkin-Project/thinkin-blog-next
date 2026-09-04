@@ -4,7 +4,7 @@ description: '從 Claude 5 看 Prompt Engineering 如何走向 Context Engineeri
 slug: 'why-context-engineering-beats-prompt-engineering'
 date: '2026-07-26'
 drafted: false
-featured: true
+featured: false
 topic: 'artificial-intelligence'
 tags: ['agentic-workflow', 'context-engineering', 'prompt-engineering']
 authors: ['neil-tsai', 'chatgpt']

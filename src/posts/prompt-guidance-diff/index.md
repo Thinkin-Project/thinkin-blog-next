@@ -4,7 +4,7 @@ description: 'AI 真的變笨了嗎？還是人不懂得變通？'
 slug: 'prompt-guidance-diff'
 date: '2026-05-03'
 drafted: false
-featured: true
+featured: false
 topic: 'artificial-intelligence'
 tags: ['prompt-engineering']
 authors: ['neil-tsai', 'chatgpt']

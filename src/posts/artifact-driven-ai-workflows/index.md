@@ -4,7 +4,7 @@ description: '為什麼 HTML 正在取代 Markdown 成為 Agent 的新介面？'
 slug: 'artifact-driven-ai-workflows'
 date: '2026-05-12'
 drafted: false
-featured: true
+featured: false
 topic: 'artificial-intelligence'
 tags: ['document', 'artifact-driven']
 authors: ['neil-tsai', 'chatgpt']
