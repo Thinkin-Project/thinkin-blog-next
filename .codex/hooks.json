@@ -6,8 +6,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/format-lint.js\"",
-            "commandWindows": "pwsh -NoLogo -NoProfile -File .codex/hooks/run-hook.ps1 format-lint.js",
+            "command": "node \".codex/hooks/format-lint.js\"",
+            "commandWindows": "node \".codex/hooks/format-lint.js\"",
             "statusMessage": "格式化已編輯的檔案並檢查 Lint",
             "timeout": 120
           }
