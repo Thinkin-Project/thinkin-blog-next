@@ -1,6 +1,6 @@
 ---
 title: '當 AI 寫完所有程式碼，工程師還要看什麼？Uncle Bob 與 Matt Pocock 的回答'
-description: '當 Uncle Bob 用工程指標重構對 AI 的信任，Matt 則進一步反問：當戰術實作交給 AI，工程師真正的戰略價值為何？'
+description: '當 Uncle Bob 用工程指標重構對 AI 的信任，Matt 則反問：當戰術實作交給 AI，工程師真正的戰略價值為何？'
 slug: 'uncle-bob-matt-pocock-ai-software-engineering'
 date: '2026-09-05'
 drafted: false
