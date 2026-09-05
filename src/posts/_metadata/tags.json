@@ -313,5 +313,15 @@
         "name": "Clean Code",
         "slug": "clean-code",
         "aliases": []
+    },
+    {
+        "name": "GPT-6 Astra",
+        "slug": "gpt-6-astra",
+        "aliases": []
+    },
+    {
+        "name": "Claude Fable 5.1",
+        "slug": "claude-fable-5-1",
+        "aliases": []
     }
 ]
