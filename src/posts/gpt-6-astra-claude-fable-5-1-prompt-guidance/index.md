@@ -20,7 +20,7 @@ authors: ['neil-tsai', 'chatgpt']
 
 ## 前言
 
-2026 年 5 月 3 日，我寫了一篇〈[OpenAI 與 Anthropic 模型提示引導的差異性](https://www.thinkinmd.com/posts/prompt-guidance-diff)〉。
+2026 年 5 月 3 日，我寫了一篇〈[OpenAI 與 Anthropic 模型提示引導的差異性](/posts/prompt-guidance-diff)〉。
 
 當時比較的是：
 
@@ -294,7 +294,7 @@ Claude Fable 5.1 通常也能平行呼叫工具，但 Anthropic 在 [Batch indep
 
 這張表是本文根據現代 Agent 架構做出的整理，並不是 OpenAI 或 Anthropic 文件中的原表。
 
-它也延續了〈[當繁重的 Prompt 開始礙手礙腳](https://www.thinkinmd.com/posts/why-context-engineering-beats-prompt-engineering)〉的觀點。用本文的話重新整理就是：
+它也延續了〈[當繁重的 Prompt 開始礙手礙腳](/posts/why-context-engineering-beats-prompt-engineering)〉的觀點。用本文的話重新整理就是：
 
 > Prompt 不需要扮演整個系統的知識庫，它只需要描述這一次要完成的任務。
 
@@ -470,6 +470,6 @@ Claude Fable 5.1 需要清楚知道任務邊界、何時必須持續執行，以
 
 💭 [Prompting Claude Fable 5.1｜Claude Platform Docs](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1)
 
-💭 [OpenAI 與 Anthropic 模型提示引導的差異性｜Thinkin Markdown](https://www.thinkinmd.com/posts/prompt-guidance-diff)
+💭 [OpenAI 與 Anthropic 模型提示引導的差異性｜Thinkin Markdown](/posts/prompt-guidance-diff)
 
-💭 [當繁重的 Prompt 開始礙手礙腳｜Thinkin Markdown](https://www.thinkinmd.com/posts/why-context-engineering-beats-prompt-engineering)
+💭 [當繁重的 Prompt 開始礙手礙腳｜Thinkin Markdown](/posts/why-context-engineering-beats-prompt-engineering)
