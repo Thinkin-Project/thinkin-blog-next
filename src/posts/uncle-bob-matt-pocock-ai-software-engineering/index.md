@@ -368,6 +368,6 @@ Matt 的追問則讓這套方法不只停留在工具層次。
 
 ## 參考
 
-💭 [LIVE: Uncle Bob on Software Fundamentals in the Age of AI](https://www.youtube.com/watch?v=zcLPGC-tvgk)
-💭 [This Code is CRAP](https://testing.googleblog.com/2011/02/this-code-is-crap.html)
+💭 [LIVE: Uncle Bob on Software Fundamentals in the Age of AI](https://www.youtube.com/watch?v=zcLPGC-tvgk)  
+💭 [This Code is CRAP](https://testing.googleblog.com/2011/02/this-code-is-crap.html)  
 💭 [Mutation Testing，Clean Coder Blog](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)
