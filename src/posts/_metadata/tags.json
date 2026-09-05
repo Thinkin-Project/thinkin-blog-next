@@ -303,5 +303,15 @@
         "name": "Open Knowledge Format",
         "slug": "open-knowledge-format",
         "aliases": []
+    },
+    {
+        "name": "軟體測試",
+        "slug": "software-testing",
+        "aliases": []
+    },
+    {
+        "name": "Clean Code",
+        "slug": "clean-code",
+        "aliases": []
     }
 ]
