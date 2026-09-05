@@ -4,7 +4,7 @@ description: '從 Open Knowledge Format 看見團隊知識庫的下一步'
 slug: 'open-knowledge-format-team-knowledge'
 date: '2026-08-16'
 drafted: false
-featured: true
+featured: false
 topic: 'artificial-intelligence'
 tags: ['ai-agent', 'context-engineering', 'open-knowledge-format', 'knowledge-management', 'knowledge-as-code']
 authors: ['neil-tsai', 'chatgpt']

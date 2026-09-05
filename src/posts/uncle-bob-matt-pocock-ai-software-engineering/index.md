@@ -4,17 +4,9 @@ description: '當 Uncle Bob 用工程指標重構對 AI 的信任，Matt 則進�
 slug: 'uncle-bob-matt-pocock-ai-software-engineering'
 date: '2026-09-05'
 drafted: false
-featured: false
+featured: true
 topic: 'artificial-intelligence'
-tags:
-    [
-        'ai-agent',
-        'agentic-workflow',
-        'software-engineering',
-        'software-testing',
-        'clean-code',
-        'context-engineering'
-    ]
+tags: ['ai-agent', 'agentic-workflow', 'software-engineering', 'software-testing', 'clean-code', 'context-engineering']
 authors: ['neil-tsai', 'chatgpt']
 ---
 
