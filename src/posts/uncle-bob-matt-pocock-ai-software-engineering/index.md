@@ -366,8 +366,8 @@ Matt 的追問則讓這套方法不只停留在工具層次。
 
 不是他不再需要 Clean Code，而是他已經把 Clean Code 背後的價值，從個別程式碼搬進整套工作流程裡。
 
-## 參考資料
+## 參考
 
-- [LIVE: Uncle Bob on Software Fundamentals in the Age of AI](https://www.youtube.com/watch?v=zcLPGC-tvgk)
-- [This Code is CRAP](https://testing.googleblog.com/2011/02/this-code-is-crap.html)
-- [Mutation Testing，Clean Coder Blog](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)
+💭 [LIVE: Uncle Bob on Software Fundamentals in the Age of AI](https://www.youtube.com/watch?v=zcLPGC-tvgk)
+💭 [This Code is CRAP](https://testing.googleblog.com/2011/02/this-code-is-crap.html)
+💭 [Mutation Testing，Clean Coder Blog](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)
