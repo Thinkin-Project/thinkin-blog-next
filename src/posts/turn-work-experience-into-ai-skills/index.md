@@ -26,7 +26,7 @@ authors: ['neil-tsai', 'chatgpt']
 
 ## presentation-flow-writer 並不是先有 Skill，才有流程
 
-[上一篇文章](https://www.thinkinmd.com/posts/ai-presentation-flow-workflow)談到，我在準備簡報時，沒有直接叫 AI 產生投影片，而是先和 AI 一起整理「簡報流程檔」。
+[上一篇文章](/posts/ai-presentation-flow-workflow)談到，我在準備簡報時，沒有直接叫 AI 產生投影片，而是先和 AI 一起整理「簡報流程檔」。
 
 這份文件會先定義整場分享的主軸、段落節奏、畫面原則與禁區，再把每一頁拆成目的、核心訊息、畫面安排、講者重點與可引用素材。等這些敘事決策完成之後，才把流程檔交給簡報生成代理。
 
