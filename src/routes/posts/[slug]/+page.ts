@@ -1,11 +1,30 @@
+import type { Component } from 'svelte';
+
 import { error } from '@sveltejs/kit';
+
+import type { ArticleMeta } from '$lib/types';
 
 import type { PageLoad } from './$types';
 
+const postLoaders = import.meta.glob('/src/posts/*/index.md');
+const rawPostLoaders = import.meta.glob('/src/posts/*/index.md', {
+    query: '?raw',
+    import: 'default'
+}) as Record<string, () => Promise<string>>;
+
 export const load: PageLoad = async ({ params, data }) => {
     try {
-        const post = await import(`$posts/${params.slug}/index.md`);
-        const rawContent = await import(`$posts/${params.slug}/index.md?raw`);
+        const postLoader = postLoaders[`/src/posts/${params.slug}/index.md`];
+        const rawContentLoader = rawPostLoaders[`/src/posts/${params.slug}/index.md`];
+        if (!postLoader || !rawContentLoader) {
+            throw new Error(`post not found: ${params.slug}`);
+        }
+
+        const post = (await postLoader()) as {
+            default: Component;
+            metadata: ArticleMeta;
+        };
+        const rawContent = { default: await rawContentLoader() };
 
         // 解析 ogImage 路徑 (如果存在且為相對路徑)
         let ogImageUrl = post.metadata.ogImage;

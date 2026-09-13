@@ -5,14 +5,13 @@ import { configDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
     plugins: [tailwindcss(), sveltekit()],
-    resolve: {
-        alias: {
-            '$app/environment': path.resolve('src/test/mocks/app-environment.ts')
-        }
-    },
     test: {
         globals: true,
         passWithNoTests: true,
+        alias: {
+            '$app/environment': path.resolve('src/test/mocks/app-environment.ts'),
+            '$app/navigation': path.resolve('src/test/mocks/app-navigation.ts')
+        },
         coverage: {
             provider: 'v8',
             reporter: ['text', 'html'],
@@ -24,12 +23,6 @@ export default defineConfig({
         },
         projects: [
             {
-                resolve: {
-                    alias: {
-                        '$app/environment': path.resolve('src/test/mocks/app-environment.ts'),
-                        '$app/navigation': path.resolve('src/test/mocks/app-navigation.ts')
-                    }
-                },
                 test: {
                     name: 'node',
                     include: ['src/**/*.{test,spec}.{ts,js}'],
@@ -37,23 +30,25 @@ export default defineConfig({
                     environment: 'node',
                     setupFiles: ['src/test/setup.ts'],
                     clearMocks: true,
-                    restoreMocks: true
-                }
-            },
-            {
-                resolve: {
+                    restoreMocks: true,
                     alias: {
                         '$app/environment': path.resolve('src/test/mocks/app-environment.ts'),
                         '$app/navigation': path.resolve('src/test/mocks/app-navigation.ts')
                     }
-                },
+                }
+            },
+            {
                 test: {
                     name: 'browser',
                     include: ['src/**/*.dom.test.ts', 'src/**/*.browser.test.ts'],
                     environment: 'happy-dom',
                     setupFiles: ['src/test/setup.ts'],
                     clearMocks: true,
-                    restoreMocks: true
+                    restoreMocks: true,
+                    alias: {
+                        '$app/environment': path.resolve('src/test/mocks/app-environment.ts'),
+                        '$app/navigation': path.resolve('src/test/mocks/app-navigation.ts')
+                    }
                 }
             }
         ]
