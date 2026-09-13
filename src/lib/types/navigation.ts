@@ -1,4 +1,4 @@
-import type { Icon } from '@lucide/svelte';
+import type { LucideIcon } from '@lucide/svelte';
 
 /**
  * 導覽列項目
@@ -6,7 +6,7 @@ import type { Icon } from '@lucide/svelte';
 export interface NavItem {
     name: string;
     href: string;
-    icon: typeof Icon;
+    icon: LucideIcon;
 }
 
 /**
