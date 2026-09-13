@@ -33,7 +33,7 @@ export const BLOG_CONFIG = {
         {
             platform: 'Ko-fi',
             url: 'https://ko-fi.com/thinkinmd',
-            image: 'https://storage.ko-fi.com/cdn/kofi3.png?v=3'
+            image: 'https://storage.ko-fi.com/cdn/kofi2.png?v=3'
         }
     ],
     // Giscus 留言系統設定

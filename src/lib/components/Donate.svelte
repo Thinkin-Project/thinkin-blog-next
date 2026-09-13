@@ -79,7 +79,7 @@
                                 <img
                                     src={donation.image}
                                     alt={donation.platform}
-                                    class="h-8 w-auto object-contain grayscale transition-[filter] group-hover:grayscale-0"
+                                    class="h-8 w-auto transition-transform hover:scale-105 active:scale-95"
                                 />
                             {:else}
                                 {#if donation.icon}
