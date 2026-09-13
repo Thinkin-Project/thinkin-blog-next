@@ -17,3 +17,4 @@ minimumReleaseAgeExclude:
   - svelte-check@4.7.6
   - eslint-plugin-svelte@3.23.0
   - svelte@5.56.9
+  - tailwind-merge@3.7.0
