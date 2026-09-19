@@ -68,6 +68,7 @@
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <link rel="canonical" href={ogUrl} />
     <link rel="icon" href={favicon} />
 </svelte:head>
 

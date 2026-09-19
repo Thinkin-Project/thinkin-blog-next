@@ -14,10 +14,39 @@
     import ReadingProgressBar from '$lib/components/ReadingProgressBar.svelte';
     import ShareButtons from '$lib/components/ShareButtons.svelte';
     import TableOfContents from '$lib/components/TableOfContents.svelte';
+    import { AUTHORS } from '$lib/constants/authors';
+    import { BLOG_CONFIG } from '$lib/constants/blog';
     import { getTagName } from '$lib/constants/tags';
     import { getTopicName } from '$lib/constants/topics';
 
     let { data } = $props();
+
+    const jsonLd = $derived.by(() => {
+        const baseUrl = BLOG_CONFIG.url.endsWith('/')
+            ? BLOG_CONFIG.url.slice(0, -1)
+            : BLOG_CONFIG.url;
+        const authorNames = (data.meta.authors ?? [])
+            .map((id) => AUTHORS[id]?.name)
+            .filter((name): name is string => Boolean(name));
+
+        return {
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: data.meta.title,
+            description: data.meta.description,
+            image: data.meta.ogImage,
+            datePublished: data.meta.date,
+            dateModified: data.meta.updated || data.meta.date,
+            mainEntityOfPage: `${baseUrl}/posts/${data.meta.slug}`,
+            ...(authorNames.length > 0
+                ? { author: authorNames.map((name) => ({ '@type': 'Person', name })) }
+                : {})
+        };
+    });
+
+    const jsonLdScript = $derived(
+        '<script type="application/ld+json">' + JSON.stringify(jsonLd) + '<' + '/script>'
+    );
 
     $effect(() => {
         if (!data.content) return;
@@ -56,6 +85,11 @@
         };
     });
 </script>
+
+<svelte:head>
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -- JSON-LD 內容全部來自站內文章 metadata，非使用者輸入 -->
+    {@html jsonLdScript}
+</svelte:head>
 
 <ReadingProgressBar />
 
