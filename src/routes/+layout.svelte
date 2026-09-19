@@ -38,7 +38,7 @@
         const baseUrl = BLOG_CONFIG.url.endsWith('/')
             ? BLOG_CONFIG.url.slice(0, -1)
             : BLOG_CONFIG.url;
-        if (meta.slug) {
+        if (meta.slug && page.url.pathname.startsWith('/posts/')) {
             return `${baseUrl}/posts/${meta.slug}`;
         }
         return `${baseUrl}${page.url.pathname}`;
@@ -68,6 +68,7 @@
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <link rel="canonical" href={ogUrl} />
     <link rel="icon" href={favicon} />
 </svelte:head>
 
