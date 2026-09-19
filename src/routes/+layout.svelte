@@ -38,7 +38,7 @@
         const baseUrl = BLOG_CONFIG.url.endsWith('/')
             ? BLOG_CONFIG.url.slice(0, -1)
             : BLOG_CONFIG.url;
-        if (meta.slug) {
+        if (meta.slug && page.url.pathname.startsWith('/posts/')) {
             return `${baseUrl}/posts/${meta.slug}`;
         }
         return `${baseUrl}${page.url.pathname}`;
