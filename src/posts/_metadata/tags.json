@@ -323,5 +323,15 @@
         "name": "Claude Fable 5.1",
         "slug": "claude-fable-5-1",
         "aliases": []
+    },
+    {
+        "name": "Claude Opus 5.5",
+        "slug": "claude-opus-5-5",
+        "aliases": []
+    },
+    {
+        "name": "Claude Code",
+        "slug": "claude-code",
+        "aliases": []
     }
 ]
