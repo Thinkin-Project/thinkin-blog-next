@@ -330,6 +330,11 @@
         "aliases": []
     },
     {
+        "name": "Claude Apps",
+        "slug": "claude-apps",
+        "aliases": []
+    },
+    {
         "name": "Claude Code",
         "slug": "claude-code",
         "aliases": []
