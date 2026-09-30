@@ -188,7 +188,7 @@ async function main() {
         {
             type: 'text',
             name: 'ogImage',
-            message: '封面圖片路徑 (預設: ./hero.jpeg):'
+            message: '封面圖片路徑 (留空則不設定，例如: ./hero.jpeg):'
         },
         {
             type: 'toggle',
@@ -220,13 +220,12 @@ async function main() {
 
     fs.mkdirSync(imagesDir, { recursive: true });
 
-    const finalOgImage = settings.ogImage || './hero.jpeg';
+    const finalOgImage = settings.ogImage;
 
     const content = `---
 title: '${response.title.replace(/'/g, "''")}'
 description: '${response.description.replace(/'/g, "''")}'
-ogImage: '${finalOgImage}'
-slug: '${response.slug}'
+${finalOgImage ? `ogImage: '${finalOgImage}'\n` : ''}slug: '${response.slug}'
 date: '${today}'
 drafted: ${settings.drafted}
 featured: ${settings.featured}
