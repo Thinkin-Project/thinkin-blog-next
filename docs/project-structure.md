@@ -11,7 +11,8 @@
 - `src/lib/constants/`：跨模組常數與可共享設定值
 - `src/lib/utils/`：工具函式
 - `src/lib/types/`：共用型別
-- `src/content/`、`src/data/` 或其他內容來源目錄：內容型資料與靜態資料來源
+- `src/posts/`：部落格文章
+- `src/content/`：站內靜態頁面內容（如隱私權政策）
 - `src/test/`：測試程式碼
 - `static/`：靜態資源
 - `scripts/`：自動化、建置與維護腳本
