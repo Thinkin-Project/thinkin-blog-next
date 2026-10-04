@@ -71,7 +71,8 @@ const mdsvexOptions = {
                         'markdown',
                         'csharp',
                         'powershell',
-                        'yaml'
+                        'yaml',
+                        'toml'
                     ]
                 });
             }
