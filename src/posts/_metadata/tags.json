@@ -338,5 +338,15 @@
         "name": "Claude Code",
         "slug": "claude-code",
         "aliases": []
+    },
+    {
+        "name": "Herdr",
+        "slug": "herdr",
+        "aliases": []
+    },
+    {
+        "name": "工具",
+        "slug": "tool",
+        "aliases": []
     }
 ]
