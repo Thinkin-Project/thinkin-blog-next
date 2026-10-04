@@ -1,6 +1,6 @@
 ---
 title: '用了 Herdr 一個月：讓 AI Agent 從各自工作，開始互相交接'
-description: 'Herdr 可集中管理多款 CLI 工具，實現 Agent 間的協同。分享實戰心得、Windows 安裝與單 Agent 也適用的工作流。'
+description: 'Herdr 可集中管理多款 CLI 工具，實現 Agent 間的協同。分享實戰心得、Windows 安裝與單 Agent 也適用的工作流'
 slug: 'herdr-first-month-agent-workflow'
 date: '2026-10-04'
 drafted: false
