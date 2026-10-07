@@ -160,7 +160,7 @@
                     variant="ghost"
                     size="icon"
                     onclick={toggleDesktopSidebar}
-                    class="group relative mx-auto h-12 w-12 cursor-e-resize rounded-2xl text-foreground hover:bg-accent"
+                    class="group relative mx-auto h-12 w-12 cursor-pointer rounded-2xl text-foreground hover:bg-accent"
                     aria-label="開啟側邊欄"
                     title="開啟側邊欄"
                 >
@@ -182,7 +182,7 @@
                     variant="ghost"
                     size="icon"
                     onclick={toggleDesktopSidebar}
-                    class="cursor-e-resize text-muted-foreground hover:text-foreground"
+                    class="cursor-pointer text-muted-foreground hover:text-foreground"
                     aria-label="關閉側邊欄"
                     title="關閉側邊欄"
                 >
