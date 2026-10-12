@@ -4,7 +4,7 @@ description: '透過 WebMCP 讓 AI Agent 以結構化工具搜尋、讀取與探
 slug: 'website-webmcp-agent-tools'
 date: '2026-05-20'
 drafted: false
-featured: false
+featured: true
 topic: 'artificial-intelligence'
 tags: ['ai-agent', 'website', 'webmcp']
 authors: ['neil-tsai', 'chatgpt']
