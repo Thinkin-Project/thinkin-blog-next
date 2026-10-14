@@ -353,5 +353,25 @@
         "name": "程式碼審查",
         "slug": "code-review",
         "aliases": []
+    },
+    {
+        "name": "MailKit",
+        "slug": "mailkit",
+        "aliases": []
+    },
+    {
+        "name": "SMTP",
+        "slug": "smtp",
+        "aliases": []
+    },
+    {
+        "name": "TLS",
+        "slug": "tls",
+        "aliases": []
+    },
+    {
+        "name": "smtp4dev",
+        "slug": "smtp4dev",
+        "aliases": []
     }
 ]
