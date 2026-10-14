@@ -373,5 +373,25 @@
         "name": "smtp4dev",
         "slug": "smtp4dev",
         "aliases": []
+    },
+    {
+        "name": "RabbitMQ",
+        "slug": "rabbitmq",
+        "aliases": []
+    },
+    {
+        "name": "Publisher Confirms",
+        "slug": "publisher-confirms",
+        "aliases": []
+    },
+    {
+        "name": "非同步程式設計",
+        "slug": "asynchronous-programming",
+        "aliases": []
+    },
+    {
+        "name": "重試",
+        "slug": "retry",
+        "aliases": []
     }
 ]
