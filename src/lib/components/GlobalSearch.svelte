@@ -12,11 +12,11 @@
         CommandInput,
         CommandItem,
         CommandList
-    } from '$lib/components/ui/command';
-    import { getTagName } from '$lib/constants/tags';
-    import { getTopicName } from '$lib/constants/topics';
-    import { searchState } from '$lib/states/search.svelte';
-    import type { ArticleMeta } from '$lib/types';
+    } from '#lib/components/ui/command/index.js';
+    import { getTagName } from '#lib/constants/tags.js';
+    import { getTopicName } from '#lib/constants/topics.js';
+    import { searchState } from '#lib/states/search.svelte.js';
+    import type { ArticleMeta } from '#lib/types/index.js';
 
     let query = $state('');
     let posts = $state<ArticleMeta[]>([]);

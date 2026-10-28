@@ -1,23 +1,23 @@
 <script lang="ts">
     import { mount, unmount } from 'svelte';
 
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
 
     import { Calendar, ChevronRight, Clock, Crosshair, Tag } from '@lucide/svelte';
 
-    import AuthorBlock from '$lib/components/AuthorBlock.svelte';
-    import BackToTop from '$lib/components/BackToTop.svelte';
-    import CodeBlockCopyButton from '$lib/components/CodeBlockCopyButton.svelte';
-    import Donate from '$lib/components/Donate.svelte';
-    import Footer from '$lib/components/Footer.svelte';
-    import Giscus from '$lib/components/Giscus.svelte';
-    import ReadingProgressBar from '$lib/components/ReadingProgressBar.svelte';
-    import ShareButtons from '$lib/components/ShareButtons.svelte';
-    import TableOfContents from '$lib/components/TableOfContents.svelte';
-    import { AUTHORS } from '$lib/constants/authors';
-    import { BLOG_CONFIG } from '$lib/constants/blog';
-    import { getTagName } from '$lib/constants/tags';
-    import { getTopicName } from '$lib/constants/topics';
+    import AuthorBlock from '#lib/components/AuthorBlock.svelte';
+    import BackToTop from '#lib/components/BackToTop.svelte';
+    import CodeBlockCopyButton from '#lib/components/CodeBlockCopyButton.svelte';
+    import Donate from '#lib/components/Donate.svelte';
+    import Footer from '#lib/components/Footer.svelte';
+    import Giscus from '#lib/components/Giscus.svelte';
+    import ReadingProgressBar from '#lib/components/ReadingProgressBar.svelte';
+    import ShareButtons from '#lib/components/ShareButtons.svelte';
+    import TableOfContents from '#lib/components/TableOfContents.svelte';
+    import { AUTHORS } from '#lib/constants/authors.js';
+    import { BLOG_CONFIG } from '#lib/constants/blog.js';
+    import { getTagName } from '#lib/constants/tags.js';
+    import { getTopicName } from '#lib/constants/topics.js';
 
     let { data } = $props();
 
@@ -39,7 +39,9 @@
             dateModified: data.meta.updated || data.meta.date,
             mainEntityOfPage: `${baseUrl}/posts/${data.meta.slug}`,
             ...(authorNames.length > 0
-                ? { author: authorNames.map((name) => ({ '@type': 'Person', name })) }
+                ? {
+                      author: authorNames.map((name) => ({ '@type': 'Person', name }))
+                  }
                 : {})
         };
     });
@@ -335,7 +337,7 @@
         <!-- Sidebar / Table of Contents -->
         <aside class="hidden w-64 shrink-0 lg:block">
             <div class="sticky top-24 space-y-8">
-                {#key $page.params.slug}
+                {#key page.params.slug}
                     <TableOfContents headings={data.headings} />
                 {/key}
             </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { tick } from 'svelte';
 
-    import { pushState } from '$app/navigation';
+    import { goto } from '$app/navigation';
 
     interface Heading {
         level: number;
@@ -78,7 +78,7 @@
 
             // 手動更新 activeId，因為 smooth scroll 可能太快或太慢導致 observer 回報延遲
             activeId = slug;
-            pushState(`#${slug}`, {});
+            goto(`#${slug}`, { shallow: true });
         }
     };
 

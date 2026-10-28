@@ -1,8 +1,8 @@
-import { BLOG_CONFIG } from '$lib/constants/blog';
-import { getTagName, resolveTagSlug } from '$lib/constants/tags';
-import { getTopicName, resolveTopicSlug } from '$lib/constants/topics';
-import { getPosts, getRawPost } from '$lib/server/posts';
-import type { ArticleMeta } from '$lib/types';
+import { BLOG_CONFIG } from '#lib/constants/blog.js';
+import { getTagName, resolveTagSlug } from '#lib/constants/tags.js';
+import { getTopicName, resolveTopicSlug } from '#lib/constants/topics.js';
+import { getPosts, getRawPost } from '#lib/server/posts.js';
+import type { ArticleMeta } from '#lib/types/index.js';
 
 const SEARCH_DEFAULT_LIMIT = 5;
 const SEARCH_MAX_LIMIT = 20;

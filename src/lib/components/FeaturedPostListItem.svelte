@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Calendar, Clock, Pin } from '@lucide/svelte';
 
-    import { getTagName } from '$lib/constants/tags';
+    import { getTagName } from '#lib/constants/tags.js';
 
     let {
         title,

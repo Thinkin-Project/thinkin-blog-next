@@ -1,6 +1,6 @@
-import { BLOG_CONFIG } from '$lib/constants/blog';
-import { getAdjacentPosts } from '$lib/server/posts';
-import { findRelatedPosts } from '$lib/server/webmcp';
+import { BLOG_CONFIG } from '#lib/constants/blog.js';
+import { getAdjacentPosts } from '#lib/server/posts.js';
+import { findRelatedPosts } from '#lib/server/webmcp.js';
 
 import type { PageServerLoad } from './$types';
 

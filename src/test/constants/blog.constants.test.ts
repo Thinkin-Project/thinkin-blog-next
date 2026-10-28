@@ -29,7 +29,7 @@ const defaultPublicEnv: PublicEnv = {
 
 async function loadBlogConfig(envOverrides: PublicEnv) {
     vi.resetModules();
-    vi.doMock('$env/static/public', () => ({
+    vi.doMock('$app/env/public', () => ({
         ...defaultPublicEnv,
         ...envOverrides
     }));

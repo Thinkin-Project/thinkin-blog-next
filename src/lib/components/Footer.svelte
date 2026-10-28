@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { BLOG_CONFIG } from '$lib/constants/blog';
+    import { BLOG_CONFIG } from '#lib/constants/blog.js';
 
     const currentYear = new Date().getFullYear();
 </script>

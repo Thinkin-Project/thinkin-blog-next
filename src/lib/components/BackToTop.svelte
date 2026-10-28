@@ -3,8 +3,8 @@
 
     import { ArrowUp } from '@lucide/svelte';
 
-    import { Button } from '$lib/components/ui/button';
-    import { cn } from '$lib/utils';
+    import { Button } from '#lib/components/ui/button/index.js';
+    import { cn } from '#lib/utils/index.js';
 
     let isVisible = $state(false);
 

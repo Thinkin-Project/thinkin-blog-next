@@ -123,7 +123,7 @@ src/
 │   ├── components/     # UI 元件
 │   │   ├── ui/         # shadcn-svelte 元件
 │   │   └── icons/      # 自定義圖示
-│   ├── constants/      # 網站設定常數 (部分引用自 $posts/_metadata)
+│   ├── constants/      # 網站設定常數 (部分引用自 #posts/_metadata)
 │   ├── server/         # 伺服器端邏輯
 │   ├── utils/          # 工具函式
 │   └── types.ts        # TypeScript 型別

@@ -1,4 +1,4 @@
-import { getPosts, getRawPost } from '$lib/server/posts';
+import { getPosts, getRawPost } from '#lib/server/posts.js';
 
 import type { RequestHandler } from './$types';
 

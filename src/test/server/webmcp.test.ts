@@ -1,7 +1,6 @@
+import { getPosts, getRawPost } from '#lib/server/posts.js';
+import type { ArticleMeta } from '#lib/types/index.js';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-
-import { getPosts, getRawPost } from '$lib/server/posts';
-import type { ArticleMeta } from '$lib/types';
 
 import {
     clampLimit,
@@ -13,13 +12,13 @@ import {
     stripFrontmatter
 } from '../../lib/server/webmcp';
 
-vi.mock('$lib/constants/blog', () => ({
+vi.mock('#lib/constants/blog.js', () => ({
     BLOG_CONFIG: {
         url: 'https://example.com'
     }
 }));
 
-vi.mock('$lib/constants/topics', () => ({
+vi.mock('#lib/constants/topics.js', () => ({
     getTopicName: vi.fn((slug: string) => {
         if (slug === 'dotnet') {
             return '.NET';
@@ -50,7 +49,7 @@ vi.mock('$lib/constants/topics', () => ({
     })
 }));
 
-vi.mock('$lib/constants/tags', () => ({
+vi.mock('#lib/constants/tags.js', () => ({
     getTagName: vi.fn((slug: string) => {
         if (slug === 'mcp') {
             return 'MCP';
@@ -81,7 +80,7 @@ vi.mock('$lib/constants/tags', () => ({
     })
 }));
 
-vi.mock('$lib/server/posts', () => ({
+vi.mock('#lib/server/posts.js', () => ({
     getPosts: vi.fn(),
     getRawPost: vi.fn()
 }));

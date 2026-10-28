@@ -3,8 +3,8 @@
 
     import { Cookie, MessageSquareOff } from '@lucide/svelte';
 
-    import { BLOG_CONFIG } from '$lib/constants/blog';
-    import { themeState } from '$lib/states/theme.svelte';
+    import { BLOG_CONFIG } from '#lib/constants/blog.js';
+    import { themeState } from '#lib/states/theme.svelte.js';
 
     const {
         repo,

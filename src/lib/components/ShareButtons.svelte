@@ -3,7 +3,7 @@
 
     import { Check, Link } from '@lucide/svelte';
 
-    import { cn } from '$lib/utils';
+    import { cn } from '#lib/utils/index.js';
 
     import { Facebook, Linkedin, X } from './icons';
 

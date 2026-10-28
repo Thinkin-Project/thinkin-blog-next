@@ -1,8 +1,7 @@
+import { BLOG_CONFIG } from '#lib/constants/blog.js';
+import { TAGS } from '#lib/constants/tags.js';
+import { getPosts } from '#lib/server/posts.js';
 import { error } from '@sveltejs/kit';
-
-import { BLOG_CONFIG } from '$lib/constants/blog';
-import { TAGS } from '$lib/constants/tags';
-import { getPosts } from '$lib/server/posts';
 
 import type { PageServerLoad } from './$types';
 

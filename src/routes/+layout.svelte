@@ -2,13 +2,13 @@
     import { page } from '$app/state';
     import { onMount } from 'svelte';
 
-    import favicon from '$lib/assets/favicon.ico';
-    import CookieConsent from '$lib/components/CookieConsent.svelte';
-    import GlobalSearch from '$lib/components/GlobalSearch.svelte';
-    import ImageLightBox from '$lib/components/ImageLightBox.svelte';
-    import Sidebar from '$lib/components/Sidebar.svelte';
-    import { setupWebMcpBridge } from '$lib/client/webmcp';
-    import { BLOG_CONFIG } from '$lib/constants/blog';
+    import favicon from '#lib/assets/favicon.ico';
+    import CookieConsent from '#lib/components/CookieConsent.svelte';
+    import GlobalSearch from '#lib/components/GlobalSearch.svelte';
+    import ImageLightBox from '#lib/components/ImageLightBox.svelte';
+    import Sidebar from '#lib/components/Sidebar.svelte';
+    import { setupWebMcpBridge } from '#lib/client/webmcp.js';
+    import { BLOG_CONFIG } from '#lib/constants/blog.js';
 
     import './layout.css';
 

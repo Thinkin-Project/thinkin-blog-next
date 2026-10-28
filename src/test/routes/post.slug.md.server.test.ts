@@ -1,11 +1,10 @@
+import { getPosts, getRawPost } from '#lib/server/posts.js';
+import type { ArticleMeta } from '#lib/types/index.js';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-
-import { getPosts, getRawPost } from '$lib/server/posts';
-import type { ArticleMeta } from '$lib/types';
 
 import { GET } from '../../routes/posts/[slug].md/+server';
 
-vi.mock('$lib/server/posts', () => ({
+vi.mock('#lib/server/posts.js', () => ({
     getPosts: vi.fn(),
     getRawPost: vi.fn()
 }));

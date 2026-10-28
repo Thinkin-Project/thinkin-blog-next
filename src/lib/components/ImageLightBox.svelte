@@ -1,6 +1,6 @@
 <script lang="ts">
-    import * as Dialog from '$lib/components/ui/dialog';
-    import { closeLightbox, lightboxState, openLightbox } from '$lib/states/lightbox.svelte';
+    import * as Dialog from '#lib/components/ui/dialog/index.js';
+    import { closeLightbox, lightboxState, openLightbox } from '#lib/states/lightbox.svelte.js';
 
     /**
      * 全域點擊攔截

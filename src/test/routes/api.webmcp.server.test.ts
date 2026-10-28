@@ -1,12 +1,11 @@
+import { findRelatedPosts, getPost, searchPosts } from '#lib/server/webmcp.js';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-
-import { findRelatedPosts, getPost, searchPosts } from '$lib/server/webmcp';
 
 import { GET as getPostRoute } from '../../routes/api/webmcp/posts/[slug]/+server';
 import { GET as getRelatedPostsRoute } from '../../routes/api/webmcp/posts/[slug]/related/+server';
 import { GET as getSearchPostsRoute } from '../../routes/api/webmcp/search-posts/+server';
 
-vi.mock('$lib/server/webmcp', () => ({
+vi.mock('#lib/server/webmcp.js', () => ({
     searchPosts: vi.fn(),
     getPost: vi.fn(),
     findRelatedPosts: vi.fn()

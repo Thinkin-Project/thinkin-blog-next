@@ -1,6 +1,5 @@
+import { getPost } from '#lib/server/webmcp.js';
 import { error, json } from '@sveltejs/kit';
-
-import { getPost } from '$lib/server/webmcp';
 
 import type { RequestHandler } from './$types';
 

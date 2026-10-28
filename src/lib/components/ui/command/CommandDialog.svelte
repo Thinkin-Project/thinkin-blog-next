@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Dialog, DialogContent } from '$lib/components/ui/dialog/index.js';
+    import { Dialog, DialogContent } from '#lib/components/ui/dialog/index.js';
 
     import { Command } from './index.js';
 

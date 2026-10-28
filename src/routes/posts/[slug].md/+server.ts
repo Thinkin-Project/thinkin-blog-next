@@ -1,6 +1,5 @@
+import { getPosts, getRawPost } from '#lib/server/posts.js';
 import { error } from '@sveltejs/kit';
-
-import { getPosts, getRawPost } from '$lib/server/posts';
 
 import type { RequestHandler } from './$types';
 

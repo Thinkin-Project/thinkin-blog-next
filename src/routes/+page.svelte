@@ -1,13 +1,13 @@
 <script lang="ts">
     import { ArrowRight } from '@lucide/svelte';
 
-    import EmptyState from '$lib/components/EmptyState.svelte';
-    import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';
-    import Footer from '$lib/components/Footer.svelte';
-    import Hero from '$lib/components/Hero.svelte';
-    import PostListItem from '$lib/components/PostListItem.svelte';
-    import SocialLinks from '$lib/components/SocialLinks.svelte';
-    import { SOCIAL_LINKS } from '$lib/constants/navigation';
+    import EmptyState from '#lib/components/EmptyState.svelte';
+    import FeaturedPostListItem from '#lib/components/FeaturedPostListItem.svelte';
+    import Footer from '#lib/components/Footer.svelte';
+    import Hero from '#lib/components/Hero.svelte';
+    import PostListItem from '#lib/components/PostListItem.svelte';
+    import SocialLinks from '#lib/components/SocialLinks.svelte';
+    import { SOCIAL_LINKS } from '#lib/constants/navigation.js';
 
     let { data } = $props();
 

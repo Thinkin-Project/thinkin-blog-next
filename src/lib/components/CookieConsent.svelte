@@ -4,7 +4,7 @@
     import * as CookieConsent from 'vanilla-cookieconsent';
     import 'vanilla-cookieconsent/dist/cookieconsent.css';
 
-    import { BLOG_CONFIG } from '$lib/constants/blog';
+    import { BLOG_CONFIG } from '#lib/constants/blog.js';
 
     const { lang } = BLOG_CONFIG;
 

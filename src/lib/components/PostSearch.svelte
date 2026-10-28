@@ -1,8 +1,8 @@
 <script lang="ts">
     import { Search } from '@lucide/svelte';
 
-    import { Button } from '$lib/components/ui/button';
-    import { searchState } from '$lib/states/search.svelte';
+    import { Button } from '#lib/components/ui/button/index.js';
+    import { searchState } from '#lib/states/search.svelte.js';
 
     interface Props {
         variant?: 'default' | 'icon';

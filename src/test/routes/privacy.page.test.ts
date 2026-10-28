@@ -31,7 +31,7 @@ describe('privacy page load', () => {
     });
 
     it('returns fallback metadata when markdown metadata is missing', async () => {
-        vi.doMock('$content/privacy.md', () => ({
+        vi.doMock('#content/privacy.md', () => ({
             default: () => 'privacy component',
             metadata: {}
         }));
@@ -44,7 +44,7 @@ describe('privacy page load', () => {
     });
 
     it('throws 404 via sveltekit error helper when markdown import fails', async () => {
-        vi.doMock('$content/privacy.md', () => {
+        vi.doMock('#content/privacy.md', () => {
             throw new Error('privacy not found');
         });
 

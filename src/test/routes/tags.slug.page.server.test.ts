@@ -1,24 +1,23 @@
+import { getPosts } from '#lib/server/posts.js';
+import type { ArticleMeta } from '#lib/types/index.js';
 import { describe, expect, it, vi } from 'vitest';
-
-import { getPosts } from '$lib/server/posts';
-import type { ArticleMeta } from '$lib/types';
 
 import { load } from '../../routes/tags/[slug]/+page.server';
 
-vi.mock('$lib/constants/blog', () => ({
+vi.mock('#lib/constants/blog.js', () => ({
     BLOG_CONFIG: {
         postsPerPage: 2
     }
 }));
 
-vi.mock('$lib/constants/tags', () => ({
+vi.mock('#lib/constants/tags.js', () => ({
     TAGS: [
         { slug: 'javascript', name: 'JavaScript', aliases: [] },
         { slug: 'nodejs', name: 'Node.js', aliases: [] }
     ]
 }));
 
-vi.mock('$lib/server/posts', () => ({
+vi.mock('#lib/server/posts.js', () => ({
     getPosts: vi.fn()
 }));
 

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { ArrowRight } from '@lucide/svelte';
 
-    import type { SocialLink } from '$lib/types';
+    import type { SocialLink } from '#lib/types/index.js';
 
     let {
         links = [],

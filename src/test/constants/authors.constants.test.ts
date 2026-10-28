@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 async function loadAuthors() {
     vi.resetModules();
-    vi.doMock('$posts/_metadata/authors.json', () => ({
+    vi.doMock('#posts/_metadata/authors.json', () => ({
         default: {
             neil: {
                 id: 'neil',

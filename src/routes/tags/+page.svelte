@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Search } from '@lucide/svelte';
 
-    import Footer from '$lib/components/Footer.svelte';
+    import Footer from '#lib/components/Footer.svelte';
 
     let { data } = $props();
     const { tags } = $derived(data);

@@ -1,10 +1,10 @@
-import type { Handle } from '@sveltejs/kit';
+import type { Handle } from '@sveltejs/kit/hooks';
 import { describe, expect, it, vi } from 'vitest';
 
 async function loadHandleModule(dev: boolean) {
     vi.resetModules();
-    vi.doMock('$app/environment', () => ({ dev, browser: false }));
-    vi.doMock('$lib/constants/blog', () => ({
+    vi.doMock('$app/env', () => ({ dev, browser: false }));
+    vi.doMock('#lib/constants/blog.js', () => ({
         BLOG_CONFIG: {
             lang: 'zh-Hant'
         }

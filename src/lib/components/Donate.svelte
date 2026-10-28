@@ -1,9 +1,9 @@
 <script lang="ts">
     import { Coffee } from '@lucide/svelte';
 
-    import { BLOG_CONFIG } from '$lib/constants/blog';
-    import type { DonationLink } from '$lib/types';
-    import { cn } from '$lib/utils';
+    import { BLOG_CONFIG } from '#lib/constants/blog.js';
+    import type { DonationLink } from '#lib/types/index.js';
+    import { cn } from '#lib/utils/index.js';
 
     let {
         variant = 'default',

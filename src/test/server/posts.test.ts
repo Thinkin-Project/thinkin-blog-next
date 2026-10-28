@@ -1,6 +1,5 @@
+import type { ArticleMeta } from '#lib/types/index.js';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-
-import type { ArticleMeta } from '$lib/types';
 
 function makePost(overrides: Partial<ArticleMeta> = {}): ArticleMeta {
     return {
@@ -21,7 +20,7 @@ describe('posts server module', () => {
     beforeEach(() => {
         vi.restoreAllMocks();
         vi.resetModules();
-        vi.doMock('$app/environment', () => ({ dev: false, browser: false }));
+        vi.doMock('$app/env', () => ({ dev: false, browser: false }));
         vi.spyOn(console, 'warn').mockImplementation(() => undefined);
     });
 
@@ -35,7 +34,7 @@ describe('posts server module', () => {
     });
 
     it('uses cache in dev mode within TTL', async () => {
-        vi.doMock('$app/environment', () => ({ dev: true, browser: false }));
+        vi.doMock('$app/env', () => ({ dev: true, browser: false }));
         const { getPosts } = await import('../../lib/server/posts');
 
         const firstCall = await getPosts();
@@ -45,7 +44,7 @@ describe('posts server module', () => {
     });
 
     it('bypasses cache in dev mode after TTL expires', async () => {
-        vi.doMock('$app/environment', () => ({ dev: true, browser: false }));
+        vi.doMock('$app/env', () => ({ dev: true, browser: false }));
         const { getPosts } = await import('../../lib/server/posts');
 
         const nowSpy = vi.spyOn(Date, 'now');

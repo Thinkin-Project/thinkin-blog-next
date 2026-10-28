@@ -1,6 +1,6 @@
-import { BLOG_CONFIG } from '$lib/constants/blog';
-import { getPosts } from '$lib/server/posts';
-import { buildAbsoluteUrl, escapeXml } from '$lib/utils/xml';
+import { BLOG_CONFIG } from '#lib/constants/blog.js';
+import { getPosts } from '#lib/server/posts.js';
+import { buildAbsoluteUrl, escapeXml } from '#lib/utils/xml.js';
 
 export const GET = async () => {
     const posts = await getPosts();

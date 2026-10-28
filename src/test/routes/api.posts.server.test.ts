@@ -1,19 +1,18 @@
+import { getPosts } from '#lib/server/posts.js';
+import type { ArticleMeta } from '#lib/types/index.js';
 import { describe, expect, it, vi } from 'vitest';
-
-import { getPosts } from '$lib/server/posts';
-import type { ArticleMeta } from '$lib/types';
 
 import { GET } from '../../routes/api/posts/+server';
 
-vi.mock('$lib/server/posts', () => ({
+vi.mock('#lib/server/posts.js', () => ({
     getPosts: vi.fn()
 }));
 
-vi.mock('$lib/constants/topics', () => ({
+vi.mock('#lib/constants/topics.js', () => ({
     getTopicName: vi.fn((slug: string) => `Topic:${slug}`)
 }));
 
-vi.mock('$lib/constants/tags', () => ({
+vi.mock('#lib/constants/tags.js', () => ({
     getTagName: vi.fn((slug: string) => `Tag:${slug}`)
 }));
 

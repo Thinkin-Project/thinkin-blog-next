@@ -1,21 +1,21 @@
 <script lang="ts">
-    import { browser } from '$app/environment';
+    import { browser } from '$app/env';
     import { onMount } from 'svelte';
 
     import { page } from '$app/state';
 
-    import favicon from '$lib/assets/favicon.ico';
+    import favicon from '#lib/assets/favicon.ico';
     import { Menu, X, PanelRight } from '@lucide/svelte';
 
-    import Donate from '$lib/components/Donate.svelte';
-    import PostSearch from '$lib/components/PostSearch.svelte';
-    import SocialLinks from '$lib/components/SocialLinks.svelte';
-    import ThemeToggle from '$lib/components/ThemeToggle.svelte';
-    import { Button } from '$lib/components/ui/button';
-    import { Separator } from '$lib/components/ui/separator';
-    import { BLOG_CONFIG } from '$lib/constants/blog';
-    import { NAV_ITEMS, SOCIAL_LINKS } from '$lib/constants/navigation';
-    import { STORAGE_KEYS, booleanStorage, readStorage, writeStorage } from '$lib/utils/storage';
+    import Donate from '#lib/components/Donate.svelte';
+    import PostSearch from '#lib/components/PostSearch.svelte';
+    import SocialLinks from '#lib/components/SocialLinks.svelte';
+    import ThemeToggle from '#lib/components/ThemeToggle.svelte';
+    import { Button } from '#lib/components/ui/button/index.js';
+    import { Separator } from '#lib/components/ui/separator/index.js';
+    import { BLOG_CONFIG } from '#lib/constants/blog.js';
+    import { NAV_ITEMS, SOCIAL_LINKS } from '#lib/constants/navigation.js';
+    import { STORAGE_KEYS, booleanStorage, readStorage, writeStorage } from '#lib/utils/storage.js';
 
     // Svelte 5 State
     let isMenuOpen = $state(false);

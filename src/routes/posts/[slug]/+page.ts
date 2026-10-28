@@ -1,8 +1,7 @@
 import type { Component } from 'svelte';
 
+import type { ArticleMeta } from '#lib/types/index.js';
 import { error } from '@sveltejs/kit';
-
-import type { ArticleMeta } from '$lib/types';
 
 import type { PageLoad } from './$types';
 

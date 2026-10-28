@@ -1,7 +1,7 @@
 <script lang="ts">
     import { BookOpenText, Calendar, Clock } from '@lucide/svelte';
 
-    import { getTagName } from '$lib/constants/tags';
+    import { getTagName } from '#lib/constants/tags.js';
 
     let {
         title,
