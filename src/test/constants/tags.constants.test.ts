@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 async function loadTags() {
     vi.resetModules();
-    vi.doMock('$posts/_metadata/tags.json', () => ({
+    vi.doMock('#posts/_metadata/tags.json', () => ({
         default: [
             { slug: 'csharp', name: 'C#', aliases: [] },
             { slug: 'dotnet', name: '.NET', aliases: [] }

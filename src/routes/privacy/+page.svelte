@@ -1,7 +1,7 @@
 <script lang="ts">
     import { ChevronRight } from '@lucide/svelte';
 
-    import Footer from '$lib/components/Footer.svelte';
+    import Footer from '#lib/components/Footer.svelte';
 
     let { data } = $props();
 </script>

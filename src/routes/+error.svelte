@@ -3,10 +3,10 @@
 
     import { ChevronRight } from '@lucide/svelte';
 
-    import EmptyState from '$lib/components/EmptyState.svelte';
-    import FeaturedPostListItem from '$lib/components/FeaturedPostListItem.svelte';
-    import Footer from '$lib/components/Footer.svelte';
-    import { Separator } from '$lib/components/ui/separator';
+    import EmptyState from '#lib/components/EmptyState.svelte';
+    import FeaturedPostListItem from '#lib/components/FeaturedPostListItem.svelte';
+    import Footer from '#lib/components/Footer.svelte';
+    import { Separator } from '#lib/components/ui/separator/index.js';
 
     const featuredPosts = $derived(page.data.featuredPosts || []);
 </script>

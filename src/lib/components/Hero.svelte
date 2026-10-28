@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { BLOG_CONFIG } from '$lib/constants/blog';
+    import { BLOG_CONFIG } from '#lib/constants/blog.js';
 
     const blogNameParts = BLOG_CONFIG.name.split(' ');
     const firstPart = blogNameParts[0];

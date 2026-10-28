@@ -1,10 +1,10 @@
 <script lang="ts">
-    import Footer from '$lib/components/Footer.svelte';
-    import SocialLinks from '$lib/components/SocialLinks.svelte';
-    import { Button } from '$lib/components/ui/button';
-    import { Input } from '$lib/components/ui/input';
-    import { BLOG_CONFIG } from '$lib/constants/blog';
-    import { SOCIAL_LINKS } from '$lib/constants/navigation';
+    import Footer from '#lib/components/Footer.svelte';
+    import SocialLinks from '#lib/components/SocialLinks.svelte';
+    import { Button } from '#lib/components/ui/button/index.js';
+    import { Input } from '#lib/components/ui/input/index.js';
+    import { BLOG_CONFIG } from '#lib/constants/blog.js';
+    import { SOCIAL_LINKS } from '#lib/constants/navigation.js';
 </script>
 
 <svelte:head>

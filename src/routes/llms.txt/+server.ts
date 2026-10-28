@@ -1,5 +1,5 @@
-import { BLOG_CONFIG } from '$lib/constants/blog';
-import { getPosts } from '$lib/server/posts';
+import { BLOG_CONFIG } from '#lib/constants/blog.js';
+import { getPosts } from '#lib/server/posts.js';
 
 import type { RequestHandler } from './$types';
 

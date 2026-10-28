@@ -1,17 +1,17 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { getPosts } from '$lib/server/posts';
-import type { ArticleMeta } from '$lib/types';
+import { getPosts } from '#lib/server/posts.js';
+import type { ArticleMeta } from '#lib/types/index.js';
 
 import { load } from '../../routes/posts/+page.server';
 
-vi.mock('$lib/constants/blog', () => ({
+vi.mock('#lib/constants/blog.js', () => ({
     BLOG_CONFIG: {
         postsPerPage: 10
     }
 }));
 
-vi.mock('$lib/server/posts', () => ({
+vi.mock('#lib/server/posts.js', () => ({
     getPosts: vi.fn()
 }));
 

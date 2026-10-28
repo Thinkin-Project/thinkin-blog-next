@@ -2,7 +2,7 @@
     import { Dialog as DialogPrimitive } from 'bits-ui';
     import { X } from '@lucide/svelte';
 
-    import { cn } from '$lib/utils';
+    import { cn } from '#lib/utils/index.js';
 
     import { Overlay, Portal } from './index.js';
 

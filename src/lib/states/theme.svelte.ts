@@ -1,11 +1,11 @@
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 
 import {
     type Theme,
     applyThemeDocumentClass,
     resolveInitialTheme,
     syncThemePreference
-} from '$lib/utils/theme';
+} from '#lib/utils/theme.js';
 
 import { STORAGE_KEYS, readStorage, stringStorage } from '../utils/storage';
 
@@ -19,6 +19,7 @@ class ThemeState {
                 STORAGE_KEYS.theme,
                 stringStorage.parse
             ) as Theme | null;
+
             this.#currentTheme = resolveInitialTheme(
                 storedTheme,
                 window.matchMedia('(prefers-color-scheme: light)').matches

@@ -2,12 +2,12 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { GET } from '../../routes/rss.xml/+server';
 
-vi.mock('$lib/utils/xml', async () => {
+vi.mock('#lib/utils/xml.js', async () => {
     const actual = await import('../../lib/utils/xml');
     return actual;
 });
 
-vi.mock('$lib/constants/blog', () => ({
+vi.mock('#lib/constants/blog.js', () => ({
     BLOG_CONFIG: {
         url: 'https://example.com',
         name: 'Site & Name',
@@ -15,7 +15,7 @@ vi.mock('$lib/constants/blog', () => ({
     }
 }));
 
-vi.mock('$lib/server/posts', () => ({
+vi.mock('#lib/server/posts.js', () => ({
     getPosts: vi.fn(async () => [
         {
             title: 'Title <1>',

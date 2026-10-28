@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 async function loadTopics() {
     vi.resetModules();
-    vi.doMock('$posts/_metadata/topics.json', () => ({
+    vi.doMock('#posts/_metadata/topics.json', () => ({
         default: [
             { slug: 'dotnet', name: '.NET', aliases: [] },
             { slug: 'devops', name: 'DevOps', aliases: [] }

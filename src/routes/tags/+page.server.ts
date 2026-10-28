@@ -1,5 +1,5 @@
-import { TAGS } from '$lib/constants/tags';
-import { getPosts } from '$lib/server/posts';
+import { TAGS } from '#lib/constants/tags.js';
+import { getPosts } from '#lib/server/posts.js';
 
 import type { PageServerLoad } from './$types';
 

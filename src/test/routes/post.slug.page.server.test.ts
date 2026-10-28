@@ -1,21 +1,21 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { getAdjacentPosts } from '$lib/server/posts';
-import { findRelatedPosts } from '$lib/server/webmcp';
+import { getAdjacentPosts } from '#lib/server/posts.js';
+import { findRelatedPosts } from '#lib/server/webmcp.js';
 
 import { load } from '../../routes/posts/[slug]/+page.server';
 
-vi.mock('$lib/constants/blog', () => ({
+vi.mock('#lib/constants/blog.js', () => ({
     BLOG_CONFIG: {
         relatedPostsLimit: 3
     }
 }));
 
-vi.mock('$lib/server/posts', () => ({
+vi.mock('#lib/server/posts.js', () => ({
     getAdjacentPosts: vi.fn()
 }));
 
-vi.mock('$lib/server/webmcp', () => ({
+vi.mock('#lib/server/webmcp.js', () => ({
     findRelatedPosts: vi.fn()
 }));
 

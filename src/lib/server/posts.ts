@@ -1,6 +1,6 @@
-import { dev } from '$app/environment';
+import { dev } from '$app/env';
 
-import type { ArticleMeta } from '$lib/types';
+import type { ArticleMeta } from '#lib/types/index.js';
 
 const DEV_CACHE_TTL = 3000; // 開發環境下的快取有效時間（毫秒），以降低頻繁 I/O 操作對開發體驗的影響
 

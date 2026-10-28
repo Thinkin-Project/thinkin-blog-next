@@ -1,4 +1,4 @@
-import * as env from '$env/static/public';
+import * as env from '$app/env/public';
 
 /**
  * 部落格相關設定

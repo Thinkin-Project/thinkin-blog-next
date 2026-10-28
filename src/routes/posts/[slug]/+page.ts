@@ -2,7 +2,7 @@ import type { Component } from 'svelte';
 
 import { error } from '@sveltejs/kit';
 
-import type { ArticleMeta } from '$lib/types';
+import type { ArticleMeta } from '#lib/types/index.js';
 
 import type { PageLoad } from './$types';
 

@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { Facebook, Github, Globe, Linkedin, X } from '$lib/components/icons';
-    import * as Avatar from '$lib/components/ui/avatar';
-    import { AUTHORS } from '$lib/constants/authors';
-    import type { Author } from '$lib/types';
+    import { Facebook, Github, Globe, Linkedin, X } from '#lib/components/icons/index.js';
+    import * as Avatar from '#lib/components/ui/avatar/index.js';
+    import { AUTHORS } from '#lib/constants/authors.js';
+    import type { Author } from '#lib/types/index.js';
 
     let { authorIds = [] }: { authorIds?: string[] } = $props();
 

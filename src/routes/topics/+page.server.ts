@@ -1,5 +1,5 @@
-import { TOPICS } from '$lib/constants/topics';
-import { getPosts } from '$lib/server/posts';
+import { TOPICS } from '#lib/constants/topics.js';
+import { getPosts } from '#lib/server/posts.js';
 
 import type { PageServerLoad } from './$types';
 

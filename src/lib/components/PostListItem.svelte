@@ -1,7 +1,7 @@
 <script lang="ts">
     import { BookOpenText, Calendar, Clock } from '@lucide/svelte';
 
-    import { getTagName } from '$lib/constants/tags';
+    import { getTagName } from '#lib/constants/tags.js';
 
     let {
         title,
@@ -11,7 +11,7 @@
         readingTime,
         link,
         tags = []
-    } = $props<{
+    }: {
         title: string;
         subtitle?: string;
         description?: string;
@@ -19,7 +19,7 @@
         readingTime?: number;
         link: string;
         tags?: string[];
-    }>();
+    } = $props();
 </script>
 
 <li class="group list-none">

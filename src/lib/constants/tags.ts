@@ -1,6 +1,6 @@
-import tagsJson from '$posts/_metadata/tags.json';
+import tagsJson from '#posts/_metadata/tags.json';
 
-import type { Tag } from '$lib/types';
+import type { Tag } from '#lib/types/index.js';
 
 export const TAGS: Tag[] = tagsJson as Tag[];
 

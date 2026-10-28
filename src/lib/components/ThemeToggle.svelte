@@ -1,9 +1,9 @@
 <script lang="ts">
     import { Moon, Sun } from '@lucide/svelte';
 
-    import { Button } from '$lib/components/ui/button';
-    import { themeState } from '$lib/states/theme.svelte';
-    import { cn } from '$lib/utils';
+    import { Button } from '#lib/components/ui/button/index.js';
+    import { themeState } from '#lib/states/theme.svelte.js';
+    import { cn } from '#lib/utils/index.js';
 
     interface Props {
         variant?: 'icon' | 'full';

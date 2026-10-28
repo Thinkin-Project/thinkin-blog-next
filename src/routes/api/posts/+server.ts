@@ -1,8 +1,8 @@
 import { json } from '@sveltejs/kit';
 
-import { getTagName } from '$lib/constants/tags';
-import { getTopicName } from '$lib/constants/topics';
-import { getPosts } from '$lib/server/posts';
+import { getTagName } from '#lib/constants/tags.js';
+import { getTopicName } from '#lib/constants/topics.js';
+import { getPosts } from '#lib/server/posts.js';
 
 import type { RequestHandler } from './$types';
 

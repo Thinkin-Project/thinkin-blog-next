@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Footer from '$lib/components/Footer.svelte';
-    import Pagination from '$lib/components/Pagination.svelte';
-    import PostListItem from '$lib/components/PostListItem.svelte';
+    import Footer from '#lib/components/Footer.svelte';
+    import Pagination from '#lib/components/Pagination.svelte';
+    import PostListItem from '#lib/components/PostListItem.svelte';
 
     let { data } = $props();
     const { posts, pagination } = $derived(data);

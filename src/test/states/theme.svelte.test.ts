@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { STORAGE_KEYS, stringStorage, writeStorage } from '../../lib/utils/storage';
 
-vi.mock('$lib/utils/theme', async () => {
+vi.mock('#lib/utils/theme.js', async () => {
     const actual = await import('../../lib/utils/theme');
     return actual;
 });
@@ -74,7 +74,7 @@ describe('themeState', () => {
             }
         });
 
-        vi.doMock('$app/environment', () => ({ browser: true, dev: false }));
+        vi.doMock('$app/env', () => ({ browser: true, dev: false }));
 
         const { themeState } = await import('../../lib/states/theme.svelte.ts');
 
@@ -123,7 +123,7 @@ describe('themeState', () => {
             }
         });
 
-        vi.doMock('$app/environment', () => ({ browser: true, dev: false }));
+        vi.doMock('$app/env', () => ({ browser: true, dev: false }));
 
         const { themeState } = await import('../../lib/states/theme.svelte.ts');
 

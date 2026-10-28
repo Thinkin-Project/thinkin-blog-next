@@ -1,18 +1,18 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { getPosts } from '$lib/server/posts';
-import type { ArticleMeta } from '$lib/types';
+import { getPosts } from '#lib/server/posts.js';
+import type { ArticleMeta } from '#lib/types/index.js';
 
 import { load } from '../../routes/topics/+page.server';
 
-vi.mock('$lib/constants/topics', () => ({
+vi.mock('#lib/constants/topics.js', () => ({
     TOPICS: [
         { slug: 'dotnet', name: '.NET' },
         { slug: 'devops', name: 'DevOps' }
     ]
 }));
 
-vi.mock('$lib/server/posts', () => ({
+vi.mock('#lib/server/posts.js', () => ({
     getPosts: vi.fn()
 }));
 

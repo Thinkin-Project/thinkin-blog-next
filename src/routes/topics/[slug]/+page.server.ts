@@ -1,8 +1,8 @@
 import { error } from '@sveltejs/kit';
 
-import { BLOG_CONFIG } from '$lib/constants/blog';
-import { TOPICS } from '$lib/constants/topics';
-import { getPosts } from '$lib/server/posts';
+import { BLOG_CONFIG } from '#lib/constants/blog.js';
+import { TOPICS } from '#lib/constants/topics.js';
+import { getPosts } from '#lib/server/posts.js';
 
 import type { PageServerLoad } from './$types';
 
