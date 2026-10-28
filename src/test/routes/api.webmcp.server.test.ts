@@ -1,5 +1,6 @@
-import { findRelatedPosts, getPost, searchPosts } from '#lib/server/webmcp.js';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+import { findRelatedPosts, getPost, searchPosts } from '#lib/server/webmcp.js';
 
 import { GET as getPostRoute } from '../../routes/api/webmcp/posts/[slug]/+server';
 import { GET as getRelatedPostsRoute } from '../../routes/api/webmcp/posts/[slug]/related/+server';

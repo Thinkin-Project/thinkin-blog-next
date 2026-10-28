@@ -1,6 +1,7 @@
+import { describe, expect, it, vi } from 'vitest';
+
 import { getPosts } from '#lib/server/posts.js';
 import type { ArticleMeta } from '#lib/types/index.js';
-import { describe, expect, it, vi } from 'vitest';
 
 import { load as layoutLoad } from '../../routes/+layout.server';
 import { load as pageLoad } from '../../routes/+page.server';

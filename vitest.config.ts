@@ -8,10 +8,13 @@ export default defineConfig({
     test: {
         globals: true,
         passWithNoTests: true,
-        alias: {
-            '$app/environment': path.resolve('src/test/mocks/app-environment.ts'),
-            '$app/navigation': path.resolve('src/test/mocks/app-navigation.ts')
-        },
+        alias: [
+            { find: /^\$app\/env$/, replacement: path.resolve('src/test/mocks/app-env.ts') },
+            {
+                find: '$app/navigation',
+                replacement: path.resolve('src/test/mocks/app-navigation.ts')
+            }
+        ],
         coverage: {
             provider: 'v8',
             reporter: ['text', 'html'],
@@ -31,10 +34,16 @@ export default defineConfig({
                     setupFiles: ['src/test/setup.ts'],
                     clearMocks: true,
                     restoreMocks: true,
-                    alias: {
-                        '$app/environment': path.resolve('src/test/mocks/app-environment.ts'),
-                        '$app/navigation': path.resolve('src/test/mocks/app-navigation.ts')
-                    }
+                    alias: [
+                        {
+                            find: /^\$app\/env$/,
+                            replacement: path.resolve('src/test/mocks/app-env.ts')
+                        },
+                        {
+                            find: '$app/navigation',
+                            replacement: path.resolve('src/test/mocks/app-navigation.ts')
+                        }
+                    ]
                 }
             },
             {
@@ -45,10 +54,16 @@ export default defineConfig({
                     setupFiles: ['src/test/setup.ts'],
                     clearMocks: true,
                     restoreMocks: true,
-                    alias: {
-                        '$app/environment': path.resolve('src/test/mocks/app-environment.ts'),
-                        '$app/navigation': path.resolve('src/test/mocks/app-navigation.ts')
-                    }
+                    alias: [
+                        {
+                            find: /^\$app\/env$/,
+                            replacement: path.resolve('src/test/mocks/app-env.ts')
+                        },
+                        {
+                            find: '$app/navigation',
+                            replacement: path.resolve('src/test/mocks/app-navigation.ts')
+                        }
+                    ]
                 }
             }
         ]

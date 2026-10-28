@@ -1,5 +1,6 @@
-import { findRelatedPosts } from '#lib/server/webmcp.js';
 import { error, json } from '@sveltejs/kit';
+
+import { findRelatedPosts } from '#lib/server/webmcp.js';
 
 import type { RequestHandler } from './$types';
 

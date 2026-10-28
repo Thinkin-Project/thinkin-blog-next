@@ -1,6 +1,7 @@
+import { describe, expect, it, vi } from 'vitest';
+
 import { getAdjacentPosts } from '#lib/server/posts.js';
 import { findRelatedPosts } from '#lib/server/webmcp.js';
-import { describe, expect, it, vi } from 'vitest';
 
 import { load } from '../../routes/posts/[slug]/+page.server';
 

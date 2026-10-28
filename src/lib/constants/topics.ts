@@ -1,5 +1,6 @@
-import type { Topic } from '#lib/types/index.js';
 import topicsJson from '#posts/_metadata/topics.json';
+
+import type { Topic } from '#lib/types/index.js';
 
 export const TOPICS: Topic[] = topicsJson as Topic[];
 

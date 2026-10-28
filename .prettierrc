@@ -13,7 +13,7 @@
         "^(svelte/(.*)$)|^(svelte$)",
         "^\\$app/(.*)$",
         "<THIRD_PARTY_MODULES>",
-        "^\\$lib/(.*)$",
+        "^#lib/(.*)$",
         "^[./]"
     ],
     "importOrderSeparation": true,

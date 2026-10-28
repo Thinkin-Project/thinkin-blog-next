@@ -1,7 +1,8 @@
 import { dev } from '$app/env';
 
-import { BLOG_CONFIG } from '#lib/constants/blog.js';
 import type { Handle } from '@sveltejs/kit/hooks';
+
+import { BLOG_CONFIG } from '#lib/constants/blog.js';
 
 export const handle: Handle = async ({ event, resolve }) => {
     if (dev && event.url.pathname === '/.well-known/appspecific/com.chrome.devtools.json') {

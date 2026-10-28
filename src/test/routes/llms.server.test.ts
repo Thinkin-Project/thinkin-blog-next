@@ -1,6 +1,7 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { getPosts, getRawPost } from '#lib/server/posts.js';
 import type { ArticleMeta } from '#lib/types/index.js';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { GET as getLlmsFull } from '../../routes/llms-full.txt/+server';
 import { GET as getLlms } from '../../routes/llms.txt/+server';

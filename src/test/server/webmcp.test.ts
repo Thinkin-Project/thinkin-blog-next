@@ -1,6 +1,7 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { getPosts, getRawPost } from '#lib/server/posts.js';
 import type { ArticleMeta } from '#lib/types/index.js';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import {
     clampLimit,

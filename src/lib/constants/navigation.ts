@@ -1,5 +1,6 @@
-import type { NavItem, SocialLink } from '#lib/types/index.js';
 import { Folders, House, Newspaper, Rss, Shield, Tags } from '@lucide/svelte';
+
+import type { NavItem, SocialLink } from '#lib/types/index.js';
 
 export const NAV_ITEMS: NavItem[] = [
     { name: '首頁', href: '/', icon: House },

@@ -1,5 +1,6 @@
-import type { ArticleMeta } from '#lib/types/index.js';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+import type { ArticleMeta } from '#lib/types/index.js';
 
 function makePost(overrides: Partial<ArticleMeta> = {}): ArticleMeta {
     return {
