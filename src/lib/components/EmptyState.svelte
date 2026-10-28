@@ -7,11 +7,11 @@
         title = '尚無內容',
         message = '正在挑選最精彩的內容與您分享，敬請期待。',
         icon: Icon = Inbox
-    } = $props<{
+    }: {
         title?: string;
         message?: string;
         icon?: Component;
-    }>();
+    } = $props();
 </script>
 
 <div class="flex flex-col items-center justify-center gap-4 px-6 py-12 text-center">
