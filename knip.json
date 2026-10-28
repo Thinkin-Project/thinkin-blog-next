@@ -3,6 +3,8 @@
     "entry": [
         ".claude/hooks/format-lint.js",
         ".codex/hooks/format-lint.js",
+        "src/env.ts",
+        "src/test/mocks/app-env.ts",
         "src/lib/components/icons/index.ts",
         "src/lib/components/ui/**/index.ts"
     ]
