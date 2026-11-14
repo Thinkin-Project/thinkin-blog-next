@@ -285,8 +285,8 @@
         "aliases": []
     },
     {
-        "name": "技能",
-        "slug": "skill",
+        "name": "代理技能",
+        "slug": "agent-skill",
         "aliases": []
     },
     {
