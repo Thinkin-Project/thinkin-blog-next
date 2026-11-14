@@ -25,14 +25,14 @@
 <li class="group list-none">
     <a
         href={link}
-        class="-mx-3 flex flex-col justify-between rounded-lg px-3 py-3 transition-colors hover:bg-secondary/50 md:flex-row md:items-center"
+        class="-mx-3 flex flex-col justify-between rounded-lg px-3 py-3 transition-colors hover:bg-secondary/50 md:flex-row md:items-center md:gap-4"
     >
-        <div class="relative flex items-center gap-3">
+        <div class="relative flex min-w-0 flex-1 items-center gap-3 pr-8">
             <BookOpenText
                 class="absolute left-0 h-5 w-5 -translate-x-4 text-primary opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100"
             />
             <div
-                class="space-y-1 transition-transform duration-300 ease-out group-hover:translate-x-8"
+                class="min-w-0 flex-1 space-y-1 transition-transform duration-300 ease-out group-hover:translate-x-8"
             >
                 {#if tags && tags.length > 0}
                     <div class="flex flex-wrap gap-2">
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div
-            class="mt-2 flex flex-col font-mono text-xs text-muted-foreground md:mt-0 md:items-end md:gap-1"
+            class="mt-2 flex shrink-0 flex-col font-mono text-xs whitespace-nowrap text-muted-foreground md:mt-0 md:items-end md:gap-1"
         >
             <span class="flex items-center gap-2 text-sm opacity-80">
                 <Calendar class="h-3 w-3" />
