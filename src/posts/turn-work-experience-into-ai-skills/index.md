@@ -6,7 +6,7 @@ date: '2026-08-10'
 drafted: false
 featured: true
 topic: 'artificial-intelligence'
-tags: ['ai-agent', 'agentic-workflow', 'skill', 'knowledge-management']
+tags: ['ai-agent', 'agentic-workflow', 'agent-skill', 'knowledge-management']
 authors: ['neil-tsai', 'chatgpt']
 ---
 
