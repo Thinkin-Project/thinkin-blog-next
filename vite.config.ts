@@ -39,6 +39,24 @@ let highlighterPromise;
             };
         },
 
+        // 自定義插件處理外部連結 (http/https 一律以新分頁開啟)
+        () => {
+            return (tree) => {
+                const visit = (node) => {
+                    if (node.type === 'link' && /^https?:\/\//i.test(node.url)) {
+                        node.data = node.data || {};
+                        node.data.hProperties = node.data.hProperties || {};
+                        node.data.hProperties.target = '_blank';
+                        node.data.hProperties.rel = 'noopener noreferrer';
+                    }
+
+                    if (node.children) node.children.forEach(visit);
+                };
+
+                visit(tree);
+            };
+        },
+
         // 自定義插件計算閱讀時間
         () => {
             return (tree, { data }) => {

@@ -66,7 +66,7 @@ authors: ['neil-tsai', 'chatgpt']
 ![mcp-1](./images/mcp-1.png)
 
 <center>
-    <a href="https://norahsakal.com/blog/mcp-vs-api-model-context-protocol-explained" target="_blank">MCP vs API Model Context Protocol Explained</a>
+    <a href="https://norahsakal.com/blog/mcp-vs-api-model-context-protocol-explained" target="_blank" rel="noopener noreferrer">MCP vs API Model Context Protocol Explained</a>
 </center>
 
 ### Chrome DevTools MCP
@@ -82,7 +82,7 @@ authors: ['neil-tsai', 'chatgpt']
 
 ### MCP 對自然語言 E2E 測試很重要嗎？
 
-- <span style="color: #FF5151;">傳統 AI Agent 是「盲寫」：只能根據程式碼去<a href="https://www.youtube.com/watch?v=wE3oTZLijsI" target="_blank">預測</a>結果</span>
+- <span style="color: #FF5151;">傳統 AI Agent 是「盲寫」：只能根據程式碼去<a href="https://www.youtube.com/watch?v=wE3oTZLijsI" target="_blank" rel="noopener noreferrer">預測</a>結果</span>
 - <span style="color: #FF9224;">MCP 給了 AI 一雙「眼睛」：能夠看到程式碼執行後的真實效果，大幅提升自然語言指令的準確性與可操作性</span>
 - <span style="color: #02C874;">這讓你可以用一句話（例如：「打開首頁並登入」）讓 AI Agent 透過 MCP 操控 DevTools 完成整個 E2E 測試流程</span>
 
