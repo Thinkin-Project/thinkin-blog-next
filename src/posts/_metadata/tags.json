@@ -403,5 +403,15 @@
         "name": "網頁開發",
         "slug": "web-development",
         "aliases": []
+    },
+    {
+        "name": "組織能力",
+        "slug": "organizational-capability",
+        "aliases": []
+    },
+    {
+        "name": "工程文化",
+        "slug": "engineering-culture",
+        "aliases": []
     }
 ]
